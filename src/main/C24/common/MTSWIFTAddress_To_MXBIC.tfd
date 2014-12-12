@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MTSWIFTAddress_To_MXBIC.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <contextPath input="true" endID="0" contextRef="" id="I0"/>
+    <contextPath input="false" endID="0" contextRef="" id="O0"/>
+    <transformMethod name="CONCAT" id="O00"/>
+    <transformMethod name="SUBSTRING" id="O000"/>
+    <constant constant="0" id="O0001"/>
+    <constant constant="8" id="O0002"/>
+    <transformMethod name="SUBSTRING" id="O001"/>
+    <constant constant="9" id="O0011"/>
+    <constant constant="12" id="O0012"/>
+    <translation outputPort="0" outputID="O0" inputPort="0" inputID="O00"/>
+    <translation outputPort="0" outputID="O00" inputPort="0" inputID="O000"/>
+    <translation outputPort="0" outputID="O000" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="O000" inputPort="0" inputID="O0001"/>
+    <translation outputPort="2" outputID="O000" inputPort="0" inputID="O0002"/>
+    <translation outputPort="1" outputID="O00" inputPort="0" inputID="O001"/>
+    <translation outputPort="0" outputID="O001" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="O001" inputPort="0" inputID="O0011"/>
+    <translation outputPort="2" outputID="O001" inputPort="0" inputID="O0012"/>
+    <documentation>
+        <notes>&lt;p&gt;&lt;strong&gt;Business description&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The function translates an MT SWIFT address to a BIC.&lt;/p&gt;
+  &lt;p&gt; An MT SWIFT address has a fixed length of 12 characters: the first 8 characters are
+    the 8-character BIC, at the 9th position a capital letter identifies the SWIFT logical
+    terminal from where the message is sent or where it is received and the address is
+  completed by a 3-character branch code or &amp;lsquo;XXX&amp;rsquo; if no branch code is available.&lt;/p&gt;
+  &lt;p&gt;The function deletes the SWIFT logical terminal letter at the 9th position.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;  Format&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;MTSWIFTAddress_To_MXBIC&lt;/strong&gt;(MTSWIFTAddress ; MXBIC)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;  Input&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;MTSWIFTAddress: SWIFT address of the financial institution sending or receiving the
+    message as present in the MT header.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Output&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;MXBIC: the result of this function -a BIC- is immediately put into the correct MX 
+    element inside the target component typed
+    &lt;em&gt;BranchAndFinancialInstitutionIdentification3&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Preconditions&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt; None.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Formal description&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;pre&gt;FinancialInstitutionIdentification.BIC =
+&lt;strong&gt;DeleteChar&lt;/strong&gt;(MTSWIFTAddress, 9, 9)&lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;pre&gt;An MT Sender&amp;rsquo;s Address AAAACCLLAXXX translates to:
+&amp;lt;InstgAgt&amp;gt;
+    &amp;lt;FinInstnId&amp;gt;
+        &amp;lt;BIC&amp;gt;AAAACCLLXXX&amp;lt;/BIC&amp;gt;
+    &amp;lt;/FinInstnId&amp;gt;
+&amp;lt;/InstgAgt&amp;gt;&lt;/pre&gt;
+&lt;/blockquote&gt;</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+</transform>

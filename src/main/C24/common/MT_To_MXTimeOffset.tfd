@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.5" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXTimeOffset.tfd">
+    <input typeRef="#date_generic" required="false" path="" endID="0"/>
+    <input typeRef="#string" required="false" path="" endID="1"/>
+    <input typeRef="#date_generic" required="false" path="" endID="2"/>
+    <transformMethod name="DATETOSTRING" y="29" x="138" id="1"/>
+    <constant constant="HH:mm:00" id="2"/>
+    <transformMethod name="DATETOSTRING" y="323" x="130" id="4"/>
+    <transformMethod name="CONCAT" y="121" x="468" id="5"/>
+    <transformMethod name="CONCAT" y="192" x="330" id="6"/>
+    <constant constant="HH:mm" id="7"/>
+    <contextPath input="true" endID="0" contextRef="" id="3"/>
+    <contextPath input="true" endID="2" contextRef="" id="8"/>
+    <contextPath input="true" endID="1" contextRef="" id="9"/>
+    <transformMethod type="#date_time" name="FROMSTRING" y="127" x="590" id="13"/>
+    <contextPath input="false" endID="0" contextRef="" id="12"/>
+    <translation outputPort="1" outputID="1" inputPort="0" inputID="2"/>
+    <translation outputPort="1" outputID="6" inputPort="0" inputID="4"/>
+    <translation outputPort="1" outputID="5" inputPort="0" inputID="6"/>
+    <translation outputPort="1" outputID="4" inputPort="0" inputID="7"/>
+    <translation outputPort="0" outputID="5" inputPort="0" inputID="1"/>
+    <translation outputPort="0" outputID="1" inputPort="0" inputID="3"/>
+    <translation outputPort="0" outputID="4" inputPort="0" inputID="8"/>
+    <translation outputPort="0" outputID="6" inputPort="0" inputID="9"/>
+    <translation outputPort="0" outputID="13" inputPort="0" inputID="5"/>
+    <translation outputPort="0" outputID="12" inputPort="0" inputID="13"/>
+    <nextId>14</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXTimeOffset&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;:
+The function translates an MT time with offset expressed as “HHMM+/-HHMM” to an MX time with offset expressed as “HH:MM:SS+/-HH:MM” by adding the seconds to the time and introducing the “:“pattern to both time and offset.
+
+&lt;b&gt;Format&lt;/b&gt;:
+&lt;tt&gt;MT_To_MXTimeOffset(MTTime, MTSign, MTOffset ; MXTimeOffset)&lt;/tt&gt;
+
+&lt;b&gt;SWIFTStandards Translation Rules&lt;/b&gt;
+62 Translation Rule Descriptions for Credit Transfer Messages
+
+&lt;b&gt;Input&lt;/b&gt;:
+&lt;tt&gt;MTTime&lt;/tt&gt;: time in the MT message expressed as “HHMM” (hours and minutes)
+&lt;tt&gt;MTSign&lt;/tt&gt;: offset sign in the MT message expressed as + or -
+&lt;tt&gt;MTOffset&lt;/tt&gt;: offset time in the MT message expressed as “HHMM” (hours and minutes)
+
+&lt;b&gt;Output&lt;/b&gt;
+&lt;tt&gt;MXTimeOffset&lt;/tt&gt;: time and offset in the MX message type ISOTime, expressed as “HH:MM:SS+/-HH:MM” where HH:MM:SS is the time + or - is the offset sign HH:MM is the offset time
+
+&lt;b&gt;Preconditions&lt;/b&gt;:
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;:
+&lt;tt&gt;
+/* The function calls sub-functions MT_To_MXTime and MT_To_MXOffset to translate the time formats. MXTime and MXOffset are local variables */
+MXTime = MT_To_MXTime(MTTime)
+MXOffset = MT_To_MXOffset(MTOffset)
+/* Build output string */
+MXTimeOffset = Concatenate(MXTime, MTSign, MXOffset)
+&lt;/tt&gt;</notes>
+    </documentation>
+    <output typeRef="#date_time" required="false" path="" endID="0"/>
+</transform>

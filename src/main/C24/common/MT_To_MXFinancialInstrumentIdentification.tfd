@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.49" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXFinancialInstrumentIdentification.tfd">
+    <input typeRef="Data Field Dictionary/Subfields/Field 35B Id of Security" required="true" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <transformMethod name="UNION" y="59" x="76" id="1"/>
+    <transformMethod name="SUBSTRING" y="296" x="250" id="16"/>
+    <constant constant="1" id="21"/>
+    <constant constant="3" id="22"/>
+    <transformMethod name="INSTANCE" y="204" x="72" id="24"/>
+    <constant constant="0" id="26"/>
+    <transformMethod name="SUBSTRING" y="478" x="253" id="127"/>
+    <constant constant="4" id="128"/>
+    <transformMethod name="LENGTH" y="499" x="79" id="131"/>
+    <transformMethod name="UNION" y="812" x="789" id="241"/>
+    <transformMethod name="INSTANCE" y="810" x="932" id="256"/>
+    <constant constant="0" id="257"/>
+    <transformMethod type="#string" name="IF" y="394" x="821" id="258"/>
+    <constant constant="null" id="0"/>
+    <transformMethod name="EQUALS" y="304" x="505" id="259"/>
+    <constant constant="&quot;DE&quot;" id="260"/>
+    <transformMethod name="EQUALS" y="89" x="502" id="261"/>
+    <transformMethod type="#string" name="IF" y="71" x="836" id="262"/>
+    <constant constant="&quot;GB&quot;" id="263"/>
+    <transformMethod name="EQUALS" y="142" x="503" id="264"/>
+    <transformMethod type="#string" name="IF" y="153" x="827" id="265"/>
+    <constant constant="&quot;US&quot;" id="266"/>
+    <transformMethod name="EQUALS" y="197" x="506" id="267"/>
+    <transformMethod type="#string" name="IF" y="235" x="825" id="268"/>
+    <constant constant="&quot;TS&quot;" id="269"/>
+    <transformMethod name="EQUALS" y="250" x="504" id="270"/>
+    <transformMethod type="#string" name="IF" y="315" x="820" id="271"/>
+    <constant constant="&quot;JP&quot;" id="272"/>
+    <transformMethod name="EQUALS" y="359" x="510" id="273"/>
+    <transformMethod type="#string" name="IF" y="465" x="824" id="274"/>
+    <constant constant="&quot;NL&quot;" id="275"/>
+    <transformMethod name="EQUALS" y="416" x="513" id="276"/>
+    <transformMethod type="#string" name="IF" y="537" x="831" id="277"/>
+    <constant constant="&quot;CH&quot;" id="278"/>
+    <transformMethod name="EQUALS" y="474" x="518" id="279"/>
+    <transformMethod type="#string" name="IF" y="604" x="833" id="280"/>
+    <constant constant="&quot;FR&quot;" id="281"/>
+    <transformMethod name="EQUALS" y="538" x="524" id="283"/>
+    <transformMethod type="#string" name="IF" y="669" x="835" id="284"/>
+    <constant constant="&quot;BE&quot;" id="285"/>
+    <transformMethod name="EQUALS" y="604" x="406" id="286"/>
+    <transformMethod type="#string" name="IF" y="739" x="845" id="287"/>
+    <constant constant="&quot;XS&quot;" id="288"/>
+    <transformMethod name="LESSTHANOREQUAL" y="682" x="376" id="289"/>
+    <transformMethod name="LENGTH" y="677" x="205" id="290"/>
+    <transformMethod name="AND" y="635" x="533" id="291"/>
+    <constant constant="12" id="292"/>
+    <transformMethod name="TRIM" y="406" x="622" id="293"/>
+    <transformMethod name="EXISTS" y="142" x="74" id="294"/>
+    <transformMethod type="#string" name="IF" y="181" x="214" id="296"/>
+    <transformMethod name="INSTANCE" y="92" x="221" id="298"/>
+    <constant constant="0" id="299"/>
+    <transformMethod type="#string" name="IF" y="35" x="502" id="300"/>
+    <transformMethod name="EXISTS" y="25" x="214" id="301"/>
+    <filterRef refId="159" y="829" x="582" id="158"/>
+    <filterRef refId="207" y="767" x="576" id="206"/>
+    <contextPath input="true" endID="0" contextRef="Identification Of Security/ISIN Number" id="7"/>
+    <contextPath input="true" endID="0" contextRef="ISIN Number" id="8"/>
+    <contextPath input="true" endID="0" contextRef="Description of Security 4 lines/Line 35x" id="25"/>
+    <contextPath input="false" endID="0" contextRef="SecurityIdentification3Choice-SG1/OthrPrtryId" id="180"/>
+    <contextPath input="false" endID="0" contextRef="SecurityIdentification3Choice-SG1/Wrtppr" id="34"/>
+    <contextPath input="false" endID="0" contextRef="SecurityIdentification3Choice-SG1/SEDOL" id="48"/>
+    <contextPath input="false" endID="0" contextRef="SecurityIdentification3Choice-SG1/CUSIP" id="59"/>
+    <contextPath input="false" endID="0" contextRef="SecurityIdentification3Choice-SG1/TckrSymb" id="81"/>
+    <contextPath input="false" endID="0" contextRef="SecurityIdentification3Choice-SG1/QUICK" id="92"/>
+    <contextPath input="false" endID="0" contextRef="SecurityIdentification3Choice-SG1/Dtch" id="104"/>
+    <contextPath input="false" endID="0" contextRef="SecurityIdentification3Choice-SG1/Vlrn" id="115"/>
+    <contextPath input="false" endID="0" contextRef="SecurityIdentification3Choice-SG1/SCVM" id="282"/>
+    <contextPath input="false" endID="0" contextRef="SecurityIdentification3Choice-SG1/Belgn" id="93"/>
+    <contextPath input="false" endID="0" contextRef="SecurityIdentification3Choice-SG1/Cmon" id="126"/>
+    <contextPath input="true" endID="0" contextRef="Description of Security 4 lines" id="295"/>
+    <contextPath input="false" endID="0" contextRef="SecurityIdentification3Choice-SG1/ISIN" id="6"/>
+    <translation outputPort="1" outputID="16" inputPort="0" inputID="21"/>
+    <translation outputPort="2" outputID="16" inputPort="0" inputID="22"/>
+    <translation outputPort="1" outputID="24" inputPort="0" inputID="26"/>
+    <translation outputPort="1" outputID="127" inputPort="0" inputID="128"/>
+    <translation outputPort="2" outputID="127" inputPort="0" inputID="131"/>
+    <translation outputPort="0" outputID="131" inputPort="0" inputID="24"/>
+    <translation outputPort="0" outputID="158" inputPort="0" inputID="16"/>
+    <translation outputPort="1" outputID="241" inputPort="0" inputID="158"/>
+    <translation outputPort="0" outputID="241" inputPort="0" inputID="206"/>
+    <translation outputPort="0" outputID="256" inputPort="0" inputID="241"/>
+    <translation outputPort="1" outputID="256" inputPort="0" inputID="257"/>
+    <translation outputPort="0" outputID="206" inputPort="0" inputID="16"/>
+    <translation outputPort="2" outputID="258" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="258" inputPort="0" inputID="259"/>
+    <translation outputPort="0" outputID="259" inputPort="0" inputID="16"/>
+    <translation outputPort="1" outputID="259" inputPort="0" inputID="260"/>
+    <translation outputPort="2" outputID="262" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="262" inputPort="0" inputID="261"/>
+    <translation outputPort="1" outputID="261" inputPort="0" inputID="263"/>
+    <translation outputPort="0" outputID="261" inputPort="0" inputID="16"/>
+    <translation outputPort="2" outputID="265" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="265" inputPort="0" inputID="264"/>
+    <translation outputPort="1" outputID="264" inputPort="0" inputID="266"/>
+    <translation outputPort="0" outputID="264" inputPort="0" inputID="16"/>
+    <translation outputPort="2" outputID="268" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="268" inputPort="0" inputID="267"/>
+    <translation outputPort="1" outputID="267" inputPort="0" inputID="269"/>
+    <translation outputPort="0" outputID="267" inputPort="0" inputID="16"/>
+    <translation outputPort="2" outputID="271" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="271" inputPort="0" inputID="270"/>
+    <translation outputPort="1" outputID="270" inputPort="0" inputID="272"/>
+    <translation outputPort="0" outputID="270" inputPort="0" inputID="16"/>
+    <translation outputPort="2" outputID="274" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="274" inputPort="0" inputID="273"/>
+    <translation outputPort="1" outputID="273" inputPort="0" inputID="275"/>
+    <translation outputPort="0" outputID="273" inputPort="0" inputID="16"/>
+    <translation outputPort="2" outputID="277" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="277" inputPort="0" inputID="276"/>
+    <translation outputPort="1" outputID="276" inputPort="0" inputID="278"/>
+    <translation outputPort="0" outputID="276" inputPort="0" inputID="16"/>
+    <translation outputPort="2" outputID="280" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="280" inputPort="0" inputID="279"/>
+    <translation outputPort="1" outputID="279" inputPort="0" inputID="281"/>
+    <translation outputPort="0" outputID="279" inputPort="0" inputID="16"/>
+    <translation outputPort="2" outputID="284" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="284" inputPort="0" inputID="283"/>
+    <translation outputPort="1" outputID="283" inputPort="0" inputID="285"/>
+    <translation outputPort="0" outputID="283" inputPort="0" inputID="16"/>
+    <translation outputPort="2" outputID="287" inputPort="0" inputID="0"/>
+    <translation outputPort="1" outputID="286" inputPort="0" inputID="288"/>
+    <translation outputPort="0" outputID="286" inputPort="0" inputID="16"/>
+    <translation outputPort="0" outputID="289" inputPort="0" inputID="290"/>
+    <translation outputPort="1" outputID="289" inputPort="0" inputID="292"/>
+    <translation outputPort="1" outputID="291" inputPort="0" inputID="289"/>
+    <translation outputPort="0" outputID="287" inputPort="0" inputID="291"/>
+    <translation outputPort="0" outputID="291" inputPort="0" inputID="286"/>
+    <translation outputPort="0" outputID="293" inputPort="0" inputID="127"/>
+    <translation outputPort="1" outputID="262" inputPort="0" inputID="293"/>
+    <translation outputPort="1" outputID="265" inputPort="0" inputID="293"/>
+    <translation outputPort="1" outputID="268" inputPort="0" inputID="293"/>
+    <translation outputPort="1" outputID="271" inputPort="0" inputID="293"/>
+    <translation outputPort="1" outputID="258" inputPort="0" inputID="293"/>
+    <translation outputPort="1" outputID="274" inputPort="0" inputID="293"/>
+    <translation outputPort="1" outputID="277" inputPort="0" inputID="293"/>
+    <translation outputPort="1" outputID="280" inputPort="0" inputID="293"/>
+    <translation outputPort="1" outputID="284" inputPort="0" inputID="293"/>
+    <translation outputPort="1" outputID="287" inputPort="0" inputID="293"/>
+    <translation outputPort="1" outputID="206" inputPort="0" inputID="293"/>
+    <translation outputPort="1" outputID="158" inputPort="0" inputID="293"/>
+    <translation outputPort="0" outputID="290" inputPort="0" inputID="293"/>
+    <translation outputPort="0" outputID="296" inputPort="0" inputID="294"/>
+    <translation outputPort="1" outputID="296" inputPort="0" inputID="24"/>
+    <translation outputPort="0" outputID="16" inputPort="0" inputID="296"/>
+    <translation outputPort="2" outputID="296" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="127" inputPort="0" inputID="296"/>
+    <translation outputPort="1" outputID="298" inputPort="0" inputID="299"/>
+    <translation outputPort="0" outputID="298" inputPort="0" inputID="1"/>
+    <translation outputPort="2" outputID="300" inputPort="0" inputID="0"/>
+    <translation outputPort="1" outputID="300" inputPort="0" inputID="298"/>
+    <translation outputPort="0" outputID="301" inputPort="0" inputID="1"/>
+    <translation outputPort="0" outputID="300" inputPort="0" inputID="301"/>
+    <translation outputPort="0" outputID="1" inputPort="0" inputID="7"/>
+    <translation outputPort="1" outputID="1" inputPort="0" inputID="8"/>
+    <translation outputPort="0" outputID="24" inputPort="0" inputID="25"/>
+    <translation outputPort="0" outputID="180" inputPort="0" inputID="256"/>
+    <translation outputPort="0" outputID="34" inputPort="0" inputID="258"/>
+    <translation outputPort="0" outputID="48" inputPort="0" inputID="262"/>
+    <translation outputPort="0" outputID="59" inputPort="0" inputID="265"/>
+    <translation outputPort="0" outputID="81" inputPort="0" inputID="268"/>
+    <translation outputPort="0" outputID="92" inputPort="0" inputID="271"/>
+    <translation outputPort="0" outputID="104" inputPort="0" inputID="274"/>
+    <translation outputPort="0" outputID="115" inputPort="0" inputID="277"/>
+    <translation outputPort="0" outputID="282" inputPort="0" inputID="280"/>
+    <translation outputPort="0" outputID="93" inputPort="0" inputID="284"/>
+    <translation outputPort="0" outputID="126" inputPort="0" inputID="287"/>
+    <translation outputPort="0" outputID="294" inputPort="0" inputID="295"/>
+    <translation outputPort="0" outputID="6" inputPort="0" inputID="300"/>
+    <nextId>310</nextId>
+    <output typeRef="SecurityIdentification3Choice" required="false" path="" modelRef="../../SWIFTSolutions/SWIFTNet Funds 4.0/Messages/OrderAndConfirmation/SubsMultOrdrConfnV03 - setr.012.001.03/setr.012.001.03.dod" endID="0"/>
+    <filter id="28">
+        <filter name="setWrtppr">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <transformMethod name="EXISTS" y="33" x="265" id="302"/>
+            <transformMethod name="EQUALS" y="102" x="267" id="303"/>
+            <constant constant="&quot;DE&quot;" id="304"/>
+            <transformMethod name="AND" y="65" x="463" id="305"/>
+            <contextPath input="true" endID="0" contextRef="" id="306"/>
+            <contextPath input="false" endID="0" contextRef="boolean" id="307"/>
+            <contextPath input="true" endID="1" contextRef="" id="308"/>
+            <contextPath input="false" endID="1" contextRef="any" id="309"/>
+            <translation outputPort="1" outputID="303" inputPort="0" inputID="304"/>
+            <translation outputPort="0" outputID="305" inputPort="0" inputID="302"/>
+            <translation outputPort="1" outputID="305" inputPort="0" inputID="303"/>
+            <translation outputPort="0" outputID="302" inputPort="0" inputID="306"/>
+            <translation outputPort="0" outputID="303" inputPort="0" inputID="306"/>
+            <translation outputPort="0" outputID="307" inputPort="0" inputID="305"/>
+            <translation outputPort="0" outputID="309" inputPort="0" inputID="308"/>
+            <nextId>0</nextId>
+        </filter>
+    </filter>
+    <filter id="159">
+        <filter name="setOthrPrtyId_PrtryIdSrc">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <transformMethod name="EXISTS" y="33" x="265" id="161"/>
+            <transformMethod name="EQUALS" y="102" x="267" id="163"/>
+            <constant constant="&quot;XX&quot;" id="164"/>
+            <transformMethod name="AND" y="71" x="450" id="165"/>
+            <localTransformRef refId="177" y="276" x="349" id="179"/>
+            <contextPath input="true" endID="0" contextRef="" id="162"/>
+            <contextPath input="false" endID="0" contextRef="boolean" id="166"/>
+            <contextPath input="true" endID="1" contextRef="" id="168"/>
+            <contextPath input="false" endID="1" contextRef="any" id="172"/>
+            <translation outputPort="1" outputID="163" inputPort="0" inputID="164"/>
+            <translation outputPort="0" outputID="165" inputPort="0" inputID="161"/>
+            <translation outputPort="1" outputID="165" inputPort="0" inputID="163"/>
+            <translation outputPort="0" outputID="161" inputPort="0" inputID="162"/>
+            <translation outputPort="0" outputID="163" inputPort="0" inputID="162"/>
+            <translation outputPort="0" outputID="166" inputPort="0" inputID="165"/>
+            <translation outputPort="0" outputID="172" inputPort="0" inputID="179"/>
+            <translation outputPort="0" outputID="179" inputPort="0" inputID="162"/>
+            <translation outputPort="1" outputID="179" inputPort="0" inputID="168"/>
+            <nextId>0</nextId>
+            <localTransform id="177">
+                <transform version="0.0.49" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="setPrtryIdIdSrc">
+                    <input typeRef="#string" required="false" path="" endID="0"/>
+                    <input typeRef="#string" required="false" path="" endID="1"/>
+                    <contextPath input="true" endID="1" contextRef="" id="181"/>
+                    <contextPath input="true" endID="0" contextRef="" id="251"/>
+                    <contextPath input="false" endID="0" contextRef="Id" id="182"/>
+                    <contextPath input="false" endID="0" contextRef="AlternateSecurityIdentification1-SG1/PrtryIdSrc" id="255"/>
+                    <translation outputPort="0" outputID="182" inputPort="0" inputID="181"/>
+                    <translation outputPort="0" outputID="255" inputPort="0" inputID="251"/>
+                    <nextId>0</nextId>
+                    <output typeRef="AlternateSecurityIdentification1" required="false" path="" modelRef="../../SWIFTSolutions/SWIFTNet Funds 4.0/Messages/OrderAndConfirmation/SubsMultOrdrConfnV03 - setr.012.001.03/setr.012.001.03.dod" endID="0"/>
+                </transform>
+            </localTransform>
+        </filter>
+    </filter>
+    <filter id="207">
+        <filter name="setOthrPrtyId_DmstIdIdSrc">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <transformMethod name="EXISTS" y="33" x="265" id="209"/>
+            <transformMethod name="AND" y="68" x="558" id="213"/>
+            <transformMethod name="NOTEXISTS" y="105" x="350" id="248"/>
+            <localTransformRef refId="217" y="276" x="349" id="216"/>
+            <hashtableRef refId="245" y="106" x="184" id="246"/>
+            <contextPath input="true" endID="0" contextRef="" id="210"/>
+            <contextPath input="false" endID="0" contextRef="boolean" id="214"/>
+            <contextPath input="true" endID="1" contextRef="" id="215"/>
+            <contextPath input="false" endID="1" contextRef="any" id="240"/>
+            <translation outputPort="0" outputID="213" inputPort="0" inputID="209"/>
+            <translation outputPort="0" outputID="248" inputPort="0" inputID="246"/>
+            <translation outputPort="1" outputID="213" inputPort="0" inputID="248"/>
+            <translation outputPort="0" outputID="209" inputPort="0" inputID="210"/>
+            <translation outputPort="0" outputID="214" inputPort="0" inputID="213"/>
+            <translation outputPort="0" outputID="240" inputPort="0" inputID="216"/>
+            <translation outputPort="0" outputID="216" inputPort="0" inputID="210"/>
+            <translation outputPort="1" outputID="216" inputPort="0" inputID="215"/>
+            <translation outputPort="0" outputID="246" inputPort="0" inputID="210"/>
+            <nextId>0</nextId>
+            <localTransform id="217">
+                <transform version="0.0.49" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="setDmstIdSrc">
+                    <input typeRef="#string" required="false" path="" endID="0"/>
+                    <input typeRef="#string" required="false" path="" endID="1"/>
+                    <contextPath input="true" endID="0" contextRef="" id="228"/>
+                    <contextPath input="true" endID="1" contextRef="" id="249"/>
+                    <contextPath input="false" endID="0" contextRef="Id" id="250"/>
+                    <contextPath input="false" endID="0" contextRef="AlternateSecurityIdentification1-SG1/DmstIdSrc" id="254"/>
+                    <translation outputPort="0" outputID="250" inputPort="0" inputID="249"/>
+                    <translation outputPort="0" outputID="254" inputPort="0" inputID="228"/>
+                    <nextId>0</nextId>
+                    <output typeRef="AlternateSecurityIdentification1" required="false" path="" modelRef="../../SWIFTSolutions/SWIFTNet Funds 4.0/Messages/OrderAndConfirmation/SubsMultOrdrConfnV03 - setr.012.001.03/setr.012.001.03.dod" endID="0"/>
+                </transform>
+            </localTransform>
+            <hashtable id="245">
+                <name>Code</name>
+                <defaultValue>null</defaultValue>
+                <entry value="Belgian" key="BE"/>
+                <entry value="Valoren" key="CH"/>
+                <entry value="WertPapier" key="DE"/>
+                <entry value="Sicovam" key="FR"/>
+                <entry value="SEDOL" key="GB"/>
+                <entry value="QUICK" key="JP"/>
+                <entry value="Dutch" key="NL"/>
+                <entry value="TixckerSymbol" key="TS"/>
+                <entry value="CUSIP" key="US"/>
+                <entry value="Common" key="XS"/>
+                <entry value="ProprietaryIdentification" key="XX"/>
+            </hashtable>
+        </filter>
+    </filter>
+</transform>

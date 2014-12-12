@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.15" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXClearingIdentifier.tfd">
+    <input typeRef="Data Field Dictionary/Subfields/Party line1" required="true" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <constant constant="null" id="0"/>
+    <constant constant="false" id="78"/>
+    <globalTransformRef ref="MT_To_MXClearingIdentifier-simple.tfd" y="44" x="200" id="77"/>
+    <contextPath input="false" endID="0" contextRef="" id="80"/>
+    <contextPath input="false" endID="1" contextRef="" id="81"/>
+    <contextPath input="false" endID="2" contextRef="" id="82"/>
+    <contextPath input="false" endID="3" contextRef="" id="83"/>
+    <contextPath input="true" endID="0" contextRef="Party Identifier" id="79"/>
+    <translation outputPort="1" outputID="77" inputPort="0" inputID="78"/>
+    <translation outputPort="0" outputID="80" inputPort="0" inputID="77"/>
+    <translation outputPort="0" outputID="81" inputPort="1" inputID="77"/>
+    <translation outputPort="0" outputID="82" inputPort="2" inputID="77"/>
+    <translation outputPort="0" outputID="83" inputPort="3" inputID="77"/>
+    <translation outputPort="0" outputID="77" inputPort="0" inputID="79"/>
+    <nextId>84</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXClearingIdentifier&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates an MT clearing identifier to an MX clearing system member identification by:
+&lt;ul&gt;
+&lt;li&gt;deleting the double slash ‘//’ preceding the MT clearing identifier. In case the MT clearing identifier is preceded by a clearing channel indicator “//RT” (pay through a real time gross settlement system), this prefix is also deleted (translation of the clearing channel indicator is handled elsewhere).&lt;/li&gt;
+&lt;li&gt;isolating the first two characters in the MT clearing identifier that identify the MT clearing system from the MT clearing code that identify the financial institution in the system.&lt;/li&gt;
+&lt;li&gt;checking whether the MT clearing system has an equivalent in the ISO 20022 externalised clearing system list (see the Annex to this function on page 41). If an equivalent code is available, the clearing system is translated to its MX equivalent in the target element “Identification”. Otherwise the code is written “as is” in the target element “Proprietary”.&lt;/li&gt;
+&lt;li&gt;checking the source MT option to determine the translation target element.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;b&gt;Format&lt;/b&gt;
+&lt;tt&gt;MT_To_MXClearingIdentifier(MTPartyIdentifier, MTOption ; MXClearingIdentifier)&lt;/tt&gt;
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MTPartyIdentifier&lt;/tt&gt;: clearing system member identification of a financial institution in the MT message.
+&lt;tt&gt;MTOption&lt;/tt&gt;: the option of the MT field.
+
+&lt;b&gt;Output&lt;/b&gt;
+MXClearingIdentifier: the result of this function -the MX clearing system member identification- is immediately put into the correct MX element inside the target component typed BranchAndFinancialInstitutionIdentification3.
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/*
+   Find clearing system and clearing code by taking out the double slash “//” or clearing channel indicator and double
+   slash. MTClearingSystem, MTClearingCode and MXClearingSystem are local variables
+*/
+IF Substring(MTPartyIdentifier, 1, 6) = “//RT//”
+    MTClearingSystem = Substring(MTPartyIdentifier, 7, 2)
+    MTClearingCode = Substring(MTPartyIdentifier, 9)
+ELSE
+    MTClearingSystem = Substring(MTPartyIdentifier, 3, 2)
+    MTClearingCode = Substring(MTPartyIdentifier, 5)
+ENDIF
+/*
+   Check whether the MTClearingSystem belongs to the MTClearingSystemList with an equivalent in the ISO MXClearingSystemList
+*/
+IF WithinList(MTClearingSystem, MTClearingSystemList)
+    /* Target will be the ClearingSystemMemberIdentification.Identification element */
+    /*
+       Exception handling when MTClearingSystem equals “SW”: 2 target ISO MXClearingSystem codes correspond to the same
+       code “SW”. Depending on the length of the MTClearingCode it will be one or the other but this check is not
+       handled by the EquivalentCode function where a one on one relation is needed
+    */
+    IF MTClearingSystem = “SW” AND Length(MTClearingCode) &gt; 5
+        MXClearingSystem = “CHSIC”
+    ELSEIF MTClearingSystem = “SW”
+        MXClearingSystem = “CHBCC”
+    ELSE
+        /*
+           Replace MTClearingSystem with MX equivalent in the ISO MXClearingSystemList */
+        MXClearingSystem = EquivalentCode(MTClearingSystem, MTClearingSystemList, MXClearingSystemList)
+    ENDIF
+    /*
+       Determine translation target component and write output string by concatenation of MXClearingSystem and MT
+       clearing code. The output string is restricted to 35 characters although none of the current ISO listed systems
+       has that long an identifier
+    */
+    IF MTOption = “C”
+        /*
+           With MToption C the clearing system member identification is the only financial institution identification
+           available in the source message: target of the translation is the ClearingSystemMemberIdentification element
+           in the FinancialInstitutionIdentification component
+        */
+        FinancialInstitutionIdentification.ClearingSystemMemberIdentification.Identification
+                                = Substring(Concatenate(MXClearingSystem, MTClearingCode), 1, 35)
+    ELSE
+        /*
+           For all other MToptions the clearing system member identification accompanies another financial
+           institution identification (BIC or NameAndAddress): target of the translation is the
+           ClearingSystemMemberIdentification element in the CombinedIdentification component
+        */
+        FinancialInstitutionIdentification.CombinedIdentification.ClearingSystemMemberIdentification.Identification
+                                = Substring(Concatenate(MXClearingSystem, MTClearingCode), 1, 35)
+    ENDIF
+ELSE
+    /*
+       The MTClearingSystem is not within the list and is kept as is. Target will be the        ClearingSystemMemberIdentification.Proprietary element
+    */
+    /* Determine target component and write output string by concatenation of MXClearingSystem and MT clearing code */
+    IF MTOption = “C”
+        FinancialInstitutionIdentification.ClearingSystemMemberIdentification.Proprietary
+                                = Concatenate(MXClearingSystem, MTClearingCode)
+    ELSE
+        FinancialInstitutionIdentification.CombinedIdentification.ClearingSystemMemberIdentification.Proprietary
+                                = Concatenate(MXClearingSystem, MTClearingCode)
+    ENDIF
+ENDIF
+&lt;/pre&gt;</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+    <output typeRef="#string" required="false" path="" endID="1"/>
+    <output typeRef="#string" required="false" path="" endID="2"/>
+    <output typeRef="#string" required="false" path="" endID="3"/>
+</transform>

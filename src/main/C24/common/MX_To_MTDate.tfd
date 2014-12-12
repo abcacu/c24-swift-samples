@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.2" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTDate.tfd">
+    <input typeRef="#date_date" required="false" path="" endID="0"/>
+    <transformMethod type="#date_generic" name="CONVERTDATE" y="200" x="200" id="3"/>
+    <contextPath input="true" endID="0" contextRef="" id="1"/>
+    <contextPath input="false" endID="0" contextRef="" id="2"/>
+    <translation outputPort="0" outputID="3" inputPort="0" inputID="1"/>
+    <translation outputPort="0" outputID="2" inputPort="0" inputID="3"/>
+    <nextId>4</nextId>
+    <documentation>
+        <notes>
+INPUT:
+	1.
+
+Business description
+	The function translates an MX date expressed as “YYYY-MM-DD” to an MT date expressed as “YYYYMMDD” by deleting the separator “-“ 
+	between year, month and date.
+
+Format
+	MX_To_MTDate(MXDate ; MTDate)
+
+Input
+	MXDate: date in the MX format typed ISODate expressed as “YYYY-MM-DD”
+
+Output
+	MTDate: date in the MT format expressed as “YYYYMMDD”
+
+Preconditions
+	None.</notes>
+    </documentation>
+    <output typeRef="#date_generic" required="false" path="" endID="0"/>
+</transform>

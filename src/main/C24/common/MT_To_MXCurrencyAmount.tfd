@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.3" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXCurrencyAmount.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#number_decimal" required="false" path="" endID="1"/>
+    <contextPath input="true" endID="0" contextRef="" id="5"/>
+    <contextPath input="false" endID="1" contextRef="" id="6"/>
+    <contextPath input="true" endID="1" contextRef="" id="7"/>
+    <contextPath input="false" endID="0" contextRef="" id="8"/>
+    <translation outputPort="0" outputID="6" inputPort="0" inputID="5"/>
+    <translation outputPort="0" outputID="8" inputPort="0" inputID="7"/>
+    <nextId>9</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXCurrencyAmount&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates an MT currency and MT amount to an MX amount with the currency embedded as an XML attribute. The decimal separator “,” is replaced by a “.”. If the MT amount ends with a “,” then decimal separator is dropped and the translated MX amount will be an integer. Insignificant zeroes -if any- are deleted.
+
+&lt;b&gt;Format&lt;/b&gt;
+&lt;tt&gt;MT_To_MXCurrencyAmount(MTCurrency, MTAmount ; MXAmount)&lt;/tt&gt;
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MTCurrency&lt;/tt&gt;: currency in the MT message expressed as 3!a (exactly 3 alphabetic capital letters)
+&lt;tt&gt;MTAmount&lt;/tt&gt;: amount in the MT message expressed as 15d (up to 12 characters including the mandatory decimal separator “,”)
+
+&lt;b&gt;Output&lt;/b&gt;
+&lt;tt&gt;MXAmount&lt;/tt&gt;: amount in the MX message typed CurrencyAndAmount with maximum 18digits, maximum 5 fraction digits and an optional decimal separator “.”. The currency is embedded as and XML attribute.
+Preconditions
+It is assumed that both MT and MX currencies are either active or active and historic.
+If it is not the case, validation problem will be expected when the target is more constrained.
+The same level of validation on MT and MX is requested to check pairs of (currency, amount) in terms of allowed decimals number.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/* Replace decimal separator “,” by “.”. Amount is a local variable */
+Amount = ReplacePattern(Amount, “,”, “.”)
+/* Delete insignificant zeroes at the left and right */
+Amount = TrimLeft(Amount, “0”)
+Amount = TrimRight(Amount, “0”)
+/* Check whether the amount has a fractional part. If not, the decimal separator is deleted. Position is a local variable and indicates the position of the last character */
+Position = Length(Amount)
+IF Substring(Amount, Position) = “.”
+    MXAmount = DeletePattern(Amount, “.”)
+ELSE
+    MXAmount = Amount
+ENDIF
+/* Define currency attribute */
+MXAmount.XMLAttribute(Ccy) = MTCurrency
+&lt;/pre&gt;</notes>
+    </documentation>
+    <output typeRef="#number_decimal" required="false" path="" endID="0"/>
+    <output typeRef="#string" required="false" path="" endID="1"/>
+</transform>

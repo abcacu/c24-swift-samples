@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.31" validateOutputs="true" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXFATFNameAndAddress-PrvtId-2.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="Data Field Dictionary/Subfields/Name And Address 50F" required="true" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="1"/>
+    <constant constant="null" id="0"/>
+    <transformMethod type="#string" name="XPATH" y="225" x="568" id="193"/>
+    <constant constant="./NameAndAddressSubfield2[NameAndAddressNumCode=6]/NameAndAddressDetails" id="195"/>
+    <transformMethod type="#string" name="XPATH" y="96" x="560" id="196"/>
+    <constant constant="./NameAndAddressSubfield2[NameAndAddressNumCode=7]/NameAndAddressDetails" id="198"/>
+    <transformMethod name="INSTANCE" y="143" x="1042" id="205"/>
+    <transformMethod name="INSTANCE" y="49" x="1035" id="206"/>
+    <constant constant="1" id="209"/>
+    <constant constant="2" id="210"/>
+    <transformMethod name="FIRST" y="225" x="685" id="282"/>
+    <transformMethod name="FIRST" y="92" x="679" id="283"/>
+    <constant constant="false" id="335"/>
+    <constant constant="true" id="342"/>
+    <transformMethod name="INSTANCE" y="380" x="1064" id="343"/>
+    <transformMethod name="INSTANCE" y="244" x="1058" id="344"/>
+    <constant constant="1" id="345"/>
+    <constant constant="2" id="346"/>
+    <transformMethod name="EQUALS" y="137" x="94" id="349"/>
+    <transformMethod name="NOT" y="138" x="184" id="350"/>
+    <constant constant="IBEI" id="351"/>
+    <transformMethod name="NOT" y="30" x="185" id="352"/>
+    <transformMethod name="EQUALS" y="28" x="93" id="353"/>
+    <constant constant="NIDN" id="354"/>
+    <transformMethod name="AND" y="78" x="294" id="355"/>
+    <transformMethod name="EQUALS" y="270" x="86" id="358"/>
+    <transformMethod name="NOT" y="267" x="179" id="359"/>
+    <constant constant="CUST" id="360"/>
+    <transformMethod name="AND" y="204" x="299" id="362"/>
+    <javaMethodRef refId="208" y="96" x="837" id="207"/>
+    <javaMethodRef refId="208" y="271" x="847" id="341"/>
+    <contextPath input="true" endID="0" contextRef="" id="180"/>
+    <contextPath input="false" endID="0" contextRef="" id="264"/>
+    <contextPath input="false" endID="1" contextRef="" id="221"/>
+    <contextPath input="false" endID="2" contextRef="" id="347"/>
+    <contextPath input="false" endID="3" contextRef="" id="348"/>
+    <transformMethod type="Data Field Dictionary/Subfields/Name And Address 50F" path="" name="IF" model="../SWIFT FIN November 2008 Data Dictionary.dod" y="106" x="401" id="356"/>
+    <contextPath input="true" endID="1" contextRef="" id="357"/>
+    <transformMethod type="Data Field Dictionary/Subfields/Name And Address 50F" path="" name="IF" model="../SWIFT FIN November 2008 Data Dictionary.dod" y="234" x="411" id="361"/>
+    <translation outputPort="0" outputID="193" inputPort="0" inputID="195"/>
+    <translation outputPort="0" outputID="196" inputPort="0" inputID="198"/>
+    <translation outputPort="1" outputID="205" inputPort="0" inputID="209"/>
+    <translation outputPort="1" outputID="206" inputPort="0" inputID="210"/>
+    <translation outputPort="0" outputID="206" inputPort="0" inputID="207"/>
+    <translation outputPort="0" outputID="205" inputPort="0" inputID="207"/>
+    <translation outputPort="0" outputID="207" inputPort="0" inputID="283"/>
+    <translation outputPort="1" outputID="207" inputPort="0" inputID="335"/>
+    <translation outputPort="0" outputID="282" inputPort="0" inputID="193"/>
+    <translation outputPort="0" outputID="283" inputPort="0" inputID="196"/>
+    <translation outputPort="1" outputID="341" inputPort="0" inputID="342"/>
+    <translation outputPort="0" outputID="341" inputPort="0" inputID="282"/>
+    <translation outputPort="1" outputID="343" inputPort="0" inputID="345"/>
+    <translation outputPort="1" outputID="344" inputPort="0" inputID="346"/>
+    <translation outputPort="0" outputID="344" inputPort="0" inputID="341"/>
+    <translation outputPort="0" outputID="343" inputPort="0" inputID="341"/>
+    <translation outputPort="1" outputID="349" inputPort="0" inputID="351"/>
+    <translation outputPort="0" outputID="350" inputPort="0" inputID="349"/>
+    <translation outputPort="0" outputID="352" inputPort="0" inputID="353"/>
+    <translation outputPort="1" outputID="353" inputPort="0" inputID="354"/>
+    <translation outputPort="0" outputID="355" inputPort="0" inputID="352"/>
+    <translation outputPort="1" outputID="355" inputPort="0" inputID="350"/>
+    <translation outputPort="0" outputID="359" inputPort="0" inputID="358"/>
+    <translation outputPort="1" outputID="358" inputPort="0" inputID="360"/>
+    <translation outputPort="0" outputID="362" inputPort="0" inputID="350"/>
+    <translation outputPort="1" outputID="362" inputPort="0" inputID="359"/>
+    <translation outputPort="0" outputID="264" inputPort="0" inputID="206"/>
+    <translation outputPort="0" outputID="221" inputPort="0" inputID="205"/>
+    <translation outputPort="0" outputID="347" inputPort="0" inputID="344"/>
+    <translation outputPort="0" outputID="348" inputPort="0" inputID="343"/>
+    <translation outputPort="0" outputID="349" inputPort="0" inputID="180"/>
+    <translation outputPort="0" outputID="353" inputPort="0" inputID="180"/>
+    <translation outputPort="0" outputID="358" inputPort="0" inputID="180"/>
+    <translation outputPort="1" outputID="196" inputPort="0" inputID="356"/>
+    <translation outputPort="0" outputID="356" inputPort="0" inputID="355"/>
+    <translation outputPort="1" outputID="356" inputPort="0" inputID="357"/>
+    <translation outputPort="2" outputID="356" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="361" inputPort="0" inputID="362"/>
+    <translation outputPort="2" outputID="361" inputPort="0" inputID="0"/>
+    <translation outputPort="1" outputID="193" inputPort="0" inputID="361"/>
+    <translation outputPort="1" outputID="361" inputPort="0" inputID="357"/>
+    <nextId>363</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXFATFNameAndAddress-PrvtId-2&lt;/h3&gt;
+&lt;b&gt;(substitution of MT_To_MXFATFNameAndAddress)&lt;/b&gt;
+
+
+&lt;b&gt;Business description&lt;/b&gt;
+Subfield 2 of an MT field 50F identifies the Ordering Customer in line with FATF Special Recommendation VII by combining:
+&lt;ul&gt;
+&lt;li&gt;name and address&lt;/li&gt;
+&lt;li&gt;name and date and place of birth&lt;/li&gt;
+&lt;li&gt;name and national identity number&lt;/li&gt;
+&lt;li&gt;name and customer number&lt;/li&gt;
+&lt;/ul&gt;
+Every line in Subfield 2 of field 50F starts with a number indicating the type of information provided. This function translates the structured information in the MT to MX FATF compliant equivalents by:
+&lt;li&gt;checking the numbers to determine the MX target element&lt;/li&gt;
+&lt;li&gt;checking whether numbers are repeated if allowed by the format description on the&lt;/li&gt;
+following line. If so, the information following the number will be completed prior to the translation.
+
+&lt;b&gt;Note&lt;/b&gt;. This substitution of MT_To_MXFATFNameAndAddress for MT to the Private identifier translation only. All rest part of functional implemented in MT_To_MXFATFNameAndAddress-PstlAddr-1.tfd.
+
+
+&lt;b&gt;Format&lt;/b&gt;
+MT_To_MXFATFNameAndAddress-PrvtId(MTPartyIdentifier, MTNameAndAddress ; MXFATFId)
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MTPartyIdentifier&lt;/tt&gt;: Subfield 1 of field 50F carrying an account number or other FATF compliant customer identification
+&lt;tt&gt;MTNameAndAddress&lt;/tt&gt;: Subfield 2 of field 50F carrying an FATF compliant customer name and address or identifications in line with the format description of field 50F (date and place of birth, customer number or national identity number).
+
+&lt;b&gt;Output&lt;/b&gt;
+&lt;tt&gt;NIDN&lt;/tt&gt;: the result of translation of the NationalIdentity Number present on line starting with  &quot;/7&quot; (see format description for details).
+&lt;tt&gt;Issuer&lt;/tt&gt;: the result of translation of the Issuer present on line starting with  &quot;/7&quot; (see format description for details).
+&lt;tt&gt;CUST&lt;/tt&gt;: the result of translation of the Customer Number present on line starting with “6/”  (see format description for details).
+&lt;tt&gt;Issuer&lt;/tt&gt;: the result of translation of the Issuer present on line starting with  &quot;/6&quot; (see format description for details).
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+MTNameAndAddress must carry the name of the ordering customer so at least one line must start with “1/”.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/*
+  The section below describes the translation of date and place of birth (lines starting with “4/” and “5/”), customer number
+  (lines starting with “6/”) or national identity number (lines starting with “7/”). These translations are subject to the
+  presence of the code “IBEI” in the PartyIdentifier of field 50F (subfield 1): a code “IBEI” translates to the
+  Identification.OrganisationIdentification element, ruling out any translation towards the
+  Identification.PrivateIdentification element (target of date and place of birth, customer number or national identity
+  number translation) as both elements are mutually exclusive in the Identification element (“choice component”). If the
+  PartyIdentifier of field 50F carries a code different than “IBEI”, then date and place of birth, customer number and/or
+  national identity number -if the conditions for their translation are met- will translate to different instances of the
+  PrivateIdentification component
+*/
+IF Substring(MTPartyIdentifier, 1, 4) NOT = “IBEI”
+    /* Translation of customer number present on a line starting with “6/” */
+    /*
+       Check whether Subfield 1 of field 50F (MTPartyIdentifier) carries a customer number. If this is the case, a line
+       starting with “6/” is ignored as the customer number in the MTPartyIdentifier will be translated
+    */
+    IF Substring(MTPartyIdentifier, 1, 4) NOT = “CUST”
+        /* Check whether “6/” is present by using the ExtractPattern and Length functions */
+        IF Length(ExtractPattern(MTNameAndAddress, “6/”)) &gt; 0
+            /*
+               Basic function ExtractLines extracts the customer details. “6/” must not be repeated so the function is used
+               without continuation string to limit the extraction to a maximum of one line. If “6/” is repeated, then only
+               the first occurrence is translated. MTCode6 is a local variable. Substring is taken to delete “6/” in the
+               output string
+            */
+            MTCode6 = Substring(ExtractLines(MTNameAndAddress, “6/”), 3)
+            /*
+               Assumption is that the source message is correct. Therefore a customer number should be in line with field 50F
+               format specifications: “6/” must be followed by the country code, a slash, the issuer of the number, a slash
+               and the customer identification number. Split the number from the combination of country and issuer. MTIssuer
+               and MTNum are local variables
+            */
+            MTIssuer = ExtractTillPattern(Substring(MTCode6, 4), “/”)
+            MTNum = ExtractFromPattern(Substring(MTCode6, 4), “/”)
+            /* Write number and issuer in a next occurrence of the target PrivateIdentification component */
+            Identification.PrivateIdentification.CustomerNumber = MTNum
+            Identification.PrivateIdentification.Issuer = MTIssuer
+        ENDIF
+    ENDIF
+    /* Translation of national identity number present on a line starting with “7/” */
+    /*
+       Check whether Subfield 1 of field 50F (MTPartyIdentifier) carries a national identity number. If this is the case, a
+       line starting with “7/” is ignored as the identity number in the MTPartyIdentifier will be translated
+    */
+    IF Substring(MTPartyIdentifier, 1, 4) NOT = “NIDN”
+        /* Check whether “7/” is present by using the ExtractPattern and Length functions */
+        IF Length(ExtractPattern(MTNameAndAddress, “7/”)) &gt; 0
+            /*
+               Basic function ExtractLines extracts the customer details. “7/” must not be repeated so the function is used
+               without continuation string to limit the extraction to a maximum of one line. If “7/” is repeated, then only
+               the first occurrence is translated. MTCode7 is a local variable. Substring is taken to delete “7/” in the
+               output string
+            */
+            MTCode7 = Substring(ExtractLines(MTNameAndAddress, “7/”), 3)
+            /*
+               Assumption is that the source message is correct. Therefore a national identity number should be in line with
+               field 50F format specifications: “7/” must be followed by the country code, a slash and the national identity
+               number
+            */
+            /* Write the number and the country in a next occurrence of the target PrivateIdentification component */
+            Identification.PrivateIdentification.IdentityCardNumber = Substring(MTCode7, 4)
+            Identification.PrivateIdentification.Issuer = Substring(MTCode7, 1, 2)
+        ENDIF
+    ENDIF
+ENDIF
+&lt;pre&gt;</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+    <output typeRef="#string" required="false" path="" endID="1"/>
+    <output typeRef="#string" required="false" path="" endID="2"/>
+    <output typeRef="#string" required="false" path="" endID="3"/>
+    <javaMethod id="208">
+        <libraryMethod>false</libraryMethod>
+        <methodName>parseFATFId</methodName>
+        <input type="#string" role="theFATFId"/>
+        <input type="#boolean" role="isIssuerPresent"/>
+        <output type="#string[]"/>
+        <code>if (null == theFATFId || 2 &gt; theFATFId.length()) return null;&#xD;
+final java.util.List result = new java.util.ArrayList();&#xD;
+result.add(theFATFId.substring(0, 2));&#xD;
+int pos = theFATFId.indexOf('/', 3);&#xD;
+if (0 &gt; pos || !isIssuerPresent) pos = 2;&#xD;
+result.add(theFATFId.substring(0, pos));&#xD;
+pos++;&#xD;
+if (theFATFId.length() - pos &gt; 35) {&#xD;
+    result.add(theFATFId.substring(pos, pos + 35));&#xD;
+} else {&#xD;
+    result.add(theFATFId.substring(pos));&#xD;
+}&#xD;
+return (String[]) result.toArray(new String[result.size()]);</code>
+    </javaMethod>
+</transform>

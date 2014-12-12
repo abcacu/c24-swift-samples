@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.15" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXClearingIdentifier-simple.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#boolean" required="false" path="" endID="1"/>
+    <transformMethod type="#string" name="IF" y="43" x="683" id="3"/>
+    <constant constant="null" id="0"/>
+    <transformMethod type="#string" name="IF" y="149" x="688" id="5"/>
+    <transformMethod type="#string" name="IF" y="270" x="836" id="8"/>
+    <transformMethod type="#string" name="IF" y="369" x="839" id="11"/>
+    <transformMethod name="EXISTS" y="26" x="418" id="52"/>
+    <transformMethod name="NOT" y="199" x="562" id="53"/>
+    <transformMethod name="AND" y="30" x="556" id="57"/>
+    <transformMethod name="AND" y="222" x="687" id="60"/>
+    <transformMethod name="CONCAT" y="94" x="423" id="61"/>
+    <transformMethod name="NOT" y="212" x="321" id="73"/>
+    <transformMethod name="CONCAT" y="317" x="428" id="74"/>
+    <transformMethod name="AND" y="121" x="561" id="75"/>
+    <transformMethod name="AND" y="321" x="690" id="76"/>
+    <hashtableRef refId="17" y="34" x="273" id="18"/>
+    <localTransformRef refId="22" y="30" x="88" id="24"/>
+    <contextPath input="false" endID="0" contextRef="" id="2"/>
+    <contextPath input="false" endID="3" contextRef="" id="13"/>
+    <contextPath input="false" endID="1" contextRef="" id="7"/>
+    <contextPath input="false" endID="2" contextRef="" id="10"/>
+    <contextPath input="true" endID="1" contextRef="" id="77"/>
+    <contextPath input="true" endID="0" contextRef="" id="78"/>
+    <translation outputPort="2" outputID="3" inputPort="0" inputID="0"/>
+    <translation outputPort="2" outputID="5" inputPort="0" inputID="0"/>
+    <translation outputPort="2" outputID="8" inputPort="0" inputID="0"/>
+    <translation outputPort="2" outputID="11" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="52" inputPort="0" inputID="18"/>
+    <translation outputPort="0" outputID="18" inputPort="0" inputID="24"/>
+    <translation outputPort="0" outputID="53" inputPort="0" inputID="52"/>
+    <translation outputPort="0" outputID="57" inputPort="0" inputID="52"/>
+    <translation outputPort="0" outputID="3" inputPort="0" inputID="57"/>
+    <translation outputPort="0" outputID="60" inputPort="0" inputID="53"/>
+    <translation outputPort="0" outputID="8" inputPort="0" inputID="60"/>
+    <translation outputPort="1" outputID="61" inputPort="1" inputID="24"/>
+    <translation outputPort="0" outputID="61" inputPort="0" inputID="18"/>
+    <translation outputPort="1" outputID="3" inputPort="0" inputID="61"/>
+    <translation outputPort="1" outputID="5" inputPort="0" inputID="61"/>
+    <translation outputPort="0" outputID="74" inputPort="0" inputID="24"/>
+    <translation outputPort="1" outputID="74" inputPort="1" inputID="24"/>
+    <translation outputPort="1" outputID="8" inputPort="0" inputID="74"/>
+    <translation outputPort="1" outputID="11" inputPort="0" inputID="74"/>
+    <translation outputPort="1" outputID="75" inputPort="0" inputID="73"/>
+    <translation outputPort="0" outputID="5" inputPort="0" inputID="75"/>
+    <translation outputPort="0" outputID="11" inputPort="0" inputID="76"/>
+    <translation outputPort="1" outputID="76" inputPort="0" inputID="73"/>
+    <translation outputPort="0" outputID="75" inputPort="0" inputID="52"/>
+    <translation outputPort="0" outputID="76" inputPort="0" inputID="53"/>
+    <translation outputPort="0" outputID="2" inputPort="0" inputID="3"/>
+    <translation outputPort="0" outputID="13" inputPort="0" inputID="11"/>
+    <translation outputPort="0" outputID="7" inputPort="0" inputID="5"/>
+    <translation outputPort="0" outputID="10" inputPort="0" inputID="8"/>
+    <translation outputPort="1" outputID="57" inputPort="0" inputID="77"/>
+    <translation outputPort="1" outputID="60" inputPort="0" inputID="77"/>
+    <translation outputPort="0" outputID="73" inputPort="0" inputID="77"/>
+    <translation outputPort="0" outputID="24" inputPort="0" inputID="78"/>
+    <nextId>79</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXClearingIdentifier&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates an MT clearing identifier to an MX clearing system member identification by:
+&lt;ul&gt;
+&lt;li&gt;deleting the double slash ‘//’ preceding the MT clearing identifier. In case the MT clearing identifier is preceded by a clearing channel indicator “//RT” (pay through a real time gross settlement system), this prefix is also deleted (translation of the clearing channel indicator is handled elsewhere).&lt;/li&gt;
+&lt;li&gt;isolating the first two characters in the MT clearing identifier that identify the MT clearing system from the MT clearing code that identify the financial institution in the system.&lt;/li&gt;
+&lt;li&gt;checking whether the MT clearing system has an equivalent in the ISO 20022 externalised clearing system list (see the Annex to this function on page 41). If an equivalent code is available, the clearing system is translated to its MX equivalent in the target element “Identification”. Otherwise the code is written “as is” in the target element “Proprietary”.&lt;/li&gt;
+&lt;li&gt;checking the source MT option to determine the translation target element.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;b&gt;Format&lt;/b&gt;
+&lt;tt&gt;MT_To_MXClearingIdentifier(MTPartyIdentifier, MTOption ; MXClearingIdentifier)&lt;/tt&gt;
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MTPartyIdentifier&lt;/tt&gt;: clearing system member identification of a financial institution in the MT message.
+&lt;tt&gt;MTOption&lt;/tt&gt;: the option of the MT field (true for Option &quot;C&quot;, false - otherwise).
+
+&lt;b&gt;Output&lt;/b&gt;
+MXClearingIdentifier: the result of this function -the MX clearing system member identification- is immediately put into the correct MX element inside the target component typed BranchAndFinancialInstitutionIdentification3.
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/*
+   Find clearing system and clearing code by taking out the double slash “//” or clearing channel indicator and double
+   slash. MTClearingSystem, MTClearingCode and MXClearingSystem are local variables
+*/
+IF Substring(MTPartyIdentifier, 1, 6) = “//RT//”
+    MTClearingSystem = Substring(MTPartyIdentifier, 7, 2)
+    MTClearingCode = Substring(MTPartyIdentifier, 9)
+ELSE
+    MTClearingSystem = Substring(MTPartyIdentifier, 3, 2)
+    MTClearingCode = Substring(MTPartyIdentifier, 5)
+ENDIF
+/*
+   Check whether the MTClearingSystem belongs to the MTClearingSystemList with an equivalent in the ISO MXClearingSystemList
+*/
+IF WithinList(MTClearingSystem, MTClearingSystemList)
+    /* Target will be the ClearingSystemMemberIdentification.Identification element */
+    /*
+       Exception handling when MTClearingSystem equals “SW”: 2 target ISO MXClearingSystem codes correspond to the same
+       code “SW”. Depending on the length of the MTClearingCode it will be one or the other but this check is not
+       handled by the EquivalentCode function where a one on one relation is needed
+    */
+    IF MTClearingSystem = “SW” AND Length(MTClearingCode) &gt; 5
+        MXClearingSystem = “CHSIC”
+    ELSEIF MTClearingSystem = “SW”
+        MXClearingSystem = “CHBCC”
+    ELSE
+        /*
+           Replace MTClearingSystem with MX equivalent in the ISO MXClearingSystemList */
+        MXClearingSystem = EquivalentCode(MTClearingSystem, MTClearingSystemList, MXClearingSystemList)
+    ENDIF
+    /*
+       Determine translation target component and write output string by concatenation of MXClearingSystem and MT
+       clearing code. The output string is restricted to 35 characters although none of the current ISO listed systems
+       has that long an identifier
+    */
+    IF MTOption = “C”
+        /*
+           With MToption C the clearing system member identification is the only financial institution identification
+           available in the source message: target of the translation is the ClearingSystemMemberIdentification element
+           in the FinancialInstitutionIdentification component
+        */
+        FinancialInstitutionIdentification.ClearingSystemMemberIdentification.Identification
+                                = Substring(Concatenate(MXClearingSystem, MTClearingCode), 1, 35)
+    ELSE
+        /*
+           For all other MToptions the clearing system member identification accompanies another financial
+           institution identification (BIC or NameAndAddress): target of the translation is the
+           ClearingSystemMemberIdentification element in the CombinedIdentification component
+        */
+        FinancialInstitutionIdentification.CombinedIdentification.ClearingSystemMemberIdentification.Identification
+                                = Substring(Concatenate(MXClearingSystem, MTClearingCode), 1, 35)
+    ENDIF
+ELSE
+    /*
+       The MTClearingSystem is not within the list and is kept as is. Target will be the        ClearingSystemMemberIdentification.Proprietary element
+    */
+    /* Determine target component and write output string by concatenation of MXClearingSystem and MT clearing code */
+    IF MTOption = “C”
+        FinancialInstitutionIdentification.ClearingSystemMemberIdentification.Proprietary
+                                = Concatenate(MXClearingSystem, MTClearingCode)
+    ELSE
+        FinancialInstitutionIdentification.CombinedIdentification.ClearingSystemMemberIdentification.Proprietary
+                                = Concatenate(MXClearingSystem, MTClearingCode)
+    ENDIF
+ENDIF
+&lt;/pre&gt;</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+    <output typeRef="#string" required="false" path="" endID="1"/>
+    <output typeRef="#string" required="false" path="" endID="2"/>
+    <output typeRef="#string" required="false" path="" endID="3"/>
+    <hashtable id="17">
+        <name>MT2MXClearingCode</name>
+        <defaultValue>null</defaultValue>
+        <entry value="ATBLZ" key="AT"/>
+        <entry value="AUBSB" key="AU"/>
+        <entry value="DEBLZ" key="BL"/>
+        <entry value="CACPA" key="CC"/>
+        <entry value="CNAPS" key="CN"/>
+        <entry value="USPID" key="CP"/>
+        <entry value="ESNCC" key="ES"/>
+        <entry value="USABA" key="FW"/>
+        <entry value="GRHIC" key="GR"/>
+        <entry value="HKNCC" key="HK"/>
+        <entry value="IENCC" key="IE"/>
+        <entry value="INFSC" key="IN"/>
+        <entry value="ITNCC" key="IT"/>
+        <entry value="JPZGN" key="JP"/>
+        <entry value="NZNCC" key="NZ"/>
+        <entry value="PLKNR" key="PL"/>
+        <entry value="PTNCC" key="PT"/>
+        <entry value="RUCBC" key="RU"/>
+        <entry value="GBDSC" key="SC"/>
+        <entry value="CHSIC" key="SW1"/>
+        <entry value="CHBCC" key="SW2"/>
+        <entry value="ZANCC" key="ZA"/>
+    </hashtable>
+    <localTransform id="22">
+        <transform version="0.0.15" validateOutputs="false" validateInputs="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="ParseMTCode">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <transformMethod name="STARTSWITH" y="36" x="111" id="25"/>
+            <transformMethod name="SUBSTRING" y="108" x="109" id="26"/>
+            <constant constant="/RT//" id="27"/>
+            <constant constant="5" id="28"/>
+            <constant constant="7" id="31"/>
+            <transformMethod type="#string" name="IF" y="51" x="287" id="32"/>
+            <transformMethod name="SUBSTRING" y="190" x="106" id="33"/>
+            <constant constant="1" id="36"/>
+            <constant constant="3" id="37"/>
+            <transformMethod name="SUBSTRING" y="289" x="108" id="39"/>
+            <transformMethod name="SUBSTRING" y="370" x="110" id="40"/>
+            <transformMethod type="#string" name="IF" y="286" x="288" id="45"/>
+            <constant constant="7" id="47"/>
+            <constant constant="-1" id="48"/>
+            <constant constant="3" id="49"/>
+            <constant constant="-1" id="50"/>
+            <transformMethod name="EQUALS" y="90" x="425" id="62"/>
+            <constant constant="SW" id="63"/>
+            <transformMethod name="AND" y="147" x="680" id="64"/>
+            <transformMethod name="LENGTH" y="238" x="403" id="65"/>
+            <transformMethod name="GREATERTHAN" y="247" x="531" id="66"/>
+            <constant constant="5" id="68"/>
+            <transformMethod type="#string" name="IF" y="52" x="913" id="69"/>
+            <constant constant="SW1" id="70"/>
+            <transformMethod type="#string" name="IF" y="39" x="658" id="71"/>
+            <constant constant="SW2" id="72"/>
+            <contextPath input="true" endID="0" contextRef="" id="30"/>
+            <contextPath input="false" endID="1" contextRef="" id="46"/>
+            <contextPath input="false" endID="0" contextRef="" id="38"/>
+            <translation outputPort="1" outputID="25" inputPort="0" inputID="27"/>
+            <translation outputPort="1" outputID="26" inputPort="0" inputID="28"/>
+            <translation outputPort="2" outputID="26" inputPort="0" inputID="31"/>
+            <translation outputPort="0" outputID="32" inputPort="0" inputID="25"/>
+            <translation outputPort="1" outputID="32" inputPort="0" inputID="26"/>
+            <translation outputPort="2" outputID="32" inputPort="0" inputID="33"/>
+            <translation outputPort="1" outputID="33" inputPort="0" inputID="36"/>
+            <translation outputPort="2" outputID="33" inputPort="0" inputID="37"/>
+            <translation outputPort="1" outputID="45" inputPort="0" inputID="39"/>
+            <translation outputPort="2" outputID="45" inputPort="0" inputID="40"/>
+            <translation outputPort="0" outputID="45" inputPort="0" inputID="25"/>
+            <translation outputPort="1" outputID="39" inputPort="0" inputID="47"/>
+            <translation outputPort="2" outputID="39" inputPort="0" inputID="48"/>
+            <translation outputPort="1" outputID="40" inputPort="0" inputID="49"/>
+            <translation outputPort="2" outputID="40" inputPort="0" inputID="50"/>
+            <translation outputPort="1" outputID="62" inputPort="0" inputID="63"/>
+            <translation outputPort="0" outputID="64" inputPort="0" inputID="62"/>
+            <translation outputPort="0" outputID="62" inputPort="0" inputID="32"/>
+            <translation outputPort="0" outputID="65" inputPort="0" inputID="45"/>
+            <translation outputPort="0" outputID="66" inputPort="0" inputID="65"/>
+            <translation outputPort="1" outputID="66" inputPort="0" inputID="68"/>
+            <translation outputPort="1" outputID="64" inputPort="0" inputID="66"/>
+            <translation outputPort="0" outputID="69" inputPort="0" inputID="64"/>
+            <translation outputPort="1" outputID="69" inputPort="0" inputID="70"/>
+            <translation outputPort="0" outputID="71" inputPort="0" inputID="62"/>
+            <translation outputPort="2" outputID="71" inputPort="0" inputID="32"/>
+            <translation outputPort="1" outputID="71" inputPort="0" inputID="72"/>
+            <translation outputPort="2" outputID="69" inputPort="0" inputID="71"/>
+            <translation outputPort="0" outputID="25" inputPort="0" inputID="30"/>
+            <translation outputPort="0" outputID="26" inputPort="0" inputID="30"/>
+            <translation outputPort="0" outputID="33" inputPort="0" inputID="30"/>
+            <translation outputPort="0" outputID="46" inputPort="0" inputID="45"/>
+            <translation outputPort="0" outputID="39" inputPort="0" inputID="30"/>
+            <translation outputPort="0" outputID="40" inputPort="0" inputID="30"/>
+            <translation outputPort="0" outputID="38" inputPort="0" inputID="69"/>
+            <nextId>0</nextId>
+            <output typeRef="#string" required="false" path="" endID="0"/>
+            <output typeRef="#string" required="false" path="" endID="1"/>
+        </transform>
+    </localTransform>
+</transform>

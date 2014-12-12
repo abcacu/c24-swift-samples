@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTFinancialInstitutionNameAndAddress.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#string" required="false" path="" endID="1"/>
+    <input typeRef="#string" required="false" path="" endID="2"/>
+    <input typeRef="#string" required="false" path="" endID="3"/>
+    <input typeRef="#string" required="false" path="" endID="4"/>
+    <input typeRef="#string" required="false" path="" endID="5"/>
+    <input typeRef="#string" required="false" path="" endID="6"/>
+    <input typeRef="#string" required="false" path="" endID="7"/>
+    <input typeRef="#string" required="false" path="" endID="8"/>
+    <input typeRef="#string" required="false" path="" endID="9"/>
+    <input typeRef="#string" required="false" path="" endID="10"/>
+    <input typeRef="#string" required="false" path="" endID="11"/>
+    <input typeRef="#string" required="false" path="" endID="12"/>
+    <input typeRef="#string" required="false" path="" endID="13"/>
+    <input typeRef="#string" required="false" path="" endID="14"/>
+    <input typeRef="#string" required="false" path="" endID="15"/>
+    <input typeRef="#string" required="false" path="" endID="16"/>
+    <input typeRef="#string" required="false" path="" endID="17"/>
+    <input typeRef="#string" required="false" path="" endID="18"/>
+    <input typeRef="#string" required="false" path="" endID="19"/>
+    <input typeRef="#string" required="false" path="" endID="20"/>
+    <input typeRef="#string" required="false" path="" endID="21"/>
+    <input typeRef="#string" required="false" path="" endID="22"/>
+    <contextPath input="true" endID="0" contextRef="" id="I0"/>
+    <contextPath input="true" endID="1" contextRef="" id="I1"/>
+    <contextPath input="true" endID="10" contextRef="" id="I10"/>
+    <contextPath input="true" endID="11" contextRef="" id="I11"/>
+    <contextPath input="true" endID="12" contextRef="" id="I12"/>
+    <contextPath input="true" endID="13" contextRef="" id="I13"/>
+    <contextPath input="true" endID="14" contextRef="" id="I14"/>
+    <contextPath input="true" endID="15" contextRef="" id="I15"/>
+    <contextPath input="true" endID="16" contextRef="" id="I16"/>
+    <contextPath input="true" endID="17" contextRef="" id="I17"/>
+    <contextPath input="true" endID="18" contextRef="" id="I18"/>
+    <contextPath input="true" endID="19" contextRef="" id="I19"/>
+    <contextPath input="true" endID="2" contextRef="" id="I2"/>
+    <contextPath input="true" endID="20" contextRef="" id="I20"/>
+    <contextPath input="true" endID="21" contextRef="" id="I21"/>
+    <contextPath input="true" endID="22" contextRef="" id="I22"/>
+    <contextPath input="true" endID="3" contextRef="" id="I3"/>
+    <contextPath input="true" endID="4" contextRef="" id="I4"/>
+    <contextPath input="true" endID="5" contextRef="" id="I5"/>
+    <contextPath input="true" endID="6" contextRef="" id="I6"/>
+    <contextPath input="true" endID="7" contextRef="" id="I7"/>
+    <contextPath input="true" endID="8" contextRef="" id="I8"/>
+    <contextPath input="true" endID="9" contextRef="" id="I9"/>
+    <constant constant="null" id="Line35xO0000012"/>
+    <contextPath input="false" endID="0" contextRef="" id="O0"/>
+    <javaMethodRef refId="O00_ref" y="532" x="407" id="O00"/>
+    <localTransformRef refId="O000_ref" y="212" x="157" id="O000"/>
+    <localTransformRef refId="O001_ref" y="337" x="157" id="O001"/>
+    <localTransformRef refId="O002_ref" y="136" x="157" id="O002"/>
+    <localTransformRef refId="O003_ref" y="885" x="157" id="O003"/>
+    <localTransformRef refId="O004_ref" y="733" x="157" id="O004"/>
+    <localTransformRef refId="O005_ref" y="678" x="157" id="O005"/>
+    <localTransformRef refId="O006_ref" y="788" x="157" id="O006"/>
+    <localTransformRef refId="O007_ref" y="49" x="158" id="O007"/>
+    <translation outputPort="0" outputID="O0" inputPort="0" inputID="O00"/>
+    <translation outputPort="0" outputID="O00" inputPort="0" inputID="O000"/>
+    <translation outputPort="0" outputID="O000" inputPort="0" inputID="I7"/>
+    <translation outputPort="1" outputID="O000" inputPort="0" inputID="I8"/>
+    <translation outputPort="2" outputID="O000" inputPort="0" inputID="I9"/>
+    <translation outputPort="3" outputID="O000" inputPort="0" inputID="I10"/>
+    <translation outputPort="4" outputID="O000" inputPort="0" inputID="I11"/>
+    <translation outputPort="1" outputID="O00" inputPort="0" inputID="O001"/>
+    <translation outputPort="0" outputID="O001" inputPort="0" inputID="I0"/>
+    <translation outputPort="10" outputID="O00" inputPort="0" inputID="I19"/>
+    <translation outputPort="1" outputID="O001" inputPort="0" inputID="I1"/>
+    <translation outputPort="11" outputID="O00" inputPort="0" inputID="I18"/>
+    <translation outputPort="2" outputID="O001" inputPort="0" inputID="I2"/>
+    <translation outputPort="12" outputID="O00" inputPort="0" inputID="I10"/>
+    <translation outputPort="3" outputID="O001" inputPort="0" inputID="I3"/>
+    <translation outputPort="13" outputID="O00" inputPort="0" inputID="I8"/>
+    <translation outputPort="4" outputID="O001" inputPort="0" inputID="I4"/>
+    <translation outputPort="14" outputID="O00" inputPort="0" inputID="I7"/>
+    <translation outputPort="5" outputID="O001" inputPort="0" inputID="I5"/>
+    <translation outputPort="6" outputID="O001" inputPort="0" inputID="I6"/>
+    <translation outputPort="7" outputID="O001" inputPort="0" inputID="I22"/>
+    <translation outputPort="2" outputID="O00" inputPort="0" inputID="O002"/>
+    <translation outputPort="0" outputID="O002" inputPort="0" inputID="I9"/>
+    <translation outputPort="3" outputID="O00" inputPort="0" inputID="O003"/>
+    <translation outputPort="0" outputID="O003" inputPort="0" inputID="I12"/>
+    <translation outputPort="1" outputID="O003" inputPort="0" inputID="I13"/>
+    <translation outputPort="2" outputID="O003" inputPort="0" inputID="I14"/>
+    <translation outputPort="3" outputID="O003" inputPort="0" inputID="I15"/>
+    <translation outputPort="4" outputID="O003" inputPort="0" inputID="I16"/>
+    <translation outputPort="5" outputID="O003" inputPort="0" inputID="I17"/>
+    <translation outputPort="6" outputID="O003" inputPort="0" inputID="I18"/>
+    <translation outputPort="7" outputID="O003" inputPort="0" inputID="I19"/>
+    <translation outputPort="4" outputID="O00" inputPort="0" inputID="O004"/>
+    <translation outputPort="0" outputID="O004" inputPort="0" inputID="I19"/>
+    <translation outputPort="1" outputID="O004" inputPort="0" inputID="I10"/>
+    <translation outputPort="5" outputID="O00" inputPort="0" inputID="O005"/>
+    <translation outputPort="0" outputID="O005" inputPort="0" inputID="I19"/>
+    <translation outputPort="6" outputID="O00" inputPort="0" inputID="O006"/>
+    <translation outputPort="0" outputID="O006" inputPort="0" inputID="I10"/>
+    <translation outputPort="7" outputID="O00" inputPort="0" inputID="O007"/>
+    <translation outputPort="0" outputID="O007" inputPort="0" inputID="I7"/>
+    <translation outputPort="1" outputID="O007" inputPort="0" inputID="I8"/>
+    <translation outputPort="2" outputID="O007" inputPort="0" inputID="I20"/>
+    <translation outputPort="3" outputID="O007" inputPort="0" inputID="I21"/>
+    <translation outputPort="4" outputID="O007" inputPort="0" inputID="I11"/>
+    <translation outputPort="8" outputID="O00" inputPort="0" inputID="I22"/>
+    <translation outputPort="9" outputID="O00" inputPort="0" inputID="I9"/>
+    <documentation>
+        <notes>
+INPUT:
+	1. FinancialInstitutionIdentification.NameAndAddress.PostalAddr.AddressLine[1]
+	2. FinancialInstitutionIdentification.NameAndAddress.PostalAddr.AddressLine[2]
+	3. FinancialInstitutionIdentification.NameAndAddress.PostalAddr.StreetName
+	4. FinancialInstitutionIdentification.NameAndAddress.PostalAddr.Building Number
+	5. FinancialInstitutionIdentification.NameAndAddress.PostalAddr.Post Code
+	6. FinancialInstitutionIdentification.NameAndAddress.PostalAddr.Town Name
+	7. FinancialInstitutionIdentification.NameAndAddress.PostalAddr.Country
+	8. FinancialInstitutionIdentification.ClearingSystemMemberIdentification.Identification
+	9. FinancialInstitutionIdentification.CombinedIdentification.ClearingSystemMemberIdentification.Identification
+	10. FinancialInstitutionIdentification.ProprietaryIdentification.Id
+	11. FinancialInstitutionIdentification.CombinedIdentification.ProprietaryIdentification.Id
+	12. BIC
+	13. FinancialInstitutionIdentification.CombinedIdentification.PostalAddr.AddressLine[1]
+	14. FinancialInstitutionIdentification.CombinedIdentification.PostalAddr.AddressLine[2]
+	15. FinancialInstitutionIdentification.CombinedIdentification.PostalAddr.StreetName
+	16. FinancialInstitutionIdentification.CombinedIdentification.PostalAddr.Building Number
+	17. FinancialInstitutionIdentification.CombinedIdentification.PostalAddr.Post Code
+	18. FinancialInstitutionIdentification.CombinedIdentification.PostalAddr.Town Name
+	19. FinancialInstitutionIdentification.CombinedIdentification.PostalAddr.Country
+	20. FinancialInstitutionIdentification.CombinedIdentification.Name
+	21. FinancialInstitutionIdentification.ClearingSystemMemberIdentification.Proprietary
+	22. FinancialInstitutionIdentification.CombinedIdentification.ClearingSystemMemberIdentification.Proprietary
+	23. FinancialInstitutionIdentification.NameAndAddress.Name
+
+
+Business description
+	The function translates an MX financial institution identification not containing a BIC to an MT financial institution identification of the MT NameAndAddress format (4*35x). In
+	the MX identification typed BranchAndFinancialInstitutionIdentification3 the optional BranchIdentification component is truncated and the FinancialInstitutionIdentification
+	component is translated in the following order:
+
+	1. ClearingSystemMemberIdentification is present 
+
+	The MX ClearingSystemMemberIdentification component can occur at two different places in the MX structure that are however, mutually exclusive: at the FinancialInstitutionIdentification 
+	level (formal function description 1a) and at the FinancialInstitutionIdentification.CombinedIdentification level (formal function description 4e). In the MT target message, the financial 
+	institution identification field contains an optional Subfield 1 (MTPartyIdentifier), followed by a mandatory Subfield 2 (MTNameAndAddress of maximum 4 lines of 35 characters). The MTPartyIdentifier
+	is the translation target of an MX ClearingSystemMemberIdentification (function described elsewhere) that is translated as follows:
+
+	1a. If the ClearingSystemMemberIdentification is the only available identification, then it will be translated to two different targets: once to the semantic target MTPartyIdentifier and once to the first 
+	line of MTNameAndAddress as a workaround to obtain a valid MTNameAndAddress field.
+	
+	1b. For all other cases where the ClearingSystemMemberIdentification is combined with a Name, NameAndAddress and/or ProprietaryIdentification, the ClearingSystemMemberIdenfication will be 
+	translated to the MTPartyIdentifier and the other identification will be translated to the MTNameAndAddress subfield.
+
+	2. NameAndAddress is present The name is translated to a maximum of 2 lines. A sub-function will translate the postal address. Depending on the length of the name, some or all output variables of
+	the translated address will be written in the target MTNameAndAddress subfield.
+
+	3. ProprietaryIdentification is present SWIFTStandards Translation Rules 78 Translation Rule Descriptions for Credit Transfer Messages The identification is translated to the first line of the target 
+	MTNameAndAddress subfield.
+
+	4. CombinedIdentification is present The CombinedIdentification can contain any combination of a ClearingSystemMemberIdentification, Name, PostalAddress and ProprietaryIdentification (a possible 
+	BIC is not considered for this function). The function translates the following cases: Name with PostalAddress (with or without ProprietaryIdentification and/or ClearingSystemMemberIdentification), 
+	Name with ProprietaryIdentification (with or without ClearingSystemMemberIdentification), Name (with or without ClearingSystemMemberIdentification), ProprietaryIdentification (with or without 
+	ClearingSystemMemberIdentification) or ClearingSystemMemberIdentification (without Name and ProprietaryIdentification) (see paragraph 1a above).
+
+	If PostalAddress is used within the CombinedIdentification component, then it must be accompanied by at least one of the other identifications, otherwise translation will be stopped.
+
+Format
+	MX_To_MTFinancialInstitutionNameAndAddress(MXAgentIdentification ; MTNameAndAddress)
+
+Input
+	MXAgentIdentification: the entire structure of the MX agent identification typed BranchAndFinancialInstitutionIdentification3.
+
+Output
+	MTNameAndAddress: name and address of the financial institution in the MT format (4*35x).
+
+Preconditions
+	If the CombinedIdentification component of BranchAndFinancialInstitutionIdentification3 is used, then it must contain more than just the PostalAddress component.</notes>
+    </documentation>
+    <output typeRef="Data Field Dictionary/Subfields/Name and Address" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <localTransform id="O000_ref">
+        <documentation>
+            <notes>
+INPUT:
+	1. FinancialInstitutionIdentification.ClearingSystemMemberIdentification
+	2. FinancialInstitutionIdentification.CombinedIdentification.ClearingSystemMemberIdentification
+	3. FinancialInstitutionIdentification.Proprietary
+	4. FinancialInstitutionIdentification.CombinedIdentification.Proprietary
+	5. BIC
+</notes>
+        </documentation>
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="1a">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <input typeRef="#string" required="false" path="" endID="2"/>
+            <input typeRef="#string" required="false" path="" endID="3"/>
+            <input typeRef="#string" required="false" path="" endID="4"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="true" endID="1" contextRef="" id="I1"/>
+            <contextPath input="true" endID="2" contextRef="" id="I2"/>
+            <contextPath input="true" endID="3" contextRef="" id="I3"/>
+            <contextPath input="true" endID="4" contextRef="" id="I4"/>
+            <constant constant="null" id="Line35xO002"/>
+            <contextPath input="false" endID="0" contextRef="Line 35x" id="Line35xO4"/>
+            <transformMethod name="SUBSTRING" y="241" x="354" id="Line35xO40"/>
+            <globalTransformRef ref="MX_To_MTClearingIdentifier.tfd" y="132" x="278" id="Line35xO400"/>
+            <constant constant="1" id="Line35xO401"/>
+            <constant constant="-1" id="Line35xO402"/>
+            <translation outputPort="0" outputID="Line35xO4" inputPort="0" inputID="Line35xO40"/>
+            <translation outputPort="0" outputID="Line35xO40" inputPort="0" inputID="Line35xO400"/>
+            <translation outputPort="0" outputID="Line35xO400" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="Line35xO400" inputPort="0" inputID="I1"/>
+            <translation outputPort="2" outputID="Line35xO400" inputPort="0" inputID="I2"/>
+            <translation outputPort="3" outputID="Line35xO400" inputPort="0" inputID="I3"/>
+            <translation outputPort="4" outputID="Line35xO400" inputPort="0" inputID="I4"/>
+            <translation outputPort="1" outputID="Line35xO40" inputPort="0" inputID="Line35xO401"/>
+            <translation outputPort="2" outputID="Line35xO40" inputPort="0" inputID="Line35xO402"/>
+            <documentation>
+                <notes>
+INPUT:
+	1. FinancialInstitutionIdentification.ClearingSystemMemberIdentification
+	2. FinancialInstitutionIdentification.CombinedIdentification.ClearingSystemMemberIdentification
+	3. FinancialInstitutionIdentification.Proprietary
+	4. FinancialInstitutionIdentification.CombinedIdentification.Proprietary
+	5. BIC
+</notes>
+            </documentation>
+            <output typeRef="Data Field Dictionary/Subfields/Name and Address" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+        </transform>
+    </localTransform>
+    <localTransform id="O001_ref">
+        <documentation>
+            <notes>
+INPUT: 	
+	1. AddressLine[1], 
+	2. AddressLine[2], 
+	3. StreetName, 
+	4. BuildingNumber, 
+	5. PostCode, 
+	6. TownName,
+	7. Country
+	8. Name
+</notes>
+        </documentation>
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="2">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <input typeRef="#string" required="false" path="" endID="2"/>
+            <input typeRef="#string" required="false" path="" endID="3"/>
+            <input typeRef="#string" required="false" path="" endID="4"/>
+            <input typeRef="#string" required="false" path="" endID="5"/>
+            <input typeRef="#string" required="false" path="" endID="6"/>
+            <input typeRef="#string" required="false" path="" endID="7"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="true" endID="1" contextRef="" id="I1"/>
+            <contextPath input="true" endID="2" contextRef="" id="I2"/>
+            <contextPath input="true" endID="3" contextRef="" id="I3"/>
+            <contextPath input="true" endID="4" contextRef="" id="I4"/>
+            <contextPath input="true" endID="5" contextRef="" id="I5"/>
+            <contextPath input="true" endID="6" contextRef="" id="I6"/>
+            <contextPath input="true" endID="7" contextRef="" id="I7"/>
+            <contextPath input="false" endID="0" contextRef="Line 35x" id="Line35xO4"/>
+            <javaMethodRef refId="Line35xO40_ref" y="134" x="411" id="Line35xO40"/>
+            <globalTransformRef ref="MX_To_MTPostalAddress.tfd" y="87" x="145" id="Line35xO401"/>
+            <translation outputPort="0" outputID="Line35xO4" inputPort="0" inputID="Line35xO40"/>
+            <translation outputPort="0" outputID="Line35xO40" inputPort="2" inputID="Line35xO401"/>
+            <translation outputPort="1" outputID="Line35xO40" inputPort="0" inputID="Line35xO401"/>
+            <translation outputPort="0" outputID="Line35xO401" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="Line35xO401" inputPort="0" inputID="I1"/>
+            <translation outputPort="2" outputID="Line35xO401" inputPort="0" inputID="I2"/>
+            <translation outputPort="3" outputID="Line35xO401" inputPort="0" inputID="I3"/>
+            <translation outputPort="4" outputID="Line35xO401" inputPort="0" inputID="I4"/>
+            <translation outputPort="5" outputID="Line35xO401" inputPort="0" inputID="I5"/>
+            <translation outputPort="6" outputID="Line35xO401" inputPort="0" inputID="I6"/>
+            <translation outputPort="2" outputID="Line35xO40" inputPort="1" inputID="Line35xO401"/>
+            <translation outputPort="3" outputID="Line35xO40" inputPort="0" inputID="I7"/>
+            <documentation>
+                <notes>
+INPUT: 	
+	1. AddressLine[1], 
+	2. AddressLine[2], 
+	3. StreetName, 
+	4. BuildingNumber, 
+	5. PostCode, 
+	6. TownName,
+	7. Country
+	8. Name
+</notes>
+            </documentation>
+            <output typeRef="Data Field Dictionary/Subfields/Name and Address" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+            <javaMethod id="Line35xO40_ref">
+                <libraryMethod>false</libraryMethod>
+                <methodName>setNameAndAddress</methodName>
+                <input type="#string" role="country"/>
+                <input type="#string" role="addressLine1"/>
+                <input type="#string" role="addressLine2"/>
+                <input type="#string" role="name"/>
+                <output type="#string[]"/>
+                <code>String[] line35x = new String[4];&#xD;
+&#xD;
+&#xD;
+if (name.length() &gt; 35) &#xD;
+{&#xD;
+    line35x[0] = name.substring(0, 35);&#xD;
+    &#xD;
+    line35x[1] = name.substring(35); &#xD;
+    if (addressLine1.length() &gt; 0)&#xD;
+    {&#xD;
+        line35x[2] = addressLine1;  &#xD;
+		line35x[3] = country;&#xD;
+	}&#xD;
+	else  &#xD;
+        line35x[2] = country;   &#xD;
+}  		&#xD;
+else&#xD;
+{&#xD;
+    line35x[0] = name;&#xD;
+	if (addressLine1 != null &amp;&amp; addressLine1.length() &gt; 0) &#xD;
+	{&#xD;
+        line35x[1] = addressLine1; &#xD;
+        if (line35x[1].length() &gt; 0)&#xD;
+        {&#xD;
+            line35x[2] = addressLine2;  &#xD;
+            line35x[3] = country;&#xD;
+        }&#xD;
+        else   &#xD;
+            line35x[2] = country;  &#xD;
+   	}&#xD;
+  	else &#xD;
+		line35x[1] = country;   &#xD;
+} &#xD;
+&#xD;
+return line35x;</code>
+            </javaMethod>
+        </transform>
+    </localTransform>
+    <localTransform id="O002_ref">
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="3">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="false" endID="0" contextRef="Line 35x" id="Line35xO0"/>
+            <translation outputPort="0" outputID="Line35xO0" inputPort="0" inputID="I0"/>
+            <output typeRef="Data Field Dictionary/Subfields/Name and Address" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+        </transform>
+    </localTransform>
+    <localTransform id="O003_ref">
+        <documentation>
+            <notes>
+INPUT: 	
+	1. AddressLine[1], 
+	2. AddressLine[2], 
+	3. StreetName, 
+	4. BuildingNumber, 
+	5. PostCode, 
+	6. TownName,
+	7. Country
+	8. Name
+
+</notes>
+        </documentation>
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="4a">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <input typeRef="#string" required="false" path="" endID="2"/>
+            <input typeRef="#string" required="false" path="" endID="3"/>
+            <input typeRef="#string" required="false" path="" endID="4"/>
+            <input typeRef="#string" required="false" path="" endID="5"/>
+            <input typeRef="#string" required="false" path="" endID="6"/>
+            <input typeRef="#string" required="false" path="" endID="7"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="true" endID="1" contextRef="" id="I1"/>
+            <contextPath input="true" endID="2" contextRef="" id="I2"/>
+            <contextPath input="true" endID="3" contextRef="" id="I3"/>
+            <contextPath input="true" endID="4" contextRef="" id="I4"/>
+            <contextPath input="true" endID="5" contextRef="" id="I5"/>
+            <contextPath input="true" endID="6" contextRef="" id="I6"/>
+            <contextPath input="true" endID="7" contextRef="" id="I7"/>
+            <contextPath input="false" endID="0" contextRef="Line 35x" id="Line35xO0"/>
+            <javaMethodRef refId="Line35xO00_ref" y="141" x="388" id="Line35xO00"/>
+            <globalTransformRef ref="MX_To_MTPostalAddress.tfd" y="111" x="145" id="Line35xO000"/>
+            <translation outputPort="0" outputID="Line35xO0" inputPort="0" inputID="Line35xO00"/>
+            <translation outputPort="0" outputID="Line35xO00" inputPort="0" inputID="Line35xO000"/>
+            <translation outputPort="0" outputID="Line35xO000" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="Line35xO000" inputPort="0" inputID="I1"/>
+            <translation outputPort="2" outputID="Line35xO000" inputPort="0" inputID="I2"/>
+            <translation outputPort="3" outputID="Line35xO000" inputPort="0" inputID="I3"/>
+            <translation outputPort="4" outputID="Line35xO000" inputPort="0" inputID="I4"/>
+            <translation outputPort="5" outputID="Line35xO000" inputPort="0" inputID="I5"/>
+            <translation outputPort="6" outputID="Line35xO000" inputPort="0" inputID="I6"/>
+            <translation outputPort="1" outputID="Line35xO00" inputPort="1" inputID="Line35xO000"/>
+            <translation outputPort="2" outputID="Line35xO00" inputPort="2" inputID="Line35xO000"/>
+            <translation outputPort="3" outputID="Line35xO00" inputPort="0" inputID="I7"/>
+            <documentation>
+                <notes>
+INPUT: 	
+	1. AddressLine[1], 
+	2. AddressLine[2], 
+	3. StreetName, 
+	4. BuildingNumber, 
+	5. PostCode, 
+	6. TownName,
+	7. Country
+	8. Name
+
+</notes>
+            </documentation>
+            <output typeRef="Data Field Dictionary/Subfields/Name and Address" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+            <javaMethod id="Line35xO00_ref">
+                <libraryMethod>false</libraryMethod>
+                <methodName>setNameAndAddress</methodName>
+                <input type="#string" role="country"/>
+                <input type="#string" role="addressLine1"/>
+                <input type="#string" role="addressLine2"/>
+                <input type="#string" role="name"/>
+                <output type="#string[]"/>
+                <code>String[] line35x = new String[4];&#xD;
+&#xD;
+&#xD;
+if (name.length() &gt; 35) &#xD;
+{&#xD;
+    line35x[0] = name.substring(0, 35);&#xD;
+    &#xD;
+    line35x[1] = name.substring(35); &#xD;
+    if (addressLine1.length() &gt; 0)&#xD;
+    {&#xD;
+        line35x[2] = addressLine1;  &#xD;
+		line35x[3] = country;&#xD;
+	}&#xD;
+	else  &#xD;
+        line35x[2] = country;   &#xD;
+}  		&#xD;
+else&#xD;
+{&#xD;
+    line35x[0] = name;&#xD;
+	if (addressLine1 != null &amp;&amp; addressLine1.length() &gt; 0) &#xD;
+	{&#xD;
+        line35x[1] = addressLine1; &#xD;
+        if (line35x[1].length() &gt; 0)&#xD;
+        {&#xD;
+            line35x[2] = addressLine2;  &#xD;
+            line35x[3] = country;&#xD;
+        }&#xD;
+        else   &#xD;
+            line35x[2] = country;  &#xD;
+   	}&#xD;
+  	else &#xD;
+		line35x[1] = country;   &#xD;
+} &#xD;
+&#xD;
+return line35x;</code>
+            </javaMethod>
+        </transform>
+    </localTransform>
+    <localTransform id="O004_ref">
+        <documentation>
+            <notes>
+INPUT:
+	1. CombinedIdentification.Name
+	2. CombinedIdentification.ProprietaryIdentification</notes>
+        </documentation>
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="4b">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="true" endID="1" contextRef="" id="I1"/>
+            <contextPath input="false" endID="0" contextRef="Line 35x[1]" id="Line35x1O0"/>
+            <transformMethod name="SUBSTRING" y="246" x="134" id="Line35x1O00"/>
+            <constant constant="0" id="Line35x1O001"/>
+            <constant constant="35" id="Line35x1O002"/>
+            <contextPath input="false" endID="0" contextRef="Line 35x[2]" id="Line35x2O0"/>
+            <transformMethod type="#string" name="IF" y="122" x="525" id="Line35x2O00"/>
+            <transformMethod name="GREATERTHAN" y="115" x="330" id="Line35x2O000"/>
+            <transformMethod name="LENGTH" y="184" x="121" id="Line35x2O0000"/>
+            <constant constant="35" id="Line35x2O0001"/>
+            <transformMethod name="SUBSTRING" y="122" x="134" id="Line35x2O001"/>
+            <constant constant="35" id="Line35x2O0011"/>
+            <constant constant="-1" id="Line35x2O0012"/>
+            <contextPath input="false" endID="0" contextRef="Line 35x[3]" id="Line35x3O0"/>
+            <transformMethod type="#string" name="IF" y="46" x="525" id="Line35x3O00"/>
+            <constant constant="null" id="Line35x3O002"/>
+            <translation outputPort="0" outputID="Line35x1O0" inputPort="0" inputID="Line35x1O00"/>
+            <translation outputPort="0" outputID="Line35x1O00" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="Line35x1O00" inputPort="0" inputID="Line35x1O001"/>
+            <translation outputPort="2" outputID="Line35x1O00" inputPort="0" inputID="Line35x1O002"/>
+            <translation outputPort="0" outputID="Line35x2O0" inputPort="0" inputID="Line35x2O00"/>
+            <translation outputPort="0" outputID="Line35x2O00" inputPort="0" inputID="Line35x2O000"/>
+            <translation outputPort="0" outputID="Line35x2O000" inputPort="0" inputID="Line35x2O0000"/>
+            <translation outputPort="0" outputID="Line35x2O0000" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="Line35x2O000" inputPort="0" inputID="Line35x2O0001"/>
+            <translation outputPort="1" outputID="Line35x2O00" inputPort="0" inputID="Line35x2O001"/>
+            <translation outputPort="0" outputID="Line35x2O001" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="Line35x2O001" inputPort="0" inputID="Line35x2O0011"/>
+            <translation outputPort="2" outputID="Line35x2O001" inputPort="0" inputID="Line35x2O0012"/>
+            <translation outputPort="2" outputID="Line35x2O00" inputPort="0" inputID="I1"/>
+            <translation outputPort="0" outputID="Line35x3O0" inputPort="0" inputID="Line35x3O00"/>
+            <translation outputPort="0" outputID="Line35x3O00" inputPort="0" inputID="Line35x2O000"/>
+            <translation outputPort="1" outputID="Line35x3O00" inputPort="0" inputID="I1"/>
+            <translation outputPort="2" outputID="Line35x3O00" inputPort="0" inputID="Line35x3O002"/>
+            <documentation>
+                <notes>
+INPUT:
+	1. CombinedIdentification.Name
+	2. CombinedIdentification.ProprietaryIdentification</notes>
+            </documentation>
+            <output typeRef="Data Field Dictionary/Subfields/Name and Address" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+        </transform>
+    </localTransform>
+    <localTransform id="O005_ref">
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="4c">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <constant constant="null" id="92"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="false" endID="0" contextRef="Line 35x" id="Line35xO0"/>
+            <transformMethod name="WRAP" y="82" x="211" id="Line35xO00"/>
+            <constant constant="35" id="Line35xO001"/>
+            <constant constant="true" id="Line35xO002"/>
+            <translation outputPort="0" outputID="Line35xO0" inputPort="0" inputID="Line35xO00"/>
+            <translation outputPort="0" outputID="Line35xO00" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="Line35xO00" inputPort="0" inputID="Line35xO001"/>
+            <translation outputPort="2" outputID="Line35xO00" inputPort="0" inputID="Line35xO002"/>
+            <output typeRef="Data Field Dictionary/Subfields/Name and Address" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+        </transform>
+    </localTransform>
+    <localTransform id="O006_ref">
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="4d">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="false" endID="0" contextRef="Line 35x" id="Line35xO0"/>
+            <translation outputPort="0" outputID="Line35xO0" inputPort="0" inputID="I0"/>
+            <output typeRef="Data Field Dictionary/Subfields/Name and Address" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+        </transform>
+    </localTransform>
+    <localTransform id="O007_ref">
+        <documentation>
+            <notes>
+INPUT:
+	1. FinancialInstitutionIdentification.ClearingSystemMemberIdentification
+	2. FinancialInstitutionIdentification.CombinedIdentification.ClearingSystemMemberIdentification
+	3. FinancialInstitutionIdentification.Proprietary
+	4. FinancialInstitutionIdentification.CombinedIdentification.Proprietary
+	5. BIC</notes>
+        </documentation>
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="4e">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <input typeRef="#string" required="false" path="" endID="2"/>
+            <input typeRef="#string" required="false" path="" endID="3"/>
+            <input typeRef="#string" required="false" path="" endID="4"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="true" endID="1" contextRef="" id="I1"/>
+            <contextPath input="true" endID="2" contextRef="" id="I2"/>
+            <contextPath input="true" endID="3" contextRef="" id="I3"/>
+            <contextPath input="true" endID="4" contextRef="" id="I4"/>
+            <contextPath input="false" endID="0" contextRef="Line 35x" id="Line35xO0"/>
+            <globalTransformRef ref="MX_To_MTClearingIdentifier.tfd" y="179" x="225" id="Line35xO00"/>
+            <constant constant="null" id="Line35xO002"/>
+            <translation outputPort="0" outputID="Line35xO0" inputPort="0" inputID="Line35xO00"/>
+            <translation outputPort="0" outputID="Line35xO00" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="Line35xO00" inputPort="0" inputID="I1"/>
+            <translation outputPort="2" outputID="Line35xO00" inputPort="0" inputID="I2"/>
+            <translation outputPort="3" outputID="Line35xO00" inputPort="0" inputID="I3"/>
+            <translation outputPort="4" outputID="Line35xO00" inputPort="0" inputID="I4"/>
+            <documentation>
+                <notes>
+INPUT:
+	1. FinancialInstitutionIdentification.ClearingSystemMemberIdentification
+	2. FinancialInstitutionIdentification.CombinedIdentification.ClearingSystemMemberIdentification
+	3. FinancialInstitutionIdentification.Proprietary
+	4. FinancialInstitutionIdentification.CombinedIdentification.Proprietary
+	5. BIC</notes>
+            </documentation>
+            <output typeRef="Data Field Dictionary/Subfields/Name and Address" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+        </transform>
+    </localTransform>
+    <javaMethod id="O00_ref">
+        <libraryMethod>false</libraryMethod>
+        <methodName>setFinalNameAndAddress</methodName>
+        <input type="Data Field Dictionary/Subfields/Name and Address" role="_1a" path="" model="../SWIFT FIN November 2008 Data Dictionary.dod"/>
+        <input type="Data Field Dictionary/Subfields/Name and Address" role="_2" path="" model="../SWIFT FIN November 2008 Data Dictionary.dod"/>
+        <input type="Data Field Dictionary/Subfields/Name and Address" role="_3" path="" model="../SWIFT FIN November 2008 Data Dictionary.dod"/>
+        <input type="Data Field Dictionary/Subfields/Name and Address" role="_4a" path="" model="../SWIFT FIN November 2008 Data Dictionary.dod"/>
+        <input type="Data Field Dictionary/Subfields/Name and Address" role="_4b" path="" model="../SWIFT FIN November 2008 Data Dictionary.dod"/>
+        <input type="Data Field Dictionary/Subfields/Name and Address" role="_4c" path="" model="../SWIFT FIN November 2008 Data Dictionary.dod"/>
+        <input type="Data Field Dictionary/Subfields/Name and Address" role="_4d" path="" model="../SWIFT FIN November 2008 Data Dictionary.dod"/>
+        <input type="Data Field Dictionary/Subfields/Name and Address" role="_4e" path="" model="../SWIFT FIN November 2008 Data Dictionary.dod"/>
+        <input type="#any" role="FinancialInstitutionIdentificationNameAndAddress"/>
+        <input type="#any" role="FinancialInstitutionIdentificationProprietaryIdentification"/>
+        <input type="#any" role="FCName"/>
+        <input type="#any" role="FCPostalAddress"/>
+        <input type="#any" role="FCProprietaryIdentification"/>
+        <input type="#any" role="FCClearingSystemMemberIdentification"/>
+        <input type="#any" role="FinancialInstitutionIdentificationClearingSystemMemberIdentification"/>
+        <output type="Data Field Dictionary/Subfields/Name and Address" path="" model="../SWIFT FIN November 2008 Data Dictionary.dod"/>
+        <code>if (FinancialInstitutionIdentificationClearingSystemMemberIdentification != null) &#xD;
+	return _1a;&#xD;
+else if (FinancialInstitutionIdentificationNameAndAddress != null) &#xD;
+	return _2;&#xD;
+else if (FinancialInstitutionIdentificationProprietaryIdentification != null) &#xD;
+	return _3;&#xD;
+else if (FCName != null &amp;&amp; FCPostalAddress != null) &#xD;
+	return _4a;&#xD;
+else if (FCName != null &amp;&amp; FCProprietaryIdentification != null) &#xD;
+	return _4b;&#xD;
+else if (FCName != null) &#xD;
+    return _4c;&#xD;
+else if(FCProprietaryIdentification != null) &#xD;
+	return _4d;&#xD;
+else if(FCClearingSystemMemberIdentification != null)   &#xD;
+	return _4e;&#xD;
+else &#xD;
+    return null;&#xD;
+</code>
+    </javaMethod>
+</transform>

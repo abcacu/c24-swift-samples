@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.7" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTAccount.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#string" required="false" path="" endID="1"/>
+    <input typeRef="#string" required="false" path="" endID="2"/>
+    <input typeRef="#string" required="false" path="" endID="3"/>
+    <transformMethod type="#string" name="IF" y="496" x="521" id="8"/>
+    <transformMethod name="STARTSWITH" y="347" x="105" id="9"/>
+    <transformMethod name="LENGTH" y="440" x="59" id="10"/>
+    <transformMethod name="AND" y="396" x="211" id="11"/>
+    <transformMethod name="EQUALS" y="488" x="130" id="12"/>
+    <constant constant="CH" id="14"/>
+    <constant constant="8" id="15"/>
+    <transformMethod name="CONCAT" y="557" x="281" id="16"/>
+    <constant constant="/" id="17"/>
+    <transformMethod name="EXISTS" y="74" x="432" id="18"/>
+    <transformMethod name="EXISTS" y="177" x="505" id="20"/>
+    <transformMethod name="EXISTS" y="259" x="400" id="22"/>
+    <transformMethod name="UNION" y="109" x="691" id="24"/>
+    <constant constant="null" id="0"/>
+    <transformMethod name="UNION" y="427" x="684" id="25"/>
+    <transformMethod name="FIRST" y="264" x="830" id="26"/>
+    <transformMethod name="UNION" y="327" x="740" id="27"/>
+    <contextPath input="true" endID="0" contextRef="" id="2"/>
+    <contextPath input="true" endID="1" contextRef="" id="5"/>
+    <contextPath input="true" endID="2" contextRef="" id="6"/>
+    <contextPath input="true" endID="3" contextRef="" id="13"/>
+    <transformMethod type="Data Field Dictionary/Subfields/Party Identifier" name="IF" model="../SWIFT FIN November 2008 Data Dictionary.dod" y="88" x="557" id="19"/>
+    <transformMethod type="Data Field Dictionary/Subfields/Party Identifier" name="IF" model="../SWIFT FIN November 2008 Data Dictionary.dod" y="239" x="584" id="21"/>
+    <transformMethod type="Data Field Dictionary/Subfields/Party Identifier" name="IF" model="../SWIFT FIN November 2008 Data Dictionary.dod" y="359" x="592" id="23"/>
+    <contextPath input="false" endID="0" contextRef="" id="7"/>
+    <translation outputPort="0" outputID="11" inputPort="0" inputID="9"/>
+    <translation outputPort="1" outputID="11" inputPort="0" inputID="12"/>
+    <translation outputPort="0" outputID="8" inputPort="0" inputID="11"/>
+    <translation outputPort="1" outputID="9" inputPort="0" inputID="14"/>
+    <translation outputPort="0" outputID="12" inputPort="0" inputID="10"/>
+    <translation outputPort="1" outputID="12" inputPort="0" inputID="15"/>
+    <translation outputPort="0" outputID="16" inputPort="0" inputID="17"/>
+    <translation outputPort="1" outputID="8" inputPort="0" inputID="16"/>
+    <translation outputPort="1" outputID="25" inputPort="0" inputID="8"/>
+    <translation outputPort="1" outputID="27" inputPort="0" inputID="25"/>
+    <translation outputPort="0" outputID="27" inputPort="0" inputID="24"/>
+    <translation outputPort="0" outputID="26" inputPort="0" inputID="27"/>
+    <translation outputPort="0" outputID="10" inputPort="0" inputID="13"/>
+    <translation outputPort="0" outputID="9" inputPort="0" inputID="13"/>
+    <translation outputPort="1" outputID="16" inputPort="0" inputID="13"/>
+    <translation outputPort="2" outputID="8" inputPort="0" inputID="13"/>
+    <translation outputPort="0" outputID="18" inputPort="0" inputID="2"/>
+    <translation outputPort="0" outputID="19" inputPort="0" inputID="18"/>
+    <translation outputPort="1" outputID="19" inputPort="0" inputID="2"/>
+    <translation outputPort="0" outputID="21" inputPort="0" inputID="20"/>
+    <translation outputPort="0" outputID="23" inputPort="0" inputID="22"/>
+    <translation outputPort="0" outputID="20" inputPort="0" inputID="5"/>
+    <translation outputPort="1" outputID="21" inputPort="0" inputID="5"/>
+    <translation outputPort="0" outputID="22" inputPort="0" inputID="6"/>
+    <translation outputPort="1" outputID="23" inputPort="0" inputID="6"/>
+    <translation outputPort="0" outputID="24" inputPort="0" inputID="19"/>
+    <translation outputPort="2" outputID="19" inputPort="0" inputID="0"/>
+    <translation outputPort="1" outputID="24" inputPort="0" inputID="21"/>
+    <translation outputPort="2" outputID="21" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="25" inputPort="0" inputID="23"/>
+    <translation outputPort="2" outputID="23" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="7" inputPort="0" inputID="26"/>
+    <nextId>28</nextId>
+    <documentation>
+        <notes>
+INPUT:
+	1. IBAN
+	2. BBAN
+	3. UPIC
+	4. Identification.ProprietaryAccount.Identification
+
+Business description
+	The function translates an MX account to an MT account. The MX account typed CashAccount7 contains a mandatory account identification element and optional
+	account type, currency and name elements. This function translates the MX account identification. Type, Currency and Name elements are truncated.
+
+Format
+	MX_To_MTAccount(MXAccount ; MTAccount)
+
+Input
+	MXAccount: the entire structure of the MX account identification typed CashAccount7.
+
+Output
+	MTAccount: the account in the MT format (/34x).
+
+Preconditions
+	None.</notes>
+    </documentation>
+    <output typeRef="Data Field Dictionary/Subfields/Party Identifier" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+</transform>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTPostalAddress.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#string" required="false" path="" endID="1"/>
+    <input typeRef="#string" required="false" path="" endID="2"/>
+    <input typeRef="#string" required="false" path="" endID="3"/>
+    <input typeRef="#string" required="false" path="" endID="4"/>
+    <input typeRef="#string" required="false" path="" endID="5"/>
+    <input typeRef="#string" required="false" path="" endID="6"/>
+    <contextPath input="true" endID="0" contextRef="" id="I0"/>
+    <contextPath input="true" endID="1" contextRef="" id="I1"/>
+    <contextPath input="true" endID="2" contextRef="" id="I2"/>
+    <contextPath input="true" endID="3" contextRef="" id="I3"/>
+    <contextPath input="true" endID="4" contextRef="" id="I4"/>
+    <contextPath input="true" endID="5" contextRef="" id="I5"/>
+    <contextPath input="true" endID="6" contextRef="" id="I6"/>
+    <contextPath input="false" endID="0" contextRef="" id="O0"/>
+    <localTransformRef refId="O00_ref" id="O00"/>
+    <contextPath input="false" endID="1" contextRef="" id="O1"/>
+    <contextPath input="false" endID="2" contextRef="" id="O2"/>
+    <localTransformRef refId="O20_ref" id="O20"/>
+    <translation outputPort="0" outputID="O0" inputPort="0" inputID="O00"/>
+    <translation outputPort="0" outputID="O00" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="O00" inputPort="0" inputID="I1"/>
+    <translation outputPort="2" outputID="O00" inputPort="0" inputID="I2"/>
+    <translation outputPort="3" outputID="O00" inputPort="0" inputID="I3"/>
+    <translation outputPort="0" outputID="O1" inputPort="1" inputID="O00"/>
+    <translation outputPort="0" outputID="O2" inputPort="0" inputID="O20"/>
+    <translation outputPort="0" outputID="O20" inputPort="0" inputID="I4"/>
+    <translation outputPort="1" outputID="O20" inputPort="0" inputID="I5"/>
+    <translation outputPort="2" outputID="O20" inputPort="0" inputID="I6"/>
+    <documentation>
+        <notes>
+INPUT: 	
+	1. AddressLine[1], 
+	2. AddressLine[2], 
+	3. StreetName, 
+	4. BuildingNumber, 
+	5. PostCode, 
+	6. TownName,
+	7. Country
+
+
+
+
+
+
+
+
+Business description
+	The function translates an MX postal address to MT address lines in an MTNameAndAddress field (format 4*35x).
+
+	The MX address typed PostalAddress1 contains the optional elements AddressType, AddressLine, StreetName, BuildingNumber, PostCode, TownName,
+	CountrySubdivision and a mandatory Country element. This function translates:
+
+	• the mandatory Country and optional TownName to 1 MT address line. If within the length boundaries of the line, a Postcode when present is also added
+	• either AddressLine (up to 2 occurrences) or Streetname + BuildingNumber are translated to a maximum of 2 MT address lines The MX elements AddressType 
+	   and CountrySubdivision are truncated.
+Format
+	MX_To_MTPostalAddress(MXPostalAddress ; MTCountryTown, MTAddressLine[1], MTAddressLine[2])
+
+Input
+	MXPostalAddress: the entire structure of the MX address typed PostalAddress1.
+
+Output
+	MTCountryTown: country and optional town and post code in an MT format (35x). MTAddressLine[n]: address line in MT format (35x).
+
+Preconditions
+	None.</notes>
+    </documentation>
+    <output typeRef="Data Field Dictionary/Subfields/Line 35x" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <output typeRef="Data Field Dictionary/Subfields/Line 35x" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="1"/>
+    <output typeRef="Data Field Dictionary/Subfields/Line 35x" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="2"/>
+    <localTransform id="O00_ref">
+        <documentation>
+            <notes>
+INPUT
+	1. Address Line 1
+	2. Address line 2
+	3. Street Name
+	4. Building Number</notes>
+        </documentation>
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="Set AddressLine 1 and 2">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <input typeRef="#string" required="false" path="" endID="2"/>
+            <input typeRef="#string" required="false" path="" endID="3"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="true" endID="1" contextRef="" id="I1"/>
+            <contextPath input="true" endID="2" contextRef="" id="I2"/>
+            <contextPath input="true" endID="3" contextRef="" id="I3"/>
+            <contextPath input="false" endID="0" contextRef="" id="O0"/>
+            <transformMethod type="#string" name="IF" id="O00"/>
+            <transformMethod name="AND" id="O000"/>
+            <transformMethod name="NOT" id="O0000"/>
+            <transformMethod name="EXISTS" id="O00000"/>
+            <transformMethod name="EXISTS" id="O0001"/>
+            <transformMethod name="SUBSTRING" id="O001"/>
+            <transformMethod name="CONCAT" id="O0010"/>
+            <transformMethod name="CONCAT" id="O00100"/>
+            <constant constant=" " id="O001001"/>
+            <constant constant="0" id="O0011"/>
+            <constant constant="35" id="O0012"/>
+            <transformMethod type="#string" name="IF" id="O002"/>
+            <transformMethod name="GREATERTHAN" id="O0020"/>
+            <transformMethod name="LENGTH" id="O00200"/>
+            <constant constant="35" id="O00201"/>
+            <transformMethod name="SUBSTRING" id="O0021"/>
+            <constant constant="0" id="O00211"/>
+            <constant constant="35" id="O00212"/>
+            <contextPath input="false" endID="1" contextRef="" id="O1"/>
+            <transformMethod type="#string" name="IF" id="O10"/>
+            <transformMethod name="AND" id="O100"/>
+            <transformMethod name="NOTEXISTS" id="O1000"/>
+            <transformMethod type="#string" name="IF" id="O10000"/>
+            <transformMethod name="SUBSTRING" id="O100001"/>
+            <constant constant="35" id="O1000011"/>
+            <constant constant="-1" id="O1000012"/>
+            <transformMethod name="SUBSTRING" id="O100002"/>
+            <constant constant="0" id="O1000021"/>
+            <constant constant="35" id="O1000022"/>
+            <transformMethod name="GREATERTHAN" id="O1001"/>
+            <transformMethod name="LENGTH" id="O10010"/>
+            <constant constant="35" id="O10011"/>
+            <transformMethod name="SUBSTRING" id="O101"/>
+            <constant constant="35" id="O1011"/>
+            <constant constant="-1" id="O1012"/>
+            <translation outputPort="0" outputID="O0" inputPort="0" inputID="O00"/>
+            <translation outputPort="0" outputID="O00" inputPort="0" inputID="O000"/>
+            <translation outputPort="0" outputID="O000" inputPort="0" inputID="O0000"/>
+            <translation outputPort="0" outputID="O0000" inputPort="0" inputID="O00000"/>
+            <translation outputPort="0" outputID="O00000" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="O000" inputPort="0" inputID="O0001"/>
+            <translation outputPort="0" outputID="O0001" inputPort="0" inputID="I2"/>
+            <translation outputPort="1" outputID="O00" inputPort="0" inputID="O001"/>
+            <translation outputPort="0" outputID="O001" inputPort="0" inputID="O0010"/>
+            <translation outputPort="0" outputID="O0010" inputPort="0" inputID="O00100"/>
+            <translation outputPort="0" outputID="O00100" inputPort="0" inputID="I2"/>
+            <translation outputPort="1" outputID="O00100" inputPort="0" inputID="O001001"/>
+            <translation outputPort="1" outputID="O0010" inputPort="0" inputID="I3"/>
+            <translation outputPort="1" outputID="O001" inputPort="0" inputID="O0011"/>
+            <translation outputPort="2" outputID="O001" inputPort="0" inputID="O0012"/>
+            <translation outputPort="2" outputID="O00" inputPort="0" inputID="O002"/>
+            <translation outputPort="0" outputID="O002" inputPort="0" inputID="O0020"/>
+            <translation outputPort="0" outputID="O0020" inputPort="0" inputID="O00200"/>
+            <translation outputPort="0" outputID="O00200" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="O0020" inputPort="0" inputID="O00201"/>
+            <translation outputPort="1" outputID="O002" inputPort="0" inputID="O0021"/>
+            <translation outputPort="0" outputID="O0021" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="O0021" inputPort="0" inputID="O00211"/>
+            <translation outputPort="2" outputID="O0021" inputPort="0" inputID="O00212"/>
+            <translation outputPort="2" outputID="O002" inputPort="0" inputID="I0"/>
+            <translation outputPort="0" outputID="O1" inputPort="0" inputID="O10"/>
+            <translation outputPort="0" outputID="O10" inputPort="0" inputID="O100"/>
+            <translation outputPort="0" outputID="O100" inputPort="0" inputID="O1000"/>
+            <translation outputPort="0" outputID="O1000" inputPort="0" inputID="O10000"/>
+            <translation outputPort="0" outputID="O10000" inputPort="0" inputID="O0020"/>
+            <translation outputPort="1" outputID="O10000" inputPort="0" inputID="O100001"/>
+            <translation outputPort="0" outputID="O100001" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="O100001" inputPort="0" inputID="O1000011"/>
+            <translation outputPort="2" outputID="O100001" inputPort="0" inputID="O1000012"/>
+            <translation outputPort="2" outputID="O10000" inputPort="0" inputID="O100002"/>
+            <translation outputPort="0" outputID="O100002" inputPort="0" inputID="I1"/>
+            <translation outputPort="1" outputID="O100002" inputPort="0" inputID="O1000021"/>
+            <translation outputPort="2" outputID="O100002" inputPort="0" inputID="O1000022"/>
+            <translation outputPort="1" outputID="O100" inputPort="0" inputID="O1001"/>
+            <translation outputPort="0" outputID="O1001" inputPort="0" inputID="O10010"/>
+            <translation outputPort="0" outputID="O10010" inputPort="0" inputID="O0010"/>
+            <translation outputPort="1" outputID="O1001" inputPort="0" inputID="O10011"/>
+            <translation outputPort="1" outputID="O10" inputPort="0" inputID="O101"/>
+            <translation outputPort="0" outputID="O101" inputPort="0" inputID="O0010"/>
+            <translation outputPort="1" outputID="O101" inputPort="0" inputID="O1011"/>
+            <translation outputPort="2" outputID="O101" inputPort="0" inputID="O1012"/>
+            <translation outputPort="2" outputID="O10" inputPort="0" inputID="O10000"/>
+            <documentation>
+                <notes>
+INPUT
+	1. Address Line 1
+	2. Address line 2
+	3. Street Name
+	4. Building Number</notes>
+            </documentation>
+            <output typeRef="Data Field Dictionary/Subfields/Line 35x" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+            <output typeRef="Data Field Dictionary/Subfields/Line 35x" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="1"/>
+        </transform>
+    </localTransform>
+    <localTransform id="O20_ref">
+        <documentation>
+            <notes>INPUT:
+	1. Post Code
+	2. Town
+	3  Country</notes>
+        </documentation>
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="Set Country - Town - Post Code">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <input typeRef="#string" required="false" path="" endID="2"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="true" endID="1" contextRef="" id="I1"/>
+            <contextPath input="true" endID="2" contextRef="" id="I2"/>
+            <contextPath input="false" endID="0" contextRef="" id="O0"/>
+            <javaMethodRef refId="O00_ref" id="O00"/>
+            <translation outputPort="0" outputID="O0" inputPort="0" inputID="O00"/>
+            <translation outputPort="0" outputID="O00" inputPort="0" inputID="I2"/>
+            <translation outputPort="1" outputID="O00" inputPort="0" inputID="I1"/>
+            <translation outputPort="2" outputID="O00" inputPort="0" inputID="I0"/>
+            <documentation>
+                <notes>INPUT:
+	1. Post Code
+	2. Town
+	3  Country</notes>
+            </documentation>
+            <output typeRef="Data Field Dictionary/Subfields/Line 35x" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+            <javaMethod id="O00_ref">
+                <libraryMethod>false</libraryMethod>
+                <methodName>setCountryTownPostCode</methodName>
+                <input type="#string" role="country"/>
+                <input type="#string" role="town"/>
+                <input type="#string" role="postCode"/>
+                <output type="#string"/>
+                <code>String combined = country;&#xD;
+&#xD;
+if (town != null)&#xD;
+    combined = combined +&quot;/&quot;+town;&#xD;
+&#xD;
+if (postCode != null)&#xD;
+    combined = combined +&quot;/&quot;+postCode;&#xD;
+    &#xD;
+&#xD;
+if (town != null &amp;&amp; combined.length() &gt; 35) &#xD;
+	/*PostCode ignored. Output string restricted to 35 characters*/  &#xD;
+	combined = country+&quot;/&quot;+town.substring(0, 33);&#xD;
+&#xD;
+return combined;&#xD;
+</code>
+            </javaMethod>
+        </transform>
+    </localTransform>
+</transform>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.3" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTCurrencyAmount.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#number_decimal" required="false" path="" endID="1"/>
+    <contextPath input="true" endID="0" contextRef="" id="1"/>
+    <contextPath input="true" endID="1" contextRef="" id="6"/>
+    <contextPath input="false" endID="0" contextRef="Currency" id="2"/>
+    <contextPath input="false" endID="0" contextRef="Amount" id="4"/>
+    <translation outputPort="0" outputID="2" inputPort="0" inputID="1"/>
+    <translation outputPort="0" outputID="4" inputPort="0" inputID="6"/>
+    <nextId>7</nextId>
+    <documentation>
+        <notes>
+INPUT:
+	1. Currency
+	2. Amount
+
+Business description
+	The function translates an MX amount with currency embedded as an XML attribute to:
+		• an MT currency by extracting the currency of the XML attribute
+		• an MT amount by replacing the decimal separator ‘.’ by a “,” in the MX amount (if decimal separator “.” is present in the source MX amount) or by adding a “,” to the
+		   end of the MX amount (if no decimal separator “.” is present in the source MX amount).
+
+		   Insignificant zeroes -if any- are deleted.
+
+Format
+	MX_To_MTCurrencyAmount(MXAmount ; MTCurrency, MTAmount)
+
+Input
+	MXAmount: amount in the MX message typed CurrencyAndAmount expressed as a positive value (data type does not allow a sign) with maximum 18digits, maximum 5
+	fraction digits. The decimal separator “.” is optional, integer values are allowed. The currency is embedded as and XML attribute.
+
+Output
+	MTCurrency: currency in the MT message expressed as 3!a MTAmount: amount in the MT message expressed as 15d (up to 15 characters including the mandatory 
+	decimal separator “,” with the integer part containing at least one character)
+
+Preconditions
+	It is assumed that both MT and MX currencies are either active or active and historic. If it is not the case, validation problem will be expected when the target is more constrained.
+	The same level of validation on MT and MX is requested to check pairs of (currency, amount) in terms of allowed decimals number.
+	The MX amount must be restricted to 14 meaningful digits.</notes>
+    </documentation>
+    <output typeRef="Data Field Dictionary/Subfields/Currency Amount" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+</transform>

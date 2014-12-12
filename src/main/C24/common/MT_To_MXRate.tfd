@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.2" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXRate.tfd">
+    <input typeRef="#number_decimal" required="false" path="" endID="0"/>
+    <transformMethod name="ABS" y="34" x="196" id="1"/>
+    <contextPath input="true" endID="0" contextRef="" id="2"/>
+    <contextPath input="false" endID="0" contextRef="" id="3"/>
+    <translation outputPort="0" outputID="1" inputPort="0" inputID="2"/>
+    <translation outputPort="0" outputID="3" inputPort="0" inputID="1"/>
+    <nextId>4</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXRate&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates an MT (exchange) rate to an MX (exchange) rate by replacing the decimal separator “,” by a “.”. If the MT rate ends with a “,” then the decimal separator is dropped and the translated MX rate will be an integer. Insignificant zeroes -if any- are deleted.
+
+&lt;b&gt;Format&lt;/b&gt;
+&lt;tt&gt;MT_To_MXRate(MTRate ; MXRate)&lt;/tt&gt;
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MTRate&lt;/tt&gt;: (exchange) rate in the MT message expressed as 12d (up to 12 characters including the mandatory decimal separator “,”)
+
+&lt;b&gt;Output&lt;/b&gt;
+&lt;tt&gt;MXRate&lt;/tt&gt;: (exchange) rate in the MX message typed BaseOneRate with maximum 11 digits, maximum 10 fraction digits and an optional decimal separator “.”
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/* Rate is a local variable */
+/* Replace the decimal separator “,” */
+Rate = ReplacePattern(MTRate, “,”, “.”)
+/* Delete insignificant zeroes at the left and right */
+Rate = TrimLeft(Rate, “0”)
+Rate = TrimRight(Rate, “0”)
+/* Check whether the rate has a fractional part. If not, the decimal separator is deleted. Position is a local variable and indicates the position of the last character */
+Postition = Length(Rate)
+IF Substring(Rate, Position) = “.”
+    MXRate = DeletePattern(Rate, “.”)
+ELSE
+    MXRate = Rate
+ENDIF
+&lt;/pre&gt;</notes>
+    </documentation>
+    <output typeRef="#number_decimal" required="false" path="" endID="0"/>
+</transform>

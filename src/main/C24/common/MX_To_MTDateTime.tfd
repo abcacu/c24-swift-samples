@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.2" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTDateTime.tfd">
+    <input typeRef="#date_datetime" required="false" path="" endID="0"/>
+    <transformMethod type="#date_generic" name="CONVERTDATE" y="47" x="298" id="3"/>
+    <contextPath input="true" endID="0" contextRef="" id="1"/>
+    <contextPath input="false" endID="0" contextRef="" id="2"/>
+    <translation outputPort="0" outputID="3" inputPort="0" inputID="1"/>
+    <translation outputPort="0" outputID="2" inputPort="0" inputID="3"/>
+    <nextId>4</nextId>
+    <documentation>
+        <notes>INPUT:
+1. Date / Time
+
+Business description
+The MX_To_MTDateTime function translates a date time represented by the format
+“CCYY-MM-DDTHH:MM:SS[.nnn][+/- offset to UTC]” where “T” is the date/time
+separator to a date time with format “CCYYMMDDHHMMSS”. Fractional seconds and
+time offset are ignored in the output, if present in the input.
+
+Format
+MX_To_MTDateTime(MXDateTime, MTDateTime)
+
+Input
+MXDateTime is the input/source date time expressed as “CCYY-MMDDTHH:
+MM:SS[.nnn][+/- offset to UTC]” where the offset to UTC is represented by
+HH:MM.
+
+Output
+MTDateTime is the output/target date expressed as “CCYYMMDDHHMMSS”
+
+Preconditions
+None.</notes>
+    </documentation>
+    <output typeRef="#date_generic" required="false" path="" endID="0"/>
+</transform>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.4" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXDateTimeOffset.tfd">
+    <input typeRef="#date_generic" required="false" path="" endID="0"/>
+    <input typeRef="#date_generic" required="false" path="" endID="1"/>
+    <input typeRef="#string" required="false" path="" endID="2"/>
+    <input typeRef="#date_generic" required="false" path="" endID="3"/>
+    <transformMethod name="DATETOSTRING" y="90" x="188" id="1"/>
+    <transformMethod name="DATETOSTRING" y="284" x="139" id="2"/>
+    <transformMethod name="CONCAT" y="140" x="529" id="3"/>
+    <transformMethod name="CONCAT" y="245" x="277" id="4"/>
+    <transformMethod name="DATETOSTRING" y="157" x="165" id="5"/>
+    <transformMethod name="CONCAT" y="197" x="399" id="6"/>
+    <constant constant="HH:mm" id="7"/>
+    <constant constant="HH:mm:00" id="8"/>
+    <constant constant="yyyy-MM-dd'T'" id="9"/>
+    <contextPath input="true" endID="0" contextRef="" id="10"/>
+    <contextPath input="true" endID="1" contextRef="" id="11"/>
+    <contextPath input="true" endID="2" contextRef="" id="12"/>
+    <contextPath input="true" endID="3" contextRef="" id="13"/>
+    <transformMethod type="#date_datetime" name="FROMSTRING" y="90" x="674" id="18"/>
+    <contextPath input="false" endID="0" contextRef="" id="17"/>
+    <translation outputPort="1" outputID="4" inputPort="0" inputID="2"/>
+    <translation outputPort="1" outputID="6" inputPort="0" inputID="4"/>
+    <translation outputPort="0" outputID="6" inputPort="0" inputID="5"/>
+    <translation outputPort="1" outputID="2" inputPort="0" inputID="7"/>
+    <translation outputPort="1" outputID="5" inputPort="0" inputID="8"/>
+    <translation outputPort="1" outputID="1" inputPort="0" inputID="9"/>
+    <translation outputPort="1" outputID="3" inputPort="0" inputID="6"/>
+    <translation outputPort="0" outputID="3" inputPort="0" inputID="1"/>
+    <translation outputPort="0" outputID="1" inputPort="0" inputID="10"/>
+    <translation outputPort="0" outputID="5" inputPort="0" inputID="11"/>
+    <translation outputPort="0" outputID="4" inputPort="0" inputID="12"/>
+    <translation outputPort="0" outputID="2" inputPort="0" inputID="13"/>
+    <translation outputPort="0" outputID="18" inputPort="0" inputID="3"/>
+    <translation outputPort="0" outputID="17" inputPort="0" inputID="18"/>
+    <nextId>19</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXDateTimeOffset&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates an MT date expressed as [YY]YYMMDD and an MT time with offset expressed as “HHMM+/-HHMM” to an MX date and time with offset expressed as “YYYY-MM-DDTHH:MM:SS+/-HH:MM” by:
+&lt;li&gt;adding the century if absent and introducing the “-“ separator between year, month and date MT to MX Translation Rule Descriptions 28 March 2008 63&lt;/li&gt;
+&lt;li&gt;introducing the “T” separator between date and time with offset&lt;/li&gt;
+&lt;li&gt;adding the seconds to the time and introducing the “:“separator between hours, minutes and seconds&lt;/li&gt;
+&lt;li&gt;adding the separator “:” between hours and minutes to the source offset.&lt;/li&gt;
+
+&lt;b&gt;Format&lt;/b&gt;
+MT_To_MXDateTimeOffset(MTDate, MTTime, MTSign, MTOffset ; MXDateTime)
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MTDate&lt;/tt&gt;: date in the MT message expressed as “[YY]YYMMDD” where [YY] represents the optional centure and YYMMDD the year, month and day
+&lt;tt&gt;MTTime&lt;/tt&gt;: time in the MT message expressed as “HHMM” (hours and minutes)
+&lt;tt&gt;MTSign&lt;/tt&gt;: offset sign in the MT message expressed as + or -
+&lt;tt&gt;MTOffset&lt;/tt&gt;: offset time in the MT expressed as “HHMM” (hours and minutes)
+
+&lt;b&gt;Output&lt;/b&gt;
+MXDateTime: date and time in the MX message typed ISODateTime expressed as “YYYY-MM-DDTHH:MM:SS+/-HH:MM
+where
+&lt;li&gt;&quot;YYYY-MM-DD&quot;&lt;/tt&gt; is the date&lt;/li&gt;
+&lt;li&gt;&quot;T&quot; is the date/time separator&lt;/li&gt;
+&lt;li&gt;&quot;HH:MM:SS&quot; is the time&lt;/li&gt;
+&lt;li&gt;&quot;+&quot;/&quot;-&quot; is the offset sign&lt;/li&gt;
+&lt;li&gt;&quot;HH:MM&quot; is the offset time&lt;/li&gt;
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;tt&gt;/* The function calls sub-functions MT_To_MXDate and MT_To_MXTimeOffset to translate the date and time with offset formats. MXDate and MXTimeOffset are local variables */
+MXDate = MT_To_MXDate(MTDate)
+MXTimeOffset = MT_To_MXTimeOffset(MTTime, MTSign, MTOffset)
+/* Build output string */
+MXDateTime = Concatenate(MXDate, “T”, MXTimeOffset)&lt;/tt&gt;</notes>
+    </documentation>
+    <output typeRef="#date_datetime" required="false" path="" endID="0"/>
+</transform>

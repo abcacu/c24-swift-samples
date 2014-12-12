@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.10" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXFinancialInstitutionAccount-53B.tfd">
+    <input typeRef="Data Field Dictionary/Subfields/Field 5xB" required="true" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <transformMethod name="SUBSTRING" y="239" x="280" id="5"/>
+    <transformMethod name="EQUALS" y="89" x="267" id="6"/>
+    <transformMethod type="#string" name="IF" y="104" x="511" id="7"/>
+    <transformMethod type="#string" name="IF" y="194" x="511" id="8"/>
+    <transformMethod name="EQUALS" y="28" x="272" id="9"/>
+    <transformMethod name="STARTSWITH" y="169" x="287" id="10"/>
+    <transformMethod name="OR" y="59" x="393" id="11"/>
+    <constant constant="C" id="12"/>
+    <constant constant="D" id="13"/>
+    <constant constant="null" id="0"/>
+    <constant constant="-1" id="16"/>
+    <transformMethod name="UNION" y="141" x="615" id="21"/>
+    <constant constant="1" id="23"/>
+    <transformMethod name="UNION" y="220" x="90" id="24"/>
+    <transformMethod name="UNION" y="46" x="83" id="27"/>
+    <transformMethod name="UNION" y="116" x="84" id="33"/>
+    <globalTransformRef ref="MT_To_MXPartyAccount.tfd" y="135" x="772" id="1"/>
+    <contextPath input="false" endID="0" contextRef="" id="3"/>
+    <contextPath input="false" endID="1" contextRef="" id="4"/>
+    <contextPath input="true" endID="0" contextRef="Party_Location/Party Identifier" id="25"/>
+    <contextPath input="true" endID="0" contextRef="Party Identifier" id="26"/>
+    <contextPath input="true" endID="0" contextRef="Debit\Credt_Party_Location/Debit\Credit and Party/Debit\Credit Indicator" id="28"/>
+    <contextPath input="true" endID="0" contextRef="Debit\Credit and Party/Debit\Credit Indicator" id="29"/>
+    <contextPath input="true" endID="0" contextRef="Debit\Credt_Party_Location/Debit\Credit and Party/Party Identifier" id="34"/>
+    <contextPath input="true" endID="0" contextRef="Debit\Credit and Party/Party Identifier" id="35"/>
+    <constant constant="&quot;/CH&quot;" id="36"/>
+    <translation outputPort="1" outputID="9" inputPort="0" inputID="12"/>
+    <translation outputPort="1" outputID="6" inputPort="0" inputID="13"/>
+    <translation outputPort="0" outputID="11" inputPort="0" inputID="9"/>
+    <translation outputPort="1" outputID="11" inputPort="0" inputID="6"/>
+    <translation outputPort="0" outputID="7" inputPort="0" inputID="11"/>
+    <translation outputPort="2" outputID="7" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="8" inputPort="0" inputID="10"/>
+    <translation outputPort="2" outputID="5" inputPort="0" inputID="16"/>
+    <translation outputPort="1" outputID="8" inputPort="0" inputID="5"/>
+    <translation outputPort="0" outputID="21" inputPort="0" inputID="7"/>
+    <translation outputPort="1" outputID="21" inputPort="0" inputID="8"/>
+    <translation outputPort="0" outputID="1" inputPort="0" inputID="21"/>
+    <translation outputPort="1" outputID="5" inputPort="0" inputID="23"/>
+    <translation outputPort="0" outputID="10" inputPort="0" inputID="24"/>
+    <translation outputPort="0" outputID="5" inputPort="0" inputID="24"/>
+    <translation outputPort="2" outputID="8" inputPort="0" inputID="24"/>
+    <translation outputPort="0" outputID="9" inputPort="0" inputID="27"/>
+    <translation outputPort="0" outputID="6" inputPort="0" inputID="27"/>
+    <translation outputPort="1" outputID="7" inputPort="0" inputID="33"/>
+    <translation outputPort="0" outputID="3" inputPort="0" inputID="1"/>
+    <translation outputPort="0" outputID="4" inputPort="1" inputID="1"/>
+    <translation outputPort="0" outputID="24" inputPort="0" inputID="25"/>
+    <translation outputPort="1" outputID="24" inputPort="0" inputID="26"/>
+    <translation outputPort="0" outputID="27" inputPort="0" inputID="28"/>
+    <translation outputPort="1" outputID="27" inputPort="0" inputID="29"/>
+    <translation outputPort="0" outputID="33" inputPort="0" inputID="34"/>
+    <translation outputPort="1" outputID="33" inputPort="0" inputID="35"/>
+    <translation outputPort="1" outputID="10" inputPort="0" inputID="36"/>
+    <nextId>37</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXFinancialInstitutionAccount&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates an MT financial institution account to an MX account by deleting the slash “/”, the double slash
+'//' (in case of a CHIPS Universal Identifier), the debit indicator and slash “/D/” or the credit indicator and slash
+“/C/” and writing the remainder in the appropriate MX account element after checking whether the account is an IBAN.
+
+&lt;b&gt;Format&lt;/b&gt;
+MT_To_MXFinancialInstitutionAccount(MTPartyIdentifier ; MXAccount)
+
+&lt;b&gt;Input&lt;/b&gt;
+MTPartyIdentifier: financial institution account in the MT format [/1!a]/34x ([ ] indicate optionality).
+
+&lt;b&gt;Output&lt;/b&gt;
+MXAccount: the result of this function -an MX account- is immediately put into the correct MX element inside the target
+component typed CashAccount7.
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/*
+   Check whether debit/credit indicator or a CHIPS Universal Identifier are present and delete depending on the
+   caseindicator and/or slash or double slash. Account is a local variable
+*/
+IF Substring(MTPartyIdentifier, 1, 3) = “/C/” OR “/D/”
+    Account = Substring(MTPartyIdentifier, 4)
+ELSEIF Substring(MTPartyIdentifier, 1, 4) = “//CH”
+    Account = Substring(MTPartyIdentifier, 3)
+ELSE
+    Account = Substring(MTPartyIdenfier, 2)
+ENDIF
+/* Check whether account is IBAN */
+IF IsIBAN(Account)
+    Identification.IBAN = Account
+ELSE
+    Identification.ProprietaryAccount.Identification = Account
+ENDIF
+&lt;/pre&gt;
+</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+    <output typeRef="#string" required="false" path="" endID="1"/>
+</transform>

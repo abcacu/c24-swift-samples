@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.38" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXParty.tfd">
+    <input typeRef="Data Field Dictionary/Subfields/Identifier Code" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <input typeRef="Data Field Dictionary/Subfields/Name and Address" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="1"/>
+    <input typeRef="#string" required="false" path="" endID="2"/>
+    <input typeRef="#string" required="false" path="" endID="3"/>
+    <filterRef refId="3" y="110" x="341" id="5"/>
+    <localTransformRef refId="112" y="261" x="373" id="111"/>
+    <localTransformRef refId="164" y="412" x="388" id="165"/>
+    <contextPath input="false" endID="0" contextRef="" id="12"/>
+    <contextPath input="true" endID="0" contextRef="" id="81"/>
+    <contextPath input="false" endID="1" contextRef="" id="46"/>
+    <contextPath input="true" endID="1" contextRef="" id="67"/>
+    <contextPath input="false" endID="2" contextRef="" id="66"/>
+    <contextPath input="true" endID="2" contextRef="" id="166"/>
+    <contextPath input="true" endID="3" contextRef="" id="167"/>
+    <translation outputPort="0" outputID="12" inputPort="0" inputID="5"/>
+    <translation outputPort="0" outputID="5" inputPort="0" inputID="81"/>
+    <translation outputPort="0" outputID="46" inputPort="0" inputID="165"/>
+    <translation outputPort="0" outputID="111" inputPort="0" inputID="67"/>
+    <translation outputPort="0" outputID="66" inputPort="0" inputID="111"/>
+    <translation outputPort="0" outputID="165" inputPort="0" inputID="166"/>
+    <translation outputPort="1" outputID="165" inputPort="0" inputID="167"/>
+    <nextId>168</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXParty&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The MT_To_MXParty is used to equivalent MX party elements.
+
+&lt;b&gt;Format&lt;/b&gt;
+MT_To_MXParty(MTOption, Subfield1, Subfield2)
+&lt;pre&gt;
+Structure
+    PartyIdentification2Choice
+        BICOrBEI : AnyBICIdentifier
+        ProprietaryIdentification : GenericIdentification1
+        NameAndAddress : NameAndAddress5
+&lt;/pre&gt;
+&lt;b&gt;Input&lt;/b&gt;
+MTOption: the option of the MT field (e.g. for 95R, the option is R) Subfield1 and Subfield2 are defined below.
+
+&lt;b&gt;Output&lt;/b&gt;
+The result of this function is immediately put into the correct MX element inside the target component.
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/* Translation of the MT party into the MX Name and Address party structure.
+In order to cater for the MT fields in the different options, Subfield1 and Subfield2 are defined with the following meaning:
+-Subfield1 contains a party’s BIC or BEI (option P) or DataSource Scheme information (option R) or the party’s name and
+address (option Q). 
+-Subfield2 contains a proprietary code (option R)
+Subfield1 is mandatory in all options, Subfield2 is mandatory in option R only. */
+IF MTOption = “P” THEN
+    BICOrBEI = Subfield1
+ELSEIF MTOption = “Q”
+    /*Copy Subfield1 in the MX Name and Address structure*/
+    NameAndAddress = MT_To_MXPartyName&amp;Address(Subfield1)
+ELSEIF MTOption = “R” THEN
+    /* copy Subfield1 (Data Source Scheme) and Subfield2 (Proprietary Code) in the MX structure */
+    ProprietaryIdentification.Issuer = Subfield1
+    ProprietaryIdentification.Identification = Subfield2
+ENDIF
+&lt;/pre&gt;</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+    <output typeRef="GenericIdentification1" required="false" path="" modelRef="../../SWIFTSolutions/SWIFTNet Funds 4.0/Messages/OrderAndConfirmation/SubsMultOrdrConfnV03 - setr.012.001.03/setr.012.001.03.dod" endID="1"/>
+    <output typeRef="NameAndAddress5" required="false" path="" modelRef="../../SWIFTSolutions/SWIFTNet Funds 4.0/Messages/OrderAndConfirmation/SubsMultOrdrConfnV03 - setr.012.001.03/setr.012.001.03.dod" endID="2"/>
+    <filter id="3">
+        <filter name="Option_P">
+            <input typeRef="Data Field Dictionary/Subfields/Identifier Code" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+            <transformMethod name="EXISTS" y="49" x="271" id="68"/>
+            <transformMethod name="CONCAT" y="410" x="187" id="71"/>
+            <transformMethod name="CONCAT" y="381" x="309" id="72"/>
+            <transformMethod name="CONCAT" y="349" x="442" id="73"/>
+            <transformMethod name="CONCAT" y="310" x="591" id="74"/>
+            <contextPath input="false" endID="0" contextRef="boolean" id="70"/>
+            <contextPath input="false" endID="1" contextRef="any" id="11"/>
+            <contextPath input="true" endID="0" contextRef="" id="69"/>
+            <contextPath input="true" endID="0" contextRef="Bank Code" id="75"/>
+            <contextPath input="true" endID="0" contextRef="Country Code" id="76"/>
+            <contextPath input="true" endID="0" contextRef="Location Code/Location Code 1" id="78"/>
+            <contextPath input="true" endID="0" contextRef="Location Code/Location Code 2" id="79"/>
+            <contextPath input="true" endID="0" contextRef="Branch Code" id="80"/>
+            <translation outputPort="1" outputID="74" inputPort="0" inputID="73"/>
+            <translation outputPort="1" outputID="73" inputPort="0" inputID="72"/>
+            <translation outputPort="1" outputID="72" inputPort="0" inputID="71"/>
+            <translation outputPort="0" outputID="70" inputPort="0" inputID="68"/>
+            <translation outputPort="0" outputID="11" inputPort="0" inputID="74"/>
+            <translation outputPort="0" outputID="68" inputPort="0" inputID="69"/>
+            <translation outputPort="0" outputID="74" inputPort="0" inputID="75"/>
+            <translation outputPort="0" outputID="73" inputPort="0" inputID="76"/>
+            <translation outputPort="0" outputID="72" inputPort="0" inputID="78"/>
+            <translation outputPort="0" outputID="71" inputPort="0" inputID="79"/>
+            <translation outputPort="1" outputID="71" inputPort="0" inputID="80"/>
+            <nextId>0</nextId>
+        </filter>
+    </filter>
+    <localTransform id="112">
+        <transform version="0.0.38" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="setNameAndAddress5">
+            <input typeRef="Data Field Dictionary/Subfields/Name and Address" required="true" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+            <transformMethod name="GREATERTHAN" y="462" x="729" id="114"/>
+            <transformMethod type="#string" name="IF" y="291" x="848" id="115"/>
+            <transformMethod name="INSTANCE" y="292" x="113" id="116"/>
+            <transformMethod name="LAST" y="418" x="105" id="118"/>
+            <transformMethod name="INSTANCE" y="429" x="465" id="119"/>
+            <transformMethod name="SIZE" y="91" x="84" id="120"/>
+            <transformMethod name="AND" y="166" x="695" id="122"/>
+            <transformMethod name="INSTANCE" y="485" x="466" id="123"/>
+            <transformMethod type="#string" name="IF" y="474" x="851" id="124"/>
+            <transformMethod name="LENGTH" y="461" x="584" id="125"/>
+            <transformMethod name="INSTANCE" y="200" x="96" id="128"/>
+            <transformMethod name="EXISTS" y="327" x="579" id="129"/>
+            <transformMethod name="EQUALS" y="270" x="276" id="130"/>
+            <transformMethod name="AND" y="259" x="693" id="131"/>
+            <transformMethod name="INSTANCE" y="375" x="463" id="132"/>
+            <transformMethod type="#string" name="IF" y="195" x="848" id="134"/>
+            <transformMethod name="GREATERTHANOREQUAL" y="172" x="285" id="136"/>
+            <constant constant="0" id="137"/>
+            <constant constant="1" id="138"/>
+            <constant constant="2" id="139"/>
+            <constant constant="null" id="152"/>
+            <constant constant="3" id="141"/>
+            <constant constant="4" id="142"/>
+            <constant constant="1" id="143"/>
+            <constant constant="2" id="144"/>
+            <constant constant="16" id="145"/>
+            <transformMethod name="GREATERTHANOREQUAL" y="29" x="275" id="153"/>
+            <constant constant="1" id="154"/>
+            <transformMethod type="#string" name="IF" y="41" x="475" id="155"/>
+            <transformMethod name="INSTANCE" y="93" x="267" id="157"/>
+            <constant constant="0" id="158"/>
+            <javaMethodRef refId="127" y="419" x="253" id="126"/>
+            <contextPath input="true" endID="0" contextRef="Line 35x" id="146"/>
+            <contextPath input="false" endID="0" contextRef="Adr/TwnNm" id="59"/>
+            <contextPath input="false" endID="0" contextRef="Adr/Ctry" id="60"/>
+            <contextPath input="false" endID="0" contextRef="Adr/PstCd" id="58"/>
+            <contextPath input="false" endID="0" contextRef="Adr/AdrLine[1]" id="56"/>
+            <contextPath input="false" endID="0" contextRef="Adr/AdrLine[2]" id="57"/>
+            <contextPath input="false" endID="0" contextRef="Nm" id="156"/>
+            <translation outputPort="0" outputID="119" inputPort="0" inputID="126"/>
+            <translation outputPort="0" outputID="132" inputPort="0" inputID="126"/>
+            <translation outputPort="1" outputID="132" inputPort="0" inputID="137"/>
+            <translation outputPort="1" outputID="119" inputPort="0" inputID="138"/>
+            <translation outputPort="0" outputID="123" inputPort="0" inputID="126"/>
+            <translation outputPort="1" outputID="123" inputPort="0" inputID="139"/>
+            <translation outputPort="1" outputID="136" inputPort="0" inputID="141"/>
+            <translation outputPort="2" outputID="134" inputPort="0" inputID="152"/>
+            <translation outputPort="2" outputID="115" inputPort="0" inputID="152"/>
+            <translation outputPort="1" outputID="130" inputPort="0" inputID="142"/>
+            <translation outputPort="0" outputID="136" inputPort="0" inputID="120"/>
+            <translation outputPort="0" outputID="130" inputPort="0" inputID="120"/>
+            <translation outputPort="1" outputID="128" inputPort="0" inputID="143"/>
+            <translation outputPort="1" outputID="116" inputPort="0" inputID="144"/>
+            <translation outputPort="0" outputID="129" inputPort="0" inputID="132"/>
+            <translation outputPort="0" outputID="122" inputPort="0" inputID="136"/>
+            <translation outputPort="1" outputID="122" inputPort="0" inputID="129"/>
+            <translation outputPort="0" outputID="134" inputPort="0" inputID="122"/>
+            <translation outputPort="0" outputID="131" inputPort="0" inputID="130"/>
+            <translation outputPort="1" outputID="131" inputPort="0" inputID="129"/>
+            <translation outputPort="0" outputID="115" inputPort="0" inputID="131"/>
+            <translation outputPort="0" outputID="125" inputPort="0" inputID="123"/>
+            <translation outputPort="0" outputID="114" inputPort="0" inputID="125"/>
+            <translation outputPort="1" outputID="114" inputPort="0" inputID="145"/>
+            <translation outputPort="0" outputID="124" inputPort="0" inputID="114"/>
+            <translation outputPort="2" outputID="124" inputPort="0" inputID="123"/>
+            <translation outputPort="1" outputID="124" inputPort="0" inputID="152"/>
+            <translation outputPort="0" outputID="126" inputPort="0" inputID="118"/>
+            <translation outputPort="1" outputID="134" inputPort="0" inputID="128"/>
+            <translation outputPort="1" outputID="115" inputPort="0" inputID="116"/>
+            <translation outputPort="0" outputID="153" inputPort="0" inputID="120"/>
+            <translation outputPort="1" outputID="153" inputPort="0" inputID="154"/>
+            <translation outputPort="0" outputID="155" inputPort="0" inputID="153"/>
+            <translation outputPort="2" outputID="155" inputPort="0" inputID="152"/>
+            <translation outputPort="1" outputID="157" inputPort="0" inputID="158"/>
+            <translation outputPort="1" outputID="155" inputPort="0" inputID="157"/>
+            <translation outputPort="0" outputID="120" inputPort="0" inputID="146"/>
+            <translation outputPort="0" outputID="128" inputPort="0" inputID="146"/>
+            <translation outputPort="0" outputID="116" inputPort="0" inputID="146"/>
+            <translation outputPort="0" outputID="118" inputPort="0" inputID="146"/>
+            <translation outputPort="0" outputID="59" inputPort="0" inputID="119"/>
+            <translation outputPort="0" outputID="60" inputPort="0" inputID="132"/>
+            <translation outputPort="0" outputID="58" inputPort="0" inputID="124"/>
+            <translation outputPort="0" outputID="56" inputPort="0" inputID="134"/>
+            <translation outputPort="0" outputID="57" inputPort="0" inputID="115"/>
+            <translation outputPort="0" outputID="156" inputPort="0" inputID="155"/>
+            <translation outputPort="0" outputID="157" inputPort="0" inputID="146"/>
+            <nextId>0</nextId>
+            <output typeRef="NameAndAddress5" required="false" path="" modelRef="../../SWIFTSolutions/SWIFTNet Funds 4.0/Messages/OrderAndConfirmation/SubsMultOrdrConfnV03 - setr.012.001.03/setr.012.001.03.dod" endID="0"/>
+            <javaMethod id="127">
+                <libraryMethod>false</libraryMethod>
+                <methodName>parseAddressLine</methodName>
+                <input type="#string" role="line"/>
+                <output type="#string[]"/>
+                <code>if (null == line &#xD;
+    || 2 &gt; line.length() &#xD;
+    || (2 &lt; line.length() &amp;&amp; '/' != line.charAt(2))) {&#xD;
+    return null;&#xD;
+}&#xD;
+final java.util.List result = new java.util.ArrayList();&#xD;
+result.add(line.substring(0, 2));&#xD;
+if (2 &lt; line.length()) {&#xD;
+    int pos = line.indexOf('/', 3);&#xD;
+    if (0 &lt; pos) {&#xD;
+        result.add(line.substring(3, pos++));&#xD;
+        result.add(line.substring(pos));&#xD;
+    } else {&#xD;
+        result.add(line.substring(3));&#xD;
+        result.add(null);&#xD;
+    }&#xD;
+}&#xD;
+return (String[]) result.toArray(new String[result.size()]);</code>
+            </javaMethod>
+        </transform>
+    </localTransform>
+    <localTransform id="164">
+        <transform version="0.0.38" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="setProprietaryIdentification">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <transformMethod name="UNION" y="85" x="213" id="90"/>
+            <transformMethod name="GREATERTHAN" y="74" x="482" id="91"/>
+            <transformMethod name="LENGTH" y="54" x="94" id="92"/>
+            <transformMethod name="SUM" y="79" x="324" id="93"/>
+            <transformMethod name="LENGTH" y="114" x="92" id="94"/>
+            <constant constant="35" id="95"/>
+            <transformMethod type="#string" name="IF" y="131" x="620" id="96"/>
+            <constant constant="&quot;&quot;" id="97"/>
+            <contextPath input="true" endID="0" contextRef="" id="39"/>
+            <contextPath input="true" endID="1" contextRef="" id="41"/>
+            <contextPath input="false" endID="0" contextRef="Id" id="42"/>
+            <contextPath input="false" endID="0" contextRef="Issr" id="40"/>
+            <translation outputPort="0" outputID="90" inputPort="0" inputID="92"/>
+            <translation outputPort="1" outputID="90" inputPort="0" inputID="94"/>
+            <translation outputPort="0" outputID="93" inputPort="0" inputID="90"/>
+            <translation outputPort="0" outputID="91" inputPort="0" inputID="93"/>
+            <translation outputPort="1" outputID="91" inputPort="0" inputID="95"/>
+            <translation outputPort="0" outputID="96" inputPort="0" inputID="91"/>
+            <translation outputPort="1" outputID="96" inputPort="0" inputID="97"/>
+            <translation outputPort="0" outputID="92" inputPort="0" inputID="39"/>
+            <translation outputPort="0" outputID="94" inputPort="0" inputID="41"/>
+            <translation outputPort="2" outputID="96" inputPort="0" inputID="39"/>
+            <translation outputPort="0" outputID="42" inputPort="0" inputID="41"/>
+            <translation outputPort="0" outputID="40" inputPort="0" inputID="96"/>
+            <nextId>0</nextId>
+            <output typeRef="GenericIdentification1" required="false" path="" modelRef="../../SWIFTSolutions/SWIFTNet Funds 4.0/Messages/OrderAndConfirmation/SubsMultOrdrConfnV03 - setr.012.001.03/setr.012.001.03.dod" endID="0"/>
+        </transform>
+    </localTransform>
+</transform>

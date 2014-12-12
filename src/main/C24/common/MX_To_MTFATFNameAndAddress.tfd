@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTFATFNameAndAddress.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#string" required="false" path="" endID="1"/>
+    <input typeRef="#string" required="false" path="" endID="2"/>
+    <input typeRef="#string" required="false" path="" endID="3"/>
+    <input typeRef="#string" required="false" path="" endID="4"/>
+    <input typeRef="#string" required="false" path="" endID="5"/>
+    <input typeRef="#string" required="false" path="" endID="6"/>
+    <input typeRef="#string" required="false" path="" endID="7"/>
+    <input typeRef="#date_date" required="false" path="" endID="8"/>
+    <input typeRef="#string" required="false" path="" endID="9"/>
+    <input typeRef="#string" required="false" path="" endID="10"/>
+    <input typeRef="#string" required="false" path="" endID="11"/>
+    <input typeRef="Data Field Dictionary/Subfields/Party Identifier" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="12"/>
+    <input typeRef="#string" required="false" path="" endID="13"/>
+    <input typeRef="#string" required="false" path="" endID="14"/>
+    <constant constant="null" id="151"/>
+    <contextPath input="true" endID="0" contextRef="" id="I0"/>
+    <contextPath input="true" endID="1" contextRef="" id="I1"/>
+    <contextPath input="true" endID="10" contextRef="" id="I10"/>
+    <contextPath input="true" endID="11" contextRef="" id="I11"/>
+    <contextPath input="true" endID="12" contextRef="" id="I12"/>
+    <contextPath input="true" endID="13" contextRef="" id="I13"/>
+    <contextPath input="true" endID="14" contextRef="" id="I14"/>
+    <contextPath input="true" endID="2" contextRef="" id="I2"/>
+    <contextPath input="true" endID="3" contextRef="" id="I3"/>
+    <contextPath input="true" endID="4" contextRef="" id="I4"/>
+    <contextPath input="true" endID="5" contextRef="" id="I5"/>
+    <contextPath input="true" endID="6" contextRef="" id="I6"/>
+    <contextPath input="true" endID="7" contextRef="" id="I7"/>
+    <contextPath input="true" endID="8" contextRef="" id="I8"/>
+    <contextPath input="true" endID="9" contextRef="" id="I9"/>
+    <contextPath input="false" endID="0" contextRef="Name And Address Subfield 2" id="NameAndAddressSubfield2O0"/>
+    <transformMethod name="UNION" id="NameAndAddressSubfield2O00"/>
+    <transformMethod name="UNION" id="NameAndAddressSubfield2O000"/>
+    <transformMethod name="UNION" id="NameAndAddressSubfield2O0000"/>
+    <transformMethod name="UNION" id="NameAndAddressSubfield2O00000"/>
+    <localTransformRef refId="NameAndAddressSubfield2O000000_ref" id="NameAndAddressSubfield2O000000"/>
+    <localTransformRef refId="NameAndAddressSubfield2O000001_ref" id="NameAndAddressSubfield2O000001"/>
+    <transformMethod name="UNION" id="NameAndAddressSubfield2O00001"/>
+    <transformMethod name="UNION" id="NameAndAddressSubfield2O000010"/>
+    <transformMethod name="UNION" id="NameAndAddressSubfield2O0000100"/>
+    <localTransformRef refId="NameAndAddressSubfield2O000011_ref" id="NameAndAddressSubfield2O000011"/>
+    <transformMethod name="UNION" id="NameAndAddressSubfield2O0001"/>
+    <transformMethod name="UNION" id="NameAndAddressSubfield2O00010"/>
+    <localTransformRef refId="NameAndAddressSubfield2O000100_ref" id="NameAndAddressSubfield2O000100"/>
+    <transformMethod name="UNION" id="NameAndAddressSubfield2O00011"/>
+    <localTransformRef refId="NameAndAddressSubfield2O000110_ref" id="NameAndAddressSubfield2O000110"/>
+    <localTransformRef refId="NameAndAddressSubfield2O000111_ref" id="NameAndAddressSubfield2O000111"/>
+    <localTransformRef refId="NameAndAddressSubfield2O001_ref" id="NameAndAddressSubfield2O001"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O0" inputPort="0" inputID="NameAndAddressSubfield2O00"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O00" inputPort="0" inputID="NameAndAddressSubfield2O000"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O000" inputPort="0" inputID="NameAndAddressSubfield2O0000"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O0000" inputPort="0" inputID="NameAndAddressSubfield2O00000"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O00000" inputPort="0" inputID="NameAndAddressSubfield2O000000"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O000000" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O00000" inputPort="0" inputID="NameAndAddressSubfield2O000001"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O000001" inputPort="0" inputID="I1"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O000001" inputPort="0" inputID="I2"/>
+    <translation outputPort="2" outputID="NameAndAddressSubfield2O000001" inputPort="0" inputID="I13"/>
+    <translation outputPort="3" outputID="NameAndAddressSubfield2O000001" inputPort="0" inputID="I14"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O0000" inputPort="0" inputID="NameAndAddressSubfield2O00001"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O00001" inputPort="0" inputID="NameAndAddressSubfield2O000010"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O000010" inputPort="0" inputID="NameAndAddressSubfield2O0000100"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O0000100" inputPort="1" inputID="NameAndAddressSubfield2O000001"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O0000100" inputPort="2" inputID="NameAndAddressSubfield2O000001"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O000010" inputPort="3" inputID="NameAndAddressSubfield2O000001"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O00001" inputPort="0" inputID="NameAndAddressSubfield2O000011"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O000011" inputPort="0" inputID="I4"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O000011" inputPort="0" inputID="I5"/>
+    <translation outputPort="2" outputID="NameAndAddressSubfield2O000011" inputPort="0" inputID="I3"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O000" inputPort="0" inputID="NameAndAddressSubfield2O0001"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O0001" inputPort="0" inputID="NameAndAddressSubfield2O00010"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O00010" inputPort="0" inputID="NameAndAddressSubfield2O000100"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O000100" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O000100" inputPort="0" inputID="I9"/>
+    <translation outputPort="2" outputID="NameAndAddressSubfield2O000100" inputPort="0" inputID="I10"/>
+    <translation outputPort="3" outputID="NameAndAddressSubfield2O000100" inputPort="0" inputID="I1"/>
+    <translation outputPort="4" outputID="NameAndAddressSubfield2O000100" inputPort="0" inputID="I8"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O00010" inputPort="1" inputID="NameAndAddressSubfield2O000100"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O0001" inputPort="0" inputID="NameAndAddressSubfield2O00011"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O00011" inputPort="0" inputID="NameAndAddressSubfield2O000110"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O000110" inputPort="0" inputID="I6"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O000110" inputPort="0" inputID="I5"/>
+    <translation outputPort="2" outputID="NameAndAddressSubfield2O000110" inputPort="0" inputID="I12"/>
+    <translation outputPort="3" outputID="NameAndAddressSubfield2O000110" inputPort="0" inputID="I7"/>
+    <translation outputPort="4" outputID="NameAndAddressSubfield2O000110" inputPort="0" inputID="I11"/>
+    <translation outputPort="5" outputID="NameAndAddressSubfield2O000110" inputPort="0" inputID="I1"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O00011" inputPort="0" inputID="NameAndAddressSubfield2O000111"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O000111" inputPort="0" inputID="I5"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O000111" inputPort="0" inputID="I7"/>
+    <translation outputPort="2" outputID="NameAndAddressSubfield2O000111" inputPort="0" inputID="I1"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O00" inputPort="0" inputID="NameAndAddressSubfield2O001"/>
+    <translation outputPort="0" outputID="NameAndAddressSubfield2O001" inputPort="0" inputID="I12"/>
+    <translation outputPort="1" outputID="NameAndAddressSubfield2O001" inputPort="0" inputID="I1"/>
+    <documentation>
+        <notes>
+INPUT:
+	1. Name
+	2. Street Name
+	3. Building Number
+	4. Post Code
+	5. Town Name
+	6. Country Code
+	7. Customer Number
+	8. Identity Card Number
+	9. Birth Date
+	10. City Of Birth
+	11. Country Of Birth
+	12. Code 8
+	13. Issuer
+	14. Address Line 1
+	15. Address Line 2
+
+
+Business description
+	Subfield 2 of an MT target field 50F identifies an ordering customer in line with FATF Special Recommendation VII with:
+	• name and address
+	• name and date and place of birth
+	• name and national identity number
+	• name and customer number
+
+	If any of the above data combinations are available in the source MX message, then this function translates the FATF compliant MX party identification to an FATF
+	compliant field 50F - Subfield 2 where all lines start with a number between 1 and 8 indicating the type of information provided.
+
+Format
+	MX_To_MTFATFNameAndAddress(MXPartyIdentification ; MTFATFNameAndAddress)
+
+Input
+	MXPartyIdentification: the entire structure of the MX party identification typed PartyIdentification8.
+
+Output
+	 MTNameAndAddress: party identification structured as per field 50F - Subfield 2 format (up to 4 lines of 1!n/33x where n is a number between 1 and 8).
+
+Preconditions
+	Name is present.</notes>
+    </documentation>
+    <output typeRef="Data Field Dictionary/Subfields/Name And Address 50F" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <localTransform id="NameAndAddressSubfield2O000000_ref">
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="1">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="false" endID="0" contextRef="Name And Address Details" id="NameAndAddressDetailsO0"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO00"/>
+            <transformMethod name="GREATERTHAN" id="NameAndAddressDetailsO000"/>
+            <transformMethod name="LENGTH" id="NameAndAddressDetailsO0000"/>
+            <constant constant="33" id="NameAndAddressDetailsO0001"/>
+            <transformMethod name="SUBSTRING" id="NameAndAddressDetailsO001"/>
+            <constant constant="33" id="NameAndAddressDetailsO0011"/>
+            <constant constant="-1" id="NameAndAddressDetailsO0012"/>
+            <contextPath input="false" endID="0" contextRef="Name And Address Num Code" id="NameAndAddressNumCodeO0"/>
+            <transformMethod type="#number_integer" name="IF" id="NameAndAddressNumCodeO00"/>
+            <transformMethod name="EXISTS" id="NameAndAddressNumCodeO000"/>
+            <constant constant="1" id="NameAndAddressNumCodeO001"/>
+            <constant constant="null" id="NameAndAddressNumCodeO002"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0" inputPort="0" inputID="NameAndAddressDetailsO00"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO000"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO000" inputPort="0" inputID="NameAndAddressDetailsO0000"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0000" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO000" inputPort="0" inputID="NameAndAddressDetailsO0001"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO001"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO001" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO001" inputPort="0" inputID="NameAndAddressDetailsO0011"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO001" inputPort="0" inputID="NameAndAddressDetailsO0012"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="I0"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO0" inputPort="0" inputID="NameAndAddressNumCodeO00"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO000"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO000" inputPort="0" inputID="NameAndAddressDetailsO00"/>
+            <translation outputPort="1" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO001"/>
+            <translation outputPort="2" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO002"/>
+            <output typeRef="Data Field Dictionary/Subfields/Name And Address 50F" required="false" path="Name And Address Subfield 2" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+        </transform>
+    </localTransform>
+    <localTransform id="NameAndAddressSubfield2O000001_ref">
+        <documentation>
+            <notes>
+INPUT:
+	1. Street Name
+	2. Building Name
+	3. Address Line 1
+	4. Address Line 2</notes>
+        </documentation>
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="2">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <input typeRef="#string" required="false" path="" endID="2"/>
+            <input typeRef="#string" required="false" path="" endID="3"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="true" endID="1" contextRef="" id="I1"/>
+            <contextPath input="true" endID="2" contextRef="" id="I2"/>
+            <contextPath input="true" endID="3" contextRef="" id="I3"/>
+            <contextPath input="false" endID="0" contextRef="Name And Address Details" id="NameAndAddressDetailsO0"/>
+            <transformMethod name="SUBSTRING" id="NameAndAddressDetailsO00"/>
+            <constant constant="0" id="NameAndAddressDetailsO001"/>
+            <constant constant="33" id="NameAndAddressDetailsO002"/>
+            <contextPath input="false" endID="1" contextRef="Name And Address Details" id="NameAndAddressDetailsO1"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO10"/>
+            <transformMethod name="GREATERTHAN" id="NameAndAddressDetailsO100"/>
+            <transformMethod name="LENGTH" id="NameAndAddressDetailsO1000"/>
+            <constant constant="33" id="NameAndAddressDetailsO1001"/>
+            <transformMethod name="SUBSTRING" id="NameAndAddressDetailsO101"/>
+            <constant constant="33" id="NameAndAddressDetailsO1011"/>
+            <constant constant="-1" id="NameAndAddressDetailsO1012"/>
+            <contextPath input="false" endID="2" contextRef="Name And Address Details" id="NameAndAddressDetailsO2"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO20"/>
+            <transformMethod name="AND" id="NameAndAddressDetailsO200"/>
+            <transformMethod name="EXISTS" id="NameAndAddressDetailsO2000"/>
+            <transformMethod name="GREATERTHAN" id="NameAndAddressDetailsO2001"/>
+            <transformMethod name="LENGTH" id="NameAndAddressDetailsO20010"/>
+            <transformMethod name="INSTANCE" id="NameAndAddressDetailsO200100"/>
+            <constant constant="0" id="NameAndAddressDetailsO2001001"/>
+            <constant constant="33" id="NameAndAddressDetailsO20011"/>
+            <transformMethod name="SUBSTRING" id="NameAndAddressDetailsO201"/>
+            <constant constant="0" id="NameAndAddressDetailsO2011"/>
+            <constant constant="33" id="NameAndAddressDetailsO2012"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO202"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO2022"/>
+            <transformMethod name="EXISTS" id="NameAndAddressDetailsO20220"/>
+            <transformMethod name="SUBSTRING" id="NameAndAddressDetailsO20221"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO202210"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO2022100"/>
+            <constant constant=" " id="NameAndAddressDetailsO20221001"/>
+            <constant constant="0" id="NameAndAddressDetailsO202211"/>
+            <constant constant="33" id="NameAndAddressDetailsO202212"/>
+            <constant constant="null" id="NameAndAddressDetailsO20222"/>
+            <contextPath input="false" endID="3" contextRef="Name And Address Details" id="NameAndAddressDetailsO3"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO30"/>
+            <transformMethod name="SUBSTRING" id="NameAndAddressDetailsO301"/>
+            <constant constant="33" id="NameAndAddressDetailsO3011"/>
+            <constant constant="-1" id="NameAndAddressDetailsO3012"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO302"/>
+            <transformMethod name="EXISTS" id="NameAndAddressDetailsO3020"/>
+            <transformMethod name="INSTANCE" id="NameAndAddressDetailsO30200"/>
+            <constant constant="1" id="NameAndAddressDetailsO302001"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO3022"/>
+            <transformMethod name="GREATERTHAN" id="NameAndAddressDetailsO30220"/>
+            <transformMethod name="LENGTH" id="NameAndAddressDetailsO302200"/>
+            <constant constant="33" id="NameAndAddressDetailsO302201"/>
+            <transformMethod name="SUBSTRING" id="NameAndAddressDetailsO30221"/>
+            <constant constant="33" id="NameAndAddressDetailsO302211"/>
+            <constant constant="-1" id="NameAndAddressDetailsO302212"/>
+            <contextPath input="false" endID="0" contextRef="Name And Address Num Code" id="NameAndAddressNumCodeO0"/>
+            <transformMethod type="#number_integer" name="IF" id="NameAndAddressNumCodeO00"/>
+            <transformMethod name="EXISTS" id="NameAndAddressNumCodeO000"/>
+            <constant constant="2" id="NameAndAddressNumCodeO001"/>
+            <contextPath input="false" endID="1" contextRef="Name And Address Num Code" id="NameAndAddressNumCodeO1"/>
+            <transformMethod type="#number_integer" name="IF" id="NameAndAddressNumCodeO10"/>
+            <transformMethod name="EXISTS" id="NameAndAddressNumCodeO100"/>
+            <constant constant="2" id="NameAndAddressNumCodeO101"/>
+            <contextPath input="false" endID="2" contextRef="Name And Address Num Code" id="NameAndAddressNumCodeO2"/>
+            <transformMethod type="#number_integer" name="IF" id="NameAndAddressNumCodeO20"/>
+            <transformMethod name="EXISTS" id="NameAndAddressNumCodeO200"/>
+            <constant constant="2" id="NameAndAddressNumCodeO201"/>
+            <contextPath input="false" endID="3" contextRef="Name And Address Num Code" id="NameAndAddressNumCodeO3"/>
+            <transformMethod type="#number_integer" name="IF" id="NameAndAddressNumCodeO30"/>
+            <transformMethod name="EXISTS" id="NameAndAddressNumCodeO300"/>
+            <constant constant="2" id="NameAndAddressNumCodeO301"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0" inputPort="0" inputID="NameAndAddressDetailsO00"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="I2"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO001"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO002"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO1" inputPort="0" inputID="NameAndAddressDetailsO10"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO10" inputPort="0" inputID="NameAndAddressDetailsO100"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO100" inputPort="0" inputID="NameAndAddressDetailsO1000"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO1000" inputPort="0" inputID="I2"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO100" inputPort="0" inputID="NameAndAddressDetailsO1001"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO10" inputPort="0" inputID="NameAndAddressDetailsO101"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO101" inputPort="0" inputID="I2"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO101" inputPort="0" inputID="NameAndAddressDetailsO1011"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO101" inputPort="0" inputID="NameAndAddressDetailsO1012"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO10" inputPort="0" inputID="I3"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO2" inputPort="0" inputID="NameAndAddressDetailsO20"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO20" inputPort="0" inputID="NameAndAddressDetailsO200"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO200" inputPort="0" inputID="NameAndAddressDetailsO2000"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO2000" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO200" inputPort="0" inputID="NameAndAddressDetailsO2001"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO2001" inputPort="0" inputID="NameAndAddressDetailsO20010"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO20010" inputPort="0" inputID="NameAndAddressDetailsO200100"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO200100" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO200100" inputPort="0" inputID="NameAndAddressDetailsO2001001"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO2001" inputPort="0" inputID="NameAndAddressDetailsO20011"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO20" inputPort="0" inputID="NameAndAddressDetailsO201"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO201" inputPort="0" inputID="NameAndAddressDetailsO200100"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO201" inputPort="0" inputID="NameAndAddressDetailsO2011"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO201" inputPort="0" inputID="NameAndAddressDetailsO2012"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO20" inputPort="0" inputID="NameAndAddressDetailsO202"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO202" inputPort="0" inputID="NameAndAddressDetailsO2000"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO202" inputPort="0" inputID="NameAndAddressDetailsO200100"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO202" inputPort="0" inputID="NameAndAddressDetailsO2022"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO2022" inputPort="0" inputID="NameAndAddressDetailsO20220"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO20220" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO2022" inputPort="0" inputID="NameAndAddressDetailsO20221"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO20221" inputPort="0" inputID="NameAndAddressDetailsO202210"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO202210" inputPort="0" inputID="NameAndAddressDetailsO2022100"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO2022100" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO2022100" inputPort="0" inputID="NameAndAddressDetailsO20221001"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO202210" inputPort="0" inputID="I1"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO20221" inputPort="0" inputID="NameAndAddressDetailsO202211"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO20221" inputPort="0" inputID="NameAndAddressDetailsO202212"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO2022" inputPort="0" inputID="NameAndAddressDetailsO20222"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO3" inputPort="0" inputID="NameAndAddressDetailsO30"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO30" inputPort="0" inputID="NameAndAddressDetailsO200"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO30" inputPort="0" inputID="NameAndAddressDetailsO301"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO301" inputPort="0" inputID="NameAndAddressDetailsO200100"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO301" inputPort="0" inputID="NameAndAddressDetailsO3011"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO301" inputPort="0" inputID="NameAndAddressDetailsO3012"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO30" inputPort="0" inputID="NameAndAddressDetailsO302"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO302" inputPort="0" inputID="NameAndAddressDetailsO3020"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO3020" inputPort="0" inputID="NameAndAddressDetailsO30200"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO30200" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO30200" inputPort="0" inputID="NameAndAddressDetailsO302001"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO302" inputPort="0" inputID="NameAndAddressDetailsO30200"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO302" inputPort="0" inputID="NameAndAddressDetailsO3022"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO3022" inputPort="0" inputID="NameAndAddressDetailsO30220"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO30220" inputPort="0" inputID="NameAndAddressDetailsO302200"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO302200" inputPort="0" inputID="NameAndAddressDetailsO202210"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO30220" inputPort="0" inputID="NameAndAddressDetailsO302201"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO3022" inputPort="0" inputID="NameAndAddressDetailsO30221"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO30221" inputPort="0" inputID="NameAndAddressDetailsO202210"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO30221" inputPort="0" inputID="NameAndAddressDetailsO302211"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO30221" inputPort="0" inputID="NameAndAddressDetailsO302212"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO3022" inputPort="0" inputID="NameAndAddressDetailsO20222"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO0" inputPort="0" inputID="NameAndAddressNumCodeO00"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO000"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO000" inputPort="0" inputID="NameAndAddressDetailsO00"/>
+            <translation outputPort="1" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO001"/>
+            <translation outputPort="2" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressDetailsO20222"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO1" inputPort="0" inputID="NameAndAddressNumCodeO10"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO10" inputPort="0" inputID="NameAndAddressNumCodeO100"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO100" inputPort="0" inputID="NameAndAddressDetailsO10"/>
+            <translation outputPort="1" outputID="NameAndAddressNumCodeO10" inputPort="0" inputID="NameAndAddressNumCodeO101"/>
+            <translation outputPort="2" outputID="NameAndAddressNumCodeO10" inputPort="0" inputID="NameAndAddressDetailsO20222"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO2" inputPort="0" inputID="NameAndAddressNumCodeO20"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO20" inputPort="0" inputID="NameAndAddressNumCodeO200"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO200" inputPort="0" inputID="NameAndAddressDetailsO20"/>
+            <translation outputPort="1" outputID="NameAndAddressNumCodeO20" inputPort="0" inputID="NameAndAddressNumCodeO201"/>
+            <translation outputPort="2" outputID="NameAndAddressNumCodeO20" inputPort="0" inputID="NameAndAddressDetailsO20222"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO3" inputPort="0" inputID="NameAndAddressNumCodeO30"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO30" inputPort="0" inputID="NameAndAddressNumCodeO300"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO300" inputPort="0" inputID="NameAndAddressDetailsO30"/>
+            <translation outputPort="1" outputID="NameAndAddressNumCodeO30" inputPort="0" inputID="NameAndAddressNumCodeO301"/>
+            <translation outputPort="2" outputID="NameAndAddressNumCodeO30" inputPort="0" inputID="NameAndAddressDetailsO20222"/>
+            <documentation>
+                <notes>
+INPUT:
+	1. Street Name
+	2. Building Name
+	3. Address Line 1
+	4. Address Line 2</notes>
+            </documentation>
+            <output typeRef="Data Field Dictionary/Subfields/Name And Address 50F" required="false" path="Name And Address Subfield 2" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+            <output typeRef="Data Field Dictionary/Subfields/Name And Address 50F" required="false" path="Name And Address Subfield 2" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="1"/>
+            <output typeRef="Data Field Dictionary/Subfields/Name And Address 50F" required="false" path="Name And Address Subfield 2" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="2"/>
+            <output typeRef="Data Field Dictionary/Subfields/Name And Address 50F" required="false" path="Name And Address Subfield 2" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="3"/>
+        </transform>
+    </localTransform>
+    <localTransform id="NameAndAddressSubfield2O000011_ref">
+        <documentation>
+            <notes>
+INPUT:
+	1. Town
+	2. Country
+	3. Post Code</notes>
+        </documentation>
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="3">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <input typeRef="#string" required="false" path="" endID="2"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="true" endID="1" contextRef="" id="I1"/>
+            <contextPath input="true" endID="2" contextRef="" id="I2"/>
+            <contextPath input="false" endID="0" contextRef="Name And Address Details" id="NameAndAddressDetailsO0"/>
+            <javaMethodRef refId="NameAndAddressDetailsO00_ref" id="NameAndAddressDetailsO00"/>
+            <contextPath input="false" endID="0" contextRef="Name And Address Num Code" id="NameAndAddressNumCodeO0"/>
+            <transformMethod type="#number_integer" name="IF" id="NameAndAddressNumCodeO00"/>
+            <transformMethod name="EXISTS" id="NameAndAddressNumCodeO000"/>
+            <constant constant="3" id="NameAndAddressNumCodeO001"/>
+            <constant constant="null" id="NameAndAddressNumCodeO002"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0" inputPort="0" inputID="NameAndAddressDetailsO00"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="I1"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="I0"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="I2"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO0" inputPort="0" inputID="NameAndAddressNumCodeO00"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO000"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO000" inputPort="0" inputID="NameAndAddressDetailsO00"/>
+            <translation outputPort="1" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO001"/>
+            <translation outputPort="2" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO002"/>
+            <documentation>
+                <notes>
+INPUT:
+	1. Town
+	2. Country
+	3. Post Code</notes>
+            </documentation>
+            <output typeRef="Data Field Dictionary/Subfields/Name And Address 50F" required="false" path="Name And Address Subfield 2[1]" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+            <javaMethod id="NameAndAddressDetailsO00_ref">
+                <libraryMethod>false</libraryMethod>
+                <methodName>construct3</methodName>
+                <input type="#string" role="country"/>
+                <input type="#string" role="town"/>
+                <input type="#string" role="postcode"/>
+                <output type="#string"/>
+                <code>String address = null;&#xD;
+&#xD;
+if (country != null)&#xD;
+    address = country;&#xD;
+&#xD;
+if (town != null)&#xD;
+    address = address+&quot;/&quot;+town;&#xD;
+    &#xD;
+if (postcode != null)&#xD;
+{&#xD;
+    address = country + &quot;/&quot; + town +&quot;/&quot;+ postcode;&#xD;
+    if (address.length() &gt; 33)&#xD;
+        address = country + &quot;/&quot; + town.substring(0, 30);&#xD;
+}&#xD;
+&#xD;
+return address;</code>
+            </javaMethod>
+        </transform>
+    </localTransform>
+    <localTransform id="NameAndAddressSubfield2O000100_ref">
+        <documentation>
+            <notes>
+INPUTS:
+	1. Name
+	2. City Of Birth	
+	3. Country of Birth
+	4. Street Name
+	5. Birth Date</notes>
+        </documentation>
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="4 and 5">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <input typeRef="#string" required="false" path="" endID="2"/>
+            <input typeRef="#string" required="false" path="" endID="3"/>
+            <input typeRef="#date_date" required="false" path="" endID="4"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="true" endID="1" contextRef="" id="I1"/>
+            <contextPath input="true" endID="2" contextRef="" id="I2"/>
+            <contextPath input="true" endID="3" contextRef="" id="I3"/>
+            <contextPath input="true" endID="4" contextRef="" id="I4"/>
+            <contextPath input="false" endID="0" contextRef="Name And Address Details" id="NameAndAddressDetailsO0"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO00"/>
+            <transformMethod name="AND" id="NameAndAddressDetailsO000"/>
+            <transformMethod name="GREATERTHAN" id="NameAndAddressDetailsO0000"/>
+            <transformMethod name="LENGTH" id="NameAndAddressDetailsO00000"/>
+            <constant constant="33" id="NameAndAddressDetailsO00001"/>
+            <transformMethod name="EXISTS" id="NameAndAddressDetailsO0001"/>
+            <transformMethod name="REPLACEALL" id="NameAndAddressDetailsO001"/>
+            <transformMethod name="TOSTRING" id="NameAndAddressDetailsO0010"/>
+            <constant constant="-" id="NameAndAddressDetailsO0011"/>
+            <constant constant="null" id="NameAndAddressDetailsO0012"/>
+            <contextPath input="false" endID="1" contextRef="Name And Address Details" id="NameAndAddressDetailsO1"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO10"/>
+            <transformMethod name="EXISTS" id="NameAndAddressDetailsO100"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO101"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO1011"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO10110"/>
+            <constant constant="/" id="NameAndAddressDetailsO101101"/>
+            <contextPath input="false" endID="0" contextRef="Name And Address Num Code" id="NameAndAddressNumCodeO0"/>
+            <transformMethod type="#number_integer" name="IF" id="NameAndAddressNumCodeO00"/>
+            <transformMethod name="EXISTS" id="NameAndAddressNumCodeO000"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressNumCodeO0000"/>
+            <transformMethod name="EXISTS" id="NameAndAddressNumCodeO00000"/>
+            <constant constant="4" id="NameAndAddressNumCodeO001"/>
+            <contextPath input="false" endID="1" contextRef="Name And Address Num Code" id="NameAndAddressNumCodeO1"/>
+            <transformMethod type="#number_integer" name="IF" id="NameAndAddressNumCodeO10"/>
+            <transformMethod name="EXISTS" id="NameAndAddressNumCodeO100"/>
+            <constant constant="5" id="NameAndAddressNumCodeO101"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0" inputPort="0" inputID="NameAndAddressDetailsO00"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO000"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO000" inputPort="0" inputID="NameAndAddressDetailsO0000"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0000" inputPort="0" inputID="NameAndAddressDetailsO00000"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00000" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO0000" inputPort="0" inputID="NameAndAddressDetailsO00001"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO000" inputPort="0" inputID="NameAndAddressDetailsO0001"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0001" inputPort="0" inputID="I4"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO001"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO001" inputPort="0" inputID="NameAndAddressDetailsO0010"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0010" inputPort="0" inputID="I4"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO001" inputPort="0" inputID="NameAndAddressDetailsO0011"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO001" inputPort="0" inputID="NameAndAddressDetailsO0012"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO0012"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO1" inputPort="0" inputID="NameAndAddressDetailsO10"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO10" inputPort="0" inputID="NameAndAddressDetailsO100"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO100" inputPort="0" inputID="I3"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO10" inputPort="0" inputID="NameAndAddressDetailsO101"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO101" inputPort="0" inputID="NameAndAddressDetailsO000"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO101" inputPort="0" inputID="NameAndAddressDetailsO1011"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO1011" inputPort="0" inputID="NameAndAddressDetailsO10110"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO10110" inputPort="0" inputID="I2"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO10110" inputPort="0" inputID="NameAndAddressDetailsO101101"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO1011" inputPort="0" inputID="I1"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO101" inputPort="0" inputID="NameAndAddressDetailsO0012"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO10" inputPort="0" inputID="NameAndAddressDetailsO0012"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO0" inputPort="0" inputID="NameAndAddressNumCodeO00"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO000"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO000" inputPort="0" inputID="NameAndAddressNumCodeO0000"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO0000" inputPort="0" inputID="NameAndAddressNumCodeO00000"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO00000" inputPort="0" inputID="I3"/>
+            <translation outputPort="1" outputID="NameAndAddressNumCodeO0000" inputPort="0" inputID="NameAndAddressDetailsO00"/>
+            <translation outputPort="2" outputID="NameAndAddressNumCodeO0000" inputPort="0" inputID="NameAndAddressDetailsO0012"/>
+            <translation outputPort="1" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO001"/>
+            <translation outputPort="2" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressDetailsO0012"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO1" inputPort="0" inputID="NameAndAddressNumCodeO10"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO10" inputPort="0" inputID="NameAndAddressNumCodeO100"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO100" inputPort="0" inputID="NameAndAddressDetailsO10"/>
+            <translation outputPort="1" outputID="NameAndAddressNumCodeO10" inputPort="0" inputID="NameAndAddressNumCodeO101"/>
+            <translation outputPort="2" outputID="NameAndAddressNumCodeO10" inputPort="0" inputID="NameAndAddressDetailsO0012"/>
+            <documentation>
+                <notes>
+INPUTS:
+	1. Name
+	2. City Of Birth	
+	3. Country of Birth
+	4. Street Name
+	5. Birth Date</notes>
+            </documentation>
+            <output typeRef="Data Field Dictionary/Subfields/Name And Address 50F" required="false" path="Name And Address Subfield 2" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+            <output typeRef="Data Field Dictionary/Subfields/Name And Address 50F" required="false" path="Name And Address Subfield 2" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="1"/>
+        </transform>
+    </localTransform>
+    <localTransform id="NameAndAddressSubfield2O000110_ref">
+        <documentation>
+            <notes>
+INPUT:
+	1. Customer Number
+	2. Country Code
+	3. Code 8
+	4. Identity Card Number
+	5. Issuer
+	6. Street Name</notes>
+        </documentation>
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="6">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <input typeRef="Data Field Dictionary/Subfields/Party Identifier" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="2"/>
+            <input typeRef="#string" required="false" path="" endID="3"/>
+            <input typeRef="#string" required="false" path="" endID="4"/>
+            <input typeRef="#string" required="false" path="" endID="5"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="true" endID="1" contextRef="" id="I1"/>
+            <contextPath input="true" endID="2" contextRef="" id="I2"/>
+            <contextPath input="true" endID="3" contextRef="" id="I3"/>
+            <contextPath input="true" endID="4" contextRef="" id="I4"/>
+            <contextPath input="true" endID="5" contextRef="" id="I5"/>
+            <contextPath input="false" endID="0" contextRef="Name And Address Details" id="NameAndAddressDetailsO0"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO00"/>
+            <transformMethod name="EXISTS" id="NameAndAddressDetailsO000"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO001"/>
+            <transformMethod name="GREATERTHAN" id="NameAndAddressDetailsO0010"/>
+            <transformMethod name="LENGTH" id="NameAndAddressDetailsO00100"/>
+            <constant constant="0" id="NameAndAddressDetailsO00101"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO0011"/>
+            <transformMethod name="AND" id="NameAndAddressDetailsO00110"/>
+            <transformMethod name="EXISTS" id="NameAndAddressDetailsO001100"/>
+            <transformMethod name="EXISTS" id="NameAndAddressDetailsO001101"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO00111"/>
+            <transformMethod name="EXISTS" id="NameAndAddressDetailsO001110"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO001111"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO0011110"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO00111100"/>
+            <constant constant="/" id="NameAndAddressDetailsO001111001"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO00111101"/>
+            <constant constant="/" id="NameAndAddressDetailsO001111011"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO001112"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO0011120"/>
+            <constant constant="/" id="NameAndAddressDetailsO00111201"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO00112"/>
+            <transformMethod name="AND" id="NameAndAddressDetailsO001120"/>
+            <transformMethod name="EXISTS" id="NameAndAddressDetailsO0011201"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO001121"/>
+            <constant constant="null" id="NameAndAddressDetailsO001122"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO0012"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO00121"/>
+            <transformMethod name="EXISTS" id="NameAndAddressDetailsO001210"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO001211"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO0012110"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO00121100"/>
+            <constant constant="/" id="NameAndAddressDetailsO001211001"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO00121101"/>
+            <constant constant="/" id="NameAndAddressDetailsO001211011"/>
+            <contextPath input="false" endID="0" contextRef="Name And Address Num Code" id="NameAndAddressNumCodeO0"/>
+            <transformMethod type="#number_integer" name="IF" id="NameAndAddressNumCodeO00"/>
+            <transformMethod name="EXISTS" id="NameAndAddressNumCodeO000"/>
+            <constant constant="6" id="NameAndAddressNumCodeO001"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0" inputPort="0" inputID="NameAndAddressDetailsO00"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO000"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO000" inputPort="0" inputID="I5"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO001"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO001" inputPort="0" inputID="NameAndAddressDetailsO0010"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0010" inputPort="0" inputID="NameAndAddressDetailsO00100"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00100" inputPort="0" inputID="I2"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO0010" inputPort="0" inputID="NameAndAddressDetailsO00101"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO001" inputPort="0" inputID="NameAndAddressDetailsO0011"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0011" inputPort="0" inputID="NameAndAddressDetailsO00110"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00110" inputPort="0" inputID="NameAndAddressDetailsO001100"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO001100" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00110" inputPort="0" inputID="NameAndAddressDetailsO001101"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO001101" inputPort="0" inputID="I1"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO0011" inputPort="0" inputID="NameAndAddressDetailsO00111"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00111" inputPort="0" inputID="NameAndAddressDetailsO001110"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO001110" inputPort="0" inputID="I4"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00111" inputPort="0" inputID="NameAndAddressDetailsO001111"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO001111" inputPort="0" inputID="NameAndAddressDetailsO0011110"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0011110" inputPort="0" inputID="NameAndAddressDetailsO00111100"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00111100" inputPort="0" inputID="I1"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00111100" inputPort="0" inputID="NameAndAddressDetailsO001111001"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO0011110" inputPort="0" inputID="NameAndAddressDetailsO00111101"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00111101" inputPort="0" inputID="I4"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00111101" inputPort="0" inputID="NameAndAddressDetailsO001111011"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO001111" inputPort="0" inputID="I0"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO00111" inputPort="0" inputID="NameAndAddressDetailsO001112"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO001112" inputPort="0" inputID="NameAndAddressDetailsO0011120"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0011120" inputPort="0" inputID="I1"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO0011120" inputPort="0" inputID="NameAndAddressDetailsO00111201"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO001112" inputPort="0" inputID="I0"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO0011" inputPort="0" inputID="NameAndAddressDetailsO00112"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00112" inputPort="0" inputID="NameAndAddressDetailsO001120"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO001120" inputPort="0" inputID="NameAndAddressDetailsO001101"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO001120" inputPort="0" inputID="NameAndAddressDetailsO0011201"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0011201" inputPort="0" inputID="I3"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00112" inputPort="0" inputID="NameAndAddressDetailsO001121"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO001121" inputPort="0" inputID="NameAndAddressDetailsO0011120"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO001121" inputPort="0" inputID="I3"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO00112" inputPort="0" inputID="NameAndAddressDetailsO001122"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO001" inputPort="0" inputID="NameAndAddressDetailsO0012"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0012" inputPort="0" inputID="NameAndAddressDetailsO00110"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO0012" inputPort="0" inputID="NameAndAddressDetailsO00121"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00121" inputPort="0" inputID="NameAndAddressDetailsO001210"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO001210" inputPort="0" inputID="I4"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00121" inputPort="0" inputID="NameAndAddressDetailsO001211"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO001211" inputPort="0" inputID="NameAndAddressDetailsO0012110"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0012110" inputPort="0" inputID="NameAndAddressDetailsO00121100"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00121100" inputPort="0" inputID="I1"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00121100" inputPort="0" inputID="NameAndAddressDetailsO001211001"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO0012110" inputPort="0" inputID="NameAndAddressDetailsO00121101"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00121101" inputPort="0" inputID="I4"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00121101" inputPort="0" inputID="NameAndAddressDetailsO001211011"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO001211" inputPort="0" inputID="I0"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO00121" inputPort="0" inputID="NameAndAddressDetailsO001122"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO0012" inputPort="0" inputID="NameAndAddressDetailsO001122"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO001122"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO0" inputPort="0" inputID="NameAndAddressNumCodeO00"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO000"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO000" inputPort="0" inputID="NameAndAddressDetailsO00"/>
+            <translation outputPort="1" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO001"/>
+            <translation outputPort="2" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressDetailsO001122"/>
+            <documentation>
+                <notes>
+INPUT:
+	1. Customer Number
+	2. Country Code
+	3. Code 8
+	4. Identity Card Number
+	5. Issuer
+	6. Street Name</notes>
+            </documentation>
+            <output typeRef="Data Field Dictionary/Subfields/Name And Address 50F" required="false" path="Name And Address Subfield 2" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+        </transform>
+    </localTransform>
+    <localTransform id="NameAndAddressSubfield2O000111_ref">
+        <documentation>
+            <notes>
+INPUT
+	1. Country Code
+	2. Identity Card Number
+	3. Street Name</notes>
+        </documentation>
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="7">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <input typeRef="#string" required="false" path="" endID="2"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="true" endID="1" contextRef="" id="I1"/>
+            <contextPath input="true" endID="2" contextRef="" id="I2"/>
+            <contextPath input="false" endID="0" contextRef="Name And Address Details" id="NameAndAddressDetailsO0"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO00"/>
+            <transformMethod name="EXISTS" id="NameAndAddressDetailsO000"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO001"/>
+            <transformMethod name="AND" id="NameAndAddressDetailsO0010"/>
+            <transformMethod name="EXISTS" id="NameAndAddressDetailsO00100"/>
+            <transformMethod name="EXISTS" id="NameAndAddressDetailsO00101"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO0011"/>
+            <transformMethod name="CONCAT" id="NameAndAddressDetailsO00110"/>
+            <constant constant="/" id="NameAndAddressDetailsO001101"/>
+            <constant constant="null" id="NameAndAddressDetailsO0012"/>
+            <contextPath input="false" endID="0" contextRef="Name And Address Num Code" id="NameAndAddressNumCodeO0"/>
+            <transformMethod type="#number_integer" name="IF" id="NameAndAddressNumCodeO00"/>
+            <transformMethod name="EXISTS" id="NameAndAddressNumCodeO000"/>
+            <constant constant="7" id="NameAndAddressNumCodeO001"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0" inputPort="0" inputID="NameAndAddressDetailsO00"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO000"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO000" inputPort="0" inputID="I2"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO001"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO001" inputPort="0" inputID="NameAndAddressDetailsO0010"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0010" inputPort="0" inputID="NameAndAddressDetailsO00100"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00100" inputPort="0" inputID="I1"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO0010" inputPort="0" inputID="NameAndAddressDetailsO00101"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00101" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO001" inputPort="0" inputID="NameAndAddressDetailsO0011"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0011" inputPort="0" inputID="NameAndAddressDetailsO00110"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00110" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00110" inputPort="0" inputID="NameAndAddressDetailsO001101"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO0011" inputPort="0" inputID="I1"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO001" inputPort="0" inputID="NameAndAddressDetailsO0012"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO0012"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO0" inputPort="0" inputID="NameAndAddressNumCodeO00"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO000"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO000" inputPort="0" inputID="NameAndAddressDetailsO00"/>
+            <translation outputPort="1" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO001"/>
+            <translation outputPort="2" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressDetailsO0012"/>
+            <documentation>
+                <notes>
+INPUT
+	1. Country Code
+	2. Identity Card Number
+	3. Street Name</notes>
+            </documentation>
+            <output typeRef="Data Field Dictionary/Subfields/Name And Address 50F" required="false" path="Name And Address Subfield 2" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+        </transform>
+    </localTransform>
+    <localTransform id="NameAndAddressSubfield2O001_ref">
+        <documentation>
+            <notes>
+INPUT:
+	1. Code 8</notes>
+        </documentation>
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="8">
+            <input typeRef="Data Field Dictionary/Subfields/Party Identifier" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="true" endID="1" contextRef="" id="I1"/>
+            <contextPath input="false" endID="0" contextRef="Name And Address Details" id="NameAndAddressDetailsO0"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO00"/>
+            <transformMethod name="EXISTS" id="NameAndAddressDetailsO000"/>
+            <transformMethod type="#string" name="IF" id="NameAndAddressDetailsO001"/>
+            <transformMethod name="GREATERTHAN" id="NameAndAddressDetailsO0010"/>
+            <transformMethod name="LENGTH" id="NameAndAddressDetailsO00100"/>
+            <constant constant="0" id="NameAndAddressDetailsO00101"/>
+            <constant constant="null" id="NameAndAddressDetailsO0012"/>
+            <contextPath input="false" endID="0" contextRef="Name And Address Num Code" id="NameAndAddressNumCodeO0"/>
+            <transformMethod type="#number_integer" name="IF" id="NameAndAddressNumCodeO00"/>
+            <transformMethod name="EXISTS" id="NameAndAddressNumCodeO000"/>
+            <constant constant="8" id="NameAndAddressNumCodeO001"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0" inputPort="0" inputID="NameAndAddressDetailsO00"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO000"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO000" inputPort="0" inputID="I1"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO001"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO001" inputPort="0" inputID="NameAndAddressDetailsO0010"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO0010" inputPort="0" inputID="NameAndAddressDetailsO00100"/>
+            <translation outputPort="0" outputID="NameAndAddressDetailsO00100" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO0010" inputPort="0" inputID="NameAndAddressDetailsO00101"/>
+            <translation outputPort="1" outputID="NameAndAddressDetailsO001" inputPort="0" inputID="I0"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO001" inputPort="0" inputID="NameAndAddressDetailsO0012"/>
+            <translation outputPort="2" outputID="NameAndAddressDetailsO00" inputPort="0" inputID="NameAndAddressDetailsO0012"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO0" inputPort="0" inputID="NameAndAddressNumCodeO00"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO000"/>
+            <translation outputPort="0" outputID="NameAndAddressNumCodeO000" inputPort="0" inputID="NameAndAddressDetailsO00"/>
+            <translation outputPort="1" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressNumCodeO001"/>
+            <translation outputPort="2" outputID="NameAndAddressNumCodeO00" inputPort="0" inputID="NameAndAddressDetailsO0012"/>
+            <documentation>
+                <notes>
+INPUT:
+	1. Code 8</notes>
+            </documentation>
+            <output typeRef="Data Field Dictionary/Subfields/Name And Address 50F" required="false" path="Name And Address Subfield 2" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+        </transform>
+    </localTransform>
+</transform>

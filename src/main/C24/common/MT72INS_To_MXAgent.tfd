@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT72INS_To_MXAgent.tfd">
+    <input typeRef="Data Field Dictionary/Subfields/Narrative 6*35x" required="true" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <contextPath input="true" endID="0" contextRef="" id="I0"/>
+    <contextPath input="false" endID="0" contextRef="" id="O0"/>
+    <transformMethod type="#string" name="IF" y="44" x="606" id="O00"/>
+    <javaMethodRef refId="O000_ref" y="23" x="413" id="O000"/>
+    <globalTransformRef ref="MT72_To_MXText.tfd" y="54" x="260" id="O0000"/>
+    <transformMethod name="TOSTRING" y="22" x="99" id="O00000"/>
+    <constant constant="/INS/" id="O00001"/>
+    <constant constant="-6" id="O00002"/>
+    <constant constant="null" id="O002"/>
+    <contextPath input="false" endID="1" contextRef="" id="O1"/>
+    <transformMethod name="SUBSTRING" y="180" x="849" id="O10"/>
+    <transformMethod type="#string" name="IF" y="168" x="688" id="O100"/>
+    <transformMethod name="NOT" y="107" x="559" id="O1000"/>
+    <constant constant="0" id="O101"/>
+    <constant constant="70" id="O102"/>
+    <translation outputPort="0" outputID="O0" inputPort="0" inputID="O00"/>
+    <translation outputPort="0" outputID="O00" inputPort="0" inputID="O000"/>
+    <translation outputPort="0" outputID="O000" inputPort="0" inputID="O0000"/>
+    <translation outputPort="0" outputID="O0000" inputPort="0" inputID="O00000"/>
+    <translation outputPort="0" outputID="O00000" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="O0000" inputPort="0" inputID="O00001"/>
+    <translation outputPort="2" outputID="O0000" inputPort="0" inputID="O00002"/>
+    <translation outputPort="1" outputID="O00" inputPort="0" inputID="O0000"/>
+    <translation outputPort="2" outputID="O00" inputPort="0" inputID="O002"/>
+    <translation outputPort="0" outputID="O1" inputPort="0" inputID="O10"/>
+    <translation outputPort="0" outputID="O10" inputPort="0" inputID="O100"/>
+    <translation outputPort="0" outputID="O100" inputPort="0" inputID="O1000"/>
+    <translation outputPort="0" outputID="O1000" inputPort="0" inputID="O000"/>
+    <translation outputPort="1" outputID="O100" inputPort="0" inputID="O0000"/>
+    <translation outputPort="2" outputID="O100" inputPort="0" inputID="O002"/>
+    <translation outputPort="1" outputID="O10" inputPort="0" inputID="O101"/>
+    <translation outputPort="2" outputID="O10" inputPort="0" inputID="O102"/>
+    <documentation>
+        <notes>&lt;h3&gt;MT72INS_To_MXAgent&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function extracts the information following a code /INS/ identifying an instructing institution in a field 72, checks whether the string contains a BIC and translates accordingly to the appropriate element of an MX previous instructing agent element (BIC or Name).
+
+&lt;b&gt;Format&lt;/b&gt;
+&lt;tt&gt;MT72INS_To_MXAgent(MT72 ; MXAgentId)&lt;/tt&gt;
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MT72&lt;/tt&gt;: content of an MT field 72 with format 6*35x (6 lines of 35 characters).
+
+&lt;b&gt;Output&lt;/b&gt;
+&lt;tt&gt;MXAgentId&lt;/tt&gt;: the result of this function is immediately put into the correct MX element inside the target component typed BranchAndFinancialInstitutionIdentification3.
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/*
+   Field 72 is defined by 6 lines of 35 characters with “//” as line continuation pattern and line separator “CRLF”
+   between consecutive lines
+ */
+/*
+   Basic function ExtractLines extracts the information with code /INS/. The function removes the MT line separator &quot;CRLF&quot;
+   and replaces the continuation pattern &quot;//&quot; by a space “ ”. MT72Extract is a local variable. Substring is taken to delete
+   “/INS/” in the output string
+*/
+MT72Extract = Substring(ExtractLines(MT72, “/INS/”, “//”), 6)
+IF IsBIC(MT72Extract)
+    FinancialInstitutionIdentification.BIC = MT72Extract
+ELSE
+    /* Restriction of the Name to maximum 70 characters */
+    /*
+       Translation target is the Name element in the CombinedIdentification component and not the Name element in the
+       NameAndAddress component. Reason being that in the NameAndAddress component typed NameAndAddress7 the PostalAddress
+       element is mandatory and must carry at least a country code which is not available in field 72. In the
+       CombinedIdentification component, Name and PostalAddress are separate elements
+    */
+    FinancialInstitutionIdentification.CombinedIdentification.Name = Substring(MT72Extract, 1, 70)
+ENDIF
+&lt;/pre&gt;</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+    <output typeRef="#string" required="false" path="" endID="1"/>
+    <javaMethod id="O000_ref">
+        <libraryMethod>false</libraryMethod>
+        <methodName>isBIC</methodName>
+        <input type="#string" role="code"/>
+        <output type="#boolean"/>
+        <code>if (11 != code.length() &amp;&amp; 8 != code.length()) return false;&#xD;
+final String[] codes = biz.c24.io.api.data.ISO9362BICValidator.getBICValues();&#xD;
+if (8 == code.length()) {&#xD;
+    for (int i = codes.length; i--&gt;0;) {&#xD;
+        if (codes[i].startsWith(code)) {&#xD;
+            return true;&#xD;
+        }&#xD;
+    }&#xD;
+} else if (11 == code.length()) {&#xD;
+    for (int i = codes.length; i--&gt;0;) {&#xD;
+        if (codes[i].equals(code)) {&#xD;
+            return true;&#xD;
+        }&#xD;
+    }&#xD;
+}&#xD;
+return false;</code>
+    </javaMethod>
+</transform>

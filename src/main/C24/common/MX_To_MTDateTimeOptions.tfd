@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.2" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTDateTimeOptions.tfd">
+    <input typeRef="#date_date" required="false" path="" endID="0"/>
+    <input typeRef="#date_datetime" required="false" path="" endID="1"/>
+    <input typeRef="#string" required="false" path="" endID="2"/>
+    <constant constant="null" id="0"/>
+    <transformMethod type="#string" name="IF" y="80" x="303" id="8"/>
+    <transformMethod name="EXISTS" y="68" x="140" id="9"/>
+    <transformMethod type="#date_generic" name="CONVERTDATE" y="22" x="400" id="14"/>
+    <transformMethod type="#date_generic" name="CONVERTDATE" y="324" x="383" id="17"/>
+    <transformMethod name="EXISTS" y="383" x="145" id="19"/>
+    <transformMethod type="#string" name="IF" y="386" x="302" id="20"/>
+    <contextPath input="true" endID="0" contextRef="" id="10"/>
+    <contextPath input="true" endID="2" contextRef="" id="11"/>
+    <contextPath input="true" endID="1" contextRef="" id="15"/>
+    <contextPath input="false" endID="0" contextRef="Qualifier" id="12"/>
+    <contextPath input="false" endID="0" contextRef="Date YYYYMMDD" id="13"/>
+    <contextPath input="false" endID="1" contextRef="Date YYYYMMDD" id="16"/>
+    <contextPath input="false" endID="1" contextRef="Time HHMMSS" id="18"/>
+    <contextPath input="false" endID="1" contextRef="Qualifier" id="21"/>
+    <translation outputPort="0" outputID="8" inputPort="0" inputID="9"/>
+    <translation outputPort="2" outputID="8" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="20" inputPort="0" inputID="19"/>
+    <translation outputPort="2" outputID="20" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="9" inputPort="0" inputID="10"/>
+    <translation outputPort="1" outputID="8" inputPort="0" inputID="11"/>
+    <translation outputPort="0" outputID="14" inputPort="0" inputID="10"/>
+    <translation outputPort="0" outputID="17" inputPort="0" inputID="15"/>
+    <translation outputPort="0" outputID="19" inputPort="0" inputID="15"/>
+    <translation outputPort="1" outputID="20" inputPort="0" inputID="11"/>
+    <translation outputPort="0" outputID="12" inputPort="0" inputID="8"/>
+    <translation outputPort="0" outputID="13" inputPort="0" inputID="14"/>
+    <translation outputPort="0" outputID="16" inputPort="0" inputID="17"/>
+    <translation outputPort="0" outputID="18" inputPort="0" inputID="17"/>
+    <translation outputPort="0" outputID="21" inputPort="0" inputID="20"/>
+    <nextId>22</nextId>
+    <documentation>
+        <notes>INPUT:
+1. Date
+2. Date / Time
+3. Field 98a Qualifier
+
+Business description
+The function translates a MX date time with possible offset to UTC to the equivalent
+MT date time format (fields 98a with a catering for option A, C and E option). The time
+is optional.
+
+Format
+MX_To_MTDateTimeOptions(MXDate[Time]; MTOption, MTDate[Time])
+
+Input
+Format 1
+MXDate[Time] is the input date time with a format “CCYY-MMDD[
+THH:MM:SS[.nnn...] [+/- offset to UTC]]” where “T” is the date/time separator. The
+offset to UTC is expressed as +/- HH:MM. The time is optional.
+Format 2
+MXDateTime is the input date time with a format “CCYY-MM-DDTHH:MM:SS[.nnn...]Z
+where Z means that the time is UTC time. Time is mandatory in this format.
+
+Output
+MTOption is the option of the MT field (e.g. for 98a, option A, C or E)
+Depending on the MTOption, the MTDate[Time] will have different formats as
+described below.
+• Option A
+MTDate[Time] contains only a date represented by CCYYMMDD
+• Option C
+MTDate[Time] is represented by a date and mandatory time with the format
+CCYYMMDDHHMMSS
+• Option E
+MTDate[Time] is represented by a date and mandatory time with an optional
+offset. The format is CCYYMMDDHHMMSS[,3n]/[[N]HH[MM]] where the fractional
+seconds are optional, the offset sign is present only when the value is negative. It
+is then represented by “N”. The minutes in the offset are also optional.
+
+Assumption: In order to ease the translation, the output offset when present,
+will always have the following format HHMM.
+
+Preconditions
+None.</notes>
+    </documentation>
+    <output typeRef="Data Field Dictionary/Generic Fields/Field 98a Date Option A" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <output typeRef="Data Field Dictionary/Generic Fields/Field 98a Date Option C" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="1"/>
+</transform>

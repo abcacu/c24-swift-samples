@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.9" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTFinancialInstrumentAndName.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#string" required="false" path="" endID="1"/>
+    <javaMethodRef refId="5" y="189" x="325" id="6"/>
+    <contextPath input="true" endID="0" contextRef="" id="7"/>
+    <contextPath input="true" endID="1" contextRef="" id="8"/>
+    <transformMethod type="#string" name="IFEXISTS" y="89" x="500" id="13"/>
+    <contextPath input="false" endID="0" contextRef="Line 35x" id="9"/>
+    <constant constant="null" id="0"/>
+    <translation outputPort="0" outputID="6" inputPort="0" inputID="7"/>
+    <translation outputPort="1" outputID="6" inputPort="0" inputID="8"/>
+    <translation outputPort="0" outputID="13" inputPort="0" inputID="7"/>
+    <translation outputPort="1" outputID="13" inputPort="0" inputID="6"/>
+    <translation outputPort="0" outputID="9" inputPort="0" inputID="13"/>
+    <translation outputPort="2" outputID="13" inputPort="0" inputID="0"/>
+    <nextId>14</nextId>
+    <documentation>
+        <notes>INPUT:
+1. Identification of secturity
+2. Name of security
+
+Business description
+The function copies the identification and the name of a security in the security
+description field. Depending on the space left by the identification, the name is copied
+in the remaining space. It will be possibly truncated. The identification of the security
+will be copied on maximum 3 lines of 35 characters. If the length of the identification is
+greater than 106 characters, the identification is truncated after 105 characters.
+
+Format
+MX_To_MTFinancialInstrumentAndName(Identification, Name;
+DescriptionOfSecurity)
+
+Input
+Identification: the identification of the security has maximum 105 characters.
+Name: the name of the security has maximum 350 characters.
+
+Output
+The description of the security is made of 4 lines of 35 characters for each line.
+
+Preconditions
+None.</notes>
+    </documentation>
+    <output typeRef="Data Field Dictionary/Subfields/Description of Security 4 lines" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <javaMethod id="5">
+        <libraryMethod>false</libraryMethod>
+        <methodName>formatDescriptionOfSecurity</methodName>
+        <input type="#string" role="id"/>
+        <input type="#string" role="name"/>
+        <output type="#string[]"/>
+        <code>if (id == null)&#xD;
+    id = &quot;&quot;;&#xD;
+if (name == null)&#xD;
+    name = &quot;&quot;;&#xD;
+    &#xD;
+String[] ret = new String[4];&#xD;
+int index = 0;&#xD;
+&#xD;
+if (id.length() &lt; 36) {&#xD;
+    ret[index++] = id;&#xD;
+    if (name.length() &lt; 36)&#xD;
+        ret[index++] = name;&#xD;
+    else if (name.length() &lt; 71) {&#xD;
+        ret[index++] = name.substring(0, 35);&#xD;
+        ret[index++] = name.substring(35);&#xD;
+    }&#xD;
+    else {&#xD;
+        ret[index++] = name.substring(0, 35);&#xD;
+        ret[index++] = name.substring(35, 71);        &#xD;
+        ret[index++] = name.substring(71, Math.min(70+35, name.length()));        &#xD;
+    }        &#xD;
+}&#xD;
+else if (id.length() &lt; 71) {&#xD;
+    ret[index++] = id.substring(0, 35);&#xD;
+    ret[index++] = id.substring(35);&#xD;
+    if (name.length() &lt; 36)&#xD;
+        ret[index++] = name;&#xD;
+    else {&#xD;
+        ret[index++] = name.substring(0, 35);&#xD;
+        ret[index++] = name.substring(35, Math.min(35+35, name.length()));        &#xD;
+    }        &#xD;
+}&#xD;
+else {&#xD;
+    ret[index++] = id.substring(0, 35);&#xD;
+    ret[index++] = id.substring(35, 71);&#xD;
+    ret[index++] = id.substring(71, Math.min(70+35, id.length()));&#xD;
+    ret[index++] = name.substring(0, Math.min(35, name.length()));        &#xD;
+}&#xD;
+&#xD;
+return ret;</code>
+    </javaMethod>
+</transform>

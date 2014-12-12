@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXDate.tfd">
+    <input typeRef="#date_generic" required="false" path="" endID="0"/>
+    <contextPath input="true" endID="0" contextRef="" id="I0"/>
+    <contextPath input="false" endID="0" contextRef="" id="O0"/>
+    <transformMethod type="#date_date" name="ADJUSTTIMEZONE" id="O00"/>
+    <transformMethod type="#date_date" name="CONVERTDATE" id="O000"/>
+    <transformMethod name="DATEFROMSTRING" id="O0000"/>
+    <transformMethod name="CONCAT" id="O00000"/>
+    <transformMethod type="#string" name="IF" id="O000000"/>
+    <transformMethod name="GREATERTHANOREQUAL" id="O0000000"/>
+    <transformMethod type="#number" name="FROMSTRING" id="O00000000"/>
+    <transformMethod name="SUBSTRING" id="O000000000"/>
+    <transformMethod name="DATETOSTRING" id="O0000000000"/>
+    <constant constant="yyyyMMdd" id="O00000000001"/>
+    <constant constant="0" id="O0000000001"/>
+    <constant constant="2" id="O0000000002"/>
+    <constant constant="20" id="O00000001"/>
+    <constant constant="20" id="O0000001"/>
+    <constant constant="19" id="O0000002"/>
+    <transformMethod name="SUBSTRING" id="O000001"/>
+    <constant constant="2" id="O0000011"/>
+    <constant constant="9" id="O0000012"/>
+    <constant constant="yyyyMMdd" id="O00001"/>
+    <constant constant="null" id="O001"/>
+    <translation outputPort="0" outputID="O0" inputPort="0" inputID="O00"/>
+    <translation outputPort="0" outputID="O00" inputPort="0" inputID="O000"/>
+    <translation outputPort="0" outputID="O000" inputPort="0" inputID="O0000"/>
+    <translation outputPort="0" outputID="O0000" inputPort="0" inputID="O00000"/>
+    <translation outputPort="0" outputID="O00000" inputPort="0" inputID="O000000"/>
+    <translation outputPort="0" outputID="O000000" inputPort="0" inputID="O0000000"/>
+    <translation outputPort="0" outputID="O0000000" inputPort="0" inputID="O00000000"/>
+    <translation outputPort="0" outputID="O00000000" inputPort="0" inputID="O000000000"/>
+    <translation outputPort="0" outputID="O000000000" inputPort="0" inputID="O0000000000"/>
+    <translation outputPort="0" outputID="O0000000000" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="O0000000000" inputPort="0" inputID="O00000000001"/>
+    <translation outputPort="1" outputID="O000000000" inputPort="0" inputID="O0000000001"/>
+    <translation outputPort="2" outputID="O000000000" inputPort="0" inputID="O0000000002"/>
+    <translation outputPort="1" outputID="O0000000" inputPort="0" inputID="O00000001"/>
+    <translation outputPort="1" outputID="O000000" inputPort="0" inputID="O0000001"/>
+    <translation outputPort="2" outputID="O000000" inputPort="0" inputID="O0000002"/>
+    <translation outputPort="1" outputID="O00000" inputPort="0" inputID="O000001"/>
+    <translation outputPort="0" outputID="O000001" inputPort="0" inputID="O0000000000"/>
+    <translation outputPort="1" outputID="O000001" inputPort="0" inputID="O0000011"/>
+    <translation outputPort="2" outputID="O000001" inputPort="0" inputID="O0000012"/>
+    <translation outputPort="1" outputID="O0000" inputPort="0" inputID="O00001"/>
+    <translation outputPort="1" outputID="O00" inputPort="0" inputID="O001"/>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXDate&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates an MT date expressed as [YY]YYMMDD to an MX date “YYYY-MM-DD” by adding the century if absent and introducing the &quot;-&quot; separator between year, month and date.
+
+&lt;b&gt;Format&lt;/b&gt;
+&lt;tt&gt;MT_To_MXDate(MTDate ; MXDate)&lt;/tt&gt;
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MTDate&lt;/tt&gt;: date in the MT message expressed as [YY]YYMMDD where SWIFTStandards Translation Rules 58 Translation Rule Descriptions for Credit Transfer Messages [YY] represents the century (optional) and YYMMDD represents the year, month and day
+
+&lt;b&gt;Output&lt;/b&gt;
+MXDate: date in the MX message typed ISODate expressed as “YYYY-MM-DD”
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/* Check whether century is present and add if not. Year, Month and Day are local variables */
+IF Length(MTDate) = 8
+    /* Date is of YYYYMMDD format */
+    Year = Substring(MTDate, 1, 4)
+    Month = Substring(MTDate, 5, 2)
+    Day = Substring(MTDate, 7, 2)
+ELSE
+    /* Date is of YYMMDD format */
+    Year = Substring(MTDate, 1, 2)
+    Month = Substring(MTDate, 3, 2)
+    Day = Substring(MTDate, 5, 2)
+    /* Add century to Year */
+    IF Substring(Year) &gt; 79
+        Year = Concatenate(“19”, Year)
+    ELSE
+        Year = Concatenate(“20”, Year)
+    ENDIF
+ENDIF
+/* Introduction pattern */
+MXDate = Concatenate(Year, “-“, Month, “-“, Day)
+&lt;pre&gt;</notes>
+    </documentation>
+    <output typeRef="#date_date" required="false" path="" endID="0"/>
+</transform>

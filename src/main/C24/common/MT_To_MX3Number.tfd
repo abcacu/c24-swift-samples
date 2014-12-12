@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.7" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MX3Number.tfd">
+    <input typeRef="Data Field Dictionary/Subfields/Signed Number 3 Long" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <javaMethodRef refId="7" y="76" x="328" id="8"/>
+    <contextPath input="false" endID="0" contextRef="" id="12"/>
+    <contextPath input="true" endID="0" contextRef="Sign" id="16"/>
+    <contextPath input="true" endID="0" contextRef="Number 3 long" id="17"/>
+    <translation outputPort="0" outputID="12" inputPort="0" inputID="8"/>
+    <translation outputPort="0" outputID="8" inputPort="0" inputID="16"/>
+    <translation outputPort="1" outputID="8" inputPort="0" inputID="17"/>
+    <nextId>18</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MX3Number&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates an MT number (exactly 3digits) with an optional negative sign represented by “N” to a signed MX number with no fraction part. Insignificant digits are
+removed.
+
+&lt;b&gt;Format&lt;/b&gt;
+&lt;tt&gt;MT_To_MX3Number(MTNumber; MXNumber)&lt;/tt&gt;
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MTNumber&lt;/tt&gt;: Format is [N]3!n
+
+&lt;b&gt;Output&lt;/b&gt;
+MXNumber: format is a number with maximum total digits 18, fractional digits 0. The negative sign is represented by “-“. Default sign means positive value.
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/* Convert the negative sign “N” into “-“ if any and then copy
+the number */
+Number = MTNumber
+IF MTNumber StartWith “N”
+/* Remove the sign and get it separately */
+    Number = DeleteChar(Number, 1, 1)
+    Sign = “-“
+ELSE
+    Sign = “”
+ENDIF
+Number = TrimLeft(Number, “0”)
+MXNumber = Concatenate(Sign, Number)
+&lt;pre&gt;</notes>
+    </documentation>
+    <output typeRef="#number_decimal" required="false" path="" endID="0"/>
+    <javaMethod id="7">
+        <libraryMethod>false</libraryMethod>
+        <methodName>setMX3Number</methodName>
+        <input type="#string" role="arg0"/>
+        <input type="#number_int" role="arg1"/>
+        <output type="#number_decimal"/>
+        <code>java.math.BigDecimal ret = null;&#xD;
+java.math.MathContext mc = new java.math.MathContext(18);&#xD;
+if (&quot;N&quot;.equals(arg0)) {&#xD;
+    ret = new java.math.BigDecimal(-arg1, mc);&#xD;
+} else {&#xD;
+    ret =  new java.math.BigDecimal(arg1, mc);&#xD;
+}&#xD;
+return ret;</code>
+    </javaMethod>
+</transform>

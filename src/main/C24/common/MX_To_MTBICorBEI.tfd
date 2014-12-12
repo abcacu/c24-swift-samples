@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.6" validateOutputs="false" validateInputs="true" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTBICorBEI.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#string" required="false" path="" endID="1"/>
+    <constant constant="null" id="0"/>
+    <globalTransformRef ref="MX_To_MTBIC.tfd" y="341" x="404" id="4"/>
+    <contextPath input="true" endID="0" contextRef="" id="2"/>
+    <contextPath input="true" endID="1" contextRef="" id="3"/>
+    <contextPath input="false" endID="0" contextRef="" id="5"/>
+    <transformMethod name="UNION" y="242" x="73" id="8"/>
+    <translation outputPort="1" outputID="4" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="5" inputPort="0" inputID="4"/>
+    <translation outputPort="1" outputID="8" inputPort="0" inputID="3"/>
+    <translation outputPort="0" outputID="8" inputPort="0" inputID="2"/>
+    <translation outputPort="0" outputID="4" inputPort="0" inputID="8"/>
+    <nextId>9</nextId>
+    <documentation>
+        <notes>
+INPUT:
+	1. BIC
+	2. BEI
+
+Business description
+	The function translates an MX BIC or BEI party identification to an MT BIC or BEI.
+
+Format
+	MX_To_MTBICorBEI(MXPartyIdentification ; MTBICBEI)
+
+Input
+	MXPartyIdentification: the entire structure of the MX party identification typed PartyIdentification8.
+
+Output
+	MTBICBEI: BIC or BEI identifying the party in the MT format.
+
+Preconditions
+	None.</notes>
+    </documentation>
+    <output typeRef="Data Field Dictionary/Subfields/Identifier Code" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+</transform>

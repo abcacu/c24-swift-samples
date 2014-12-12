@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT72_To_MXText.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#string" required="false" path="" endID="1"/>
+    <input typeRef="#number_int" required="false" path="" endID="2"/>
+    <contextPath input="true" endID="0" contextRef="" id="I0"/>
+    <contextPath input="true" endID="1" contextRef="" id="I1"/>
+    <contextPath input="true" endID="2" contextRef="" id="I2"/>
+    <contextPath input="false" endID="0" contextRef="" id="O0"/>
+    <transformMethod name="SUBSTRING" y="78" x="371" id="O00"/>
+    <javaMethodRef refId="O000_ref" y="39" x="178" id="O000"/>
+    <constant constant="//" id="O0002"/>
+    <transformMethod name="LENGTH" y="118" x="119" id="O001"/>
+    <transformMethod name="ADD" y="184" x="220" id="O002"/>
+    <translation outputPort="0" outputID="O0" inputPort="0" inputID="O00"/>
+    <translation outputPort="0" outputID="O00" inputPort="0" inputID="O000"/>
+    <translation outputPort="0" outputID="O000" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="O000" inputPort="0" inputID="I1"/>
+    <translation outputPort="2" outputID="O000" inputPort="0" inputID="O0002"/>
+    <translation outputPort="1" outputID="O00" inputPort="0" inputID="O001"/>
+    <translation outputPort="0" outputID="O001" inputPort="0" inputID="I1"/>
+    <translation outputPort="2" outputID="O00" inputPort="0" inputID="O002"/>
+    <translation outputPort="0" outputID="O002" inputPort="0" inputID="O001"/>
+    <translation outputPort="1" outputID="O002" inputPort="0" inputID="I2"/>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+    <javaMethod id="O000_ref">
+        <libraryMethod>false</libraryMethod>
+        <methodName>extractLines</methodName>
+        <input type="#string" role="text"/>
+        <input type="#string" role="code"/>
+        <input type="#string" role="hyphen"/>
+        <output type="#string"/>
+        <code>int start = 0;&#xD;
+for (; !text.startsWith(code, start); start += 2) {&#xD;
+    start = text.indexOf(&quot;\r\n&quot;, start);&#xD;
+    if (0 &gt; start) break;&#xD;
+}&#xD;
+StringBuffer result = new StringBuffer();&#xD;
+if (text.startsWith(code, start)) {&#xD;
+    int end = text.indexOf(&quot;\r\n&quot;, start);&#xD;
+    for (; 0 &lt; end &amp;&amp; text.startsWith(hyphen, end + 2); start = end + 2 + hyphen.length(), end = text.indexOf(&quot;\r\n&quot;, start)) {&#xD;
+        result.append(text.substring(start, end)).append(' ');&#xD;
+    }&#xD;
+    if (0 &gt; end) end = text.length();&#xD;
+    result.append(text.substring(start, end));&#xD;
+}&#xD;
+return result.toString();</code>
+    </javaMethod>
+</transform>

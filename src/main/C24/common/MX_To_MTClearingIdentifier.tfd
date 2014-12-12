@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTClearingIdentifier.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#string" required="false" path="" endID="1"/>
+    <input typeRef="#string" required="false" path="" endID="2"/>
+    <input typeRef="#string" required="false" path="" endID="3"/>
+    <input typeRef="#string" required="false" path="" endID="4"/>
+    <constant constant="null" id="0"/>
+    <contextPath input="true" endID="0" contextRef="" id="I0"/>
+    <contextPath input="true" endID="1" contextRef="" id="I1"/>
+    <contextPath input="true" endID="2" contextRef="" id="I2"/>
+    <contextPath input="true" endID="3" contextRef="" id="I3"/>
+    <contextPath input="true" endID="4" contextRef="" id="I4"/>
+    <contextPath input="false" endID="0" contextRef="" id="O0"/>
+    <transformMethod type="#string" name="IF" y="108" x="1244" id="O00"/>
+    <transformMethod name="AND" y="177" x="1420" id="O000"/>
+    <transformMethod name="STARTSWITH" y="177" x="1247" id="O0000"/>
+    <transformMethod type="#string" name="IF" y="108" x="1059" id="O00000"/>
+    <transformMethod name="EXISTS" y="32" x="825" id="O000000"/>
+    <transformMethod type="#string" name="IF" y="108" x="634" id="O0000000"/>
+    <transformMethod name="GREATERTHAN" y="39" x="644" id="O00000000"/>
+    <transformMethod name="LENGTH" y="170" x="435" id="O000000000"/>
+    <transformMethod name="FIRST" y="170" x="275" id="O0000000000"/>
+    <transformMethod name="UNION" y="301" x="118" id="O00000000000"/>
+    <constant constant="33" id="O000000001"/>
+    <transformMethod name="SUBSTRING" y="108" x="448" id="O00000001"/>
+    <constant constant="0" id="O000000011"/>
+    <constant constant="33" id="O000000012"/>
+    <localTransformRef refId="O000001_ref" y="94" x="857" id="O000001"/>
+    <transformMethod name="FIRST" y="94" x="275" id="O000002"/>
+    <transformMethod name="UNION" y="239" x="118" id="O0000020"/>
+    <constant constant="//FW" id="O00001"/>
+    <transformMethod name="EXISTS" y="170" x="118" id="O0001"/>
+    <constant constant="//FW" id="O001"/>
+    <translation outputPort="0" outputID="O0" inputPort="0" inputID="O00"/>
+    <translation outputPort="0" outputID="O00" inputPort="0" inputID="O000"/>
+    <translation outputPort="0" outputID="O000" inputPort="0" inputID="O0000"/>
+    <translation outputPort="0" outputID="O0000" inputPort="0" inputID="O00000"/>
+    <translation outputPort="0" outputID="O00000" inputPort="0" inputID="O000000"/>
+    <translation outputPort="0" outputID="O000000" inputPort="0" inputID="O0000000"/>
+    <translation outputPort="0" outputID="O0000000" inputPort="0" inputID="O00000000"/>
+    <translation outputPort="0" outputID="O00000000" inputPort="0" inputID="O000000000"/>
+    <translation outputPort="0" outputID="O000000000" inputPort="0" inputID="O0000000000"/>
+    <translation outputPort="0" outputID="O0000000000" inputPort="0" inputID="O00000000000"/>
+    <translation outputPort="0" outputID="O00000000000" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="O00000000000" inputPort="0" inputID="I1"/>
+    <translation outputPort="1" outputID="O00000000" inputPort="0" inputID="O000000001"/>
+    <translation outputPort="1" outputID="O0000000" inputPort="0" inputID="O00000001"/>
+    <translation outputPort="0" outputID="O00000001" inputPort="0" inputID="O0000000000"/>
+    <translation outputPort="1" outputID="O00000001" inputPort="0" inputID="O000000011"/>
+    <translation outputPort="2" outputID="O00000001" inputPort="0" inputID="O000000012"/>
+    <translation outputPort="2" outputID="O0000000" inputPort="0" inputID="O0000000000"/>
+    <translation outputPort="1" outputID="O00000" inputPort="0" inputID="O000001"/>
+    <translation outputPort="0" outputID="O000001" inputPort="0" inputID="O0000000"/>
+    <translation outputPort="2" outputID="O00000" inputPort="0" inputID="O000002"/>
+    <translation outputPort="0" outputID="O000002" inputPort="0" inputID="O0000020"/>
+    <translation outputPort="0" outputID="O0000020" inputPort="0" inputID="I2"/>
+    <translation outputPort="1" outputID="O0000020" inputPort="0" inputID="I3"/>
+    <translation outputPort="1" outputID="O0000" inputPort="0" inputID="O00001"/>
+    <translation outputPort="1" outputID="O000" inputPort="0" inputID="O0001"/>
+    <translation outputPort="0" outputID="O0001" inputPort="0" inputID="I4"/>
+    <translation outputPort="1" outputID="O00" inputPort="0" inputID="O001"/>
+    <translation outputPort="2" outputID="O00" inputPort="0" inputID="O00000"/>
+    <documentation>
+        <notes>
+INPUT:
+	1. FinancialInstitutionIdentification.ClearingSystemMemberIdentification.Identification
+	2. FinancialInstitutionIdentification.CombinedIdentification.ClearingSystemMemberIdentification.Identification
+	3. FinancialInstitutionIdentification.ClearingSystemMemberIdentification.Proprietary
+	4. FinancialInstitutionIdentification.CombinedIdentification.ClearingSystemMemberIdentification.Proprietary
+	5. BIC
+
+Business description
+	The function translates an MX ClearingSystemMemberIdentification to an MT clearing identifier by:
+		• checking whether the clearing system member identification is present in the Identification or in the Proprietary element of the
+		  ClearingSystemMemberIdentification component present at either FinancialInstitutionIdentification or FinancialInstitutionIdentification.CombinedIdentification level.
+			1. Present in Identification element:
+				The first 5 characters of the element content are isolated as clearing system code. The remaining characters are the actual clearing 
+				system identifier. It is checked whether this 5-character code is present in the ISO externalized MX ClearingSystemList (Annex to this function). 
+				If the code is found, the equivalent MT code will be used in combination with the actual clearing system identifier to obtain the translated MT 
+				clearing identifier. If the code is not found in the list, then the content of the identification element “as is” will be taken as MT clearing identifier.
+			2. Present in Proprietary element:
+				The content of the Proprietary element “as is” is taken as MT clearing identifier. Finally a double slash “//” prefix is added to the translated 
+				MX clearing identification in line with the MT formatting rules. Format MX_To_MTClearingIdentifier(MXAgentIdentification ; MTPartyIdentifier)
+Input
+	MXAgentIdentification: the entire structure of the MX agent identification typed BranchAndFinancialInstitutionIdentification3.
+Output
+	MTPartyIdentifier: clearing system member identification of the financial institution in the MT format (/34x).
+Preconditions
+	Total length of the MX clearing system member identification (in Identification or Proprietary element) must not be longer than 33 characters or translation will be stopped.</notes>
+    </documentation>
+    <output typeRef="Data Field Dictionary/Subfields/Party Identifier" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <localTransform id="O000001_ref">
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="After Precondition">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="false" endID="0" contextRef="" id="O0"/>
+            <transformMethod name="CONCAT" y="39" x="311" id="O00"/>
+            <transformMethod name="CONCAT" y="39" x="542" id="O000"/>
+            <constant constant="/" id="O0000"/>
+            <hashtableRef refId="O0001_ref" y="108" x="343" id="O0001"/>
+            <transformMethod name="SUBSTRING" y="170" x="134" id="O00010"/>
+            <constant constant="0" id="O000101"/>
+            <constant constant="5" id="O000102"/>
+            <transformMethod name="SUBSTRING" y="46" x="134" id="O001"/>
+            <constant constant="5" id="O0011"/>
+            <constant constant="-1" id="O0012"/>
+            <translation outputPort="0" outputID="O0" inputPort="0" inputID="O00"/>
+            <translation outputPort="0" outputID="O00" inputPort="0" inputID="O000"/>
+            <translation outputPort="0" outputID="O000" inputPort="0" inputID="O0000"/>
+            <translation outputPort="1" outputID="O000" inputPort="0" inputID="O0001"/>
+            <translation outputPort="0" outputID="O0001" inputPort="0" inputID="O00010"/>
+            <translation outputPort="0" outputID="O00010" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="O00010" inputPort="0" inputID="O000101"/>
+            <translation outputPort="2" outputID="O00010" inputPort="0" inputID="O000102"/>
+            <translation outputPort="1" outputID="O00" inputPort="0" inputID="O001"/>
+            <translation outputPort="0" outputID="O001" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="O001" inputPort="0" inputID="O0011"/>
+            <translation outputPort="2" outputID="O001" inputPort="0" inputID="O0012"/>
+            <output typeRef="#string" required="false" path="" endID="0"/>
+            <hashtable id="O0001_ref">
+                <name>Clearing System List</name>
+                <defaultValue></defaultValue>
+                <entry value="AT" key="ATBLZ"/>
+                <entry value="AU" key="AUBSB"/>
+                <entry value="CC" key="CACPA"/>
+                <entry value="SW" key="CHBCC"/>
+                <entry value="SW" key="CHSIC"/>
+                <entry value="CN" key="CNAPS"/>
+                <entry value="BL" key="DEBLZ"/>
+                <entry value="ES" key="ESNCC"/>
+                <entry value="SC" key="GBDSC"/>
+                <entry value="GR" key="GRHIC"/>
+                <entry value="HK" key="HKNCC"/>
+                <entry value="IE" key="IENCC"/>
+                <entry value="IN" key="INFSC"/>
+                <entry value="IT" key="ITNCC"/>
+                <entry value="JP" key="JPZGN"/>
+                <entry value="NZ" key="NZNCC"/>
+                <entry value="PL" key="PLKNR"/>
+                <entry value="PT" key="PTNCC"/>
+                <entry value="RU" key="RUCBC"/>
+                <entry value="FW" key="USABA"/>
+                <entry value="CP" key="USPID"/>
+                <entry value="ZA" key="ZANCC"/>
+            </hashtable>
+        </transform>
+    </localTransform>
+</transform>

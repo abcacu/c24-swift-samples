@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.17" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXPartyAccount.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <constant constant="null" id="0"/>
+    <transformMethod type="#string" name="IF" y="242" x="319" id="12"/>
+    <transformMethod name="NOT" y="144" x="210" id="13"/>
+    <transformMethod type="#string" name="IF" y="82" x="208" id="14"/>
+    <javaMethodRef refId="16" y="39" x="83" id="15"/>
+    <contextPath input="true" endID="0" contextRef="" id="17"/>
+    <contextPath input="false" endID="0" contextRef="" id="18"/>
+    <contextPath input="false" endID="1" contextRef="" id="19"/>
+    <translation outputPort="0" outputID="14" inputPort="0" inputID="15"/>
+    <translation outputPort="2" outputID="14" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="13" inputPort="0" inputID="15"/>
+    <translation outputPort="2" outputID="12" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="12" inputPort="0" inputID="13"/>
+    <translation outputPort="0" outputID="15" inputPort="0" inputID="17"/>
+    <translation outputPort="0" outputID="18" inputPort="0" inputID="14"/>
+    <translation outputPort="0" outputID="19" inputPort="0" inputID="12"/>
+    <translation outputPort="1" outputID="14" inputPort="0" inputID="17"/>
+    <translation outputPort="1" outputID="12" inputPort="0" inputID="17"/>
+    <nextId>30</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXPartyAccount&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates an MT party account to an MX account by deleting the slash “/”and writing the remainder in the appropriate MX account element after checking whether the account is an IBAN.
+
+&lt;b&gt;Format&lt;/b&gt;
+&lt;tt&gt;MT_To_MXPartyAccount(MTAccount ; MXAccount)&lt;/tt&gt;
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MTAccount&lt;/tt&gt;: party account in the MT format (/34x).
+
+&lt;b&gt;Output&lt;/b&gt;
+&lt;tt&gt;MXAccount&lt;/tt&gt;: the result of this function -an MX account- is immediately put into the correct MX element inside the target component typed CashAccount7.
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/* Drop the slash. Account is a local variable */
+Account = Substring(MTAccount, 2)
+/* Check whether the account is an IBAN */
+IF IsIBAN(Account)
+    Identification.IBAN = Account
+ELSE
+    Identification.ProprietaryAccount.Identification = Account
+ENDIF
+&lt;/pre&gt;</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+    <output typeRef="#string" required="false" path="" endID="1"/>
+    <javaMethod id="16">
+        <libraryMethod>false</libraryMethod>
+        <classname>com.iona.standard.swift.IBANCalculator</classname>
+        <methodName>isIBAN</methodName>
+        <input type="#string" role="account"/>
+        <output type="#boolean"/>
+        <code>String code = null;&#xD;
+if (account.length() &gt; 5) {&#xD;
+    code = account.substring(4) + account.substring(0, 4);&#xD;
+} else {&#xD;
+    code = account;&#xD;
+}&#xD;
+long total = 0;&#xD;
+for (int i = 0; i &lt; code.length(); i++) {&#xD;
+    int charValue = Character.getNumericValue(code.charAt(i));&#xD;
+    if (charValue &lt; 0 || charValue &gt; 35) {&#xD;
+        // not allowed charachter&#xD;
+        return false;&#xD;
+    }&#xD;
+    total = (charValue &gt; 9 ? total * 100 : total * 10) + charValue;&#xD;
+    if (total &gt; 999999999) {&#xD;
+        total = (total % 97);&#xD;
+    }&#xD;
+}&#xD;
+return 1 == (int)(total % 97);&#xD;
+</code>
+    </javaMethod>
+</transform>

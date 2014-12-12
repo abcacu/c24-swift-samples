@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.3" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXRemittanceInformation.tfd">
+    <input typeRef="Data Field Dictionary/Subfields/Details of Payment" required="true" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <transformMethod name="CONCAT" y="52" x="255" id="1"/>
+    <transformMethod name="CONCAT" y="177" x="263" id="2"/>
+    <transformMethod name="CONCAT" y="109" x="430" id="3"/>
+    <contextPath input="false" endID="0" contextRef="" id="8"/>
+    <transformMethod name="INSTANCE" y="31" x="99" id="9"/>
+    <contextPath input="true" endID="0" contextRef="Line 35x" id="10"/>
+    <constant constant="0" id="11"/>
+    <transformMethod name="INSTANCE" y="87" x="100" id="12"/>
+    <constant constant="1" id="14"/>
+    <transformMethod name="INSTANCE" y="148" x="101" id="15"/>
+    <constant constant="2" id="17"/>
+    <transformMethod name="INSTANCE" y="208" x="100" id="18"/>
+    <constant constant="3" id="20"/>
+    <translation outputPort="0" outputID="3" inputPort="0" inputID="1"/>
+    <translation outputPort="1" outputID="3" inputPort="0" inputID="2"/>
+    <translation outputPort="0" outputID="8" inputPort="0" inputID="3"/>
+    <translation outputPort="0" outputID="9" inputPort="0" inputID="10"/>
+    <translation outputPort="1" outputID="9" inputPort="0" inputID="11"/>
+    <translation outputPort="1" outputID="12" inputPort="0" inputID="14"/>
+    <translation outputPort="1" outputID="15" inputPort="0" inputID="17"/>
+    <translation outputPort="1" outputID="18" inputPort="0" inputID="20"/>
+    <translation outputPort="0" outputID="12" inputPort="0" inputID="10"/>
+    <translation outputPort="0" outputID="15" inputPort="0" inputID="10"/>
+    <translation outputPort="0" outputID="18" inputPort="0" inputID="10"/>
+    <translation outputPort="0" outputID="1" inputPort="0" inputID="9"/>
+    <translation outputPort="1" outputID="1" inputPort="0" inputID="12"/>
+    <translation outputPort="0" outputID="2" inputPort="0" inputID="15"/>
+    <translation outputPort="1" outputID="2" inputPort="0" inputID="18"/>
+    <nextId>21</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXRemittanceInformation&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates an MT remittance information field 70 to an MX remittance information element.
+
+&lt;b&gt;Format&lt;/b&gt;
+&lt;tt&gt;MT_To_MXRemittanceInformation(MT70 ; MXRemittanceInformation)&lt;/tt&gt;
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MT70&lt;/tt&gt;: remittance information in an MT field 70 (format 4*35x).
+
+&lt;b&gt;Output&lt;/b&gt;
+&lt;tt&gt;MXRemittanceInformation&lt;/tt&gt;: remittance information in the MX message typed Max140Text.
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/*
+   MT70 is defined by 4 lines of 35 characters. MT70[1] indicates the first line, not including the Carriage Return
+   Line Feed “CRLF” separator needed between consecutive lines in an MT field with multiple lines
+*/
+/* Concatenate all lines in one string */
+MXRemittanceInformation = Concatenate(MT70[1], MT70[2], MT70[3], MT70[4])
+&lt;/pre&gt;</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+</transform>

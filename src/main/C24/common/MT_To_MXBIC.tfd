@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXBIC.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#string" required="false" path="" endID="1"/>
+    <contextPath input="true" endID="0" contextRef="" id="I0"/>
+    <contextPath input="true" endID="1" contextRef="" id="I1"/>
+    <contextPath input="false" endID="0" contextRef="" id="O0"/>
+    <transformMethod type="#string" name="IF" id="O00"/>
+    <transformMethod name="NOT" id="O000"/>
+    <transformMethod name="OR" id="O0000"/>
+    <transformMethod name="NOT" id="O00000"/>
+    <transformMethod name="OR" id="O000000"/>
+    <transformMethod name="OR" id="O0000000"/>
+    <transformMethod name="OR" id="O00000000"/>
+    <transformMethod name="STARTSWITH" id="O000000000"/>
+    <constant constant="/FW" id="O0000000001"/>
+    <transformMethod name="STARTSWITH" id="O000000001"/>
+    <constant constant="/RT" id="O0000000011"/>
+    <transformMethod name="OR" id="O00000001"/>
+    <transformMethod name="STARTSWITH" id="O000000010"/>
+    <constant constant="/TA" id="O0000000101"/>
+    <transformMethod name="STARTSWITH" id="O000000011"/>
+    <constant constant="/CH" id="O0000000111"/>
+    <transformMethod name="NOT" id="O0000001"/>
+    <transformMethod name="STARTSWITH" id="O00000010"/>
+    <constant constant="/" id="O000000101"/>
+    <transformMethod name="AND" id="O00001"/>
+    <transformMethod name="STARTSWITH" id="O000010"/>
+    <constant constant="/RT//" id="O0000101"/>
+    <transformMethod name="GREATERTHAN" id="O000011"/>
+    <transformMethod name="LENGTH" id="O0000110"/>
+    <constant constant="5" id="O0000111"/>
+    <constant constant="null" id="O002"/>
+    <contextPath input="false" endID="1" contextRef="" id="O1"/>
+    <transformMethod type="#string" name="IF" id="O10"/>
+    <translation outputPort="0" outputID="O0" inputPort="0" inputID="O00"/>
+    <translation outputPort="0" outputID="O00" inputPort="0" inputID="O000"/>
+    <translation outputPort="0" outputID="O000" inputPort="0" inputID="O0000"/>
+    <translation outputPort="0" outputID="O0000" inputPort="0" inputID="O00000"/>
+    <translation outputPort="0" outputID="O00000" inputPort="0" inputID="O000000"/>
+    <translation outputPort="0" outputID="O000000" inputPort="0" inputID="O0000000"/>
+    <translation outputPort="0" outputID="O0000000" inputPort="0" inputID="O00000000"/>
+    <translation outputPort="0" outputID="O00000000" inputPort="0" inputID="O000000000"/>
+    <translation outputPort="0" outputID="O000000000" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="O000000000" inputPort="0" inputID="O0000000001"/>
+    <translation outputPort="1" outputID="O00000000" inputPort="0" inputID="O000000001"/>
+    <translation outputPort="0" outputID="O000000001" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="O000000001" inputPort="0" inputID="O0000000011"/>
+    <translation outputPort="1" outputID="O0000000" inputPort="0" inputID="O00000001"/>
+    <translation outputPort="0" outputID="O00000001" inputPort="0" inputID="O000000010"/>
+    <translation outputPort="0" outputID="O000000010" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="O000000010" inputPort="0" inputID="O0000000101"/>
+    <translation outputPort="1" outputID="O00000001" inputPort="0" inputID="O000000011"/>
+    <translation outputPort="0" outputID="O000000011" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="O000000011" inputPort="0" inputID="O0000000111"/>
+    <translation outputPort="1" outputID="O000000" inputPort="0" inputID="O0000001"/>
+    <translation outputPort="0" outputID="O0000001" inputPort="0" inputID="O00000010"/>
+    <translation outputPort="0" outputID="O00000010" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="O00000010" inputPort="0" inputID="O000000101"/>
+    <translation outputPort="1" outputID="O0000" inputPort="0" inputID="O00001"/>
+    <translation outputPort="0" outputID="O00001" inputPort="0" inputID="O000010"/>
+    <translation outputPort="0" outputID="O000010" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="O000010" inputPort="0" inputID="O0000101"/>
+    <translation outputPort="1" outputID="O00001" inputPort="0" inputID="O000011"/>
+    <translation outputPort="0" outputID="O000011" inputPort="0" inputID="O0000110"/>
+    <translation outputPort="0" outputID="O0000110" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="O000011" inputPort="0" inputID="O0000111"/>
+    <translation outputPort="1" outputID="O00" inputPort="0" inputID="I1"/>
+    <translation outputPort="2" outputID="O00" inputPort="0" inputID="O002"/>
+    <translation outputPort="0" outputID="O1" inputPort="0" inputID="O10"/>
+    <translation outputPort="0" outputID="O10" inputPort="0" inputID="O0000"/>
+    <translation outputPort="1" outputID="O10" inputPort="0" inputID="I1"/>
+    <translation outputPort="2" outputID="O10" inputPort="0" inputID="O002"/>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXBIC&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates an MT BIC to an MX BIC.
+
+&lt;b&gt;Format&lt;/b&gt;
+&lt;tt&gt;MT_To_MXBIC(MTBIC, MTPartyIdentifier ; MXBIC)&lt;/tt&gt;
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MTBIC&lt;/tt&gt;: BIC identifying a financial institution in an MT message.
+&lt;tt&gt;MTPartyIdentifier&lt;/tt&gt;: Subfield 1 of an MT financial institution identification field.
+
+&lt;b&gt;Output&lt;/b&gt;
+&lt;tt&gt;MXBIC&lt;/tt&gt;: clearing identifier.
+&lt;tt&gt;MXBIC&lt;/tt&gt;: account identifier.
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/*
+   Check the content of the MTPartyIdentifier (account or clearing identifier) to determine the target element of the
+   BIC translation (translation of the MTPartyIdentifier is done by a separate function). If the MTPartyIdentifier
+   starts with a single slash “/”or “//CH” (CHIPS Universal Identifier) then it carries an account identification. If it
+   starts with “//FW” or “//TA” or ”//RT”, then it carries a clearing channel indicator. If the MTPartyIdentifier starts
+   with “//RT//” then it carries both a clearing channel indicator and a clearing identifier. In all other cases an
+   MTPartyIdentifier starting with a double slash “//” carries a clearing identifier. The presence of a clearing
+   identifier impacts the translation target of the BIC
+*/
+IF (Substring(MTPartyIdentifier, 1, 6) = “//RT//” AND Length(MTPartyIdentifier)&gt;6) OR
+   (Substring(MTPartyIdentifier, 1, 2) = “//” AND
+   Substring(MTPartyIdentifier, 1, 4) NOT = “//FW” OR “//RT” OR “//TA” OR “CH”)
+    /*
+       MTPartyIdentifier carries a clearing identifier: target of the BIC translation is the BIC element in the
+       CombinedIdentification component
+    */
+    FinancialInstitutionIdentification.CombinedIdentification.BIC = MTBIC
+ELSE
+    /*
+       The BIC is the only identifier of the financial institution: target of the BIC translation is the BIC element in
+       the FinancialInstitutionIdentification component
+    */
+    FinancialInstitutionIdentification.BIC = MTBIC
+ENDIF
+&lt;/pre&gt;
+</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+    <output typeRef="#string" required="false" path="" endID="1"/>
+</transform>

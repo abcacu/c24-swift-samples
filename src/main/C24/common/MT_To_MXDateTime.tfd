@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.27" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXDateTime.tfd">
+    <input typeRef="#date_generic" required="false" path="" endID="0"/>
+    <input typeRef="#date_generic" required="false" path="" endID="1"/>
+    <transformMethod type="#date_datetime" name="CHGHOURS" y="71" x="332" id="1"/>
+    <transformMethod name="GETSECS" y="272" x="174" id="3"/>
+    <transformMethod name="GETMINS" y="233" x="162" id="4"/>
+    <transformMethod name="GETHOURS" y="187" x="157" id="5"/>
+    <transformMethod type="#date_datetime" name="CHGMINS" y="108" x="460" id="6"/>
+    <transformMethod type="#date_datetime" name="CHGSECS" y="143" x="580" id="7"/>
+    <globalTransformRef ref="MTDate_To_MXDateTime.tfd" y="52" x="132" id="11"/>
+    <contextPath input="true" endID="1" contextRef="" id="9"/>
+    <contextPath input="false" endID="0" contextRef="" id="10"/>
+    <contextPath input="true" endID="0" contextRef="" id="12"/>
+    <translation outputPort="1" outputID="1" inputPort="0" inputID="5"/>
+    <translation outputPort="0" outputID="6" inputPort="0" inputID="1"/>
+    <translation outputPort="1" outputID="6" inputPort="0" inputID="4"/>
+    <translation outputPort="0" outputID="7" inputPort="0" inputID="6"/>
+    <translation outputPort="1" outputID="7" inputPort="0" inputID="3"/>
+    <translation outputPort="0" outputID="1" inputPort="0" inputID="11"/>
+    <translation outputPort="0" outputID="5" inputPort="0" inputID="9"/>
+    <translation outputPort="0" outputID="4" inputPort="0" inputID="9"/>
+    <translation outputPort="0" outputID="3" inputPort="0" inputID="9"/>
+    <translation outputPort="0" outputID="10" inputPort="0" inputID="7"/>
+    <translation outputPort="0" outputID="11" inputPort="0" inputID="12"/>
+    <nextId>13</nextId>
+    <output typeRef="#date_datetime" required="false" path="" endID="0"/>
+</transform>

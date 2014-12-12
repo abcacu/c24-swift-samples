@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.3" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MTDateTime[Offset]_To_MXDateTime[Offset].tfd">
+    <input typeRef="#date_generic" required="false" path="" endID="0"/>
+    <input typeRef="#date_generic" required="false" path="" endID="1"/>
+    <input typeRef="#number_integer" required="false" path="" endID="2"/>
+    <input typeRef="Data Field Dictionary/Subfields/UTC Indicator" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="3"/>
+    <transformMethod name="CONCAT" y="171" x="415" id="1"/>
+    <transformMethod name="DATETOSTRING" y="121" x="220" id="2"/>
+    <transformMethod name="DATETOSTRING" y="48" x="217" id="3"/>
+    <transformMethod type="#string" name="IF" y="494" x="247" id="4"/>
+    <transformMethod name="EQUALS" y="287" x="118" id="5"/>
+    <transformMethod name="CONCAT" y="470" x="433" id="6"/>
+    <transformMethod name="CONCAT" y="326" x="420" id="7"/>
+    <transformMethod name="CONCAT" y="255" x="416" id="8"/>
+    <transformMethod type="#string" name="IF" y="333" x="234" id="9"/>
+    <transformMethod name="CONCAT" y="530" x="436" id="11"/>
+    <transformMethod name="CONCAT" y="112" x="560" id="15"/>
+    <transformMethod name="EXISTS" y="463" x="125" id="16"/>
+    <transformMethod name="CONCAT" y="398" x="429" id="17"/>
+    <constant constant="HH:mm:ss" id="18"/>
+    <constant constant="yyyy-MM-dd'T'" id="19"/>
+    <constant constant="&quot;.&quot;" id="20"/>
+    <constant constant="&quot;-&quot;" id="21"/>
+    <constant constant="&quot;+&quot;" id="22"/>
+    <constant constant="&quot;N&quot;" id="23"/>
+    <constant constant="&quot;00&quot;" id="24"/>
+    <constant constant="&quot;:&quot;" id="25"/>
+    <contextPath input="true" endID="0" contextRef="" id="26"/>
+    <contextPath input="true" endID="1" contextRef="" id="27"/>
+    <transformMethod name="TOSTRING" y="200" x="200" id="29"/>
+    <contextPath input="true" endID="2" contextRef="" id="28"/>
+    <contextPath input="true" endID="3" contextRef="Sign" id="30"/>
+    <transformMethod name="TOSTRING" y="406" x="223" id="32"/>
+    <contextPath input="true" endID="3" contextRef="UTC Offset Part 1" id="31"/>
+    <contextPath input="true" endID="3" contextRef="UTC Offset Part 2" id="33"/>
+    <transformMethod name="TOSTRING" y="551" x="115" id="34"/>
+    <transformMethod type="#date_datetime" name="FROMSTRING" y="102" x="702" id="36"/>
+    <contextPath input="false" endID="0" contextRef="" id="35"/>
+    <translation outputPort="1" outputID="1" inputPort="0" inputID="8"/>
+    <translation outputPort="0" outputID="1" inputPort="0" inputID="2"/>
+    <translation outputPort="1" outputID="2" inputPort="0" inputID="18"/>
+    <translation outputPort="1" outputID="3" inputPort="0" inputID="19"/>
+    <translation outputPort="1" outputID="15" inputPort="0" inputID="1"/>
+    <translation outputPort="0" outputID="15" inputPort="0" inputID="3"/>
+    <translation outputPort="0" outputID="8" inputPort="0" inputID="20"/>
+    <translation outputPort="1" outputID="8" inputPort="0" inputID="7"/>
+    <translation outputPort="1" outputID="7" inputPort="0" inputID="17"/>
+    <translation outputPort="0" outputID="17" inputPort="0" inputID="9"/>
+    <translation outputPort="1" outputID="9" inputPort="0" inputID="21"/>
+    <translation outputPort="2" outputID="9" inputPort="0" inputID="22"/>
+    <translation outputPort="0" outputID="9" inputPort="0" inputID="5"/>
+    <translation outputPort="1" outputID="5" inputPort="0" inputID="23"/>
+    <translation outputPort="1" outputID="17" inputPort="0" inputID="6"/>
+    <translation outputPort="2" outputID="4" inputPort="0" inputID="24"/>
+    <translation outputPort="0" outputID="4" inputPort="0" inputID="16"/>
+    <translation outputPort="1" outputID="6" inputPort="0" inputID="11"/>
+    <translation outputPort="0" outputID="11" inputPort="0" inputID="25"/>
+    <translation outputPort="1" outputID="11" inputPort="0" inputID="4"/>
+    <translation outputPort="0" outputID="3" inputPort="0" inputID="26"/>
+    <translation outputPort="0" outputID="2" inputPort="0" inputID="27"/>
+    <translation outputPort="0" outputID="29" inputPort="0" inputID="28"/>
+    <translation outputPort="0" outputID="7" inputPort="0" inputID="29"/>
+    <translation outputPort="0" outputID="5" inputPort="0" inputID="30"/>
+    <translation outputPort="0" outputID="32" inputPort="0" inputID="31"/>
+    <translation outputPort="0" outputID="6" inputPort="0" inputID="32"/>
+    <translation outputPort="0" outputID="16" inputPort="0" inputID="33"/>
+    <translation outputPort="0" outputID="34" inputPort="0" inputID="33"/>
+    <translation outputPort="1" outputID="4" inputPort="0" inputID="34"/>
+    <translation outputPort="0" outputID="36" inputPort="0" inputID="15"/>
+    <translation outputPort="0" outputID="35" inputPort="0" inputID="36"/>
+    <nextId>37</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MTDateTime[Offset]_To_MXDateTime[Offset]&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates a date time represented by date time format “CCYYMMDDHHMM[SS[,3n]]” with optionally a time offset to UTC to a date time format “CCYY-MM-DDTHH:MM:SS[.nnn][+/- offset to UTC]” where “T” is the date/time separator.
+
+&lt;b&gt;Format&lt;/b&gt;
+&lt;tt&gt;MTDateTime[Offset]_To_MXDateTime[Offset](MTDateTime ; MXDateTime)&lt;/tt&gt;
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MTDateTime&lt;/tt&gt;:  format is “CCYYMMDDHHMM[SS[,3n]] [/[[N]2!n[2!n]]” where the time offset MM[HH] is represented by “2!n[2!n]” ; the OffsetSign when negative is represented either by “N”. Positive value is not mentioned. In other words, default value of the OffsetSign is positive.
+
+&lt;b&gt;Output&lt;/b&gt;
+&lt;tt&gt;MXDateTime&lt;/tt&gt;: is expressed as “CCYY-MM-DDTHH:MM:SS[.nnn][+/- offset to UTC]” where the offset to UTC is HH:MM.
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/* Truncate after 8 characters */
+    MTDate = ExtractPattern(MTDateTime, CCYYMMDD)
+/* Remove the date */
+   MTTime = ExtractPattern(MTDateTime, HHMM[SS[,3n]])
+   TimeOffset = ExtractPattern(MTDateTime, 2!n[2!n])
+   IF IsPresent(TimeOffset)
+   /* If there is an offset, search the offset sign */
+        IF IsPresentPattern(MTDateTime, “N”)
+            OffsetSign = “N”
+        ELSE
+            OffsetSign = “”
+        ENDIF
+    ENDIF
+/* Replace decimal separator “,” by “.”. Amount is a local variable */
+    Amount = ReplacePattern(Amount, “,”, “.”)
+/* Delete insignificant zeroes at the left and right */
+    Amount = TrimLeft(Amount, “0”)
+    Amount = TrimRight(Amount, “0”)
+/* Check whether the amount has a fractional part. If not, the decimal separator is deleted. Position is a local variable and indicates the position of the last character */
+    Position = Length(Amount)
+    IF Substring(Amount, Position) = “.”
+        MXAmount = DeletePattern(Amount, “.”)
+    ELSE
+        MXAmount = Amount
+   ENDIF
+
+MT_To_MXDate(MTDate; MXDate)
+/* The time translation function is defined elsewhere */
+MTTime_[Offset]_To_MXTime[Offset](MTTime, [OffsetTime,[OffsetSign]] ; MXTime)
+MXDateTime = Concatenate(MXDate, “T”, MXTime)
+&lt;/pre&gt;</notes>
+    </documentation>
+    <output typeRef="#date_datetime" required="false" path="" endID="0"/>
+</transform>

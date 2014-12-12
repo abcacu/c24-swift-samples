@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.5" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MXText_To_MT72.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#string" required="false" path="" endID="1"/>
+    <input typeRef="#number_int" required="false" path="" endID="2"/>
+    <transformMethod name="CONCAT" y="132" x="228" id="1"/>
+    <transformMethod name="SUBSTRING" y="89" x="110" id="4"/>
+    <constant constant="0" id="5"/>
+    <transformMethod name="WRAP" y="185" x="439" id="14"/>
+    <constant constant="35" id="16"/>
+    <constant constant="true" id="17"/>
+    <transformMethod name="FIRST" y="105" x="581" id="26"/>
+    <transformMethod name="UNION" y="116" x="701" id="27"/>
+    <transformMethod name="SUBLIST" y="272" x="478" id="28"/>
+    <constant constant="1" id="29"/>
+    <transformMethod name="SIZE" y="325" x="277" id="31"/>
+    <localTransformRef refId="18" y="260" x="609" id="20"/>
+    <contextPath input="true" endID="1" contextRef="" id="3"/>
+    <contextPath input="true" endID="2" contextRef="" id="6"/>
+    <contextPath input="true" endID="0" contextRef="" id="10"/>
+    <contextPath input="false" endID="0" contextRef="Narrative 6*35x/Line 35x" id="15"/>
+    <translation outputPort="1" outputID="4" inputPort="0" inputID="5"/>
+    <translation outputPort="1" outputID="14" inputPort="0" inputID="16"/>
+    <translation outputPort="2" outputID="14" inputPort="0" inputID="17"/>
+    <translation outputPort="0" outputID="26" inputPort="0" inputID="14"/>
+    <translation outputPort="0" outputID="27" inputPort="0" inputID="26"/>
+    <translation outputPort="0" outputID="28" inputPort="0" inputID="14"/>
+    <translation outputPort="0" outputID="20" inputPort="0" inputID="28"/>
+    <translation outputPort="1" outputID="28" inputPort="0" inputID="29"/>
+    <translation outputPort="1" outputID="27" inputPort="0" inputID="20"/>
+    <translation outputPort="0" outputID="31" inputPort="0" inputID="14"/>
+    <translation outputPort="2" outputID="28" inputPort="0" inputID="31"/>
+    <translation outputPort="1" outputID="1" inputPort="0" inputID="4"/>
+    <translation outputPort="0" outputID="14" inputPort="0" inputID="1"/>
+    <translation outputPort="2" outputID="4" inputPort="0" inputID="6"/>
+    <translation outputPort="0" outputID="1" inputPort="0" inputID="3"/>
+    <translation outputPort="0" outputID="4" inputPort="0" inputID="10"/>
+    <translation outputPort="0" outputID="15" inputPort="0" inputID="27"/>
+    <nextId>32</nextId>
+    <documentation>
+        <notes>
+INPUT:
+	1. MXText
+	2. MTCode
+	3. Length
+
+Business description
+	The function transforms an MX text string into an MT text format preceded by a code (passed as input parameter of the function) and splits the outcome in to a maximum
+	number of MT field 72 lines of 35x characters (length passed as input parameter of the function).
+
+Format
+	MXText_To_MX72(MXText, MTCode, Length ; MT72)
+
+Input
+	MXText: MX string of characters. MTCode: code as used in an MT field 72 (for example /REC/, /ACC/, /BNF/…). Length: maximum length of the output string of characters.
+
+Output
+	MT72: content of an MT field 72 in lines of maximum 35 characters.
+
+Preconditions
+	None.</notes>
+    </documentation>
+    <output typeRef="Data Field Dictionary/Non Generic Fields/Field 72 Sender to Receiver Information Option Default" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <localTransform id="18">
+        <transform version="0.0.5" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="add slashes">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <transformMethod name="CONCAT" y="72" x="98" id="21"/>
+            <constant constant="//" id="23"/>
+            <contextPath input="true" endID="0" contextRef="" id="22"/>
+            <contextPath input="false" endID="0" contextRef="" id="24"/>
+            <translation outputPort="0" outputID="21" inputPort="0" inputID="23"/>
+            <translation outputPort="1" outputID="21" inputPort="0" inputID="22"/>
+            <translation outputPort="0" outputID="24" inputPort="0" inputID="21"/>
+            <nextId>0</nextId>
+            <output typeRef="#string" required="false" path="" endID="0"/>
+        </transform>
+    </localTransform>
+</transform>

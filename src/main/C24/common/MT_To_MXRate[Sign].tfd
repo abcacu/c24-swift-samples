@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.9" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXRate[Sign].tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <javaMethodRef refId="1" y="87" x="331" id="2"/>
+    <contextPath input="false" endID="0" contextRef="" id="3"/>
+    <contextPath input="true" endID="0" contextRef="" id="4"/>
+    <translation outputPort="0" outputID="3" inputPort="0" inputID="2"/>
+    <translation outputPort="0" outputID="2" inputPort="0" inputID="4"/>
+    <nextId>15</nextId>
+    <output typeRef="#number_decimal" required="false" path="" endID="0"/>
+    <javaMethod id="1">
+        <libraryMethod>false</libraryMethod>
+        <methodName>toBigDecimal</methodName>
+        <input type="#string" role="arg0"/>
+        <output type="#number_decimal"/>
+        <code>if (arg0 == null) {&#xD;
+    return null;&#xD;
+}&#xD;
+java.math.MathContext mc = new java.math.MathContext(11);&#xD;
+java.math.BigDecimal result = new java.math.BigDecimal(arg0, mc);&#xD;
+&#xD;
+try {&#xD;
+    result = result.setScale(10);&#xD;
+} catch (ArithmeticException ae) {&#xD;
+    result = null;&#xD;
+}&#xD;
+return result;</code>
+    </javaMethod>
+</transform>

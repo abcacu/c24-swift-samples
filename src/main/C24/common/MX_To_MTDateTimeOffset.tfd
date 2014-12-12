@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform validateOutputs="false" validateInputs="false" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTDateTimeOffset.tfd">
+    <input typeRef="#date_datetime" required="false" path="" endID="0"/>
+    <constant constant="null" id="02"/>
+    <contextPath input="true" endID="0" contextRef="" id="I000"/>
+    <contextPath input="false" endID="0" contextRef="" id="O1"/>
+    <transformMethod name="DATETOSTRING" y="31" x="318" id="O10"/>
+    <transformMethod type="#date_generic" name="CONVERTDATE" y="72" x="100" id="O100"/>
+    <constant constant="yyyyMMdd" id="O101"/>
+    <contextPath input="false" endID="1" contextRef="" id="O2"/>
+    <transformMethod name="DATETOSTRINGTZ" y="145" x="338" id="O20"/>
+    <constant constant="HHmmZ" id="O201"/>
+    <transformMethod name="GETTIMEZONEID" y="170" x="96" id="O202"/>
+    <translation outputPort="0" outputID="O1" inputPort="0" inputID="O10"/>
+    <translation outputPort="0" outputID="O10" inputPort="0" inputID="O100"/>
+    <translation outputPort="0" outputID="O100" inputPort="0" inputID="I000"/>
+    <translation outputPort="1" outputID="O10" inputPort="0" inputID="O101"/>
+    <translation outputPort="0" outputID="O2" inputPort="0" inputID="O20"/>
+    <translation outputPort="0" outputID="O20" inputPort="0" inputID="O100"/>
+    <translation outputPort="1" outputID="O20" inputPort="0" inputID="O201"/>
+    <translation outputPort="2" outputID="O20" inputPort="0" inputID="O202"/>
+    <translation outputPort="0" outputID="O202" inputPort="0" inputID="I000"/>
+    <documentation>
+        <notes>Input 
+	MXDateTime: date and time in the MX format typed ISODateTime expressed as “YYYY-MM-DDTHH:MM:SS+/-HH:MM where  
+	YYYY-MM-DD is the date 
+	T is the date/time separator 
+	HH:MM:SS is the time 
+	+/- is the offset sign 
+	HH:MM is the time offset  
+
+Output 
+	MTDate:  date in the MT format expressed as “YYYYMMDD”.   
+	MTTimeOffset:  time and offset in the MT message expressed as “HHMM+/-HHMM” where  
+	HHMM is the time 
+	+/- is the offset sign 
+	HHMM is the time offset  
+
+Preconditions 
+	None. 
+
+Formal description 
+	/*Sub-functions are called to translate the MX date and time with offset. MXDate and MXTimeOffset are local variables*/ 
+	MXDate = Substring(MXDateTime, 1, 10) 
+	MXTimeOffset = Substring(MXDateTime, 12) 
+	/*Translate date and time*/ 
+	MTDate = MX_To_MTDate(MXDate) 
+	MTTimeOffset = MX_To_MTTimeOffset(MXTimeOffset)  
+</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+    <output typeRef="#string" required="false" path="" endID="1"/>
+</transform>

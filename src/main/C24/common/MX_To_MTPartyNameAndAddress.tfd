@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTPartyNameAndAddress.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#string" required="false" path="" endID="1"/>
+    <input typeRef="#string" required="false" path="" endID="2"/>
+    <input typeRef="#string" required="false" path="" endID="3"/>
+    <input typeRef="#string" required="false" path="" endID="4"/>
+    <input typeRef="#string" required="false" path="" endID="5"/>
+    <input typeRef="#string" required="false" path="" endID="6"/>
+    <input typeRef="#string" required="false" path="" endID="7"/>
+    <contextPath input="true" endID="0" contextRef="" id="I0"/>
+    <contextPath input="true" endID="1" contextRef="" id="I1"/>
+    <contextPath input="true" endID="2" contextRef="" id="I2"/>
+    <contextPath input="true" endID="3" contextRef="" id="I3"/>
+    <contextPath input="true" endID="4" contextRef="" id="I4"/>
+    <contextPath input="true" endID="5" contextRef="" id="I5"/>
+    <contextPath input="true" endID="6" contextRef="" id="I6"/>
+    <contextPath input="true" endID="7" contextRef="" id="I7"/>
+    <contextPath input="false" endID="0" contextRef="Line 35x" id="Line35xO0"/>
+    <transformMethod name="UNION" id="Line35xO00"/>
+    <transformMethod name="UNION" id="Line35xO000"/>
+    <transformMethod name="UNION" id="Line35xO0000"/>
+    <transformMethod name="SUBSTRING" id="Line35xO00000"/>
+    <constant constant="0" id="Line35xO000001"/>
+    <constant constant="35" id="Line35xO000002"/>
+    <transformMethod type="#string" name="IF" id="Line35xO00001"/>
+    <transformMethod name="GREATERTHAN" id="Line35xO000010"/>
+    <transformMethod name="LENGTH" id="Line35xO0000100"/>
+    <constant constant="35" id="Line35xO0000101"/>
+    <transformMethod name="SUBSTRING" id="Line35xO000011"/>
+    <constant constant="35" id="Line35xO0000111"/>
+    <constant constant="-1" id="Line35xO0000112"/>
+    <constant constant="null" id="Line35xO000012"/>
+    <transformMethod name="UNION" id="Line35xO0001"/>
+    <globalTransformRef ref="MX_To_MTPostalAddress.tfd" id="Line35xO00010"/>
+    <transformMethod type="#string" name="IF" id="Line35xO00011"/>
+    <translation outputPort="0" outputID="Line35xO0" inputPort="0" inputID="Line35xO00"/>
+    <translation outputPort="0" outputID="Line35xO00" inputPort="0" inputID="Line35xO000"/>
+    <translation outputPort="0" outputID="Line35xO000" inputPort="0" inputID="Line35xO0000"/>
+    <translation outputPort="0" outputID="Line35xO0000" inputPort="0" inputID="Line35xO00000"/>
+    <translation outputPort="0" outputID="Line35xO00000" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="Line35xO00000" inputPort="0" inputID="Line35xO000001"/>
+    <translation outputPort="2" outputID="Line35xO00000" inputPort="0" inputID="Line35xO000002"/>
+    <translation outputPort="1" outputID="Line35xO0000" inputPort="0" inputID="Line35xO00001"/>
+    <translation outputPort="0" outputID="Line35xO00001" inputPort="0" inputID="Line35xO000010"/>
+    <translation outputPort="0" outputID="Line35xO000010" inputPort="0" inputID="Line35xO0000100"/>
+    <translation outputPort="0" outputID="Line35xO0000100" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="Line35xO000010" inputPort="0" inputID="Line35xO0000101"/>
+    <translation outputPort="1" outputID="Line35xO00001" inputPort="0" inputID="Line35xO000011"/>
+    <translation outputPort="0" outputID="Line35xO000011" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="Line35xO000011" inputPort="0" inputID="Line35xO0000111"/>
+    <translation outputPort="2" outputID="Line35xO000011" inputPort="0" inputID="Line35xO0000112"/>
+    <translation outputPort="2" outputID="Line35xO00001" inputPort="0" inputID="Line35xO000012"/>
+    <translation outputPort="1" outputID="Line35xO000" inputPort="0" inputID="Line35xO0001"/>
+    <translation outputPort="0" outputID="Line35xO0001" inputPort="0" inputID="Line35xO00010"/>
+    <translation outputPort="0" outputID="Line35xO00010" inputPort="0" inputID="I1"/>
+    <translation outputPort="1" outputID="Line35xO00010" inputPort="0" inputID="I2"/>
+    <translation outputPort="2" outputID="Line35xO00010" inputPort="0" inputID="I3"/>
+    <translation outputPort="3" outputID="Line35xO00010" inputPort="0" inputID="I4"/>
+    <translation outputPort="4" outputID="Line35xO00010" inputPort="0" inputID="I5"/>
+    <translation outputPort="5" outputID="Line35xO00010" inputPort="0" inputID="I6"/>
+    <translation outputPort="6" outputID="Line35xO00010" inputPort="0" inputID="I7"/>
+    <translation outputPort="1" outputID="Line35xO0001" inputPort="0" inputID="Line35xO00011"/>
+    <translation outputPort="0" outputID="Line35xO00011" inputPort="0" inputID="Line35xO000010"/>
+    <translation outputPort="1" outputID="Line35xO00011" inputPort="0" inputID="Line35xO000012"/>
+    <translation outputPort="2" outputID="Line35xO00011" inputPort="1" inputID="Line35xO00010"/>
+    <translation outputPort="1" outputID="Line35xO00" inputPort="2" inputID="Line35xO00010"/>
+    <documentation>
+        <notes>
+INPUT:
+	1. Name
+	2. Address Line[0]
+	3. Address Line[1]
+	4. Street Name
+	5. Building Number
+	6. Post Code
+	7. Town Name
+	8. Country
+
+Business description
+	The function translates an MX party name and (optional) postal address to an MT party name and address format. 
+
+	The MX name and postal address are elements of a component typed PartyIdentification8. Other elements in this component, namely Identification (with a choice between 
+	OrganisationIdentification and PrivateIdentification) and CountryOfResidence are truncated by the function.
+
+	If the MX postal address is present, a sub-function MX_To_MTPostalAddress (described elsewhere) is called to translate the MX address details into MT address lines. 
+	Depending on the length of the MX name, some or all of this sub-function’s output parameters will be written in the translation target.
+
+Format
+	MX_To_MTPartyNameAndAddress(MXPartyIdentification ; MTNameAndAddress) 
+
+Input
+	MXPartyIdentification: the entire structure of the MX party identification typed PartyIdentification8.
+
+Output
+	MTNameAndAddress: name and address of the party in the MT format (4*35x).
+
+Preconditions
+	Name is present.</notes>
+    </documentation>
+    <output typeRef="Data Field Dictionary/Subfields/Name and Address" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+</transform>

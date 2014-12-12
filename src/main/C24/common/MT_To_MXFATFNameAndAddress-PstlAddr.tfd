@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.22" validateOutputs="true" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXFATFNameAndAddress-PstlAddr.tfd">
+    <input typeRef="Data Field Dictionary/Subfields/Name And Address 50F" required="true" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <constant constant="null" id="0"/>
+    <transformMethod type="#string" name="XPATH" y="124" x="100" id="169"/>
+    <constant constant="./NameAndAddressSubfield2[NameAndAddressNumCode=2]/NameAndAddressDetails" id="171"/>
+    <transformMethod type="#string" name="XPATH" y="290" x="96" id="172"/>
+    <constant constant="./NameAndAddressSubfield2[NameAndAddressNumCode=3]/NameAndAddressDetails" id="174"/>
+    <transformMethod name="INSTANCE" y="100" x="276" id="177"/>
+    <constant constant="0" id="178"/>
+    <transformMethod name="INSTANCE" y="171" x="276" id="180"/>
+    <constant constant="1" id="182"/>
+    <transformMethod type="#string" name="IFEXISTS" y="102" x="463" id="187"/>
+    <transformMethod type="#string" name="IFEXISTS" y="169" x="464" id="188"/>
+    <transformMethod name="SUBSTRING" y="271" x="459" id="189"/>
+    <constant constant="0" id="190"/>
+    <constant constant="2" id="191"/>
+    <transformMethod name="SUBSTRING" y="436" x="807" id="194"/>
+    <constant constant="3" id="197"/>
+    <transformMethod type="#simple" name="XPATH" y="28" x="107" id="206"/>
+    <transformMethod name="SUBSTRING" y="35" x="456" id="211"/>
+    <constant constant="0" id="212"/>
+    <constant constant="70" id="213"/>
+    <transformMethod name="TOSTRING" y="21" x="278" id="214"/>
+    <constant constant="38" id="215"/>
+    <transformMethod name="FIRST" y="294" x="264" id="216"/>
+    <constant constant="string-join(./NameAndAddressSubfield2[NameAndAddressNumCode=1]/NameAndAddressDetails, ' ')" id="217"/>
+    <contextPath input="false" endID="1" contextRef="" id="179"/>
+    <contextPath input="false" endID="2" contextRef="" id="183"/>
+    <contextPath input="false" endID="3" contextRef="" id="192"/>
+    <contextPath input="false" endID="4" contextRef="" id="196"/>
+    <contextPath input="false" endID="0" contextRef="" id="210"/>
+    <contextPath input="true" endID="0" contextRef="" id="168"/>
+    <transformMethod type="#string" name="IF" y="434" x="662" id="218"/>
+    <transformMethod name="GREATERTHAN" y="351" x="531" id="219"/>
+    <constant constant="2" id="220"/>
+    <transformMethod name="LENGTH" y="334" x="381" id="221"/>
+    <translation outputPort="0" outputID="169" inputPort="0" inputID="171"/>
+    <translation outputPort="0" outputID="172" inputPort="0" inputID="174"/>
+    <translation outputPort="0" outputID="177" inputPort="0" inputID="169"/>
+    <translation outputPort="1" outputID="177" inputPort="0" inputID="178"/>
+    <translation outputPort="0" outputID="180" inputPort="0" inputID="169"/>
+    <translation outputPort="1" outputID="180" inputPort="0" inputID="182"/>
+    <translation outputPort="1" outputID="187" inputPort="0" inputID="177"/>
+    <translation outputPort="2" outputID="187" inputPort="0" inputID="0"/>
+    <translation outputPort="2" outputID="188" inputPort="0" inputID="0"/>
+    <translation outputPort="1" outputID="188" inputPort="0" inputID="180"/>
+    <translation outputPort="1" outputID="189" inputPort="0" inputID="190"/>
+    <translation outputPort="2" outputID="189" inputPort="0" inputID="191"/>
+    <translation outputPort="1" outputID="194" inputPort="0" inputID="197"/>
+    <translation outputPort="1" outputID="211" inputPort="0" inputID="212"/>
+    <translation outputPort="2" outputID="211" inputPort="0" inputID="213"/>
+    <translation outputPort="0" outputID="214" inputPort="0" inputID="206"/>
+    <translation outputPort="0" outputID="211" inputPort="0" inputID="214"/>
+    <translation outputPort="2" outputID="194" inputPort="0" inputID="215"/>
+    <translation outputPort="0" outputID="216" inputPort="0" inputID="172"/>
+    <translation outputPort="0" outputID="187" inputPort="0" inputID="216"/>
+    <translation outputPort="0" outputID="188" inputPort="0" inputID="216"/>
+    <translation outputPort="0" outputID="189" inputPort="0" inputID="216"/>
+    <translation outputPort="0" outputID="206" inputPort="0" inputID="217"/>
+    <translation outputPort="0" outputID="179" inputPort="0" inputID="187"/>
+    <translation outputPort="0" outputID="183" inputPort="0" inputID="188"/>
+    <translation outputPort="0" outputID="192" inputPort="0" inputID="189"/>
+    <translation outputPort="0" outputID="196" inputPort="0" inputID="194"/>
+    <translation outputPort="0" outputID="210" inputPort="0" inputID="211"/>
+    <translation outputPort="1" outputID="169" inputPort="0" inputID="168"/>
+    <translation outputPort="1" outputID="172" inputPort="0" inputID="168"/>
+    <translation outputPort="1" outputID="206" inputPort="0" inputID="168"/>
+    <translation outputPort="1" outputID="218" inputPort="0" inputID="216"/>
+    <translation outputPort="2" outputID="218" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="194" inputPort="0" inputID="218"/>
+    <translation outputPort="1" outputID="219" inputPort="0" inputID="220"/>
+    <translation outputPort="0" outputID="221" inputPort="0" inputID="216"/>
+    <translation outputPort="0" outputID="219" inputPort="0" inputID="221"/>
+    <translation outputPort="0" outputID="218" inputPort="0" inputID="219"/>
+    <nextId>222</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXFATFNameAndAddress-PstlAddr&lt;/h3&gt;
+&lt;b&gt;(substitution of MT_To_MXFATFNameAndAddress)&lt;/b&gt;
+
+
+&lt;b&gt;Business description&lt;/b&gt;
+Subfield 2 of an MT field 50F identifies the Ordering Customer in line with FATF Special Recommendation VII by combining:
+&lt;ul&gt;
+&lt;li&gt;name and address&lt;/li&gt;
+&lt;li&gt;name and date and place of birth&lt;/li&gt;
+&lt;li&gt;name and national identity number&lt;/li&gt;
+&lt;li&gt;name and customer number&lt;/li&gt;
+&lt;/ul&gt;
+Every line in Subfield 2 of field 50F starts with a number indicating the type of information provided. This function translates the structured information in the MT to MX FATF compliant equivalents by:
+&lt;li&gt;checking the numbers to determine the MX target element&lt;/li&gt;
+&lt;li&gt;checking whether numbers are repeated if allowed by the format description on the&lt;/li&gt;
+following line. If so, the information following the number will be completed prior to the translation.
+
+&lt;b&gt;Note&lt;/b&gt;. This is substitution of MT_To_MXFATFNameAndAddress for MT to the Postal Address translation only. All rest part of functional implemented in MT_To_MXFATFNameAndAddress-PrvtId.tfd.
+
+&lt;b&gt;Format&lt;/b&gt;
+MT_To_MXFATFNameAndAddress(MTPartyIdentifier, MTNameAndAddress ; MXFATFId)
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MTNameAndAddress&lt;/tt&gt;: Subfield 2 of field 50F carrying an FATF compliant customer name and address or identifications in line with the format description of field 50F (date and place of birth, customer number or national identity number).
+
+&lt;b&gt;Output&lt;/b&gt;
+&lt;tt&gt;Name&lt;/tt&gt;: the result of translation of the name present on line(s) starting with “1/”.
+&lt;tt&gt;AddressLine1&lt;/tt&gt;: the result of translation of the address line present on line(s) starting with “2/” (first occurence).
+&lt;tt&gt;AddressLine2&lt;/tt&gt;: the result of translation of the address line present on line(s) starting with “2/” (seccond occurence, if any).
+&lt;tt&gt;CountryCode&lt;/tt&gt;: the result of translation of the country code present on line starting with “3/”.
+&lt;tt&gt;TownName&lt;/tt&gt;: the result of translation of the town present on line starting with “3/” (after country code, if any).
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+MTNameAndAddress must carry the name of the ordering customer so at least one line must start with “1/”.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/* MTNameAndAddress is defined by 4 lines of 35 characters. MTNameAndAddress[1] indicates the first line */
+/* Translation of the name present on line(s) starting with “1/” */
+/*
+   Basic function ExtractLines extracts the name. The complete name could be present on several lines so the function is
+   used with continuation string “1/”. Substring is taken to delete “1/” in the output string and to limit the outcome to
+   70 characters
+*/
+Name = Substring(ExtractLines(MTNameAndAddress, “1/”, “1/”), 3, 70)
+/*
+   Translation of address details present on line(s) starting with “2/”. As per field 50F format specifications,”2/” must
+   not be used without “3/” (Country, Town, Postcode), otherwise line(s) starting with “2/” will not be translated but
+   ignored
+*/
+/* Check whether “2/” is present in combination with “3/” by using the ExtractPattern and Length functions */
+IF Length(ExtractPattern(MTNameAndAddress, “2/”)) &gt; 0 AND Length(ExtractPattern(MTNameAndAddress, “3/”)) &gt; 0
+    /*
+       Basic function ExtractLines extracts the address details. The complete address could be present on several lines so
+       the function is used with continuation string “2/”. MTAddress is a local variable. Substring is taken to delete “2/”
+       in the output string
+    */
+    MTAddress = Substring(ExtractLines(MTNameAndAddress, “2/”, “2/”), 3)
+    /*
+       Depending on the length, the outcome is written in one or two occurrences of the AddressLine element in the
+       PostalAddress component. PostalAddress.AddressLine[1] indicates the first occurrence
+    */
+    IF Length(MTAddress) &gt; 33
+        /* Write the source first line in the first occurrence of target AddressLine element */
+        PostalAddress.AddressLine[1] = Substring(MTAddress, 1, 33)
+        /* Write the source second line in the second occurrence of target AddressLine element */
+        PostalAddress.AddressLine[2] = Substring(MTAddress, 34)
+    ELSE
+        PostalAddress.AddressLine[1] = MTAddress
+    ENDIF
+ENDIF
+/* Translation of country, town and postcode present on a line starting with “3/” */
+/* Check whether “3/” is present by using the ExtractPattern and Length functions */
+IF Length(ExtractPattern(MTNameAndAddress, “3/”)) &gt; 0
+    /*
+       Basic function ExtractLines extracts country, town and postcode details. “3/” must not be repeated so the function is
+       used without continuation string to limit the extraction to a maximum of one line. If “3/” is repeated, then only the
+       first occurrence is translated. MTCountryTown is a local variable. Substring is taken to delete “3/” in the output
+       string
+    */
+    MTCountryTown = Substring(ExtractLines(MTNameAndAddress, “3/”), 3)
+    /* Isolate country */
+    PostalAddress.Country = Substring(MTCountryTown, 1, 2)
+    /*
+       Check whether town or town and postcode are present. According to field 50F format specifications this data follows
+       the country code after a slash. If found it will be written in the TownName element
+    */
+    IF Length(Substring(MTCountryTown, 4)) &gt; 0
+        PostalAddress.TownName = Substring(MTCountryTown, 4)
+    ENDIF
+ENDIF
+&lt;pre&gt;</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+    <output typeRef="#string" required="false" path="" endID="1"/>
+    <output typeRef="#string" required="false" path="" endID="2"/>
+    <output typeRef="#string" required="false" path="" endID="3"/>
+    <output typeRef="#string" required="false" path="" endID="4"/>
+</transform>

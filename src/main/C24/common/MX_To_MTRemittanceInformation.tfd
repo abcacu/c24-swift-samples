@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTRemittanceInformation.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#string" required="false" path="" endID="1"/>
+    <input typeRef="#string" required="false" path="" endID="2"/>
+    <input typeRef="#string" required="false" path="" endID="3"/>
+    <input typeRef="#string" required="false" path="" endID="4"/>
+    <input typeRef="#date_date" required="false" path="" endID="5"/>
+    <input typeRef="#number_decimal" required="false" path="" endID="6"/>
+    <contextPath input="false" endID="0" contextRef="Details of Payment/Line 35x" id="DetailsofPayment_Line35xO0"/>
+    <transformMethod name="SPLIT" id="DetailsofPayment_Line35xO00"/>
+    <transformMethod type="#string" name="IF" id="DetailsofPayment_Line35xO000"/>
+    <transformMethod name="AND" id="DetailsofPayment_Line35xO0000"/>
+    <transformMethod name="NOT" id="DetailsofPayment_Line35xO00000"/>
+    <transformMethod name="EXISTS" id="DetailsofPayment_Line35xO000000"/>
+    <transformMethod name="NOT" id="DetailsofPayment_Line35xO00001"/>
+    <transformMethod name="OR" id="DetailsofPayment_Line35xO000010"/>
+    <transformMethod name="OR" id="DetailsofPayment_Line35xO0000100"/>
+    <transformMethod name="EXISTS" id="DetailsofPayment_Line35xO00001000"/>
+    <transformMethod name="EXISTS" id="DetailsofPayment_Line35xO00001001"/>
+    <transformMethod name="OR" id="DetailsofPayment_Line35xO0000101"/>
+    <transformMethod name="EXISTS" id="DetailsofPayment_Line35xO00001010"/>
+    <transformMethod name="EXISTS" id="DetailsofPayment_Line35xO00001011"/>
+    <transformMethod name="CONCAT" id="DetailsofPayment_Line35xO0001"/>
+    <constant constant="/ROC/" id="DetailsofPayment_Line35xO00010"/>
+    <transformMethod type="#string" name="IF" id="DetailsofPayment_Line35xO0002"/>
+    <transformMethod name="CONCAT" id="DetailsofPayment_Line35xO00021"/>
+    <constant constant="/ROC/" id="DetailsofPayment_Line35xO000210"/>
+    <transformMethod type="#string" name="IF" id="DetailsofPayment_Line35xO00022"/>
+    <transformMethod name="CONCAT" id="DetailsofPayment_Line35xO000221"/>
+    <transformMethod name="CONCAT" id="DetailsofPayment_Line35xO0002210"/>
+    <constant constant="/ROC/" id="DetailsofPayment_Line35xO00022100"/>
+    <transformMethod type="#string" name="IF" id="DetailsofPayment_Line35xO00022101"/>
+    <transformMethod name="EXISTS" id="DetailsofPayment_Line35xO000221010"/>
+    <localTransformRef refId="DetailsofPayment_Line35xO0002211_ref" id="DetailsofPayment_Line35xO0002211"/>
+    <transformMethod type="#string" name="IF" id="DetailsofPayment_Line35xO000222"/>
+    <transformMethod name="EXISTS" id="DetailsofPayment_Line35xO0002220"/>
+    <transformMethod name="SUBSTRING" id="DetailsofPayment_Line35xO0002221"/>
+    <constant constant="0" id="DetailsofPayment_Line35xO00022211"/>
+    <constant constant="140" id="DetailsofPayment_Line35xO00022212"/>
+    <constant constant="null" id="DetailsofPayment_Line35xO0002222"/>
+    <constant constant="35" id="DetailsofPayment_Line35xO001"/>
+    <contextPath input="true" endID="0" contextRef="" id="I0"/>
+    <contextPath input="true" endID="1" contextRef="" id="I1"/>
+    <contextPath input="true" endID="2" contextRef="" id="I2"/>
+    <contextPath input="true" endID="3" contextRef="" id="I3"/>
+    <contextPath input="true" endID="4" contextRef="" id="I4"/>
+    <contextPath input="true" endID="5" contextRef="" id="I5"/>
+    <contextPath input="true" endID="6" contextRef="" id="I6"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO0" inputPort="0" inputID="DetailsofPayment_Line35xO00"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO00" inputPort="0" inputID="DetailsofPayment_Line35xO000"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO000" inputPort="0" inputID="DetailsofPayment_Line35xO0000"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO0000" inputPort="0" inputID="DetailsofPayment_Line35xO00000"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO00000" inputPort="0" inputID="DetailsofPayment_Line35xO000000"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO000000" inputPort="0" inputID="I1"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO0000" inputPort="0" inputID="DetailsofPayment_Line35xO00001"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO00001" inputPort="0" inputID="DetailsofPayment_Line35xO000010"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO000010" inputPort="0" inputID="DetailsofPayment_Line35xO0000100"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO0000100" inputPort="0" inputID="DetailsofPayment_Line35xO00001000"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO00001000" inputPort="0" inputID="I3"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO0000100" inputPort="0" inputID="DetailsofPayment_Line35xO00001001"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO00001001" inputPort="0" inputID="I4"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO000010" inputPort="0" inputID="DetailsofPayment_Line35xO0000101"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO0000101" inputPort="0" inputID="DetailsofPayment_Line35xO00001010"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO00001010" inputPort="0" inputID="I5"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO0000101" inputPort="0" inputID="DetailsofPayment_Line35xO00001011"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO00001011" inputPort="0" inputID="I6"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO000" inputPort="0" inputID="DetailsofPayment_Line35xO0001"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO0001" inputPort="0" inputID="DetailsofPayment_Line35xO00010"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO0001" inputPort="0" inputID="I0"/>
+    <translation outputPort="2" outputID="DetailsofPayment_Line35xO000" inputPort="0" inputID="DetailsofPayment_Line35xO0002"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO0002" inputPort="0" inputID="DetailsofPayment_Line35xO00001"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO0002" inputPort="0" inputID="DetailsofPayment_Line35xO00021"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO00021" inputPort="0" inputID="DetailsofPayment_Line35xO000210"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO00021" inputPort="0" inputID="I1"/>
+    <translation outputPort="2" outputID="DetailsofPayment_Line35xO0002" inputPort="0" inputID="DetailsofPayment_Line35xO00022"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO00022" inputPort="0" inputID="DetailsofPayment_Line35xO000010"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO00022" inputPort="0" inputID="DetailsofPayment_Line35xO000221"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO000221" inputPort="0" inputID="DetailsofPayment_Line35xO0002210"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO0002210" inputPort="0" inputID="DetailsofPayment_Line35xO00022100"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO0002210" inputPort="0" inputID="DetailsofPayment_Line35xO00022101"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO00022101" inputPort="0" inputID="DetailsofPayment_Line35xO000221010"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO000221010" inputPort="0" inputID="I1"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO00022101" inputPort="0" inputID="I1"/>
+    <translation outputPort="2" outputID="DetailsofPayment_Line35xO00022101" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO000221" inputPort="0" inputID="DetailsofPayment_Line35xO0002211"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO0002211" inputPort="0" inputID="I4"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO0002211" inputPort="0" inputID="I3"/>
+    <translation outputPort="2" outputID="DetailsofPayment_Line35xO0002211" inputPort="0" inputID="I5"/>
+    <translation outputPort="3" outputID="DetailsofPayment_Line35xO0002211" inputPort="0" inputID="I6"/>
+    <translation outputPort="2" outputID="DetailsofPayment_Line35xO00022" inputPort="0" inputID="DetailsofPayment_Line35xO000222"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO000222" inputPort="0" inputID="DetailsofPayment_Line35xO0002220"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO0002220" inputPort="0" inputID="I2"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO000222" inputPort="0" inputID="DetailsofPayment_Line35xO0002221"/>
+    <translation outputPort="0" outputID="DetailsofPayment_Line35xO0002221" inputPort="0" inputID="DetailsofPayment_Line35xO000221"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO0002221" inputPort="0" inputID="DetailsofPayment_Line35xO00022211"/>
+    <translation outputPort="2" outputID="DetailsofPayment_Line35xO0002221" inputPort="0" inputID="DetailsofPayment_Line35xO00022212"/>
+    <translation outputPort="2" outputID="DetailsofPayment_Line35xO000222" inputPort="0" inputID="DetailsofPayment_Line35xO0002222"/>
+    <translation outputPort="1" outputID="DetailsofPayment_Line35xO00" inputPort="0" inputID="DetailsofPayment_Line35xO001"/>
+    <documentation>
+        <notes>
+INPUT:
+	1. MXEndToEndId
+	2. MXRemittanceId
+	3. Unstructured
+	4. Referred Document Type
+	5. Referred Document Number
+	6. Referred Document Related Date
+	7. Due Payable Amount
+
+Business description
+	This function translates MX remittance information to remittance information in an MT field 70.
+	The MX message contains several possible sources of remittance information:
+		• An optional RemittanceInformation component allowing repetitive occurrences of both Structured and Unstructured remittance information.
+		• An optional RemittanceIdentification, part of a repetitive RelatedRemittanceInformation component to be used when reference is to be
+		made to remittance information sent separately from the payment.
+		• A mandatory EndToEndIdentification containing a reference to be passed on from the debtor to creditor side of the payment.
+
+	The function will translate these possible remittance information sources as follows:
+	
+	1. Translation RemittanceIdentification or EndToEndIdentification If present, then the first occurrence of RemittanceIdentification is copied to field 70
+	preceded by the code /ROC/. If no RemittanceIdentification is present, then the EndToEndIdentification is copied to field 70 preceded by the code /ROC/.
+	
+	2. Translation RemittanceInformation component, if present. Depending on the presence of the Structured or Unstructured items, the following
+	translation order is respected:
+	
+	2a. Structured remittance information component is present and contains ReferredDocumentNumber or CreditorReference element Given the limited format of 
+	the translation target field 70 (4 lines of 35 characters), only the first occurrence of an in use severily restricted component is considered for translation: the 
+	MX structured remittance information component contains the optional components/elements ReferredDocumentInformation, ReferredDocumentRelatedDate, 
+	ReferredDocumentAmount (repetitive), CreditorReferenceInformation, Invoicer, Invoicee and AdditionalRemittanceInformation. Invoicer, Invoicee and 
+	AdditionalRemittanceInformation are always truncated. For the translation of the other elements in the component, the algorithm below is followed:
+		• A choice is imposed between translation of a ReferredDocumentNumber element (part of the ReferredDocumentInformation component) and the 
+		CreditorReference element (part of the CreditorReferenceInformation component): the CreditorReference is only translated when no 
+		ReferredDocumentNumber is present.
+		• Translation of ReferredDocumentNumber:
+			If the ReferredDocumentType element is present with code ”CINV”, then the ReferredDocumentNumber is copied to field 70 preceded 
+			by the code “/INV/” and optionally followed by the ReferredDocumentRelatedDate and the (first occurrence of) DuePayableAmount 
+			(part of the repetitive ReferredDocumentAmount component) separated by slashes. If the ReferredDocumentType is not present or
+			does not contain the code “CINV”, then the ReferredDocumentNumber is copied to field 70 preceded by the code “/RFB/” and 
+			optionally followed by the ReferredDocumentRelatedDate and the DuePayableAmount separated by slashes. 
+		• Translation of CreditorReference (if no ReferredDocumentNumber is present): The CreditorReference is copied to field 70 preceded by the code “/RFB/”
+		• All the other elements of the structured remittance information component (for example Invoicer, Invoicee and AdditionalRemittanceInformation) are truncated. If
+		the Unstructured remittance information element is present, then it is not considered for translation.
+	
+	2b. Structured remittance information component is present without ReferredDocumentNumber or CreditorReference element and Unstructured remittance information 
+	element is present The content of the first occurrence of the Unstructured element is copied to field 70 preceded by /RFB/.
+
+	2c. Unstructured remittance information element is present and Structured remittance information component is not present The content of the first occurrence of the 
+	Unstructured element is copied to field 70 preceded by /RFB/.
+
+	3. At the end of the function, the content of field 70 is restricted to 140 characters and split in lines of 35 characters. In the case of a RemittanceIdentification or 
+	EndToEndIdentification, combined with a translated Structured remittance information component, this will not lead to any truncation. If the RemittanceIdentification or
+	EndToEndIdentification are translated in combination with an Unstructured remittance information element, the Unstructured remittance information could be truncated after
+	the first 95 characters if RemittanceIdentification or EndToEndIdentification are used at full.
+
+Format
+	MX_To_MTRemittanceInformation(MXEndToEndId, MXRemittanceId, MXRemittanceInfo ; MTRemittanceInfo)
+
+Input
+	MXEndToEndId: reference to be passed on from the debtor to creditor side of the payment typed Max35Text. MXRemittanceId: identification of the remittance information 
+	typed Max35Text part of a repetitive RelatedRemittanceInformation component used to reference remittance information sent separately from the payment.
+	MXRemittanceInfo: the entire structure of the MX remittance information typed	 RemittanceInformation1 composed of a repetitive Unstructured element typed Max140Text 
+	and a repetitive Structured component typed StructuredRemittanceInformation6.
+
+Output
+	MTRemittanceInfo: remittance information in an MT field 70 format of 4*35x.
+
+Preconditions
+	None.</notes>
+    </documentation>
+    <output typeRef="Data Field Dictionary/Non Generic Fields/Field 70 Details of Payment Option Default" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <localTransform id="DetailsofPayment_Line35xO0002211_ref">
+        <documentation>
+            <notes>INPUT: 
+
+	1. Referred Document Number
+	2. Referred Document Type
+	3. Referred Document Related Date
+	4. Due Payable Amount</notes>
+        </documentation>
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="Get RemitInfo">
+            <input typeRef="#string" required="false" path="" endID="0"/>
+            <input typeRef="#string" required="false" path="" endID="1"/>
+            <input typeRef="#date_date" required="false" path="" endID="2"/>
+            <input typeRef="#number_decimal" required="false" path="" endID="3"/>
+            <contextPath input="true" endID="0" contextRef="" id="I0"/>
+            <contextPath input="true" endID="1" contextRef="" id="I1"/>
+            <contextPath input="true" endID="2" contextRef="" id="I2"/>
+            <contextPath input="true" endID="3" contextRef="" id="I3"/>
+            <contextPath input="false" endID="0" contextRef="" id="O0"/>
+            <transformMethod type="#string" name="IF" id="O00"/>
+            <transformMethod name="EXISTS" id="O000"/>
+            <transformMethod name="CONCAT" id="O001"/>
+            <transformMethod name="CONCAT" id="O0010"/>
+            <transformMethod name="CONCAT" id="O00100"/>
+            <transformMethod type="#string" name="IF" id="O001000"/>
+            <transformMethod name="EQUALS" id="O0010000"/>
+            <constant constant="CINV" id="O00100001"/>
+            <constant constant="/INV/" id="O0010001"/>
+            <constant constant="/RFB/" id="O0010002"/>
+            <transformMethod name="CONCAT" id="O001001"/>
+            <constant constant="null" id="O0010011"/>
+            <transformMethod type="#string" name="IF" id="O00101"/>
+            <transformMethod name="EXISTS" id="O001010"/>
+            <transformMethod name="CONCAT" id="O001011"/>
+            <constant constant="/" id="O0010110"/>
+            <transformMethod name="TOSTRING" id="O0010111"/>
+            <transformMethod type="#string" name="IF" id="O0011"/>
+            <transformMethod name="EXISTS" id="O00110"/>
+            <transformMethod name="CONCAT" id="O00111"/>
+            <transformMethod name="TOSTRING" id="O001111"/>
+            <translation outputPort="0" outputID="O0" inputPort="0" inputID="O00"/>
+            <translation outputPort="0" outputID="O00" inputPort="0" inputID="O000"/>
+            <translation outputPort="0" outputID="O000" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="O00" inputPort="0" inputID="O001"/>
+            <translation outputPort="0" outputID="O001" inputPort="0" inputID="O0010"/>
+            <translation outputPort="0" outputID="O0010" inputPort="0" inputID="O00100"/>
+            <translation outputPort="0" outputID="O00100" inputPort="0" inputID="O001000"/>
+            <translation outputPort="0" outputID="O001000" inputPort="0" inputID="O0010000"/>
+            <translation outputPort="0" outputID="O0010000" inputPort="0" inputID="I1"/>
+            <translation outputPort="1" outputID="O0010000" inputPort="0" inputID="O00100001"/>
+            <translation outputPort="1" outputID="O001000" inputPort="0" inputID="O0010001"/>
+            <translation outputPort="2" outputID="O001000" inputPort="0" inputID="O0010002"/>
+            <translation outputPort="1" outputID="O00100" inputPort="0" inputID="O001001"/>
+            <translation outputPort="0" outputID="O001001" inputPort="0" inputID="I0"/>
+            <translation outputPort="1" outputID="O001001" inputPort="0" inputID="O0010011"/>
+            <translation outputPort="1" outputID="O0010" inputPort="0" inputID="O00101"/>
+            <translation outputPort="0" outputID="O00101" inputPort="0" inputID="O001010"/>
+            <translation outputPort="0" outputID="O001010" inputPort="0" inputID="I2"/>
+            <translation outputPort="1" outputID="O00101" inputPort="0" inputID="O001011"/>
+            <translation outputPort="0" outputID="O001011" inputPort="0" inputID="O0010110"/>
+            <translation outputPort="1" outputID="O001011" inputPort="0" inputID="O0010111"/>
+            <translation outputPort="0" outputID="O0010111" inputPort="0" inputID="I2"/>
+            <translation outputPort="2" outputID="O00101" inputPort="0" inputID="O0010011"/>
+            <translation outputPort="1" outputID="O001" inputPort="0" inputID="O0011"/>
+            <translation outputPort="0" outputID="O0011" inputPort="0" inputID="O00110"/>
+            <translation outputPort="0" outputID="O00110" inputPort="0" inputID="I3"/>
+            <translation outputPort="1" outputID="O0011" inputPort="0" inputID="O00111"/>
+            <translation outputPort="0" outputID="O00111" inputPort="0" inputID="O0010011"/>
+            <translation outputPort="1" outputID="O00111" inputPort="0" inputID="O001111"/>
+            <translation outputPort="0" outputID="O001111" inputPort="0" inputID="I3"/>
+            <translation outputPort="2" outputID="O0011" inputPort="0" inputID="O0010011"/>
+            <translation outputPort="2" outputID="O00" inputPort="0" inputID="O0010011"/>
+            <documentation>
+                <notes>INPUT: 
+
+	1. Referred Document Number
+	2. Referred Document Type
+	3. Referred Document Related Date
+	4. Due Payable Amount</notes>
+            </documentation>
+            <output typeRef="#string" required="false" path="" endID="0"/>
+        </transform>
+    </localTransform>
+</transform>

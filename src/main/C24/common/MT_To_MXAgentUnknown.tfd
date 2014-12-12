@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.2" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXAgentUnknown.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <constant constant="UNKNOWN" id="1"/>
+    <contextPath input="false" endID="0" contextRef="" id="2"/>
+    <translation outputPort="0" outputID="2" inputPort="0" inputID="1"/>
+    <nextId>3</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXAgentUnknown&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function writes the value “UNKNOWN” in a mandatory MX agent element if no agent information is available in the MT source message. The “UNKNOWN” value will
+be written in the Name element of the CombinedIdentification component.
+
+&lt;b&gt;Format&lt;/b&gt;
+&lt;tt&gt;MT_To_MXAgentUnknown( “” ; MXAgentUnknown)&lt;/tt&gt;
+
+&lt;b&gt;Input&lt;/b&gt;
+There is no input for this function.
+
+&lt;b&gt;Output&lt;/b&gt;
+&lt;tt&gt;MXAgentUnknown&lt;/tt&gt;: the result of this function is immediately put into the correct MX element inside the target component typed BranchAndFinancialInstitutionIdentification3.
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+FinancialInstitutionIdentification.CombinedIdentification.Name = “UNKNOWN.”
+&lt;/pre&gt;</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+</transform>

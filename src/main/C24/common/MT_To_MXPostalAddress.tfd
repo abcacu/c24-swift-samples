@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.14" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXPostalAddress.tfd">
+    <input typeRef="Data Field Dictionary/Subfields/Name and Address" required="true" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <transformMethod name="LAST" y="402" x="88" id="3"/>
+    <transformMethod name="INSTANCE" y="359" x="447" id="5"/>
+    <transformMethod name="INSTANCE" y="413" x="449" id="6"/>
+    <constant constant="0" id="7"/>
+    <constant constant="1" id="10"/>
+    <transformMethod name="INSTANCE" y="469" x="450" id="11"/>
+    <constant constant="2" id="12"/>
+    <transformMethod name="FIRST" y="77" x="262" id="14"/>
+    <transformMethod name="SIZE" y="75" x="68" id="19"/>
+    <transformMethod type="#string" name="IF" y="71" x="833" id="20"/>
+    <transformMethod name="GREATERTHANOREQUAL" y="28" x="267" id="21"/>
+    <constant constant="null" id="0"/>
+    <transformMethod name="GREATERTHANOREQUAL" y="156" x="269" id="23"/>
+    <constant constant="3" id="25"/>
+    <transformMethod type="#string" name="IF" y="179" x="832" id="26"/>
+    <transformMethod type="#string" name="IF" y="275" x="832" id="29"/>
+    <transformMethod name="EQUALS" y="254" x="260" id="32"/>
+    <constant constant="4" id="33"/>
+    <transformMethod name="INSTANCE" y="186" x="94" id="34"/>
+    <constant constant="1" id="35"/>
+    <transformMethod name="INSTANCE" y="276" x="97" id="36"/>
+    <constant constant="2" id="37"/>
+    <transformMethod name="EXISTS" y="311" x="563" id="38"/>
+    <transformMethod name="AND" y="150" x="679" id="40"/>
+    <transformMethod name="AND" y="243" x="677" id="41"/>
+    <transformMethod name="LENGTH" y="445" x="568" id="42"/>
+    <transformMethod name="GREATERTHAN" y="446" x="713" id="43"/>
+    <constant constant="16" id="44"/>
+    <transformMethod type="#string" name="IF" y="458" x="835" id="45"/>
+    <javaMethodRef refId="1" y="403" x="237" id="2"/>
+    <contextPath input="false" endID="3" contextRef="" id="8"/>
+    <contextPath input="false" endID="4" contextRef="" id="9"/>
+    <contextPath input="false" endID="0" contextRef="" id="15"/>
+    <contextPath input="false" endID="1" contextRef="" id="27"/>
+    <contextPath input="false" endID="2" contextRef="" id="31"/>
+    <contextPath input="false" endID="5" contextRef="" id="13"/>
+    <contextPath input="true" endID="0" contextRef="Line 35x" id="4"/>
+    <constant constant="1" id="51"/>
+    <translation outputPort="0" outputID="2" inputPort="0" inputID="3"/>
+    <translation outputPort="0" outputID="6" inputPort="0" inputID="2"/>
+    <translation outputPort="0" outputID="5" inputPort="0" inputID="2"/>
+    <translation outputPort="1" outputID="5" inputPort="0" inputID="7"/>
+    <translation outputPort="1" outputID="6" inputPort="0" inputID="10"/>
+    <translation outputPort="0" outputID="11" inputPort="0" inputID="2"/>
+    <translation outputPort="1" outputID="11" inputPort="0" inputID="12"/>
+    <translation outputPort="0" outputID="21" inputPort="0" inputID="19"/>
+    <translation outputPort="1" outputID="20" inputPort="0" inputID="14"/>
+    <translation outputPort="2" outputID="20" inputPort="0" inputID="0"/>
+    <translation outputPort="1" outputID="23" inputPort="0" inputID="25"/>
+    <translation outputPort="2" outputID="26" inputPort="0" inputID="0"/>
+    <translation outputPort="2" outputID="29" inputPort="0" inputID="0"/>
+    <translation outputPort="1" outputID="32" inputPort="0" inputID="33"/>
+    <translation outputPort="0" outputID="23" inputPort="0" inputID="19"/>
+    <translation outputPort="0" outputID="32" inputPort="0" inputID="19"/>
+    <translation outputPort="1" outputID="34" inputPort="0" inputID="35"/>
+    <translation outputPort="1" outputID="26" inputPort="0" inputID="34"/>
+    <translation outputPort="1" outputID="36" inputPort="0" inputID="37"/>
+    <translation outputPort="1" outputID="29" inputPort="0" inputID="36"/>
+    <translation outputPort="0" outputID="38" inputPort="0" inputID="5"/>
+    <translation outputPort="0" outputID="40" inputPort="0" inputID="23"/>
+    <translation outputPort="1" outputID="40" inputPort="0" inputID="38"/>
+    <translation outputPort="0" outputID="26" inputPort="0" inputID="40"/>
+    <translation outputPort="0" outputID="41" inputPort="0" inputID="32"/>
+    <translation outputPort="1" outputID="41" inputPort="0" inputID="38"/>
+    <translation outputPort="0" outputID="29" inputPort="0" inputID="41"/>
+    <translation outputPort="0" outputID="42" inputPort="0" inputID="11"/>
+    <translation outputPort="0" outputID="43" inputPort="0" inputID="42"/>
+    <translation outputPort="1" outputID="43" inputPort="0" inputID="44"/>
+    <translation outputPort="0" outputID="45" inputPort="0" inputID="43"/>
+    <translation outputPort="2" outputID="45" inputPort="0" inputID="11"/>
+    <translation outputPort="1" outputID="45" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="8" inputPort="0" inputID="5"/>
+    <translation outputPort="0" outputID="9" inputPort="0" inputID="6"/>
+    <translation outputPort="0" outputID="15" inputPort="0" inputID="20"/>
+    <translation outputPort="0" outputID="27" inputPort="0" inputID="26"/>
+    <translation outputPort="0" outputID="31" inputPort="0" inputID="29"/>
+    <translation outputPort="0" outputID="13" inputPort="0" inputID="45"/>
+    <translation outputPort="0" outputID="3" inputPort="0" inputID="4"/>
+    <translation outputPort="0" outputID="14" inputPort="0" inputID="4"/>
+    <translation outputPort="0" outputID="19" inputPort="0" inputID="4"/>
+    <translation outputPort="0" outputID="34" inputPort="0" inputID="4"/>
+    <translation outputPort="0" outputID="36" inputPort="0" inputID="4"/>
+    <translation outputPort="1" outputID="21" inputPort="0" inputID="51"/>
+    <translation outputPort="0" outputID="20" inputPort="0" inputID="21"/>
+    <nextId>52</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXPostalAddress&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates an MT address, part of an MT NameAndAddress field to an MX address typed PostalAddress1. To make
+translation of the address viable, the following template for the MT source field (format 4*35x) has to be respected ([]
+indicates the information is optional):
+&lt;pre&gt;
+    Line: Name
+    [Line: AddressLine]
+    [Line: AddressLine]
+    Line: CC[/Town][/Post code]
+&lt;/pre&gt;
+This means that in the 4*35x field the first line must carry the name, the address lines are optional and the last line
+present must start with an ISO country code, optionally followed by a town name and post code. This function should only
+be called when the source is in line with the template.
+&lt;p/&gt;
+If the source is in line with the template, then the address part will be translated as follows:  MT address lines -if
+present- are written in the MX repetitive AddressLine element, the country code CC and optional town name and post code
+are written in the MX Country, TownName and PostCode elements of the target structure.
+
+&lt;b&gt;Format&lt;/b&gt;
+MT_To_MXPostalAddress(MTNameAndAddress; MXAddress)
+
+&lt;b&gt;Input&lt;/b&gt;
+MTNameAndAddress: name and address of a party in an MT message.
+
+&lt;b&gt;Output&lt;/b&gt;
+MXAddress: the result of this function is immediately put into the correct MX element inside the target component typed
+PostalAddress1.
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+MT source template for NameAndAddress 4*35 is respected ([] indicates the information is optional):
+&lt;pre&gt;
+   Line: Name
+   [Line: AddressLine]
+   [Line: AddressLine]
+   Line: CC[/Town][/Post code]
+&lt;/pre&gt;
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/*
+   MTNameAndAddress is defined by 4 lines of 35 characters. MTNameAndAddress[1] indicates the first line not including
+   the Carriage Return Line Feed “CRLF” needed as separator between consecutive lines in an MT field with multiple line
+   format
+*/
+/*
+   AddressLine within the PostalAddress component is repetitive. PostalAddress.AddressLine[1] indicates the first    occurrence
+*/
+IF IsPresent(MTNameAndAddress[4])
+    PostalAddress.AddressLine[1] = MTNameAndAddress[2]
+    PostalAddress.AddressLine[2] = MTNameAndAddress[3]
+    PostalAddress.Country = Substring(MTNameAndAddress[4], 1, 2)
+    /*
+       Check whether the last line present carries a postcode, which according to template is separated from the town
+       with a slash. The search is started at the 4th position of the line after the country code and slash
+    */
+    IF Length(ExtractFromPattern(MTNameAndAddress[4], 4, “/”)) &gt; 0
+        PostalAddress.TownName = ExtractTillPattern(MTNameAndAddress[4], 4, “/”)
+        /*
+           Check whether postcode is longer than 16 characters which is the maximum for the target PostCode element.
+           If the length goes beyond 16, then postcode is not translated but ignored
+        */
+        IF Length(ExtractFromPattern(MTNameAndAddress[4], 4, “/”)) ≤ 16
+            PostalAddress.PostCode = ExtractFromPattern(MTNameAndAddress[4], 4, “/”)
+        ENDIF
+        /*
+           Check whether the last line present carries a town, which according to template is separated from the country
+           code with a slash
+        */
+    ELSEIF Length(ExtractFromPattern(MTNameAndAddress[4], “/”) &gt; 0
+        PostalAddress.TownName = ExtractFromPattern(MTNameAndAddress[4], “/”)
+    ENDIF
+ELSEIF IsPresent(MTNameAndAddress[3])
+    PostalAddress.AddressLine[1] = MTNameAndAddress[2]
+    PostalAddress.Country = Substring(MTNameAndAddress[3], 1, 2)
+    /*
+       Check whether the last line present carries a postcode, which according to template is separated from the town
+       with a slash. The search is started at the 4th position of the line after the country code and slash
+    */
+    IF Length(ExtractFromPattern(MTNameAndAddress[3], 4, “/”)) &gt; 0
+        PostalAddress.TownName = ExtractTillPattern(MTNameAndAddress[3], 4, “/”)
+        /*
+           Check whether postcode is longer than 16 characters which is the maximum for the target PostCode element. If
+           the length goes beyond 16, then postcode is not translated but ignored
+        */
+        IF Length(ExtractFromPattern(MTNameAndAddress[3], 4, “/”)) ≤ 16
+            PostalAddress.PostCode = ExtractFromPattern(MTNameAndAddress[3], 4, “/”)
+        ENDIF
+        /*
+           Check whether the last line present carries a town, which according to template is separated from the country
+           code with a slash
+        */
+    ELSEIF Length(ExtractFromPattern(MTNameAndAddress[3], “/”) &gt; 0
+        PostalAddress.TownName = ExtractFromPattern(MTNameAndAddress[3], “/”)
+    ENDIF
+ELSEIF IsPresent(MTNameAndAddress[2])
+    PostalAddress.Country = Substring(MTNameAndAddress[2], 1, 2)
+    /*
+       Check whether the last line present carries a postcode, which according to template is separated from the town
+       with a slash. The search is started at the 4th position of the line after the country code and slash
+    */
+    IF Length(ExtractFromPattern(MTNameAndAddress[2], 4, “/”)) &gt; 0
+        PostalAddress.TownName = ExtractTillPattern(MTNameAndAddress[2], 4, “/”)
+        /*
+           Check whether postcode is longer than 16 characters which is the maximum for the target PostCode element. If
+           the length goes beyond 16, then postcode is not translated but ignored
+        */
+        IF Length(ExtractFromPattern(MTNameAndAddress[2], 4, “/”)) ≤ 16
+            PostalAddress.PostCode = ExtractFromPattern(MTNameAndAddress[2], 4, “/”)
+        ENDIF
+        /*
+           Check whether the last line present carries a town, which according to template is separated from the country
+           code with a slash
+        */
+    ELSEIF Length(ExtractFromPattern(MTNameAndAddress[2], “/”) &gt; 0
+        PostalAddress.TownName = ExtractFromPattern(MTNameAndAddress[2], “/”)
+    ENDIF
+ENDIF
+&lt;/pre&gt;</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+    <output typeRef="#string" required="false" path="" endID="1"/>
+    <output typeRef="#string" required="false" path="" endID="2"/>
+    <output typeRef="#string" required="false" path="" endID="3"/>
+    <output typeRef="#string" required="false" path="" endID="4"/>
+    <output typeRef="#string" required="false" path="" endID="5"/>
+    <javaMethod id="1">
+        <libraryMethod>false</libraryMethod>
+        <methodName>parseAddressLine</methodName>
+        <input type="#string" role="line"/>
+        <output type="#string[]"/>
+        <code>if (null == line || 2 &gt; line.length() || (2 &lt; line.length() &amp;&amp; '/' != line.charAt(2))) return null;&#xD;
+final java.util.List result = new java.util.ArrayList();&#xD;
+result.add(line.substring(0, 2));&#xD;
+if (2 &lt; line.length()) {&#xD;
+    int pos = line.indexOf('/', 3);&#xD;
+    if (0 &lt; pos) {&#xD;
+        result.add(line.substring(3, pos++));&#xD;
+        result.add(line.substring(pos));&#xD;
+    } else {&#xD;
+        result.add(line.substring(3));&#xD;
+        result.add(null);&#xD;
+    }&#xD;
+}&#xD;
+return (String[]) result.toArray(new String[result.size()]);</code>
+    </javaMethod>
+</transform>

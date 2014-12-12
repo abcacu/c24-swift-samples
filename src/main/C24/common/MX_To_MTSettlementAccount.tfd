@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.5" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTSettlementAccount.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <input typeRef="#string" required="false" path="" endID="1"/>
+    <input typeRef="#string" required="false" path="" endID="2"/>
+    <input typeRef="#string" required="false" path="" endID="3"/>
+    <input typeRef="#string" required="false" path="" endID="4"/>
+    <constant constant="null" id="23"/>
+    <transformMethod name="CONCAT" y="105" x="532" id="0"/>
+    <transformMethod name="CONCAT" y="315" x="452" id="1"/>
+    <constant constant="/" id="3"/>
+    <transformMethod type="#string" name="IF" y="102" x="683" id="12"/>
+    <transformMethod name="EXISTS" y="203" x="436" id="13"/>
+    <hashtableRef refId="4" y="104" x="277" id="5"/>
+    <globalTransformRef ref="MX_To_MTAccount.tfd" y="317" x="216" id="7"/>
+    <contextPath input="true" endID="0" contextRef="" id="41"/>
+    <contextPath input="true" endID="1" contextRef="" id="8"/>
+    <contextPath input="true" endID="2" contextRef="" id="9"/>
+    <contextPath input="true" endID="3" contextRef="" id="10"/>
+    <contextPath input="true" endID="4" contextRef="" id="11"/>
+    <contextPath input="false" endID="0" contextRef="" id="42"/>
+    <translation outputPort="0" outputID="1" inputPort="0" inputID="3"/>
+    <translation outputPort="1" outputID="0" inputPort="0" inputID="1"/>
+    <translation outputPort="0" outputID="0" inputPort="0" inputID="5"/>
+    <translation outputPort="1" outputID="1" inputPort="0" inputID="7"/>
+    <translation outputPort="0" outputID="13" inputPort="0" inputID="7"/>
+    <translation outputPort="0" outputID="12" inputPort="0" inputID="13"/>
+    <translation outputPort="1" outputID="12" inputPort="0" inputID="0"/>
+    <translation outputPort="2" outputID="12" inputPort="0" inputID="23"/>
+    <translation outputPort="0" outputID="5" inputPort="0" inputID="41"/>
+    <translation outputPort="0" outputID="7" inputPort="0" inputID="8"/>
+    <translation outputPort="1" outputID="7" inputPort="0" inputID="9"/>
+    <translation outputPort="2" outputID="7" inputPort="0" inputID="10"/>
+    <translation outputPort="3" outputID="7" inputPort="0" inputID="11"/>
+    <translation outputPort="0" outputID="42" inputPort="0" inputID="12"/>
+    <nextId>14</nextId>
+    <documentation>
+        <notes>
+INPUT:
+	1. MXSettlementMethod
+	2. IBAN
+	3. BBAN
+	4. UPIC
+	5. Identification.ProprietaryAccount.Identification
+
+Business description
+	The function translates an MX SettlementMethod and MX SettlementAccount to an MT PartyIdentifier. The MX account typed CashAccount7 contains a mandatory
+	account identification element and optional account type, currency and name elements. This function translates the MX account identification. Type, Currency and
+	Name elements are truncated.
+
+Format
+	MX_To_MTSettlementAccount(MXSettlementMethod, MXSettlementAccount ; MTPartyIdentifier)
+
+Input
+	MXSettlementMethod: code indicating the MX settlement method.
+	MXSettlementAccount: the entire structure of the MX settlement account typed CashAccount7.
+
+Output
+	MTPartyIdentifier: PartyIdentifier in the MT format [1!a]/34x where [1!a] is an optional debit/credit indicator (D or C) /34x is the account in MT format
+
+Preconditions
+	None.</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+    <hashtable id="4">
+        <name>MXSettlementMethod</name>
+        <defaultValue></defaultValue>
+        <entry value="D" key="INDA"/>
+        <entry value="C" key="INGA"/>
+    </hashtable>
+</transform>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.11" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXPercentageRate[Sign].tfd">
+    <input typeRef="Data Field Dictionary/Subfields/Signed Rate" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <javaMethodRef refId="1" y="112" x="359" id="2"/>
+    <contextPath input="false" endID="0" contextRef="" id="4"/>
+    <contextPath input="true" endID="0" contextRef="Sign" id="16"/>
+    <contextPath input="true" endID="0" contextRef="Rate" id="17"/>
+    <translation outputPort="0" outputID="4" inputPort="0" inputID="2"/>
+    <translation outputPort="0" outputID="2" inputPort="0" inputID="16"/>
+    <translation outputPort="1" outputID="2" inputPort="0" inputID="17"/>
+    <nextId>19</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXPercentageRate[Sign]&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates an MT rate (15d) possibly signed with “N” for negative value into a signed MX rate (maximum11 total digits, 10 fractional digits).
+
+&lt;b&gt;Format&lt;/b&gt;
+&lt;tt&gt;MT_To_MXPercentageRate[Sign](MTRate; MXRate)&lt;/tt&gt;
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MTRate&lt;/tt&gt;: format is [N]15d where 15d includes the decimal separator and [N] is the optional negative sign. The decimal separator is mandatory and it is represented by
+“,”.
+Possible MT rate representations are:
+0,15
+1,
+01,00
+N2,10
+&lt;b&gt;Output&lt;/b&gt;
+MXRate: format is maximum 11 total digits, maximum 10 fractional digits. The rate can be signed with “-“. The decimal separator is represented by “.”. No sign means
+positive rate.
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+MT rate format must be constrained by the MX rate format (11 total digits, 10 fractional digits). In other words, the MT rate must be restricted to 11 significant digits.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/* If the MT rate is negative and represented with “N”, the
+negative sign is converted into “-“. The comma separator is
+replaced by a point separator. Insignificant digits are removed
+*/
+Rate = MTRate
+    IF MTRate StartWith “N”
+        /* Remove the sign */
+        Rate = DeleteChar(Rate, 1, 1)
+        /* Remove the insignificant digits */
+        Rate = TrimLeft(Rate, “0”)
+        Rate = TrimRight(Rate, “0”)
+        /* Add the negative sign */
+        Rate = Concatenate(“-“, Rate)
+    ELSE
+         /* Remove the insignificant digits */
+         Rate = TrimLeft(Rate, “0”)
+         Rate = TrimRight(Rate, “0”)
+    ENDIF
+MXRate = ReplacePattern(Rate, “,”, “.”)
+&lt;pre&gt;</notes>
+    </documentation>
+    <output typeRef="#number_decimal" required="false" path="" endID="0"/>
+    <javaMethod id="1">
+        <libraryMethod>false</libraryMethod>
+        <methodName>convertMTRateToMXRate</methodName>
+        <input type="#string" role="arg0"/>
+        <input type="#number_decimal" role="arg1"/>
+        <output type="#number_decimal"/>
+        <code>if (&quot;N&quot;.equals(arg0)) {&#xD;
+    if (arg1.signum() != -1)  {&#xD;
+      return arg1.negate();&#xD;
+    }&#xD;
+}&#xD;
+return arg1;</code>
+    </javaMethod>
+</transform>

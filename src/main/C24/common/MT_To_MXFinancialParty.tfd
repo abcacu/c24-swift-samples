@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXFinancialParty.tfd">
+    <input typeRef="Data Field Dictionary/Subfields/Identifier Code" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <input typeRef="Data Field Dictionary/Subfields/Name and Address" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="1"/>
+    <input typeRef="#string" required="false" path="" endID="2"/>
+    <input typeRef="#string" required="false" path="" endID="3"/>
+    <contextPath input="true" endID="0" contextRef="" id="I000"/>
+    <contextPath input="true" endID="1" contextRef="" id="I001"/>
+    <contextPath input="true" endID="2" contextRef="" id="I002"/>
+    <contextPath input="true" endID="3" contextRef="" id="I003"/>
+    <contextPath input="false" endID="0" contextRef="" id="O000"/>
+    <contextPath input="false" endID="1" contextRef="" id="O001"/>
+    <globalTransformRef ref="MT_To_MXParty.tfd" y="273" x="195" id="O0010"/>
+    <contextPath input="false" endID="2" contextRef="" id="O002"/>
+    <localTransformRef refId="O0020_ref" y="338" x="484" id="O0020"/>
+    <translation outputPort="0" outputID="O000" inputPort="2" inputID="O0010"/>
+    <translation outputPort="0" outputID="O001" inputPort="0" inputID="O0010"/>
+    <translation outputPort="0" outputID="O0010" inputPort="0" inputID="I000"/>
+    <translation outputPort="1" outputID="O0010" inputPort="0" inputID="I001"/>
+    <translation outputPort="2" outputID="O0010" inputPort="0" inputID="I002"/>
+    <translation outputPort="3" outputID="O0010" inputPort="0" inputID="I003"/>
+    <translation outputPort="0" outputID="O002" inputPort="0" inputID="O0020"/>
+    <translation outputPort="0" outputID="O0020" inputPort="1" inputID="O0010"/>
+    <output typeRef="NameAndAddress5" required="false" path="" modelRef="../../SWIFTSolutions/SWIFTNet Funds 4.0/Messages/OrderAndConfirmation/SubsMultOrdrConfnV03 - setr.012.001.03/setr.012.001.03.dod" endID="0"/>
+    <output typeRef="#string" required="false" path="" endID="1"/>
+    <output typeRef="SimpleIdentificationInformation" required="false" path="" modelRef="../../SWIFTSolutions/SWIFTNet Funds 4.0/Messages/OrderAndConfirmation/SubsMultOrdrConfnV03 - setr.012.001.03/setr.012.001.03.dod" endID="2"/>
+    <localTransform id="O0020_ref">
+        <transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="GenericId2SimpleId">
+            <input typeRef="GenericIdentification1" required="false" path="" modelRef="../../SWIFTSolutions/SWIFTNet Funds 4.0/Messages/OrderAndConfirmation/SubsMultOrdrConfnV03 - setr.012.001.03/setr.012.001.03.dod" endID="0"/>
+            <contextPath input="true" endID="0" contextRef="Id" id="IdI000"/>
+            <contextPath input="false" endID="0" contextRef="Id" id="IdO000"/>
+            <translation outputPort="0" outputID="IdO000" inputPort="0" inputID="IdI000"/>
+            <output typeRef="SimpleIdentificationInformation" required="false" path="" modelRef="../../SWIFTSolutions/SWIFTNet Funds 4.0/Messages/OrderAndConfirmation/SubsMultOrdrConfnV03 - setr.012.001.03/setr.012.001.03.dod" endID="0"/>
+        </transform>
+    </localTransform>
+</transform>

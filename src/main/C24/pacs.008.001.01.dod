@@ -1,0 +1,958 @@
+<?xml version="1.0" ?>
+<dataModel IOversion="3.1.0" encrypted="false" targetNamespace="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.01" inputMask="XML" outputMask="XML" elementFormDefault="Qualified" attributeFormDefault="Unqualified" encoding="UTF-8" hibernateIDGeneratorMethodDefault="native" name="pacs.008.001.01.dod" version="0.0.1">
+  <element identifier="false" min="1" max="1" typeRef="Document" name="Document"></element>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="AccountIdentification3Choice">
+      <element identifier="false" group="true" min="1" max="1" name="AccountIdentification3Choice-SG1">
+        <type>
+          <complexType specifyStructure="true" abstract="false" contentModel="Choice" specialisation="Element group" excludeFromDatabase="false" processAsBatch="false" name="AccountIdentification3Choice-SG1">
+            <element identifier="false" min="1" max="1" typeRef="IBANIdentifier" name="IBAN"></element>
+            <element identifier="false" min="1" max="1" typeRef="BBANIdentifier" name="BBAN"></element>
+            <element identifier="false" min="1" max="1" typeRef="UPICIdentifier" name="UPIC"></element>
+            <element identifier="false" min="1" max="1" typeRef="SimpleIdentificationInformation2" name="PrtryAcct"></element>
+          </complexType>
+        </type>
+      </element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="AddressType2Code">
+      <enumeration caseSensitive="true" name="AddressType2Code">
+        <value value="ADDR"></value>
+        <value value="PBOX"></value>
+        <value value="HOME"></value>
+        <value value="BIZZ"></value>
+        <value value="MLTO"></value>
+        <value value="DLVY"></value>
+      </enumeration>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="BBANIdentifier">
+      <facet facetType="pattern">
+        <value>Schema|[a-zA-Z0-9]{1,30}</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="BEIIdentifier">
+      <facet facetType="pattern">
+        <value>Schema|[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="BICIdentifier">
+      <facet facetType="pattern">
+        <value>Schema|[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#number_decimal" name="BaseOneRate">
+      <facet facetType="max_fraction_digits">
+        <value>10</value>
+      </facet>
+      <facet facetType="max_total_digits">
+        <value>11</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#boolean" name="BatchBookingIndicator"></atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="BranchAndFinancialInstitutionIdentification3">
+      <element identifier="false" min="1" max="1" typeRef="FinancialInstitutionIdentification5Choice" name="FinInstnId"></element>
+      <element identifier="false" min="0" max="1" typeRef="BranchData" name="BrnchId"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="BranchData">
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="Id"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="Nm"></element>
+      <element identifier="false" min="0" max="1" typeRef="PostalAddress1" name="PstlAdr"></element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="CHIPSUniversalIdentifier">
+      <facet facetType="pattern">
+        <value>Schema|CH[0-9]{6,6}</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="CashAccount7">
+      <element identifier="false" min="1" max="1" typeRef="AccountIdentification3Choice" name="Id"></element>
+      <element identifier="false" min="0" max="1" typeRef="CashAccountType2" name="Tp"></element>
+      <element identifier="false" min="0" max="1" typeRef="CurrencyCode" name="Ccy"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max70Text" name="Nm"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="CashAccountType2">
+      <element identifier="false" group="true" min="1" max="1" name="CashAccountType2-SG1">
+        <type>
+          <complexType specifyStructure="true" abstract="false" contentModel="Choice" specialisation="Element group" excludeFromDatabase="false" processAsBatch="false" name="CashAccountType2-SG1">
+            <element identifier="false" min="1" max="1" typeRef="CashAccountType4Code" name="Cd"></element>
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="Prtry"></element>
+          </complexType>
+        </type>
+      </element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="CashAccountType4Code">
+      <enumeration caseSensitive="true" name="CashAccountType4Code">
+        <value value="CASH"></value>
+        <value value="CHAR"></value>
+        <value value="COMM"></value>
+        <value value="TAXE"></value>
+        <value value="CISH"></value>
+        <value value="TRAS"></value>
+        <value value="SACC"></value>
+        <value value="CACC"></value>
+        <value value="SVGS"></value>
+        <value value="ONDP"></value>
+        <value value="MGLD"></value>
+        <value value="NREX"></value>
+        <value value="MOMA"></value>
+        <value value="LOAN"></value>
+        <value value="SLRY"></value>
+        <value value="ODFT"></value>
+      </enumeration>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="CashClearingSystem3Code">
+      <enumeration caseSensitive="true" name="CashClearingSystem3Code">
+        <value value="ABE"></value>
+        <value value="ART"></value>
+        <value value="AVP"></value>
+        <value value="AZM"></value>
+        <value value="BAP"></value>
+        <value value="BEL"></value>
+        <value value="BOF"></value>
+        <value value="BRL"></value>
+        <value value="CAD"></value>
+        <value value="CAM"></value>
+        <value value="CBJ"></value>
+        <value value="CHP"></value>
+        <value value="DKC"></value>
+        <value value="RTP"></value>
+        <value value="EBA"></value>
+        <value value="ELS"></value>
+        <value value="ERP"></value>
+        <value value="XCT"></value>
+        <value value="HRK"></value>
+        <value value="HRM"></value>
+        <value value="HUF"></value>
+        <value value="LGS"></value>
+        <value value="LVL"></value>
+        <value value="MUP"></value>
+        <value value="NOC"></value>
+        <value value="PCH"></value>
+        <value value="PDS"></value>
+        <value value="PEG"></value>
+        <value value="PNS"></value>
+        <value value="PVE"></value>
+        <value value="SEC"></value>
+        <value value="SIT"></value>
+        <value value="SLB"></value>
+        <value value="SPG"></value>
+        <value value="SSK"></value>
+        <value value="TBF"></value>
+        <value value="TGT"></value>
+        <value value="TOP"></value>
+        <value value="FDW"></value>
+        <value value="BOJ"></value>
+        <value value="FEY"></value>
+        <value value="ZEN"></value>
+        <value value="DDK"></value>
+        <value value="AIP"></value>
+        <value value="BCC"></value>
+        <value value="BDS"></value>
+        <value value="BGN"></value>
+        <value value="BHS"></value>
+        <value value="BIS"></value>
+        <value value="BSP"></value>
+        <value value="EPM"></value>
+        <value value="EPN"></value>
+        <value value="FDA"></value>
+        <value value="GIS"></value>
+        <value value="INC"></value>
+        <value value="JOD"></value>
+        <value value="KPS"></value>
+        <value value="LKB"></value>
+        <value value="MEP"></value>
+        <value value="MRS"></value>
+        <value value="NAM"></value>
+        <value value="PTR"></value>
+        <value value="ROL"></value>
+        <value value="ROS"></value>
+        <value value="SCP"></value>
+        <value value="STG"></value>
+        <value value="THB"></value>
+        <value value="TIS"></value>
+        <value value="TTD"></value>
+        <value value="UIS"></value>
+        <value value="MOS"></value>
+        <value value="ZET"></value>
+        <value value="ZIS"></value>
+        <value value="CHI"></value>
+        <value value="COP"></value>
+      </enumeration>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="ChargeBearerType1Code">
+      <enumeration caseSensitive="true" name="ChargeBearerType1Code">
+        <value value="DEBT"></value>
+        <value value="CRED"></value>
+        <value value="SHAR"></value>
+        <value value="SLEV"></value>
+      </enumeration>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="ChargesInformation1">
+      <element identifier="false" min="1" max="1" typeRef="CurrencyAndAmount" name="ChrgsAmt"></element>
+      <element identifier="false" min="1" max="1" typeRef="BranchAndFinancialInstitutionIdentification3" name="ChrgsPty"></element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="ClearingChannel2Code">
+      <enumeration caseSensitive="true" name="ClearingChannel2Code">
+        <value value="RTGS"></value>
+        <value value="RTNS"></value>
+        <value value="MPNS"></value>
+        <value value="BOOK"></value>
+      </enumeration>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="ClearingSystemIdentification1Choice">
+      <element identifier="false" group="true" min="1" max="1" name="ClearingSystemIdentification1Choice-SG1">
+        <type>
+          <complexType specifyStructure="true" abstract="false" contentModel="Choice" specialisation="Element group" excludeFromDatabase="false" processAsBatch="false" name="ClearingSystemIdentification1Choice-SG1">
+            <element identifier="false" min="1" max="1" typeRef="CashClearingSystem3Code" name="ClrSysId"></element>
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="Prtry"></element>
+          </complexType>
+        </type>
+      </element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="ClearingSystemMemberIdentification3Choice">
+      <element identifier="false" group="true" min="1" max="1" name="ClearingSystemMemberIdentification3Choice-SG1">
+        <type>
+          <complexType specifyStructure="true" abstract="false" contentModel="Choice" specialisation="Element group" excludeFromDatabase="false" processAsBatch="false" name="ClearingSystemMemberIdentification3Choice-SG1">
+            <element identifier="false" min="1" max="1" typeRef="ExternalClearingSystemMemberCode" name="Id"></element>
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="Prtry"></element>
+          </complexType>
+        </type>
+      </element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="CountryCode">
+      <facet facetType="pattern">
+        <value>Schema|[A-Z]{2,2}</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="CreditTransferTransactionInformation2">
+      <element identifier="false" min="1" max="1" typeRef="PaymentIdentification2" name="PmtId"></element>
+      <element identifier="false" min="0" max="1" typeRef="PaymentTypeInformation3" name="PmtTpInf"></element>
+      <element identifier="false" min="1" max="1" typeRef="CurrencyAndAmount" name="IntrBkSttlmAmt"></element>
+      <element identifier="false" min="0" max="1" typeRef="ISODate" name="IntrBkSttlmDt"></element>
+      <element identifier="false" min="0" max="1" typeRef="SettlementDateTimeIndication1" name="SttlmTmIndctn"></element>
+      <element identifier="false" min="0" max="1" typeRef="SettlementTimeRequest1" name="SttlmTmReq"></element>
+      <element identifier="false" min="0" max="1" typeRef="ISODateTime" name="AccptncDtTm"></element>
+      <element identifier="false" min="0" max="1" typeRef="ISODate" name="PoolgAdjstmntDt"></element>
+      <element identifier="false" min="0" max="1" typeRef="CurrencyAndAmount" name="InstdAmt"></element>
+      <element identifier="false" min="0" max="1" typeRef="BaseOneRate" name="XchgRate"></element>
+      <element identifier="false" min="1" max="1" typeRef="ChargeBearerType1Code" name="ChrgBr"></element>
+      <element identifier="false" min="0" max="-1" typeRef="ChargesInformation1" name="ChrgsInf"></element>
+      <element identifier="false" min="0" max="1" typeRef="BranchAndFinancialInstitutionIdentification3" name="PrvsInstgAgt"></element>
+      <element identifier="false" min="0" max="1" typeRef="CashAccount7" name="PrvsInstgAgtAcct"></element>
+      <element identifier="false" min="0" max="1" typeRef="BranchAndFinancialInstitutionIdentification3" name="InstgAgt"></element>
+      <element identifier="false" min="0" max="1" typeRef="BranchAndFinancialInstitutionIdentification3" name="InstdAgt"></element>
+      <element identifier="false" min="0" max="1" typeRef="BranchAndFinancialInstitutionIdentification3" name="IntrmyAgt1"></element>
+      <element identifier="false" min="0" max="1" typeRef="CashAccount7" name="IntrmyAgt1Acct"></element>
+      <element identifier="false" min="0" max="1" typeRef="BranchAndFinancialInstitutionIdentification3" name="IntrmyAgt2"></element>
+      <element identifier="false" min="0" max="1" typeRef="CashAccount7" name="IntrmyAgt2Acct"></element>
+      <element identifier="false" min="0" max="1" typeRef="BranchAndFinancialInstitutionIdentification3" name="IntrmyAgt3"></element>
+      <element identifier="false" min="0" max="1" typeRef="CashAccount7" name="IntrmyAgt3Acct"></element>
+      <element identifier="false" min="0" max="1" typeRef="PartyIdentification8" name="UltmtDbtr"></element>
+      <element identifier="false" min="0" max="1" typeRef="PartyIdentification8" name="InitgPty"></element>
+      <element identifier="false" min="1" max="1" typeRef="PartyIdentification8" name="Dbtr"></element>
+      <element identifier="false" min="0" max="1" typeRef="CashAccount7" name="DbtrAcct"></element>
+      <element identifier="false" min="1" max="1" typeRef="BranchAndFinancialInstitutionIdentification3" name="DbtrAgt"></element>
+      <element identifier="false" min="0" max="1" typeRef="CashAccount7" name="DbtrAgtAcct"></element>
+      <element identifier="false" min="1" max="1" typeRef="BranchAndFinancialInstitutionIdentification3" name="CdtrAgt"></element>
+      <element identifier="false" min="0" max="1" typeRef="CashAccount7" name="CdtrAgtAcct"></element>
+      <element identifier="false" min="1" max="1" typeRef="PartyIdentification8" name="Cdtr"></element>
+      <element identifier="false" min="0" max="1" typeRef="CashAccount7" name="CdtrAcct"></element>
+      <element identifier="false" min="0" max="1" typeRef="PartyIdentification8" name="UltmtCdtr"></element>
+      <element identifier="false" min="0" max="-1" typeRef="InstructionForCreditorAgent1" name="InstrForCdtrAgt"></element>
+      <element identifier="false" min="0" max="-1" typeRef="InstructionForNextAgent1" name="InstrForNxtAgt"></element>
+      <element identifier="false" min="0" max="1" typeRef="Purpose1Choice" name="Purp"></element>
+      <element identifier="false" min="0" max="10" typeRef="RegulatoryReporting2" name="RgltryRptg"></element>
+      <element identifier="false" min="0" max="10" typeRef="RemittanceLocation1" name="RltdRmtInf"></element>
+      <element identifier="false" min="0" max="1" typeRef="RemittanceInformation1" name="RmtInf"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="CreditorReferenceInformation1">
+      <element identifier="false" min="0" max="1" typeRef="CreditorReferenceType1" name="CdtrRefTp"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="CdtrRef"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="CreditorReferenceType1">
+      <element identifier="false" group="true" min="1" max="1" name="CreditorReferenceType1-SG1">
+        <type>
+          <complexType specifyStructure="true" abstract="false" contentModel="Choice" specialisation="Element group" excludeFromDatabase="false" processAsBatch="false" name="CreditorReferenceType1-SG1">
+            <element identifier="false" min="1" max="1" typeRef="DocumentType3Code" name="Cd"></element>
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="Prtry"></element>
+          </complexType>
+        </type>
+      </element>
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="Issr"></element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#number_decimal" name="CurrencyAndAmount_SimpleType">
+      <facet facetType="min_inclusive">
+        <value>0</value>
+      </facet>
+      <facet facetType="max_fraction_digits">
+        <value>5</value>
+      </facet>
+      <facet facetType="max_total_digits">
+        <value>18</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" derivationMethod="Extension" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" baseType="CurrencyAndAmount_SimpleType" name="CurrencyAndAmount">
+      <attribute min="1" max="1" typeRef="CurrencyCode" name="Ccy"></attribute>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="CurrencyCode">
+      <facet facetType="pattern">
+        <value>Schema|[A-Z]{3,3}</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="DateAndPlaceOfBirth">
+      <element identifier="false" min="1" max="1" typeRef="ISODate" name="BirthDt"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="PrvcOfBirth"></element>
+      <element identifier="false" min="1" max="1" typeRef="Max35Text" name="CityOfBirth"></element>
+      <element identifier="false" min="1" max="1" typeRef="CountryCode" name="CtryOfBirth"></element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#number_decimal" name="DecimalNumber">
+      <facet facetType="max_fraction_digits">
+        <value>17</value>
+      </facet>
+      <facet facetType="max_total_digits">
+        <value>18</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="Document">
+      <element identifier="false" min="1" max="1" typeRef="pacs.008.001.01" name="pacs.008.001.01"></element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="DocumentType2Code">
+      <enumeration caseSensitive="true" name="DocumentType2Code">
+        <value value="MSIN"></value>
+        <value value="CNFA"></value>
+        <value value="DNFA"></value>
+        <value value="CINV"></value>
+        <value value="CREN"></value>
+        <value value="DEBN"></value>
+        <value value="HIRI"></value>
+        <value value="SBIN"></value>
+        <value value="CMCN"></value>
+        <value value="SOAC"></value>
+        <value value="DISP"></value>
+      </enumeration>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="DocumentType3Code">
+      <enumeration caseSensitive="true" name="DocumentType3Code">
+        <value value="RADM"></value>
+        <value value="RPIN"></value>
+        <value value="FXDR"></value>
+        <value value="DISP"></value>
+        <value value="PUOR"></value>
+        <value value="SCOR"></value>
+      </enumeration>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="DunsIdentifier">
+      <facet facetType="pattern">
+        <value>Schema|[0-9]{9,9}</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="EANGLNIdentifier">
+      <facet facetType="pattern">
+        <value>Schema|[0-9]{13,13}</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="ExternalClearingSystemMemberCode">
+      <facet facetType="min_length">
+        <value>1</value>
+      </facet>
+      <facet facetType="max_length">
+        <value>35</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="ExternalLocalInstrumentCode">
+      <facet facetType="min_length">
+        <value>1</value>
+      </facet>
+      <facet facetType="max_length">
+        <value>35</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="ExternalPurposeCode">
+      <facet facetType="min_length">
+        <value>1</value>
+      </facet>
+      <facet facetType="max_length">
+        <value>35</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="FinancialInstitutionIdentification3">
+      <element identifier="false" min="0" max="1" typeRef="BICIdentifier" name="BIC"></element>
+      <element identifier="false" min="0" max="1" typeRef="ClearingSystemMemberIdentification3Choice" name="ClrSysMmbId"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max70Text" name="Nm"></element>
+      <element identifier="false" min="0" max="1" typeRef="PostalAddress1" name="PstlAdr"></element>
+      <element identifier="false" min="0" max="1" typeRef="GenericIdentification3" name="PrtryId"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="FinancialInstitutionIdentification5Choice">
+      <element identifier="false" group="true" min="1" max="1" name="FinancialInstitutionIdentification5Choice-SG1">
+        <type>
+          <complexType specifyStructure="true" abstract="false" contentModel="Choice" specialisation="Element group" excludeFromDatabase="false" processAsBatch="false" name="FinancialInstitutionIdentification5Choice-SG1">
+            <element identifier="false" min="1" max="1" typeRef="BICIdentifier" name="BIC"></element>
+            <element identifier="false" min="1" max="1" typeRef="ClearingSystemMemberIdentification3Choice" name="ClrSysMmbId"></element>
+            <element identifier="false" min="1" max="1" typeRef="NameAndAddress7" name="NmAndAdr"></element>
+            <element identifier="false" min="1" max="1" typeRef="GenericIdentification3" name="PrtryId"></element>
+            <element identifier="false" min="1" max="1" typeRef="FinancialInstitutionIdentification3" name="CmbndId"></element>
+          </complexType>
+        </type>
+      </element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="GenericIdentification3">
+      <element identifier="false" min="1" max="1" typeRef="Max35Text" name="Id"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="Issr"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="GenericIdentification4">
+      <element identifier="false" min="1" max="1" typeRef="Max35Text" name="Id"></element>
+      <element identifier="false" min="1" max="1" typeRef="Max35Text" name="IdTp"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="GroupHeader2">
+      <element identifier="false" min="1" max="1" typeRef="Max35Text" name="MsgId"></element>
+      <element identifier="false" min="1" max="1" typeRef="ISODateTime" name="CreDtTm"></element>
+      <element identifier="false" min="0" max="1" typeRef="BatchBookingIndicator" name="BtchBookg"></element>
+      <element identifier="false" min="1" max="1" typeRef="Max15NumericText" name="NbOfTxs"></element>
+      <element identifier="false" min="0" max="1" typeRef="DecimalNumber" name="CtrlSum"></element>
+      <element identifier="false" min="0" max="1" typeRef="CurrencyAndAmount" name="TtlIntrBkSttlmAmt"></element>
+      <element identifier="false" min="0" max="1" typeRef="ISODate" name="IntrBkSttlmDt"></element>
+      <element identifier="false" min="1" max="1" typeRef="SettlementInformation1" name="SttlmInf"></element>
+      <element identifier="false" min="0" max="1" typeRef="PaymentTypeInformation3" name="PmtTpInf"></element>
+      <element identifier="false" min="0" max="1" typeRef="BranchAndFinancialInstitutionIdentification3" name="InstgAgt"></element>
+      <element identifier="false" min="0" max="1" typeRef="BranchAndFinancialInstitutionIdentification3" name="InstdAgt"></element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="IBANIdentifier">
+      <facet facetType="pattern">
+        <value>Schema|[a-zA-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="IBEIIdentifier">
+      <facet facetType="pattern">
+        <value>Schema|[A-Z]{2,2}[B-DF-HJ-NP-TV-XZ0-9]{7,7}[0-9]{1,1}</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#date_date" name="ISODate"></atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#date_datetime" name="ISODateTime"></atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#date_time" name="ISOTime"></atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="Instruction3Code">
+      <enumeration caseSensitive="true" name="Instruction3Code">
+        <value value="CHQB"></value>
+        <value value="HOLD"></value>
+        <value value="PHOB"></value>
+        <value value="TELB"></value>
+      </enumeration>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="Instruction4Code">
+      <enumeration caseSensitive="true" name="Instruction4Code">
+        <value value="PHOA"></value>
+        <value value="TELA"></value>
+      </enumeration>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="InstructionForCreditorAgent1">
+      <element identifier="false" min="0" max="1" typeRef="Instruction3Code" name="Cd"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max140Text" name="InstrInf"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="InstructionForNextAgent1">
+      <element identifier="false" min="0" max="1" typeRef="Instruction4Code" name="Cd"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max140Text" name="InstrInf"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="LocalInstrument1Choice">
+      <element identifier="false" group="true" min="1" max="1" name="LocalInstrument1Choice-SG1">
+        <type>
+          <complexType specifyStructure="true" abstract="false" contentModel="Choice" specialisation="Element group" excludeFromDatabase="false" processAsBatch="false" name="LocalInstrument1Choice-SG1">
+            <element identifier="false" min="1" max="1" typeRef="ExternalLocalInstrumentCode" name="Cd"></element>
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="Prtry"></element>
+          </complexType>
+        </type>
+      </element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="Max140Text">
+      <facet facetType="min_length">
+        <value>1</value>
+      </facet>
+      <facet facetType="max_length">
+        <value>140</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="Max15NumericText">
+      <facet facetType="pattern">
+        <value>Schema|[0-9]{1,15}</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="Max16Text">
+      <facet facetType="min_length">
+        <value>1</value>
+      </facet>
+      <facet facetType="max_length">
+        <value>16</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="Max256Text">
+      <facet facetType="min_length">
+        <value>1</value>
+      </facet>
+      <facet facetType="max_length">
+        <value>256</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="Max34Text">
+      <facet facetType="min_length">
+        <value>1</value>
+      </facet>
+      <facet facetType="max_length">
+        <value>34</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="Max35Text">
+      <facet facetType="min_length">
+        <value>1</value>
+      </facet>
+      <facet facetType="max_length">
+        <value>35</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="Max3Text">
+      <facet facetType="min_length">
+        <value>1</value>
+      </facet>
+      <facet facetType="max_length">
+        <value>3</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="Max70Text">
+      <facet facetType="min_length">
+        <value>1</value>
+      </facet>
+      <facet facetType="max_length">
+        <value>70</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="NameAndAddress3">
+      <element identifier="false" min="1" max="1" typeRef="Max70Text" name="Nm"></element>
+      <element identifier="false" min="1" max="1" typeRef="PostalAddress1" name="Adr"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="NameAndAddress7">
+      <element identifier="false" min="1" max="1" typeRef="Max70Text" name="Nm"></element>
+      <element identifier="false" min="1" max="1" typeRef="PostalAddress1" name="PstlAdr"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="OrganisationIdentification2">
+      <element identifier="false" min="0" max="1" typeRef="BICIdentifier" name="BIC"></element>
+      <element identifier="false" min="0" max="1" typeRef="IBEIIdentifier" name="IBEI"></element>
+      <element identifier="false" min="0" max="1" typeRef="BEIIdentifier" name="BEI"></element>
+      <element identifier="false" min="0" max="1" typeRef="EANGLNIdentifier" name="EANGLN"></element>
+      <element identifier="false" min="0" max="1" typeRef="CHIPSUniversalIdentifier" name="USCHU"></element>
+      <element identifier="false" min="0" max="1" typeRef="DunsIdentifier" name="DUNS"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="BkPtyId"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="TaxIdNb"></element>
+      <element identifier="false" min="0" max="1" typeRef="GenericIdentification3" name="PrtryId"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="Party2Choice">
+      <element identifier="false" group="true" min="1" max="1" name="Party2Choice-SG1">
+        <type>
+          <complexType specifyStructure="true" abstract="false" contentModel="Choice" specialisation="Element group" excludeFromDatabase="false" processAsBatch="false" name="Party2Choice-SG1">
+            <element identifier="false" min="1" max="1" typeRef="OrganisationIdentification2" name="OrgId"></element>
+            <element identifier="false" min="1" max="4" typeRef="PersonIdentification3" name="PrvtId"></element>
+          </complexType>
+        </type>
+      </element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="PartyIdentification8">
+      <element identifier="false" min="0" max="1" typeRef="Max70Text" name="Nm"></element>
+      <element identifier="false" min="0" max="1" typeRef="PostalAddress1" name="PstlAdr"></element>
+      <element identifier="false" min="0" max="1" typeRef="Party2Choice" name="Id"></element>
+      <element identifier="false" min="0" max="1" typeRef="CountryCode" name="CtryOfRes"></element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="PaymentCategoryPurpose1Code">
+      <enumeration caseSensitive="true" name="PaymentCategoryPurpose1Code">
+        <value value="CORT"></value>
+        <value value="SALA"></value>
+        <value value="TREA"></value>
+        <value value="CASH"></value>
+        <value value="DIVI"></value>
+        <value value="GOVT"></value>
+        <value value="INTE"></value>
+        <value value="LOAN"></value>
+        <value value="PENS"></value>
+        <value value="SECU"></value>
+        <value value="SSBE"></value>
+        <value value="SUPP"></value>
+        <value value="TAXS"></value>
+        <value value="TRAD"></value>
+        <value value="VATX"></value>
+        <value value="HEDG"></value>
+        <value value="INTC"></value>
+        <value value="WHLD"></value>
+      </enumeration>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="PaymentIdentification2">
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="InstrId"></element>
+      <element identifier="false" min="1" max="1" typeRef="Max35Text" name="EndToEndId"></element>
+      <element identifier="false" min="1" max="1" typeRef="Max35Text" name="TxId"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="PaymentTypeInformation3">
+      <element identifier="false" min="0" max="1" typeRef="Priority2Code" name="InstrPrty"></element>
+      <element identifier="false" group="true" min="1" max="1" name="PaymentTypeInformation3-SG1">
+        <type>
+          <complexType specifyStructure="true" abstract="false" contentModel="Choice" specialisation="Element group" excludeFromDatabase="false" processAsBatch="false" name="PaymentTypeInformation3-SG1">
+            <element identifier="false" min="0" max="1" typeRef="ServiceLevel2Choice" name="SvcLvl"></element>
+            <element identifier="false" min="0" max="1" typeRef="ClearingChannel2Code" name="ClrChanl"></element>
+          </complexType>
+        </type>
+      </element>
+      <element identifier="false" min="0" max="1" typeRef="LocalInstrument1Choice" name="LclInstrm"></element>
+      <element identifier="false" min="0" max="1" typeRef="PaymentCategoryPurpose1Code" name="CtgyPurp"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="PersonIdentification3">
+      <element identifier="false" group="true" min="1" max="1" name="PersonIdentification3-SG1">
+        <type>
+          <complexType specifyStructure="true" abstract="false" contentModel="Choice" specialisation="Element group" excludeFromDatabase="false" processAsBatch="false" name="PersonIdentification3-SG1">
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="DrvrsLicNb"></element>
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="CstmrNb"></element>
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="SclSctyNb"></element>
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="AlnRegnNb"></element>
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="PsptNb"></element>
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="TaxIdNb"></element>
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="IdntyCardNb"></element>
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="MplyrIdNb"></element>
+            <element identifier="false" min="1" max="1" typeRef="DateAndPlaceOfBirth" name="DtAndPlcOfBirth"></element>
+            <element identifier="false" min="1" max="1" typeRef="GenericIdentification4" name="OthrId"></element>
+          </complexType>
+        </type>
+      </element>
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="Issr"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="PostalAddress1">
+      <element identifier="false" min="0" max="1" typeRef="AddressType2Code" name="AdrTp"></element>
+      <element identifier="false" min="0" max="5" typeRef="Max70Text" name="AdrLine"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max70Text" name="StrtNm"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max16Text" name="BldgNb"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max16Text" name="PstCd"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="TwnNm"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="CtrySubDvsn"></element>
+      <element identifier="false" min="1" max="1" typeRef="CountryCode" name="Ctry"></element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="Priority2Code">
+      <enumeration caseSensitive="true" name="Priority2Code">
+        <value value="HIGH"></value>
+        <value value="NORM"></value>
+      </enumeration>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="Purpose1Choice">
+      <element identifier="false" group="true" min="1" max="1" name="Purpose1Choice-SG1">
+        <type>
+          <complexType specifyStructure="true" abstract="false" contentModel="Choice" specialisation="Element group" excludeFromDatabase="false" processAsBatch="false" name="Purpose1Choice-SG1">
+            <element identifier="false" min="1" max="1" typeRef="ExternalPurposeCode" name="Cd"></element>
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="Prtry"></element>
+          </complexType>
+        </type>
+      </element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="ReferredDocumentAmount1Choice">
+      <element identifier="false" group="true" min="1" max="1" name="ReferredDocumentAmount1Choice-SG1">
+        <type>
+          <complexType specifyStructure="true" abstract="false" contentModel="Choice" specialisation="Element group" excludeFromDatabase="false" processAsBatch="false" name="ReferredDocumentAmount1Choice-SG1">
+            <element identifier="false" min="1" max="1" typeRef="CurrencyAndAmount" name="DuePyblAmt"></element>
+            <element identifier="false" min="1" max="1" typeRef="CurrencyAndAmount" name="DscntApldAmt"></element>
+            <element identifier="false" min="1" max="1" typeRef="CurrencyAndAmount" name="RmtdAmt"></element>
+            <element identifier="false" min="1" max="1" typeRef="CurrencyAndAmount" name="CdtNoteAmt"></element>
+            <element identifier="false" min="1" max="1" typeRef="CurrencyAndAmount" name="TaxAmt"></element>
+          </complexType>
+        </type>
+      </element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="ReferredDocumentInformation1">
+      <element identifier="false" min="0" max="1" typeRef="ReferredDocumentType1" name="RfrdDocTp"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="RfrdDocNb"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="ReferredDocumentType1">
+      <element identifier="false" group="true" min="1" max="1" name="ReferredDocumentType1-SG1">
+        <type>
+          <complexType specifyStructure="true" abstract="false" contentModel="Choice" specialisation="Element group" excludeFromDatabase="false" processAsBatch="false" name="ReferredDocumentType1-SG1">
+            <element identifier="false" min="1" max="1" typeRef="DocumentType2Code" name="Cd"></element>
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="Prtry"></element>
+          </complexType>
+        </type>
+      </element>
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="Issr"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="RegulatoryAuthority">
+      <element identifier="false" min="0" max="1" typeRef="Max70Text" name="AuthrtyNm"></element>
+      <element identifier="false" min="0" max="1" typeRef="CountryCode" name="AuthrtyCtry"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="RegulatoryReporting2">
+      <element identifier="false" min="0" max="1" typeRef="RegulatoryReportingType1Code" name="DbtCdtRptgInd"></element>
+      <element identifier="false" min="0" max="1" typeRef="RegulatoryAuthority" name="Authrty"></element>
+      <element identifier="false" min="0" max="1" typeRef="StructuredRegulatoryReporting2" name="RgltryDtls"></element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="RegulatoryReportingType1Code">
+      <enumeration caseSensitive="true" name="RegulatoryReportingType1Code">
+        <value value="CRED"></value>
+        <value value="DEBT"></value>
+        <value value="BOTH"></value>
+      </enumeration>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="RemittanceInformation1">
+      <element identifier="false" min="0" max="-1" typeRef="Max140Text" name="Ustrd"></element>
+      <element identifier="false" min="0" max="-1" typeRef="StructuredRemittanceInformation6" name="Strd"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="RemittanceLocation1">
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="RmtId"></element>
+      <element identifier="false" min="0" max="1" typeRef="RemittanceLocationMethod1Code" name="RmtLctnMtd"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max256Text" name="RmtLctnElctrncAdr"></element>
+      <element identifier="false" min="0" max="1" typeRef="NameAndAddress3" name="RmtLctnPstlAdr"></element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="RemittanceLocationMethod1Code">
+      <enumeration caseSensitive="true" name="RemittanceLocationMethod1Code">
+        <value value="FAXI"></value>
+        <value value="EDIC"></value>
+        <value value="URID"></value>
+        <value value="EMAL"></value>
+        <value value="POST"></value>
+      </enumeration>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="ServiceLevel1Code">
+      <enumeration caseSensitive="true" name="ServiceLevel1Code">
+        <value value="SEPA"></value>
+        <value value="SDVA"></value>
+        <value value="PRPT"></value>
+      </enumeration>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="ServiceLevel2Choice">
+      <element identifier="false" group="true" min="1" max="1" name="ServiceLevel2Choice-SG1">
+        <type>
+          <complexType specifyStructure="true" abstract="false" contentModel="Choice" specialisation="Element group" excludeFromDatabase="false" processAsBatch="false" name="ServiceLevel2Choice-SG1">
+            <element identifier="false" min="1" max="1" typeRef="ServiceLevel1Code" name="Cd"></element>
+            <element identifier="false" min="1" max="1" typeRef="Max35Text" name="Prtry"></element>
+          </complexType>
+        </type>
+      </element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="SettlementDateTimeIndication1">
+      <element identifier="false" min="0" max="1" typeRef="ISODateTime" name="DbtDtTm"></element>
+      <element identifier="false" min="0" max="1" typeRef="ISODateTime" name="CdtDtTm"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="SettlementInformation1">
+      <element identifier="false" min="1" max="1" typeRef="SettlementMethod1Code" name="SttlmMtd"></element>
+      <element identifier="false" min="0" max="1" typeRef="CashAccount7" name="SttlmAcct"></element>
+      <element identifier="false" min="0" max="1" typeRef="ClearingSystemIdentification1Choice" name="ClrSys"></element>
+      <element identifier="false" min="0" max="1" typeRef="BranchAndFinancialInstitutionIdentification3" name="InstgRmbrsmntAgt"></element>
+      <element identifier="false" min="0" max="1" typeRef="CashAccount7" name="InstgRmbrsmntAgtAcct"></element>
+      <element identifier="false" min="0" max="1" typeRef="BranchAndFinancialInstitutionIdentification3" name="InstdRmbrsmntAgt"></element>
+      <element identifier="false" min="0" max="1" typeRef="CashAccount7" name="InstdRmbrsmntAgtAcct"></element>
+      <element identifier="false" min="0" max="1" typeRef="BranchAndFinancialInstitutionIdentification3" name="ThrdRmbrsmntAgt"></element>
+      <element identifier="false" min="0" max="1" typeRef="CashAccount7" name="ThrdRmbrsmntAgtAcct"></element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="SettlementMethod1Code">
+      <enumeration caseSensitive="true" name="SettlementMethod1Code">
+        <value value="INDA"></value>
+        <value value="INGA"></value>
+        <value value="COVE"></value>
+        <value value="CLRG"></value>
+      </enumeration>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="SettlementTimeRequest1">
+      <element identifier="false" min="1" max="1" typeRef="ISOTime" name="CLSTm"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="SimpleIdentificationInformation2">
+      <element identifier="false" min="1" max="1" typeRef="Max34Text" name="Id"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="StructuredRegulatoryReporting2">
+      <element identifier="false" min="0" max="1" typeRef="Max3Text" name="Cd"></element>
+      <element identifier="false" min="0" max="1" typeRef="CurrencyAndAmount" name="Amt"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max35Text" name="Inf"></element>
+    </complexType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="StructuredRemittanceInformation6">
+      <element identifier="false" min="0" max="1" typeRef="ReferredDocumentInformation1" name="RfrdDocInf"></element>
+      <element identifier="false" min="0" max="1" typeRef="ISODate" name="RfrdDocRltdDt"></element>
+      <element identifier="false" min="0" max="-1" typeRef="ReferredDocumentAmount1Choice" name="RfrdDocAmt"></element>
+      <element identifier="false" min="0" max="1" typeRef="CreditorReferenceInformation1" name="CdtrRefInf"></element>
+      <element identifier="false" min="0" max="1" typeRef="PartyIdentification8" name="Invcr"></element>
+      <element identifier="false" min="0" max="1" typeRef="PartyIdentification8" name="Invcee"></element>
+      <element identifier="false" min="0" max="1" typeRef="Max140Text" name="AddtlRmtInf"></element>
+    </complexType>
+  </type>
+  <type>
+    <atomicSimpleType baseType="#string" name="UPICIdentifier">
+      <facet facetType="pattern">
+        <value>Schema|[0-9]{8,17}</value>
+      </facet>
+    </atomicSimpleType>
+  </type>
+  <type>
+    <complexType specifyStructure="true" abstract="false" contentModel="Sequence" specialisation="Generic complex" excludeFromDatabase="false" processAsBatch="false" name="pacs.008.001.01">
+      <element identifier="false" min="1" max="1" typeRef="GroupHeader2" name="GrpHdr"></element>
+      <element identifier="false" min="1" max="-1" typeRef="CreditTransferTransactionInformation2" name="CdtTrfTxInf"></element>
+    </complexType>
+  </type>
+  <namespace uri="http://www.w3.org/2001/XMLSchema" prefix="xs"></namespace>
+  <namespace uri="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.01" prefix=""></namespace>
+</dataModel>

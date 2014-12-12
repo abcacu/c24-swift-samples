@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.35" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MTDate_To_MXDateTime.tfd">
+    <input typeRef="#date_generic" required="false" path="" endID="0"/>
+    <transformMethod type="#date_datetime" name="FROMSTRING" y="32" x="887" id="48"/>
+    <contextPath input="false" endID="0" contextRef="" id="49"/>
+    <transformMethod type="#date_datetime" name="CONVERTDATE" y="170" x="135" id="64"/>
+    <contextPath input="true" endID="0" contextRef="" id="65"/>
+    <transformMethod type="#date_datetime" name="ADJUSTTIMEZONE" y="115" x="334" id="66"/>
+    <constant constant="&quot;UTC&quot;" id="68"/>
+    <transformMethod name="TOSTRING" y="108" x="522" id="69"/>
+    <transformMethod name="REPLACEALL" y="67" x="693" id="73"/>
+    <constant constant="&quot;Z&quot;" id="74"/>
+    <constant constant="&quot;&quot;" id="75"/>
+    <translation outputPort="0" outputID="49" inputPort="0" inputID="48"/>
+    <translation outputPort="0" outputID="64" inputPort="0" inputID="65"/>
+    <translation outputPort="0" outputID="66" inputPort="0" inputID="64"/>
+    <translation outputPort="1" outputID="66" inputPort="0" inputID="68"/>
+    <translation outputPort="0" outputID="69" inputPort="0" inputID="66"/>
+    <translation outputPort="0" outputID="73" inputPort="0" inputID="69"/>
+    <translation outputPort="1" outputID="73" inputPort="0" inputID="74"/>
+    <translation outputPort="2" outputID="73" inputPort="0" inputID="75"/>
+    <translation outputPort="0" outputID="48" inputPort="0" inputID="73"/>
+    <nextId>76</nextId>
+    <output typeRef="#date_datetime" required="false" path="" endID="0"/>
+</transform>

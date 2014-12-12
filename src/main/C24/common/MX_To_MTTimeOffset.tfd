@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform validateOutputs="false" validateInputs="false" saveLayout="true" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTTimeOffset.tfd">
+    <input typeRef="#date_time" required="false" path="" endID="0"/>
+    <contextPath input="true" endID="0" contextRef="" id="I0"/>
+    <contextPath input="false" endID="0" contextRef="" id="O0"/>
+    <transformMethod name="DATETOSTRING" y="77" x="262" id="O00"/>
+    <transformMethod type="#date_generic" name="CONVERTDATE" y="58" x="110" id="O000"/>
+    <constant constant="HHmmZ" id="O001"/>
+    <translation outputPort="0" outputID="O0" inputPort="0" inputID="O00"/>
+    <translation outputPort="0" outputID="O00" inputPort="0" inputID="O000"/>
+    <translation outputPort="0" outputID="O000" inputPort="0" inputID="I0"/>
+    <translation outputPort="1" outputID="O00" inputPort="0" inputID="O001"/>
+    <documentation>
+        <notes>Business description  
+	The function translates an MX time and offset expressed as “HH:MM:SS+/-HH:MM” to 
+	an MT time and offset expressed as “HHMM+/-HHMM” by deleting the seconds SS and 
+	removing the “:“pattern in both source time and source offset. The seconds are truncated and not rounded up. 
+
+Format 
+	MX_To_MTTimeOffset(MXTimeOffset ; MTTimeOffset) 
+
+Input 
+	MXTimeOffset: time and offset in the MX format typed ISOTime, expressed as “HH:MM:SS+/-HH:MM” where  
+	HH:MM:SS is the time 
+	+/- is the offset sign 
+	HH:MM is the offset  
+
+Output 
+	MTTimeOffset:  time and offset in the MT format expressed as “HHMM+/-HHMM” where  
+	HHMM is the time 
+	+/- is the offset sign 
+	HHMM is the offset  
+
+Preconditions 
+	None.  
+	
+Formal description 
+	/*MTTime, MTOffsetSign and MTOffset are local variables*/ 
+	MTTime = ReplacePattern(Substring(MXTimeOffset, 1, 5), “:”, “”) 
+	MTOffset = ReplacePattern(Substring(MXTimeOffset, 10, 6), “:”, “”) 
+	MTOffsetSign = Substring(MXTimeOffset, 9, 1) 
+	/*Build the output string*/ 
+	MTTimeOffset = Concatenate(MTTime, MTOffsetSign , MTOffset)  
+</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+</transform>

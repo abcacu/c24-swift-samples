@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.20" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXFinancialInstitutionNameAndAddress.tfd">
+    <input typeRef="Data Field Dictionary/Subfields/Party line1" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <input typeRef="Data Field Dictionary/Subfields/Name and Address" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="1"/>
+    <transformMethod name="NOT" y="28" x="289" id="14"/>
+    <constant constant="null" id="0"/>
+    <transformMethod type="#string" name="IF" y="107" x="621" id="31"/>
+    <transformMethod type="#string" name="IF" y="176" x="621" id="32"/>
+    <transformMethod type="#string" name="IF" y="244" x="623" id="35"/>
+    <transformMethod type="#string" name="IF" y="314" x="624" id="37"/>
+    <transformMethod type="#string" name="IF" y="380" x="625" id="39"/>
+    <transformMethod type="#string" name="IF" y="605" x="628" id="42"/>
+    <transformMethod type="#string" name="IF" y="674" x="629" id="44"/>
+    <transformMethod type="#string" name="IF" y="745" x="629" id="46"/>
+    <transformMethod type="#string" name="IF" y="815" x="630" id="48"/>
+    <transformMethod type="#string" name="IF" y="884" x="630" id="49"/>
+    <transformMethod type="#string" name="IF" y="39" x="619" id="82"/>
+    <transformMethod type="#string" name="IF" y="536" x="626" id="83"/>
+    <transformMethod name="EXISTS" y="418" x="399" id="84"/>
+    <transformMethod name="UNION" y="497" x="758" id="85"/>
+    <transformMethod type="#string" name="IF" y="468" x="623" id="86"/>
+    <transformMethod name="NOT" y="416" x="492" id="87"/>
+    <transformMethod name="AND" y="28" x="482" id="88"/>
+    <globalTransformRef ref="MT_To_MXPostalAddress.tfd" y="195" x="230" id="28"/>
+    <localTransformRef refId="60" y="296" x="105" id="62"/>
+    <contextPath input="false" endID="1" contextRef="" id="33"/>
+    <contextPath input="false" endID="2" contextRef="" id="34"/>
+    <contextPath input="false" endID="3" contextRef="" id="36"/>
+    <contextPath input="false" endID="4" contextRef="" id="38"/>
+    <contextPath input="false" endID="5" contextRef="" id="40"/>
+    <contextPath input="false" endID="7" contextRef="" id="43"/>
+    <contextPath input="false" endID="8" contextRef="" id="45"/>
+    <contextPath input="false" endID="9" contextRef="" id="47"/>
+    <contextPath input="false" endID="10" contextRef="" id="50"/>
+    <contextPath input="false" endID="11" contextRef="" id="51"/>
+    <contextPath input="false" endID="0" contextRef="" id="57"/>
+    <contextPath input="false" endID="6" contextRef="" id="56"/>
+    <contextPath input="true" endID="0" contextRef="" id="81"/>
+    <contextPath input="true" endID="1" contextRef="" id="58"/>
+    <contextPath input="true" endID="1" contextRef="Line 35x" id="59"/>
+    <transformMethod name="EXISTS" y="71" x="118" id="90"/>
+    <transformMethod name="AND" y="79" x="228" id="91"/>
+    <translation outputPort="2" outputID="31" inputPort="0" inputID="0"/>
+    <translation outputPort="2" outputID="32" inputPort="0" inputID="0"/>
+    <translation outputPort="2" outputID="35" inputPort="0" inputID="0"/>
+    <translation outputPort="2" outputID="37" inputPort="0" inputID="0"/>
+    <translation outputPort="1" outputID="31" inputPort="1" inputID="28"/>
+    <translation outputPort="1" outputID="32" inputPort="2" inputID="28"/>
+    <translation outputPort="1" outputID="35" inputPort="3" inputID="28"/>
+    <translation outputPort="1" outputID="37" inputPort="4" inputID="28"/>
+    <translation outputPort="2" outputID="39" inputPort="0" inputID="0"/>
+    <translation outputPort="1" outputID="39" inputPort="5" inputID="28"/>
+    <translation outputPort="2" outputID="42" inputPort="0" inputID="0"/>
+    <translation outputPort="2" outputID="44" inputPort="0" inputID="0"/>
+    <translation outputPort="2" outputID="46" inputPort="0" inputID="0"/>
+    <translation outputPort="1" outputID="42" inputPort="1" inputID="28"/>
+    <translation outputPort="1" outputID="44" inputPort="2" inputID="28"/>
+    <translation outputPort="1" outputID="46" inputPort="3" inputID="28"/>
+    <translation outputPort="2" outputID="48" inputPort="0" inputID="0"/>
+    <translation outputPort="2" outputID="49" inputPort="0" inputID="0"/>
+    <translation outputPort="1" outputID="48" inputPort="4" inputID="28"/>
+    <translation outputPort="1" outputID="49" inputPort="5" inputID="28"/>
+    <translation outputPort="0" outputID="31" inputPort="0" inputID="14"/>
+    <translation outputPort="0" outputID="32" inputPort="0" inputID="14"/>
+    <translation outputPort="0" outputID="35" inputPort="0" inputID="14"/>
+    <translation outputPort="0" outputID="37" inputPort="0" inputID="14"/>
+    <translation outputPort="0" outputID="39" inputPort="0" inputID="14"/>
+    <translation outputPort="0" outputID="42" inputPort="0" inputID="62"/>
+    <translation outputPort="0" outputID="44" inputPort="0" inputID="62"/>
+    <translation outputPort="0" outputID="46" inputPort="0" inputID="62"/>
+    <translation outputPort="0" outputID="48" inputPort="0" inputID="62"/>
+    <translation outputPort="0" outputID="49" inputPort="0" inputID="62"/>
+    <translation outputPort="2" outputID="82" inputPort="0" inputID="0"/>
+    <translation outputPort="1" outputID="82" inputPort="0" inputID="28"/>
+    <translation outputPort="2" outputID="83" inputPort="0" inputID="0"/>
+    <translation outputPort="1" outputID="83" inputPort="0" inputID="28"/>
+    <translation outputPort="0" outputID="83" inputPort="0" inputID="62"/>
+    <translation outputPort="1" outputID="85" inputPort="0" inputID="83"/>
+    <translation outputPort="2" outputID="86" inputPort="0" inputID="0"/>
+    <translation outputPort="0" outputID="85" inputPort="0" inputID="86"/>
+    <translation outputPort="0" outputID="87" inputPort="0" inputID="84"/>
+    <translation outputPort="0" outputID="86" inputPort="0" inputID="87"/>
+    <translation outputPort="0" outputID="84" inputPort="3" inputID="28"/>
+    <translation outputPort="0" outputID="88" inputPort="0" inputID="14"/>
+    <translation outputPort="1" outputID="88" inputPort="0" inputID="84"/>
+    <translation outputPort="0" outputID="82" inputPort="0" inputID="88"/>
+    <translation outputPort="0" outputID="33" inputPort="0" inputID="31"/>
+    <translation outputPort="0" outputID="34" inputPort="0" inputID="32"/>
+    <translation outputPort="0" outputID="36" inputPort="0" inputID="35"/>
+    <translation outputPort="0" outputID="38" inputPort="0" inputID="37"/>
+    <translation outputPort="0" outputID="40" inputPort="0" inputID="39"/>
+    <translation outputPort="0" outputID="43" inputPort="0" inputID="42"/>
+    <translation outputPort="0" outputID="45" inputPort="0" inputID="44"/>
+    <translation outputPort="0" outputID="47" inputPort="0" inputID="46"/>
+    <translation outputPort="0" outputID="50" inputPort="0" inputID="48"/>
+    <translation outputPort="0" outputID="51" inputPort="0" inputID="49"/>
+    <translation outputPort="0" outputID="57" inputPort="0" inputID="82"/>
+    <translation outputPort="0" outputID="56" inputPort="0" inputID="85"/>
+    <translation outputPort="0" outputID="62" inputPort="0" inputID="81"/>
+    <translation outputPort="0" outputID="28" inputPort="0" inputID="58"/>
+    <translation outputPort="1" outputID="86" inputPort="0" inputID="59"/>
+    <translation outputPort="0" outputID="90" inputPort="0" inputID="62"/>
+    <translation outputPort="0" outputID="91" inputPort="0" inputID="90"/>
+    <translation outputPort="1" outputID="91" inputPort="0" inputID="62"/>
+    <translation outputPort="0" outputID="14" inputPort="0" inputID="91"/>
+    <nextId>92</nextId>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+    <output typeRef="#string" required="false" path="" endID="1"/>
+    <output typeRef="#string" required="false" path="" endID="2"/>
+    <output typeRef="#string" required="false" path="" endID="3"/>
+    <output typeRef="#string" required="false" path="" endID="4"/>
+    <output typeRef="#string" required="false" path="" endID="5"/>
+    <output typeRef="#string" required="false" path="" endID="6"/>
+    <output typeRef="#string" required="false" path="" endID="7"/>
+    <output typeRef="#string" required="false" path="" endID="8"/>
+    <output typeRef="#string" required="false" path="" endID="9"/>
+    <output typeRef="#string" required="false" path="" endID="10"/>
+    <output typeRef="#string" required="false" path="" endID="11"/>
+    <localTransform id="60">
+        <transform version="0.0.20" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="IsClearingSystem">
+            <input typeRef="Data Field Dictionary/Subfields/Party line1" required="true" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+            <transformMethod name="STARTSWITH" y="44" x="120" id="63"/>
+            <transformMethod name="STARTSWITH" y="328" x="100" id="64"/>
+            <transformMethod name="OR" y="57" x="579" id="65"/>
+            <transformMethod name="AND" y="50" x="379" id="66"/>
+            <transformMethod name="OR" y="299" x="226" id="67"/>
+            <transformMethod name="STARTSWITH" y="260" x="98" id="68"/>
+            <transformMethod name="AND" y="194" x="458" id="69"/>
+            <transformMethod name="NOT" y="295" x="330" id="70"/>
+            <transformMethod name="STARTSWITH" y="187" x="100" id="71"/>
+            <transformMethod name="LENGTH" y="104" x="105" id="72"/>
+            <transformMethod name="GREATERTHAN" y="112" x="239" id="73"/>
+            <constant constant="/RT//" id="74"/>
+            <constant constant="5" id="75"/>
+            <constant constant="/RT" id="76"/>
+            <constant constant="/CH" id="77"/>
+            <constant constant="/" id="78"/>
+            <contextPath input="false" endID="0" contextRef="" id="80"/>
+            <contextPath input="true" endID="0" contextRef="Party Identifier" id="79"/>
+            <translation outputPort="1" outputID="63" inputPort="0" inputID="74"/>
+            <translation outputPort="1" outputID="73" inputPort="0" inputID="75"/>
+            <translation outputPort="0" outputID="73" inputPort="0" inputID="72"/>
+            <translation outputPort="0" outputID="66" inputPort="0" inputID="63"/>
+            <translation outputPort="1" outputID="66" inputPort="0" inputID="73"/>
+            <translation outputPort="1" outputID="68" inputPort="0" inputID="76"/>
+            <translation outputPort="1" outputID="64" inputPort="0" inputID="77"/>
+            <translation outputPort="1" outputID="71" inputPort="0" inputID="78"/>
+            <translation outputPort="1" outputID="67" inputPort="0" inputID="64"/>
+            <translation outputPort="0" outputID="67" inputPort="0" inputID="68"/>
+            <translation outputPort="0" outputID="70" inputPort="0" inputID="67"/>
+            <translation outputPort="0" outputID="65" inputPort="0" inputID="66"/>
+            <translation outputPort="1" outputID="65" inputPort="0" inputID="69"/>
+            <translation outputPort="1" outputID="69" inputPort="0" inputID="70"/>
+            <translation outputPort="0" outputID="69" inputPort="0" inputID="71"/>
+            <translation outputPort="0" outputID="80" inputPort="0" inputID="65"/>
+            <translation outputPort="0" outputID="63" inputPort="0" inputID="79"/>
+            <translation outputPort="0" outputID="72" inputPort="0" inputID="79"/>
+            <translation outputPort="0" outputID="71" inputPort="0" inputID="79"/>
+            <translation outputPort="0" outputID="68" inputPort="0" inputID="79"/>
+            <translation outputPort="0" outputID="64" inputPort="0" inputID="79"/>
+            <nextId>0</nextId>
+            <output typeRef="#boolean" required="false" path="" endID="0"/>
+        </transform>
+    </localTransform>
+</transform>

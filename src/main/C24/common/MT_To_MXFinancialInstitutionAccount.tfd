@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" saveLayout="false" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXFinancialInstitutionAccount.tfd">
+    <input typeRef="Data Field Dictionary/Subfields/Party line1" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+    <contextPath input="true" endID="0" contextRef="Debit\Credit and Party/Debit\Credit Indicator" id="DebitCreditandParty_DebitCreditIndicatorI0"/>
+    <contextPath input="true" endID="0" contextRef="Debit\Credit and Party/Party Identifier" id="DebitCreditandParty_PartyIdentifierI0"/>
+    <contextPath input="false" endID="0" contextRef="" id="O0"/>
+    <globalTransformRef ref="MT_To_MXPartyAccount.tfd" id="O00"/>
+    <transformMethod name="UNION" id="O000"/>
+    <transformMethod type="#string" name="IF" id="O0000"/>
+    <transformMethod name="OR" id="O00000"/>
+    <transformMethod name="EQUALS" id="O000000"/>
+    <constant constant="C" id="O0000001"/>
+    <transformMethod name="EQUALS" id="O000001"/>
+    <constant constant="D" id="O0000011"/>
+    <constant constant="null" id="O00002"/>
+    <transformMethod type="#string" name="IF" id="O0001"/>
+    <transformMethod name="STARTSWITH" id="O00010"/>
+    <constant constant="&quot;/CH&quot;" id="O000101"/>
+    <transformMethod name="SUBSTRING" id="O00011"/>
+    <constant constant="1" id="O000111"/>
+    <constant constant="-1" id="O000112"/>
+    <contextPath input="false" endID="1" contextRef="" id="O1"/>
+    <contextPath input="true" endID="0" contextRef="Party Identifier" id="PartyIdentifierI0"/>
+    <translation outputPort="0" outputID="O0" inputPort="0" inputID="O00"/>
+    <translation outputPort="0" outputID="O00" inputPort="0" inputID="O000"/>
+    <translation outputPort="0" outputID="O000" inputPort="0" inputID="O0000"/>
+    <translation outputPort="0" outputID="O0000" inputPort="0" inputID="O00000"/>
+    <translation outputPort="0" outputID="O00000" inputPort="0" inputID="O000000"/>
+    <translation outputPort="0" outputID="O000000" inputPort="0" inputID="DebitCreditandParty_DebitCreditIndicatorI0"/>
+    <translation outputPort="1" outputID="O000000" inputPort="0" inputID="O0000001"/>
+    <translation outputPort="1" outputID="O00000" inputPort="0" inputID="O000001"/>
+    <translation outputPort="0" outputID="O000001" inputPort="0" inputID="DebitCreditandParty_DebitCreditIndicatorI0"/>
+    <translation outputPort="1" outputID="O000001" inputPort="0" inputID="O0000011"/>
+    <translation outputPort="1" outputID="O0000" inputPort="0" inputID="DebitCreditandParty_PartyIdentifierI0"/>
+    <translation outputPort="2" outputID="O0000" inputPort="0" inputID="O00002"/>
+    <translation outputPort="1" outputID="O000" inputPort="0" inputID="O0001"/>
+    <translation outputPort="0" outputID="O0001" inputPort="0" inputID="O00010"/>
+    <translation outputPort="0" outputID="O00010" inputPort="0" inputID="PartyIdentifierI0"/>
+    <translation outputPort="1" outputID="O00010" inputPort="0" inputID="O000101"/>
+    <translation outputPort="1" outputID="O0001" inputPort="0" inputID="O00011"/>
+    <translation outputPort="0" outputID="O00011" inputPort="0" inputID="PartyIdentifierI0"/>
+    <translation outputPort="1" outputID="O00011" inputPort="0" inputID="O000111"/>
+    <translation outputPort="2" outputID="O00011" inputPort="0" inputID="O000112"/>
+    <translation outputPort="2" outputID="O0001" inputPort="0" inputID="PartyIdentifierI0"/>
+    <translation outputPort="0" outputID="O1" inputPort="1" inputID="O00"/>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXFinancialInstitutionAccount&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates an MT financial institution account to an MX account by deleting the slash “/”, the double slash
+'//' (in case of a CHIPS Universal Identifier), the debit indicator and slash “/D/” or the credit indicator and slash
+“/C/” and writing the remainder in the appropriate MX account element after checking whether the account is an IBAN.
+
+&lt;b&gt;Format&lt;/b&gt;
+MT_To_MXFinancialInstitutionAccount(MTPartyIdentifier ; MXAccount)
+
+&lt;b&gt;Input&lt;/b&gt;
+MTPartyIdentifier: financial institution account in the MT format [/1!a]/34x ([ ] indicate optionality).
+
+&lt;b&gt;Output&lt;/b&gt;
+MXAccount: the result of this function -an MX account- is immediately put into the correct MX element inside the target
+component typed CashAccount7.
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/*
+   Check whether debit/credit indicator or a CHIPS Universal Identifier are present and delete depending on the
+   caseindicator and/or slash or double slash. Account is a local variable
+*/
+IF Substring(MTPartyIdentifier, 1, 3) = “/C/” OR “/D/”
+    Account = Substring(MTPartyIdentifier, 4)
+ELSEIF Substring(MTPartyIdentifier, 1, 4) = “//CH”
+    Account = Substring(MTPartyIdentifier, 3)
+ELSE
+    Account = Substring(MTPartyIdenfier, 2)
+ENDIF
+/* Check whether account is IBAN */
+IF IsIBAN(Account)
+    Identification.IBAN = Account
+ELSE
+    Identification.ProprietaryAccount.Identification = Account
+ENDIF
+&lt;/pre&gt;
+</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+    <output typeRef="#string" required="false" path="" endID="1"/>
+</transform>

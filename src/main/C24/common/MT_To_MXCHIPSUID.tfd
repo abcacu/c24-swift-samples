@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.1" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MT_To_MXCHIPSUID.tfd">
+    <input typeRef="#string" required="true" path="" endID="0"/>
+    <transformMethod name="SUBSTRING" y="55" x="181" id="1"/>
+    <contextPath input="true" endID="0" contextRef="" id="2"/>
+    <constant constant="1" id="3"/>
+    <constant constant="-1" id="4"/>
+    <contextPath input="false" endID="0" contextRef="" id="5"/>
+    <translation outputPort="0" outputID="1" inputPort="0" inputID="2"/>
+    <translation outputPort="1" outputID="1" inputPort="0" inputID="3"/>
+    <translation outputPort="2" outputID="1" inputPort="0" inputID="4"/>
+    <translation outputPort="0" outputID="5" inputPort="0" inputID="1"/>
+    <nextId>6</nextId>
+    <documentation>
+        <notes>&lt;h3&gt;MT_To_MXCHIPSUID&lt;/h3&gt;
+
+&lt;b&gt;Business description&lt;/b&gt;
+The function translates an MT CHIPS Universal Identifier of a party to a MX CHIPSUniversal Identification and writes it in the appropriate MX party identification element.
+
+&lt;b&gt;Format&lt;/b&gt;
+&lt;tt&gt;MT_To_MXCHIPSUID(MTCHIPSUID ; MXCHIPSUID)&lt;/tt&gt;
+
+&lt;b&gt;Input&lt;/b&gt;
+&lt;tt&gt;MTCHIPSUID&lt;/tt&gt;: CHIPS Universal Identifier of a customer party in the MT format //CH12345.
+
+&lt;b&gt;Output&lt;/b&gt;
+&lt;tt&gt;MXCHIPSUID&lt;/tt&gt;: the result of this function is immediately put into the correct MX element inside the target component typed PartyIdentification8.
+
+&lt;b&gt;Preconditions&lt;/b&gt;
+None.
+
+&lt;b&gt;Formal description&lt;/b&gt;
+&lt;pre&gt;
+/* Substring is taken to delete the double slash */
+Identification.OrganisationIdentification.ChipsUniversalIdentification = Substring(MTCHIPSUID, 3)
+&lt;/pre&gt;</notes>
+    </documentation>
+    <output typeRef="#string" required="false" path="" endID="0"/>
+</transform>

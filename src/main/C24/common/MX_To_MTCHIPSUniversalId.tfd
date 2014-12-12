@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transform version="0.0.4" validateOutputs="false" validateInputs="false" targetNamespace="http://www.c24.biz/IO/Transforms/Common" readOnly="false" processingOrder="Outputs" encrypted="false" IOversion="3.1.0" name="MX_To_MTCHIPSUniversalId.tfd">
+    <input typeRef="#string" required="false" path="" endID="0"/>
+    <transformMethod type="#string" name="IF" y="130" x="173" id="4"/>
+    <transformMethod name="CONCAT" y="251" x="172" id="5"/>
+    <transformMethod name="EXISTS" y="75" x="91" id="6"/>
+    <constant constant="/" id="7"/>
+    <contextPath input="true" endID="0" contextRef="" id="3"/>
+    <contextPath input="false" endID="0" contextRef="" id="2"/>
+    <translation outputPort="0" outputID="4" inputPort="0" inputID="6"/>
+    <translation outputPort="1" outputID="4" inputPort="0" inputID="5"/>
+    <translation outputPort="0" outputID="5" inputPort="0" inputID="7"/>
+    <translation outputPort="0" outputID="6" inputPort="0" inputID="3"/>
+    <translation outputPort="2" outputID="4" inputPort="0" inputID="3"/>
+    <translation outputPort="1" outputID="5" inputPort="0" inputID="3"/>
+    <translation outputPort="0" outputID="2" inputPort="0" inputID="4"/>
+    <nextId>8</nextId>
+    <documentation>
+        <notes>
+INPUT:
+	1. Identification.OrganisationIdentification.USCHU
+
+Business description
+	The function translates an MX CHIPS Universal Identification to an MT CHIPS Universal Identification.
+
+Format
+	MT_To_MXCHIPSUniversalId(MXPartyIdentification ; MTPartyIdentifier)
+
+Input
+	MXPartyIdentification: the entire structure of the MX party identification typed PartyIdentification8.
+
+Output
+	MTPartyIdentifier: CHIPS Universal Identification of the party in the MT format.
+
+Preconditions
+	None.</notes>
+    </documentation>
+    <output typeRef="Data Field Dictionary/Subfields/Party Identifier" required="false" path="" modelRef="../SWIFT FIN November 2008 Data Dictionary.dod" endID="0"/>
+</transform>
