@@ -99,7 +99,7 @@
                                             <deployEnvironment>false</deployEnvironment>
                                             <deployAsCDO>true</deployAsCDO>
                                             <deployAsSDO>true</deployAsSDO>
-                                            <javaVersion>JDK_6</javaVersion>
+                                            <javaVersion>JDK_8</javaVersion>
                                             <fileSet>
                                                 <directory>${basedir}/src/main/C24</directory>
                                                 <includes>

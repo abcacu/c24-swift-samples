@@ -1,6 +1,6 @@
 package biz.c24.io;
 
-import biz.c24.io.api.C24;
+import biz.c24.io.api.java8.C24;
 import biz.c24.io.api.data.*;
 import biz.c24.io.swift2008.MT103Message;
 import biz.c24.io.transforms.swift.credittransfer.MT103_To_MXpacs00800101Transform;
