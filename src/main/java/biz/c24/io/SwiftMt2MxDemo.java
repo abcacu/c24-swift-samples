@@ -65,12 +65,12 @@ public class SwiftMt2MxDemo {
         System.out.println("Parse, validate, transform, validate (again) and convert to SDO");
         start = System.nanoTime();
         pacs008SdoList = swiftTextList.parallelStream()
-                .map(message -> parseMT103(message))
+                .map(message -> C24.parse(MT103Message.class, new StringReader(message)))
                 .filter(mt103Message -> isValidMt103OrAddToQueue(mt103Message))
-                .map(mt103Message -> transformMT2Pacs008(mt103Message))
+                .map(mt103Message -> (iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.Document)C24.transform(mt103, transformThreadLocal.get()))
                 .map(pacs008 -> invalidateAFewPacs008(pacs008))
                 .filter(pacs008 -> isValidPacs008OrAddToQueue(pacs008))
-                .map(cdo -> toSdo(cdo))
+                .map(cdo -> (Document)C24.toSdo(cdo))
                 .collect(Collectors.toList());
         duration = (System.nanoTime() - start) / 1e9;
         System.out.printf("Time = %,d in %.2f seconds, %,.0f per second%n%n", NUMBER, duration, NUMBER / duration);
@@ -131,36 +131,6 @@ public class SwiftMt2MxDemo {
             }
         }
         return isValid;
-    }
-
-    private static Document toSdo(iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.Document cdo) {
-        Document ret = null;
-        try {
-            ret = C24.toSdo(cdo);
-        } catch (IOException e) {
-            System.out.println("Exception: " + e.getMessage());
-        }
-        return ret;
-    }
-
-    private static MT103Message parseMT103(String message) {
-        MT103Message mt103 = null;
-        try {
-            mt103 = C24.parse(MT103Message.class, new StringReader(message));
-        } catch (IOException e) {
-            System.out.println("Exception: " + e.getMessage());
-        }
-        return mt103;
-    }
-
-    private static iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.Document transformMT2Pacs008(MT103Message mt103) {
-        iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.Document pacs008 = null;
-        try {
-            pacs008 = C24.transform(mt103, transformThreadLocal.get());
-        } catch (ValidationException e) {
-            System.out.println("Exception: " + e.getMessage());
-        }
-        return pacs008;
     }
 }
 
