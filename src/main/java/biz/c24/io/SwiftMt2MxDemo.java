@@ -4,39 +4,36 @@ import biz.c24.io.api.java8.C24;
 import biz.c24.io.api.data.*;
 import biz.c24.io.swift2008.MT103Message;
 import biz.c24.io.transforms.swift.credittransfer.MT103_To_MXpacs00800101Transform;
-import iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.Document;
+import iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.sdo.Document;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.StringReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class SwiftMt2MxDemo {
     private static List<String> swiftTextList = new ArrayList<>();
     private static List<SimpleDataObject> pacs008SdoList = new ArrayList<>();
-    private static BlockingQueue<MT103Message> exceptionQueue = new ArrayBlockingQueue<>(10);
+    private static BlockingQueue<ComplexDataObject> exceptionQueue = new ArrayBlockingQueue<>(100);
 
     private static final ThreadLocal<MT103_To_MXpacs00800101Transform> transformThreadLocal =
             ThreadLocal.<MT103_To_MXpacs00800101Transform>withInitial(MT103_To_MXpacs00800101Transform::new);
 
     public static void main(String[] args) throws IOException, ValidationException, IOXPathException {
         SwiftMt2MxDemo swiftMt2MxDemo = new SwiftMt2MxDemo();
-       swiftMt2MxDemo.execute();
+        swiftMt2MxDemo.execute();
     }
 
-    public void execute() throws IOException {
+    private void execute() throws IOException {
         MT103Message mt103 = C24.parse(MT103Message.class, getClass().getResourceAsStream("/MT103i-valid_1.dat"));
-        AtomicInteger atomicInt = new AtomicInteger(0);
+        XORShift64 xorShift64 = new XORShift64(System.nanoTime());
 
-        final int NUMBER = 10_000;
+        final int NUMBER = 50_000;
 
         Logger.getRootLogger().removeAllAppenders();
         Logger.getRootLogger().setLevel(Level.OFF);
@@ -46,16 +43,16 @@ public class SwiftMt2MxDemo {
         double duration = 0.0;
 
         Stream<String> mt103StringStream = Stream.generate(() -> {
-            int i = atomicInt.incrementAndGet();
-            mt103.getBlock4().getSenderRef().getDefault().setReference(String.format("%06d", i));
+            long random = xorShift64.randomLong();
+            mt103.getBlock4().getSenderRef().getDefault().setReference(String.format("%016X", random));
             String mt103String = mt103.toString();
-            if (i % 401 == 0) {     // Roughly 0.25%
+            if (random % 4001 == 0) {     // Roughly 0.025%
                 mt103String = mt103String.replace(":USD", ":EUR");  // This will create an invalid message
             }
             return mt103String;
         });
 
-        System.out.println("Creating test data...");
+        System.out.print("Creating test data...");
         swiftTextList = mt103StringStream.parallel().limit(NUMBER).collect(Collectors.toList());
         System.out.println("Done!");
         System.gc();
@@ -65,34 +62,24 @@ public class SwiftMt2MxDemo {
         workerThread.setDaemon(true);
         executor.execute(workerThread);
 
+        System.out.println("Parse, validate, transform, validate (again) and convert to SDO");
+        start = System.nanoTime();
+        pacs008SdoList = swiftTextList.parallelStream()
+                .map(message -> parseMT103(message))
+                .filter(mt103Message -> isValidMt103OrAddToQueue(mt103Message))
+                .map(mt103Message -> transformMT2Pacs008(mt103Message))
+                .map(pacs008 -> invalidateAFewPacs008(pacs008))
+                .filter(pacs008 -> isValidPacs008OrAddToQueue(pacs008))
+                .map(cdo -> toSdo(cdo))
+                .collect(Collectors.toList());
+        duration = (System.nanoTime() - start) / 1e9;
+        System.out.printf("Time = %,d in %.2f seconds, %,.0f per second%n%n", NUMBER, duration, NUMBER / duration);
+
         try {
             executor.awaitTermination(1L, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             System.out.println("Exception: " + e.getMessage());
         }
-
-        System.out.print("Warming up the JIT...");
-        pacs008SdoList = SwiftMt2MxDemo.swiftTextList.parallelStream()
-                .map(SwiftMt2MxDemo::parseMT103)
-                .filter(SwiftMt2MxDemo::isValidOrAddToQueue)
-                .map(SwiftMt2MxDemo::transformMT2Pacs008)
-                .map(SwiftMt2MxDemo::toSdo)
-                .collect(Collectors.toList());
-        System.out.println("Done!");
-        pacs008SdoList.clear();
-
-        System.gc();
-
-        System.out.println("Starting full parse and validate...");
-        start = System.nanoTime();
-        pacs008SdoList = SwiftMt2MxDemo.swiftTextList.parallelStream()
-                .map(SwiftMt2MxDemo::parseMT103)
-                .filter(SwiftMt2MxDemo::isValidOrAddToQueue)
-                .map(SwiftMt2MxDemo::transformMT2Pacs008)
-                .map(SwiftMt2MxDemo::toSdo)
-                .collect(Collectors.toList());
-        duration = (System.nanoTime() - start) / 1e9;
-        System.out.printf("Time = %,d in %.2f seconds, %,.0f per second%n%n", NUMBER, duration, NUMBER / duration);
 
         System.gc();
 
@@ -100,30 +87,54 @@ public class SwiftMt2MxDemo {
         executor.shutdown();
 
         System.out.println("size of pacs008SdoList = " + pacs008SdoList.size());
-        System.out.println("size of exception queue = " + exceptionQueue.size());
         iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.sdo.Document sdo = (iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.sdo.Document) pacs008SdoList.get(0);
         System.out.println("pacs008 time = " + sdo.getPacs00800101().getGrpHdr().getCreDtTm());
-        System.out.println("sdo.getSdoData().array().length = " + sdo.getSdoData().array().length);
-        dump(sdo.getSdoData().array());
-        System.out.println("C24.toCdo(sdo) = " + C24.toCdo(sdo));
     }
 
-    private static boolean isValidOrAddToQueue(MT103Message mt103Message) {
-        boolean isValid = C24.isValid(mt103Message);
+    private static iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.Document invalidateAFewPacs008(iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.Document document) {
+        if (document.getPacs00800101().getGrpHdr().getMsgId().substring(0, 3).equals("000"))
+            document.getPacs00800101().getCdtTrfTxInf().get(0).getInstdAmt().setCcy("XXX");
+        return document;
+    }
 
-        if (!isValid) {
-            try {
-                exceptionQueue.put(mt103Message);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                System.out.println("Exception: " + e.getMessage());
+    private static boolean isValidMt103OrAddToQueue(MT103Message mt103Message) {
+        boolean isValid = false;
+
+        if (mt103Message != null) {
+            isValid = C24.isValid(mt103Message);
+
+            if (!isValid) {
+                try {
+                    exceptionQueue.put(mt103Message);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    System.out.println("Exception: " + e.getMessage());
+                }
             }
         }
         return isValid;
     }
 
-    private static SimpleDataObject toSdo(ComplexDataObject cdo) {
-        SimpleDataObject ret = null;
+    private static boolean isValidPacs008OrAddToQueue(iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.Document pacs008) {
+        boolean isValid = false;
+
+        if (pacs008 != null) {
+            isValid = C24.isValid(pacs008);
+
+            if (!isValid) {
+                try {
+                    exceptionQueue.put(pacs008);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    System.out.println("Exception: " + e.getMessage());
+                }
+            }
+        }
+        return isValid;
+    }
+
+    private static Document toSdo(iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.Document cdo) {
+        Document ret = null;
         try {
             ret = C24.toSdo(cdo);
         } catch (IOException e) {
@@ -142,8 +153,8 @@ public class SwiftMt2MxDemo {
         return mt103;
     }
 
-    private static Document transformMT2Pacs008(MT103Message mt103) {
-        Document pacs008 = null;
+    private static iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.Document transformMT2Pacs008(MT103Message mt103) {
+        iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.Document pacs008 = null;
         try {
             pacs008 = C24.transform(mt103, transformThreadLocal.get());
         } catch (ValidationException e) {
@@ -151,42 +162,35 @@ public class SwiftMt2MxDemo {
         }
         return pacs008;
     }
-
-    private static void dump(byte[] bytes) {
-        for (int i = 0; i < bytes.length; i++) {
-            if (i % 64 == 0) {
-                System.out.printf("%n%04d...%04d:\t",(i), (i+63) );
-            }
-            char c = (char) bytes[i];
-            System.out.print((c < '~' && c >= ' ' ? c : '.'));
-        }
-        System.out.println();
-    }
 }
 
 class ExceptionWorker extends Thread {
     volatile boolean finished = false;
-    BlockingQueue<MT103Message> queue = null;
+    BlockingQueue<ComplexDataObject> queue = null;
 
-    public ExceptionWorker(BlockingQueue<MT103Message> exceptionQueue) {
+    public ExceptionWorker(BlockingQueue<ComplexDataObject> exceptionQueue) {
         queue = exceptionQueue;
     }
 
     @Override
     public void run() {
-        MT103Message message = null;
+        ComplexDataObject message = null;
 
-        while ( ! finished ) {
+        while (!finished) {
             try {
-                if( !queue.isEmpty() ) {
+                if (!queue.isEmpty()) {
                     message = queue.take();
                     List<ValidationEvent> validationEvents = Arrays.asList(C24.validateFully(message));
-//                    System.out.print("Exception for message: " + message.getBlock4().getSenderRef());
-//                    for( ValidationEvent event : validationEvents ) {
-//                        System.out.println("event = " + event.getMessage());
-//                    }
-                }
-                else
+                    if (message instanceof MT103Message) {
+                        System.out.print("MT103 failed:  \t");
+                    } else if (message instanceof iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.Document) {
+                        System.out.print("Pacs008 failed:\t");
+                    }
+                    for (ValidationEvent event : validationEvents) {
+                        System.out.print("\t" + event.getMessage());
+                    }
+                    System.out.println();
+                } else
                     continue;
             } catch (InterruptedException e) {
                 System.out.println("Exception: " + e.getMessage());
@@ -199,5 +203,19 @@ class ExceptionWorker extends Thread {
     public void terminate() {
         this.finished = true;
     }
+}
 
+class XORShift64 {
+    long x;
+
+    public XORShift64(long seed) {
+        x = seed == 0 ? 0xdeadbeef : seed;
+    }
+
+    public long randomLong() {
+        x ^= (x << 21);
+        x ^= (x >>> 35);
+        x ^= (x << 4);
+        return x;
+    }
 }
