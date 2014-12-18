@@ -67,7 +67,7 @@ public class SwiftMt2MxDemo {
         pacs008SdoList = swiftTextList.parallelStream()
                 .map(message -> C24.parse(MT103Message.class, new StringReader(message)))
                 .filter(mt103Message -> isValidMt103OrAddToQueue(mt103Message))
-                .map(mt103Message -> (iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.Document)C24.transform(mt103, transformThreadLocal.get()))
+                .map(mt103Message -> (iso.std.iso.x20022.tech.xsd.pacs.x008.x001.x01.Document)C24.transform(mt103Message, transformThreadLocal.get()))
                 .map(pacs008 -> invalidateAFewPacs008(pacs008))
                 .filter(pacs008 -> isValidPacs008OrAddToQueue(pacs008))
                 .map(cdo -> (Document)C24.toSdo(cdo))
