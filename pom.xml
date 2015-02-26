@@ -9,8 +9,8 @@
 
 
     <properties>
-        <c24.io.api.version>4.7.0-SNAPSHOT</c24.io.api.version>
-        <c24.io.studio.version>4.7.0-SNAPSHOT</c24.io.studio.version>
+        <c24.io.api.version>4.7.2</c24.io.api.version>
+        <c24.io.studio.version>4.7.3</c24.io.studio.version>
     </properties>
 
     <repositories>
@@ -92,7 +92,7 @@
                     <plugin>
                         <groupId>biz.c24.io.maven</groupId>
                         <artifactId>c24-maven-plugin</artifactId>
-                        <version>4.7.0-SNAPSHOT</version>
+                        <version>4.7.1</version>
                         <executions>
                             <execution>
                                 <id>c24-model-deploy</id>
